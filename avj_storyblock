@@ -1,0 +1,344 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "service": {
+      "description": "A Rapidi Service.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "MyRapidi API - Service",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of the service",
+          "example": "323",
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "description": {
+          "description": "description of the service",
+          "example": "Live service for MyCompany",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/service/definitions/id"
+        }
+      }
+    },
+
+    "rtis": {
+      "description": "RTIs (Run Time Information) are used to store SourceControl values.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "MyRapidi API - RTIs",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "transfer": {
+          "description": "Code of the Transfer.",
+          "example": "CUST_READ",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "source": {
+          "description": "Code of the Connection that we read from",
+          "example": "NAV001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "destination": {
+          "description": "Code of the Connection that we write to",
+          "example": "SFORCE001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "source_control": {
+          "description": "The SourceControl value for this RTI entry",
+          "example": "1025",
+          "readOnly": false,
+          "type": [
+            "integer"
+          ]
+        },
+        "id": {
+          "description": "unique identifier of the rti",
+          "example": "7",
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Info for an existing rti entry.",
+          "href": "/api/v2/service/{(%23%2Fdefinitions%2Fservice%2Fdefinitions%2Fid)}/rtis/{(%23%2Fdefinitions%2Frtis%2Fdefinitions%2Fid)}",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": {
+            "$ref": "#/definitions/rtis"
+          },
+          "title": "Info"
+        },
+        {
+          "description": "List existing rtis.",
+          "href": "/api/v2/service/{(%23%2Fdefinitions%2Fservice%2Fdefinitions%2Fid)}/rtis",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "items": {
+              "$ref": "#/definitions/rtis"
+            },
+            "type": [
+              "array"
+            ]
+          },
+          "title": "List"
+        },
+        {
+          "description": "Update an existing rti.",
+          "href": "/api/v2/service/{(%23%2Fdefinitions%2Fservice%2Fdefinitions%2Fid)}/rtis/{(%23%2Fdefinitions%2Frtis%2Fdefinitions%2Fid)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "sourcecontrol": {
+                "$ref": "#/definitions/rtis/definitions/sourcecontrol"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/rtis"
+          },
+          "title": "Update"
+        },
+        {
+          "description": "Create new RTI.",
+          "href": "/api/v2/service/{(%23%2Fdefinitions%2Fservice%2Fdefinitions%2Fid)}/rtis",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "transfer": {
+                "$ref": "#/definitions/schedules/definitions/transfer"
+              },
+              "source": {
+                "$ref": "#/definitions/schedules/definitions/source"
+              },
+              "destination": {
+                "$ref": "#/definitions/schedules/definitions/destination"
+              },
+              "source_control": {
+                "$ref": "#/definitions/schedules/definitions/source_control"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/rtis"
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing rti entry.",
+          "href": "/api/v2/service/{(%23%2Fdefinitions%2Fservice%2Fdefinitions%2Fid)}/rtis/{(%23%2Fdefinitions%2Frtis%2Fdefinitions%2Fid)}",
+          "method": "DELETE",
+          "rel": "delete",
+          "title": "Delete"
+        }
+      ],
+      "properties": {
+        "transfer": {
+          "$ref": "#/definitions/rtis/definitions/transfer"
+        },
+        "source": {
+          "$ref": "#/definitions/rtis/definitions/source"
+        },
+        "destination": {
+          "$ref": "#/definitions/rtis/definitions/destination"
+        },
+        "source_control": {
+          "$ref": "#/definitions/rtis/definitions/source_control"
+        },
+        "id": {
+          "$ref": "#/definitions/rtis/definitions/id"
+        }
+      }
+    },
+  },
+    "links": [
+        {
+          "description": "Get Activity Logs.",
+          "href": "/api/v2/service/{(%23%2Fdefinitions%2Fservice%2Fdefinitions%2Fid)}/logs",
+          "templatePointers": {
+                        "offset": {"$ref": "#/$defs/pagination/offset"},
+                        "limit": {"$ref": "#/$defs/pagination/limit"}
+          },        
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": {
+            "$ref": "#/definitions/logs"
+          },
+          "title": "Logs"
+        }
+      ],
+      "$defs": {
+          "pagination": {
+              "type": "object",
+              "properties": {
+                  "offset": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "default": 0
+                  },
+                  "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 2000,
+                      "default": 100
+                  }
+              }
+          }
+      },
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/logs/definitions/id"
+        },
+        "log_datetime": {
+          "$ref": "#/definitions/logs/definitions/log_datetime"
+        },
+        "transfer": {
+          "$ref": "#/definitions/logs/definitions/transfer"
+        },
+        "sub_transfer": {
+          "$ref": "#/definitions/logs/definitions/subtransfer"
+        },
+        "group": {
+          "$ref": "#/definitions/logs/definitions/group"
+        },
+        "schedule": {
+          "$ref": "#/definitions/logs/definitions/schedule"
+        },
+        "source": {
+          "$ref": "#/definitions/logs/definitions/source"
+        },
+        "destination": {
+          "$ref": "#/definitions/logs/definitions/destination"
+        },
+        "description": {
+          "$ref": "#/definitions/logs/definitions/description"
+        },
+        "is_error": {
+          "$ref": "#/definitions/logs/definitions/is_error"
+        },
+        "time_used": {
+          "$ref": "#/definitions/logs/definitions/time_used"
+        },
+        "log_type": {
+          "$ref": "#/definitions/logs/definitions/log_type"
+        },
+        "message_code": {
+          "$ref": "#/definitions/logs/definitions/message_code"
+        },
+        "service_code": {
+          "$ref": "#/definitions/logs/definitions/service_code"
+        },
+        "filename": {
+          "$ref": "#/definitions/logs/definitions/filename"
+        },
+        "run_id": {
+          "$ref": "#/definitions/logs/definitions/run_id"
+        },
+        "run_type": {
+          "$ref": "#/definitions/logs/definitions/run_type"
+        },
+        "read_source": {
+          "$ref": "#/definitions/logs/definitions/read_source"
+        },
+        "read_destination": {
+          "$ref": "#/definitions/logs/definitions/read_destination"
+        },
+        "skipped_source": {
+          "$ref": "#/definitions/logs/definitions/skipped_source"
+        },
+        "read_action": {
+          "$ref": "#/definitions/logs/definitions/read_action"
+        },
+        "updated": {
+          "$ref": "#/definitions/logs/definitions/updated"
+        },
+        "inserted": {
+          "$ref": "#/definitions/logs/definitions/inserted"
+        },
+        "deleted": {
+          "$ref": "#/definitions/logs/definitions/deleted"
+        },
+        "source_deleted": {
+          "$ref": "#/definitions/logs/definitions/source_deleted"
+        },
+        "initialized": {
+          "$ref": "#/definitions/logs/definitions/initialized"
+        },
+        "packages_sent": {
+          "$ref": "#/definitions/logs/definitions/packages_sent"
+        },
+        "bytes_sent": {
+          "$ref": "#/definitions/logs/definitions/bytes_sent"
+        },
+        "packages_received": {
+          "$ref": "#/definitions/logs/definitions/packages_received"
+        },
+        "bytes_received": {
+          "$ref": "#/definitions/logs/definitions/bytes_received"
+        }
+      }
+    }
+  },
+  "properties": {
+    "rtis": {
+      "$ref": "#/definitions/rtis"
+    }
+  },
+  "description": "The platform API empowers developers to automate, extend and combine Rapidi with other services.",
+  "id": "http://api.myrapidi.com/api/v2/schema#",
+  "links": [
+    {
+      "href": "https://api.myrapidi.com",
+      "rel": "self"
+    },
+    {
+      "href": "/api/v2/schema",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "additionalProperties": true
+      }
+    }
+  ],
+  "title": "Rapidi MyRapidi Platform API"
+}
