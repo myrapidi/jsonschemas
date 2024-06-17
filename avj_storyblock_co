@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "properties": {
+    "stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "parent_id": { "type": ["integer", "null"] },
+          "created_at": { "type": "string", "format": "date-time" },
+          "deleted_at": { "type": "null" },
+          "group_id": { "type": "string" },
+          "sort_by_date": { "type": "null" },
+          "updated_at": { "type": "string", "format": "date-time" },
+          "published_at": { "type": "null" },
+          "id": { "type": "integer" },
+          "uuid": { "type": "string" },
+          "is_folder": { "type": "boolean" },
+          "published": { "type": "boolean" },
+          "slug": { "type": "string" },
+          "path": { "type": "null" },
+          "full_slug": { "type": "string" },
+          "position": { "type": "integer" },
+          "unpublished_changes": { "type": ["boolean", "null"] },
+          "is_startpage": { "type": "boolean" },
+          "pinned": { "type": "boolean" },
+          "publish_at": { "type": "null" },
+          "expire_at": { "type": "null" },
+          "first_published_at": { "type": "null" },
+          "release_ids": { "type": "array", "items": { "type": "integer" } },
+          "stage": { 
+            "type": ["object", "null"],
+            "properties": {
+              "workflow_id": { "type": "integer" },
+              "workflow_stage_id": { "type": "integer" },
+              "story_id": { "type": "integer" },
+              "created_at": { "type": "string", "format": "date-time" },
+              "id": { "type": "null" }
+            },
+            "required": ["workflow_id", "workflow_stage_id", "story_id", "created_at", "id"]
+          },
+          "alternates": { "type": "array", "items": { "type": "string" } },
+          "default_root": { "type": ["string", "null"] },
+          "disble_fe_editor": { "type": "boolean" },
+          "last_author": { 
+            "type": "object",
+            "properties": {
+              "id": { "type": "integer" },
+              "userid": { "type": "string" },
+              "friendly_name": { "type": "string" },
+              "avatar": { "type": "null" }
+            },
+            "required": ["id", "userid", "friendly_name", "avatar"]
+          },
+          "last_author_id": { "type": "integer" },
+          "content_summary": { "type": "object" },
+          "content_type": { "type": "string" },
+          "tag_list": { "type": "array", "items": { "type": "string" } },
+          "can_not_view": { "type": "null" },
+          "favourite_for_user_ids": { "type": "array", "items": { "type": "integer" } },
+          "scheduled_dates": { "type": "null" }
+        },
+        "required": ["name", "parent_id", "created_at", "deleted_at", "group_id", "sort_by_date", "updated_at", "published_at", "id", "uuid", "is_folder", "published", "slug", "path", "full_slug", "position", "unpublished_changes", "is_startpage", "pinned", "publish_at", "expire_at", "first_published_at", "release_ids", "stage", "alternates", "default_root", "disble_fe_editor", "last_author", "last_author_id", "content_summary", "content_type", "tag_list", "can_not_view", "favourite_for_user_ids", "scheduled_dates"]
+      }
+    }
+  },
+  "required": ["stories"]
+}
