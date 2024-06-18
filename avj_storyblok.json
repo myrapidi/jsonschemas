@@ -32,11 +32,12 @@
         }
       },
       "properties": {
-        "space-id": {
-          "$ref": "#/definitions/service/definitions/space-id"
+        "spaceid": {
+          "$ref": "#/definitions/service/definitions/spaceid"
         }
       }
     },
+    
     "stories": {
       "description": "Stories for the StoryBlok space.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
@@ -200,7 +201,7 @@
           "$ref": "#/definitions/stories/definitions/updated_at"
         }
       }
-    },
+    }
   },
   "properties": {
     "stories": {
