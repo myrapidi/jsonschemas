@@ -37,7 +37,6 @@
         }
       }
     },
-
     "stories": {
       "description": "Stories for the StoryBlok space.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
@@ -110,7 +109,7 @@
           "title": "Info"
         },
         {
-          "description": "List existing rtis.",
+          "description": "List existing stories.",
           "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
           "method": "GET",
           "rel": "instances",
@@ -209,14 +208,14 @@
     }
   },
   "description": "The Stories API empowers developers to automate, extend and combine StoryBlok with other services.",
-  "id": "http://myrapidi.github.com/jsonschemas/avj_storyblok#",
+  "id": "https://myrapidi.github.com/jsonschemas/avj_storyblok#",
   "links": [
     {
       "href": "https://api-ap.storyblok.com",
       "rel": "self"
     },
     {
-      "href": "/api/v2/schema",
+      "href": "/jsonschemas/avj_storyblok",
       "method": "GET",
       "rel": "self",
       "targetSchema": {
