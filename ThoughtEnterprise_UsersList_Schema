@@ -1,1 +1,173 @@
-
+{
+  "type": "object",
+  "required": [],
+  "properties": {
+    "pageInfo": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "total": {
+          "type": "number"
+        },
+        "hasMore": {
+          "type": "boolean"
+        },
+        "cursor": {
+          "type": "string"
+        }
+      }
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "learnerUserId": {
+            "type": "string"
+          },
+          "managerUserId": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "disabled": {
+            "type": "string"
+          },
+          "sfAccountId": {
+            "type": "string"
+          },
+          "sfContactId": {
+            "type": "string"
+          },
+          "roleKey": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "telephone": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "stripeCustomerId": {
+            "type": "string"
+          },
+          "externalCustomerId": {
+            "type": "string"
+          },
+          "shippingName": {
+            "type": "string"
+          },
+          "asset": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "lastActiveAt": {
+            "type": "string"
+          },
+          "ref1": {
+            "type": "string"
+          },
+          "ref2": {
+            "type": "string"
+          },
+          "ref3": {
+            "type": "string"
+          },
+          "ref4": {
+            "type": "string"
+          },
+          "ref5": {
+            "type": "string"
+          },
+          "ref6": {
+            "type": "string"
+          },
+          "ref7": {
+            "type": "string"
+          },
+          "ref8": {
+            "type": "string"
+          },
+          "ref9": {
+            "type": "string"
+          },
+          "ref10": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "customFields": {
+            "type": "object",
+            "required": [],
+            "properties": {}
+          },
+          "purchasedBundles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allocatedLicenses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allocatedLearningPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "purchasedCourses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "waitlistedCourses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "balance": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
