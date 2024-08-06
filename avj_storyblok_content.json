@@ -104,7 +104,7 @@
           "type": [
             "object"
           ],
-         "$ref": "#/definitions/content"
+          "$ref": "#/definitions/content"
         }
       },
       "links": [
