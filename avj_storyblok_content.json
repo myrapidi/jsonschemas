@@ -104,17 +104,7 @@
           "type": [
             "object"
           ],
-          "properties": {
-            "component": {
-              "$ref": "#/definitions/content/definitions/component"
-            },
-            "body": {
-              "type": [
-                "array"
-              ],
-              "$ref": "#/definitions/content/definitions/body"
-            }
-          }
+         "$ref": "#/definitions/content"
         }
       },
       "links": [
@@ -308,7 +298,10 @@
   "properties": {
     "stories": {
       "$ref": "#/definitions/stories"
-    }
+    },
+    "content": {
+      "$ref": "#/definitions/content"
+    }   
   },
   "description": "The Stories API empowers developers to automate, extend and combine StoryBlok with other services.",
   "id": "https://myrapidi.github.com/jsonschemas/avj_storyblok#",
