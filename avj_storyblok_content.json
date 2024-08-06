@@ -208,6 +208,9 @@
         },
         "updated_at": {
           "$ref": "#/definitions/stories/definitions/updated_at"
+        },
+        "content": {
+          "$ref": "#/definitions/stories/definitions/content"
         }
       }
     },
