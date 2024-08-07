@@ -33,7 +33,7 @@
       },
       "properties": {
         "spaceid": {
-          "$ref": "#/definitions/service/definitions/spaceid"
+          "$ref": "#/definitions/space/definitions/spaceid"
         }
       }
     },
