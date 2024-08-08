@@ -91,8 +91,16 @@
             "string"
           ]
         },
-        "published": {
-          "description": "if the story is published",
+        "publish": {
+          "description": "if the story is to be published",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "is_folder": {
+          "description": "if this is a folder (no body)",
           "example": true,
           "readOnly": false,
           "type": [
@@ -123,8 +131,11 @@
               "parent_id": {
                 "$ref": "#/definitions/story/definitions/parent_id"
               },
-              "published": {
-                "$ref": "#/definitions/story/definitions/published"
+              "publish": {
+                "$ref": "#/definitions/story/definitions/publish"
+              },
+              "is_folder": {
+                "$ref": "#/definitions/story/definitions/is_folder"
               },
               "content": {
                 "$ref": "#/definitions/story/definitions/content"
@@ -149,8 +160,8 @@
               "name": {
                 "$ref": "#/definitions/story/definitions/name"
               },
-              "published": {
-                "$ref": "#/definitions/story/definitions/published"
+              "publish": {
+                "$ref": "#/definitions/story/definitions/publish"
               }
             },
             "type": [
@@ -202,8 +213,11 @@
         "parent_id": {
           "$ref": "#/definitions/story/definitions/parent_id"
         },
-        "published": {
-          "$ref": "#/definitions/story/definitions/published"
+        "publish": {
+          "$ref": "#/definitions/story/definitions/publish"
+        },
+        "is_folder": {
+          "$ref": "#/definitions/story/definitions/is_folder"
         },
         "id": {
           "$ref": "#/definitions/story/definitions/id"
