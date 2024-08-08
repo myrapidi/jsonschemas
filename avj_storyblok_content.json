@@ -40,19 +40,19 @@
         }
       }
     },
-    "stories": {
-      "description": "Stories for the StoryBlok space.",
+    "story": {
+      "description": "Story for the StoryBlok space.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Stories",
+      "title": "Story",
       "type": [
         "object"
       ],
       "definitions": {
         "name": {
-          "description": "name of the property.",
-          "example": "My Edited Property",
+          "description": "name of the story.",
+          "example": "My Story",
           "readOnly": false,
           "type": [
             "string"
@@ -67,7 +67,7 @@
           ]
         },
         "id": {
-          "description": "id of the property",
+          "description": "id of the story",
           "example": "40996",
           "readOnly": false,
           "type": [
@@ -75,7 +75,7 @@
           ]
         },
         "slug": {
-          "description": "slug for the property",
+          "description": "slug for the story",
           "example": "c8a9ee6e-9ea6-4145-8781-9ddeabe9f463",
           "readOnly": false,
           "type": [
@@ -83,7 +83,7 @@
           ]
         },
         "updated_at": {
-          "description": "when property was last updated",
+          "description": "when story was last updated",
           "example": "2024-06-07T03:24:49.866Z",
           "format": "date-time",
           "readOnly": true,
@@ -92,7 +92,7 @@
           ]
         },
         "published": {
-          "description": "if the property is published",
+          "description": "if the story is published",
           "example": true,
           "readOnly": false,
           "type": [
@@ -111,12 +111,12 @@
       },
       "links": [
         {
-          "description": "Info for an existing property.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstories%2Fdefinitions%2Fid)}",
+          "description": "Info for an existing story.",
+          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
           "method": "GET,SETNAME",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/stories"
+            "$ref": "#/definitions/story"
           },
           "title": "Info"
         },
@@ -127,7 +127,7 @@
           "rel": "instances",
           "targetSchema": {
             "items": {
-              "$ref": "#/definitions/stories"
+              "$ref": "#/definitions/story"
             },
             "type": [
               "array"
@@ -137,16 +137,16 @@
         },
         {
           "description": "Update an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstories%2Fdefinitions%2Fid)}",
+          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
           "method": "PATCH",
           "rel": "update",
           "schema": {
             "properties": {
               "name": {
-                "$ref": "#/definitions/stories/definitions/name"
+                "$ref": "#/definitions/story/definitions/name"
               },
               "published": {
-                "$ref": "#/definitions/stories/definitions/published"
+                "$ref": "#/definitions/story/definitions/published"
               }
             },
             "type": [
@@ -154,7 +154,7 @@
             ]
           },
           "targetSchema": {
-            "$ref": "#/definitions/stories"
+            "$ref": "#/definitions/story"
           },
           "title": "Update"
         },
@@ -166,16 +166,16 @@
           "schema": {
             "properties": {
               "name": {
-                "$ref": "#/definitions/stories/definitions/name"
+                "$ref": "#/definitions/story/definitions/name"
               },
               "parent_id": {
-                "$ref": "#/definitions/stories/definitions/parent_id"
+                "$ref": "#/definitions/story/definitions/parent_id"
               },
               "published": {
-                "$ref": "#/definitions/stories/definitions/published"
+                "$ref": "#/definitions/story/definitions/published"
               },
               "content": {
-                "$ref": "#/definitions/stories/definitions/content"
+                "$ref": "#/definitions/story/definitions/content"
               }
             },
             "type": [
@@ -183,13 +183,13 @@
             ]
           },
           "targetSchema": {
-            "$ref": "#/definitions/stories"
+            "$ref": "#/definitions/story"
           },
           "title": "Create"
         },
         {
           "description": "Delete an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstories%2Fdefinitions%2Fid)}",
+          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
           "method": "DELETE",
           "rel": "delete",
           "title": "Delete"
@@ -197,25 +197,25 @@
       ],
       "properties": {
         "name": {
-          "$ref": "#/definitions/stories/definitions/name"
+          "$ref": "#/definitions/story/definitions/name"
         },
         "parent_id": {
-          "$ref": "#/definitions/stories/definitions/parent_id"
+          "$ref": "#/definitions/story/definitions/parent_id"
         },
         "published": {
-          "$ref": "#/definitions/stories/definitions/published"
+          "$ref": "#/definitions/story/definitions/published"
         },
         "id": {
-          "$ref": "#/definitions/stories/definitions/id"
+          "$ref": "#/definitions/story/definitions/id"
         },
         "slug": {
-          "$ref": "#/definitions/stories/definitions/slug"
+          "$ref": "#/definitions/story/definitions/slug"
         },
         "updated_at": {
-          "$ref": "#/definitions/stories/definitions/updated_at"
+          "$ref": "#/definitions/story/definitions/updated_at"
         },
         "content": {
-          "$ref": "#/definitions/stories/definitions/content"
+          "$ref": "#/definitions/story/definitions/content"
         }
       }
     },
@@ -229,11 +229,11 @@
         "object"
       ],
       "parentObject": {
-        "stories": { "$ref": "#/definitions/stories/definitions/content" }
+        "story": { "$ref": "#/definitions/story/definitions/content" }
       },
       "definitions": {
         "component": {
-          "description": "component name of the content.",
+          "description": "component name of the content in story.",
           "example": "ERP_Property",
           "readOnly": false,
           "type": [
@@ -241,7 +241,7 @@
           ]
         },
         "body": {
-          "description": "body of the content - array with objects.",
+          "description": "body of the content - array with objects - in story.",
           "example": "array with some elements",
           "readOnly": false,
           "type": [
@@ -299,8 +299,8 @@
     }
   },
   "properties": {
-    "stories": {
-      "$ref": "#/definitions/stories"
+    "story": {
+      "$ref": "#/definitions/story"
     },
     "content": {
       "$ref": "#/definitions/content"
