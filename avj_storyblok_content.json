@@ -1,5 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
+  "id": "https://myrapidi.github.com/jsonschemas/avj_storyblok_content#",
+  "title": "StoryBlok stories for AV Jennings",
+  "description": "The Stories API empowers developers to automate, extend and combine StoryBlok with other services.",
   "type": [
     "object"
   ],
@@ -37,7 +40,6 @@
         }
       }
     },
-    
     "stories": {
       "description": "Stories for the StoryBlok space.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
@@ -171,6 +173,9 @@
               },
               "published": {
                 "$ref": "#/definitions/stories/definitions/published"
+              },
+              "content": {
+                "$ref": "#/definitions/stories/definitions/content"
               }
             },
             "type": [
@@ -249,53 +254,6 @@
           "$ref": "#/definitions/content/definitions/body"
         }
       }
-    },
-    "content_body": {
-      "description": "Content Body in a Story.",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Body",
-      "type": [
-        "object"
-      ],
-      "definitions": {
-        "component": {
-          "description": "component name of the body.",
-          "example": "teaser",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "headline": {
-          "description": "headline of the content body.",
-          "example": "My best title",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "_uid": {
-          "description": "uid of the content body.",
-          "example": "08b82312-3363-4867-aea9-76f97e86d717",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "properties": {
-        "component": {
-          "$ref": "#/definitions/content_body/definitions/component"
-        },
-        "headline": {
-          "$ref": "#/definitions/content_body/definitions/headline"
-        },
-        "_uid": {
-          "$ref": "#/definitions/content_body/definitions/_uid"
-        }
-      }
     }
   },
   "properties": {
@@ -306,21 +264,18 @@
       "$ref": "#/definitions/content"
     }   
   },
-  "description": "The Stories API empowers developers to automate, extend and combine StoryBlok with other services.",
-  "id": "https://myrapidi.github.com/jsonschemas/avj_storyblok#",
   "links": [
     {
       "href": "https://api-ap.storyblok.com",
       "rel": "self"
     },
     {
-      "href": "/jsonschemas/avj_storyblok",
+      "href": "/jsonschemas/avj_storyblok_content",
       "method": "GET",
       "rel": "self",
       "targetSchema": {
         "additionalProperties": true
       }
     }
-  ],
-  "title": "StoryBlok stories for AV Jennings"
+  ]
 }
