@@ -228,6 +228,9 @@
       "type": [
         "object"
       ],
+      "parentObject": {
+        "stories": { "$ref": "#/definitions/stories" }
+      },
       "definitions": {
         "component": {
           "description": "component name of the content.",
