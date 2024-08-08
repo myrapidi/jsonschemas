@@ -161,7 +161,7 @@
         {
           "description": "Create new story.",
           "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
-          "method": "POST",
+          "method": "POST,SETNAME",
           "rel": "create",
           "schema": {
             "properties": {
