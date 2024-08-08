@@ -229,7 +229,7 @@
         "object"
       ],
       "parentObject": {
-        "stories": { "$ref": "#/definitions/stories" }
+        "stories": { "$ref": "#/definitions/stories/definitions/content" }
       },
       "definitions": {
         "component": {
