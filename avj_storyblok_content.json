@@ -218,42 +218,6 @@
           "$ref": "#/definitions/stories/definitions/content"
         }
       }
-    },
-    "content": {
-      "description": "Content in a Story.",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Content",
-      "type": [
-        "object"
-      ],
-      "definitions": {
-        "component": {
-          "description": "component name of the content.",
-          "example": "ERP_Property",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "body": {
-          "description": "body of the content - array with objects.",
-          "example": "an array",
-          "readOnly": false,
-          "type": [
-            "array"
-          ]
-        }
-      },
-      "properties": {
-        "component": {
-          "$ref": "#/definitions/content/definitions/component"
-        },
-        "body": {
-          "$ref": "#/definitions/content/definitions/body"
-        }
-      }
     }
   },
   "properties": {
