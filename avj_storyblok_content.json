@@ -257,6 +257,45 @@
           "$ref": "#/definitions/content/definitions/body"
         }
       }
+    },
+    "body": {
+      "description": "Body of a Content in a Story.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Content Body",
+      "type": [
+        "object"
+      ],
+      "parentObject": {
+        "content": { "$ref": "#/definitions/content/definitions/body" }
+      },
+      "definitions": {
+        "component": {
+          "description": "component name of the body.",
+          "example": "teaser",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "headline": {
+          "description": "headline of the body content.",
+          "example": "This is the headline",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "component": {
+          "$ref": "#/definitions/body/definitions/component"
+        },
+        "headline": {
+          "$ref": "#/definitions/body/definitions/headline"
+        }
+      }
     }
   },
   "properties": {
@@ -265,6 +304,9 @@
     },
     "content": {
       "$ref": "#/definitions/content"
+    },   
+    "body": {
+      "$ref": "#/definitions/body"
     }   
   },
   "links": [
