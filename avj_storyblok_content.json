@@ -111,54 +111,6 @@
       },
       "links": [
         {
-          "description": "Info for an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
-          "method": "GET,SETNAME",
-          "rel": "self",
-          "targetSchema": {
-            "$ref": "#/definitions/story"
-          },
-          "title": "Info"
-        },
-        {
-          "description": "List existing stories.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
-          "method": "GET",
-          "rel": "instances",
-          "targetSchema": {
-            "items": {
-              "$ref": "#/definitions/story"
-            },
-            "type": [
-              "array"
-            ]
-          },
-          "title": "List"
-        },
-        {
-          "description": "Update an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
-          "method": "PATCH",
-          "rel": "update",
-          "schema": {
-            "properties": {
-              "name": {
-                "$ref": "#/definitions/story/definitions/name"
-              },
-              "published": {
-                "$ref": "#/definitions/story/definitions/published"
-              }
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "targetSchema": {
-            "$ref": "#/definitions/story"
-          },
-          "title": "Update"
-        },
-        {
           "description": "Create new story.",
           "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
           "method": "POST,SETNAME",
@@ -186,6 +138,54 @@
             "$ref": "#/definitions/story"
           },
           "title": "Create"
+        },
+        {
+          "description": "Update an existing story.",
+          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/story/definitions/name"
+              },
+              "published": {
+                "$ref": "#/definitions/story/definitions/published"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/story"
+          },
+          "title": "Update"
+        },
+        {
+          "description": "Info for an existing story.",
+          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
+          "method": "GET,SETNAME",
+          "rel": "self",
+          "targetSchema": {
+            "$ref": "#/definitions/story"
+          },
+          "title": "Info"
+        },
+        {
+          "description": "List existing stories.",
+          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "items": {
+              "$ref": "#/definitions/story"
+            },
+            "type": [
+              "array"
+            ]
+          },
+          "title": "List"
         },
         {
           "description": "Delete an existing story.",
@@ -240,6 +240,14 @@
             "string"
           ]
         },
+        "PK_ProjID": {
+          "description": "porject ID of the content in story.",
+          "example": "proj123",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
         "body": {
           "description": "body of the content - array with objects - in story.",
           "example": "array with some elements",
@@ -252,6 +260,9 @@
       "properties": {
         "component": {
           "$ref": "#/definitions/content/definitions/component"
+        },
+        "PK_ProjID": {
+          "$ref": "#/definitions/content/definitions/PK_ProjID"
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
