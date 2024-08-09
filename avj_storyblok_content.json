@@ -291,11 +291,60 @@ NSW 2259",
           "type":"string"
           },
         "ProjectType": {
-          "description":"Project Type.",
+          "description":"Project Type",
           "example":"05 - Apartments\n04 - Development House\n03",
           "readOnly":false,
           "maxLength":60,
           "type":"string"
+          },
+        "SubProjectType": {
+          "description":"Sub Project Type",
+          "example":"Apartment, Apartment-Englobo",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"string"
+          },
+        "BuildingType": {
+          "description":"Building Type",
+          "example":"Apartment/Double/Duplex/Fonzie Flat/Quadplex",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"string"
+          },
+        "Storeys": {
+          "description":"Storeys",
+          "example":"Double/Single/Triple",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"string"
+          },
+        "FacadeType": {
+          "description":"Facade Type",
+          "example":"Alula/Aquila/Ashwood",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"string"
+          },
+        "Series": {
+          "description":"Series",
+          "example":"Allambie 205 Lyra",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"string"
+          },
+        "GasElectric": {
+          "description":"Gas Electric",
+          "example":"Gas&Electric,Gas Only, Electronic only",
+          "readOnly":false,
+          "maxLength":20,
+          "type":"string"
+          },
+        "InternalFloorArea": {
+          "description":"Internal Floor Area",
+          "example":"214.46",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
         },
         "body": {
           "description": "body of the content - array with objects - in story.",
@@ -318,15 +367,36 @@ NSW 2259",
         },
         "CustomerID": {
           "$ref": "#/definitions/content/definitions/CustomerID"
-         },
+        },
         "JobName": {
           "$ref": "#/definitions/content/definitions/JobName" 
-          },
+        },
         "JobAddress": {
           "$ref": "#/definitions/content/definitions/JobAddress" 
-          },
+        },
         "ProjectType": {
-          "$ref": "#/definitions/content/definitions/ProjectType" 
+          "$ref": "#/definitions/content/definitions/ProjectType"
+        },
+        "SubProjectType": {
+          "$ref": "#/definitions/content/definitions/SubProjectType" 
+        },
+        "BuildingType": {
+          "$ref": "#/definitions/content/definitions/BuildingType"
+        },
+        "Storeys": {
+          "$ref": "#/definitions/content/definitions/Storeys" 
+        },
+        "FacadeType": {
+          "$ref": "#/definitions/content/definitions/FacadeType"
+        },
+        "Series": {
+          "$ref": "#/definitions/content/definitions/Series" 
+        },
+        "InternalFloorArea": {
+          "$ref": "#/definitions/content/definitions/InternalFloorArea"
+        },
+        "GasElectric": {
+          "$ref": "#/definitions/content/definitions/GasElectric"
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
