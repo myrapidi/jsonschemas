@@ -268,6 +268,13 @@
           "maxLength": 4,
           "type": "string"
         },
+        "CustomerID": {
+          "description":"Customer No.",
+          "example":"",
+          "readOnly":false,
+          "maxLength":20,
+          "type":"string"
+        },
         "body": {
           "description": "body of the content - array with objects - in story.",
           "example": "array with some elements",
@@ -286,6 +293,9 @@
         },
         "PK_dataareaId": {
           "$ref": "#/definitions/content/definitions/PK_dataareaId"
+        },
+        "CustomerID": {
+          "$ref": "#/definitions/content/definitions/CustomerID"
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
