@@ -1,144 +1,159 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/avj_storyblok_content#",
-  "title": "StoryBlok stories for AV Jennings",
-  "description": "The Stories API empowers developers to automate, extend and combine StoryBlok with other services.",
+  "id": "https://myrapidi.github.com/jsonschemas/shopify_test#",
+  "title": "Shopify REST Admin API",
+  "description": "Shopify REST Admin API for integration using RAPIDI.",
   "type": [
     "object"
   ],
   "definitions": {
-    "space": {
-      "description": "A Storyblok Service for AVJennings.",
+    "store": {
+      "description": "A Shopify store.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "StoryBlok API - Service AVJennings",
+      "title": "Shopify store",
       "type": [
         "object"
       ],
       "definitions": {
-        "spaceid": {
-          "description": "unique space identifier",
-          "example": "3000379",
+        "store_name": {
+          "description": "unique store identifier",
+          "example": "test_store_001",
           "readOnly": true,
-          "type": [
-            "integer"
-          ]
-        },
-        "description": {
-          "description": "description of the service",
-          "example": "Live service for MyCompany",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "type": "string"
         }
       },
       "properties": {
-        "spaceid": {
-          "$ref": "#/definitions/space/definitions/spaceid"
+        "store_name": {
+          "$ref": "#/definitions/store/definitions/store_name"
         }
       }
     },
-    "story": {
-      "description": "Story for the StoryBlok space.",
+    "product": {
+      "description": "Shopify Product.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Story",
+      "title": "Product",
       "type": [
         "object"
       ],
       "definitions": {
-        "name": {
-          "description": "name of the story.",
-          "example": "My Story",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "parent_id": {
-          "description": "parent id",
-          "example": "34322",
-          "readOnly": false,
-          "type": [
-            "integer"
-          ]
-        },
         "id": {
-          "description": "id of the story",
-          "example": "40996",
+          "description": "id for the Product.",
+          "example": "1072481055",
           "readOnly": false,
-          "type": [
-            "integer"
-          ]
+          "type": "integer"
         },
-        "slug": {
-          "description": "slug for the story",
-          "example": "c8a9ee6e-9ea6-4145-8781-9ddeabe9f463",
+        "title": {
+          "description": "Product Title",
+          "example": "Burton Custom Freestyle 151",
           "readOnly": false,
-          "type": [
-            "string"
-          ]
+          "type": "string"
         },
-        "updated_at": {
-          "description": "when story was last updated",
-          "example": "2024-06-07T03:24:49.866Z",
+        "body_html": {
+          "description": "Product body html",
+          "example": "<strong>Good snowboard!</strong>",
+          "readOnly": false,
+          "type": "string"
+        },
+        "vendor": {
+          "description": "Product Vendor",
+          "example": "Burton",
+          "readOnly": false,
+          "type": "string"
+        },
+        "product_type": {
+          "description": "Product Type",
+          "example": "Snowboard",
+          "readOnly": false,
+          "type": "string"
+        },
+        "created_at": {
+          "description": "when product was created",
+          "example": "2024-06-07T03:24:49-04:00",
           "format": "date-time",
           "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "type": "string"
         },
-        "publish": {
-          "description": "if the story is to be published",
-          "example": true,
+        "handle": {
+          "description": "Product handle",
+          "example": "burton-custom-freestyle-151",
           "readOnly": false,
-          "type": [
-            "boolean"
-          ]
+          "type": "string"
         },
-        "is_folder": {
-          "description": "if this is a folder (no body)",
-          "example": true,
-          "readOnly": false,
-          "type": [
-            "boolean"
-          ]
+        "updated_at": {
+          "description": "when product was last updated",
+          "example": "2024-06-07T03:24:49-04:00",
+          "format": "date-time",
+          "readOnly": true,
+          "type": "string"
         },
-        "content": {
-          "description": "content of the story",
-          "example": "object with component and body",
+        "published_at": {
+          "description": "when product was published",
+          "example": "2024-06-07T03:24:49-04:00",
+          "format": "date-time",
           "readOnly": false,
-          "type": [
-            "object"
-          ],
-          "$ref": "#/definitions/content"
+          "type": "string"
+        },
+        "template_suffix": {
+          "description": "Product Template suffix",
+          "example": "t123",
+          "readOnly": false,
+          "type": "string"
+        },
+        "published_scope": {
+          "description": "Product Published Scope",
+          "example": "scope123",
+          "readOnly": false,
+          "type": "string"
+        },
+        "tags": {
+          "description": "Product Tags",
+          "example": "abc",
+          "readOnly": false,
+          "type": "string"
+        },
+        "status": {
+          "description": "Product Status",
+          "example": "draft",
+          "readOnly": false,
+          "type": "string"
+        },
+        "admin_graphql_api_id": {
+          "description": "Product Admin GraphQL API Id",
+          "example": "gid://shopify/Product/1072481055",
+          "readOnly": true,
+          "type": "string"
+        },
+        "variants": {
+          "description": "Product variants array",
+          "example": "array of product variant objects",
+          "readOnly": false,
+          "type": "array",
+          "$ref": "#/definitions/variant"
         }
       },
       "links": [
         {
-          "description": "Create new story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
+          "description": "Create new Product.",
+          "href": "/admin/api/2024-07/products.json",
           "method": "POST,SETNAME",
           "rel": "create",
           "schema": {
             "properties": {
-              "name": {
-                "$ref": "#/definitions/story/definitions/name"
+              "title": {
+                "$ref": "#/definitions/product/definitions/title"
               },
-              "parent_id": {
-                "$ref": "#/definitions/story/definitions/parent_id"
+              "body_html": {
+                "$ref": "#/definitions/product/definitions/body_html"
               },
-              "publish": {
-                "$ref": "#/definitions/story/definitions/publish"
+              "vendor": {
+                "$ref": "#/definitions/product/definitions/vendor"
               },
-              "is_folder": {
-                "$ref": "#/definitions/story/definitions/is_folder"
-              },
-              "content": {
-                "$ref": "#/definitions/story/definitions/content"
+              "product_type": {
+                "$ref": "#/definitions/product/definitions/product_type"
               }
             },
             "type": [
@@ -146,22 +161,22 @@
             ]
           },
           "targetSchema": {
-            "$ref": "#/definitions/story"
+            "$ref": "#/definitions/product"
           },
           "title": "Create"
         },
         {
-          "description": "Update an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
-          "method": "PATCH",
+          "description": "Update a existing product.",
+          "href": "/admin/api/2024-07/products/{(%23%2Fdefinitions%2Fproduct%2Fdefinitions%2Fid)}.json",
+          "method": "PUT",
           "rel": "update",
           "schema": {
             "properties": {
-              "name": {
-                "$ref": "#/definitions/story/definitions/name"
+              "title": {
+                "$ref": "#/definitions/product/definitions/title"
               },
-              "publish": {
-                "$ref": "#/definitions/story/definitions/publish"
+              "body_html": {
+                "$ref": "#/definitions/product/definitions/body_html"
               }
             },
             "type": [
@@ -169,28 +184,28 @@
             ]
           },
           "targetSchema": {
-            "$ref": "#/definitions/story"
+            "$ref": "#/definitions/product"
           },
           "title": "Update"
         },
         {
-          "description": "Info for an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
-          "method": "GET,SETNAME",
+          "description": "Info for a existing product.",
+          "href": "/admin/api/2024-07/products/{(%23%2Fdefinitions%2Fproduct%2Fdefinitions%2Fid)}.json",
+          "method": "GET",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/story"
+            "$ref": "#/definitions/product"
           },
           "title": "Info"
         },
         {
-          "description": "List existing stories.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories",
+          "description": "List existing products.",
+          "href": "/admin/api/2024-07/products.json",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
             "items": {
-              "$ref": "#/definitions/story"
+              "$ref": "#/definitions/product"
             },
             "type": [
               "array"
@@ -199,157 +214,173 @@
           "title": "List"
         },
         {
-          "description": "Delete an existing story.",
-          "href": "/v1_ap/spaces/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Fspaceid)}/stories/{(%23%2Fdefinitions%2Fstory%2Fdefinitions%2Fid)}",
+          "description": "Delete a existing product.",
+          "href": "/admin/api/2024-07/products/{(%23%2Fdefinitions%2Fproduct%2Fdefinitions%2Fid)}.json",
           "method": "DELETE",
           "rel": "delete",
           "title": "Delete"
         }
       ],
       "properties": {
-        "name": {
-          "$ref": "#/definitions/story/definitions/name"
-        },
-        "parent_id": {
-          "$ref": "#/definitions/story/definitions/parent_id"
-        },
-        "publish": {
-          "$ref": "#/definitions/story/definitions/publish"
-        },
-        "is_folder": {
-          "$ref": "#/definitions/story/definitions/is_folder"
-        },
         "id": {
-          "$ref": "#/definitions/story/definitions/id"
+          "$ref": "#/definitions/product/definitions/id"
         },
-        "slug": {
-          "$ref": "#/definitions/story/definitions/slug"
+        "title": {
+          "$ref": "#/definitions/product/definitions/title"
+        },
+        "body_html": {
+          "$ref": "#/definitions/product/definitions/body_html"
+        },
+        "vendor": {
+          "$ref": "#/definitions/product/definitions/vendor"
+        },
+        "product_type": {
+          "$ref": "#/definitions/product/definitions/product_type"
+        },
+        "created_at": {
+          "$ref": "#/definitions/product/definitions/created_at"
+        },
+        "handle": {
+          "$ref": "#/definitions/product/definitions/handle"
         },
         "updated_at": {
-          "$ref": "#/definitions/story/definitions/updated_at"
+          "$ref": "#/definitions/product/definitions/updated_at"
         },
-        "content": {
-          "$ref": "#/definitions/story/definitions/content"
+        "published_at": {
+          "$ref": "#/definitions/product/definitions/published_at"
+        },
+        "template_suffix": {
+          "$ref": "#/definitions/product/definitions/template_suffix"
+        },
+        "published_scope": {
+          "$ref": "#/definitions/product/definitions/published_scope"
+        },
+        "tags": {
+          "$ref": "#/definitions/product/definitions/tags"
+        },
+        "status": {
+          "$ref": "#/definitions/product/definitions/status"
+        },
+        "admin_graphql_api_id": {
+          "$ref": "#/definitions/product/definitions/admin_graphql_api_id"
+        },
+        "variants": {
+          "$ref": "#/definitions/product/definitions/variants"
         }
       }
     },
-    "content": {
-      "description": "Content in a Story.",
+    "variant": {
+      "description": "Product Variant.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Content",
+      "title": "Variant",
       "type": [
         "object"
       ],
       "parentObject": {
-        "story": { "$ref": "#/definitions/story/definitions/content" }
+        "product": { "$ref": "#/definitions/product/definitions/variants" }
       },
       "definitions": {
-        "component": {
-          "description": "component name of the content in story.",
-          "example": "ERP_Property",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
+        "id": {
+          "description": "variant id.",
+          "example": "1070325039",
+          "readOnly": true,
+          "type": "integer"
         },
-        "PK_ProjID": {
-          "description": "project ID of the content in story.",
-          "example": "proj123",
+        "product_id": {
+          "description": "variant product id.",
+          "example": "1070325039",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "title": {
+          "description": "Variant title.",
+          "example": "Default Title",
           "readOnly": false,
-          "maxLength": 20,
+          "maxLength": 250,
           "type": "string"
         },
-        "PK_dataareaId": {
-          "description": "dataareaId of the content in story.",
-          "example": "31",
+        "price": {
+          "description": "Variant price.",
+          "example": "0.00",
           "readOnly": false,
-          "maxLength": 4,
-          "type": "string"
+          "type": "number"
         },
-        "body": {
-          "description": "body of the content - array with objects - in story.",
-          "example": "array with some elements",
+        "presentment_prices": {
+          "description": "Presentment prices for variant.",
+          "example": "array with prices",
           "readOnly": false,
-          "type": [
-            "array"
-          ]
+          "type": "array"
         }
       },
       "properties": {
-        "component": {
-          "$ref": "#/definitions/content/definitions/component"
+        "id": {
+          "$ref": "#/definitions/variant/definitions/id"
         },
-        "PK_ProjID": {
-          "$ref": "#/definitions/content/definitions/PK_ProjID"
+        "product_id": {
+          "$ref": "#/definitions/variant/definitions/product_id"
         },
-        "PK_dataareaId": {
-          "$ref": "#/definitions/content/definitions/PK_dataareaId"
+        "title": {
+          "$ref": "#/definitions/variant/definitions/title"
         },
-        "body": {
-          "$ref": "#/definitions/content/definitions/body"
+        "price": {
+          "$ref": "#/definitions/variant/definitions/price"
+        },
+        "presentment_prices": {
+          "$ref": "#/definitions/variant/definitions/presentment_prices"
         }
       }
     },
-    "body": {
-      "description": "Body of a Content in a Story.",
+    "presentment_price": {
+      "description": "Presentment price of a Variant for a product.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Content Body",
-      "type": [
-        "object"
-      ],
+      "title": "Presentment price",
+      "type": "object"
       "parentObject": {
-        "content": { "$ref": "#/definitions/content/definitions/body" }
+        "content": { "$ref": "#/definitions/variant/definitions/presentment_prices" }
       },
       "definitions": {
-        "component": {
-          "description": "component name of the body.",
-          "example": "teaser",
+        "price": {
+          "description": "price.",
+          "example": "price object",
           "readOnly": false,
-          "type": [
-            "string"
-          ]
+          "type": "object"
         },
-        "headline": {
-          "description": "headline of the body content.",
+        "compare_at_price": {
+          "description": "compare at price.",
           "example": "This is the headline",
           "readOnly": false,
-          "type": [
-            "string"
-          ]
+          "type": "string"
         }
       },
       "properties": {
-        "component": {
-          "$ref": "#/definitions/body/definitions/component"
-        },
-        "headline": {
-          "$ref": "#/definitions/body/definitions/headline"
+        "compare_at_price": {
+          "$ref": "#/definitions/presentment_price/definitions/compare_at_price"
         }
       }
     }
   },
   "properties": {
-    "story": {
-      "$ref": "#/definitions/story"
+    "product": {
+      "$ref": "#/definitions/product"
     },
-    "content": {
-      "$ref": "#/definitions/content"
+    "variant": {
+      "$ref": "#/definitions/variant"
     },   
-    "body": {
-      "$ref": "#/definitions/body"
+    "presentment_price": {
+      "$ref": "#/definitions/presentment_price"
     }   
   },
   "links": [
     {
-      "href": "https://api-ap.storyblok.com",
+      "href": "https://store1234.myshopify.com",
       "rel": "self"
     },
     {
-      "href": "/jsonschemas/avj_storyblok_content",
+      "href": "/jsonschemas/shopify_test",
       "method": "GET",
       "rel": "self",
       "targetSchema": {
