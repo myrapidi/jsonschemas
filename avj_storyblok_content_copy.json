@@ -255,12 +255,18 @@
           ]
         },
         "PK_ProjID": {
-          "description": "porject ID of the content in story.",
+          "description": "project ID of the content in story.",
           "example": "proj123",
           "readOnly": false,
-          "type": [
-            "string"
-          ]
+          "maxLength": 20,
+          "type": "string"
+        },
+        "PK_dataareaId": {
+          "description": "dataareaId of the content in story.",
+          "example": "31",
+          "readOnly": false,
+          "maxLength": 4,
+          "type": "string"
         },
         "body": {
           "description": "body of the content - array with objects - in story.",
@@ -277,6 +283,9 @@
         },
         "PK_ProjID": {
           "$ref": "#/definitions/content/definitions/PK_ProjID"
+        },
+        "PK_dataareaId": {
+          "$ref": "#/definitions/content/definitions/PK_dataareaId"
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
