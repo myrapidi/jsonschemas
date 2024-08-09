@@ -267,12 +267,34 @@
           "readOnly": false,
           "maxLength": 4,
           "type": "string"
+          },
+        "JobName": {
+          "description": "JobName of the content in story.",
+          "example": "Lot 51 Mercator Close Lake Munmorah",
+          "readOnly": false,
+          "maxLength": 60,
+          "type": "string"
+           },
+        "JobAddress": {
+          "description": "JobAddress of the content in story.",
+          "example": "Lot 51 27 Mercator Close  Lake Munmorah
+NSW 2259",
+          "readOnly": false,
+          "maxLength": 250,
+          "type": "string"
         },
         "CustomerID": {
           "description":"Customer No.",
           "example":"",
           "readOnly":false,
           "maxLength":20,
+          "type":"string"
+          },
+        "ProjectType": {
+          "description":"Project Type.",
+          "example":"05 - Apartments\n04 - Development House\n03",
+          "readOnly":false,
+          "maxLength":60,
           "type":"string"
         },
         "body": {
@@ -296,6 +318,15 @@
         },
         "CustomerID": {
           "$ref": "#/definitions/content/definitions/CustomerID"
+         },
+        "JobName": {
+          "$ref": "#/definitions/content/definitions/JobName" 
+          },
+        "JobAddress": {
+          "$ref": "#/definitions/content/definitions/JobAddress" 
+          },
+        "ProjectType": {
+          "$ref": "#/definitions/content/definitions/ProjectType" 
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
