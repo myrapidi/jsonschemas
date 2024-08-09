@@ -107,7 +107,8 @@
           "description": "Product Published Scope",
           "example": "scope123",
           "readOnly": false,
-          "type": "string"
+          "type": "string",
+          "enum": {"web","global"}
         },
         "tags": {
           "description": "Product Tags",
@@ -119,7 +120,8 @@
           "description": "Product Status",
           "example": "draft",
           "readOnly": false,
-          "type": "string"
+          "type": "string",
+          "enum": {"active","archived","draft"}
         },
         "admin_graphql_api_id": {
           "description": "Product Admin GraphQL API Id",
