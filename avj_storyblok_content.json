@@ -277,7 +277,7 @@
            },
         "JobAddress": {
           "description": "JobAddress of the content in story.",
-          "example": "Lot 51 27 Mercator Close  Lake Munmorah
+          "example": " Loc 51 27 Mercator Close  Lake Munmorah
 NSW 2259",
           "readOnly": false,
           "maxLength": 250,
@@ -345,6 +345,328 @@ NSW 2259",
           "readOnly":false,
           "maxLength":30,
           "type":"Integer"
+           },
+        "ColorCode": {
+          "description":"Color Code",
+          "example":"**V114.4P",
+          "readOnly":false,
+          "maxLength":10,
+          "type":"String"
+           },
+        "CarAccomodation": {
+          "description":"Car Accomodation",
+          "example":"Car Port/Double Lockup Garage/No Garage/Tandum Lockup Garage/Single Lockup Garage",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"String"
+           },
+        "Bedrooms": {
+          "description":"Bedrooms",
+          "example":"1,2,3,4,5",
+          "readOnly":false,
+          "maxLength":2,
+          "type":"String"
+           },
+        "BathRooms": {
+          "description":"BathRooms",
+          "example":"1,1.2,2,2.5",
+          "readOnly":false,
+          "maxLength":3,
+          "type":"String"
+           },
+        "ListPrice": {
+          "description":"List Price",
+          "example":"28000",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+           },
+        "Corner": {
+          "description":"Corner",
+          "example":"0=1,1=Yes",
+          "readOnly":false,
+          "maxLength":2,
+          "type":"Boolean"
+            },
+        "Irregular": {
+          "description":"Irregular",
+          "example":"0=1,1=Yes",
+          "readOnly":false,
+          "maxLength":2,
+          "type":"Boolean"
+            },
+        "Orientation": {
+          "description":"Orientation",
+          "example":"Left,Right",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"String"
+            },
+        "Aspect": {
+          "description":"Aspect",
+          "example":"ID-DEscription, N- North, S-South, E-East,NE-North/East, SE - South/East,SW-South/West",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"String"
+            },
+        "Estate": {
+          "description":"Estate",
+          "example":"Mardi-Sternbeck,Hamlyn Terrace-Gavin",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"String"
+            },
+        "Stage": {
+          "description":"Stage",
+          "example":"Stage 01, Stage 9A",
+          "readOnly":false,
+          "maxLength":60,
+          "type":"String"
+            },
+        "Devstatus": {
+          "description":"Development Status [Devstatus]",
+          "example":"COMPLETED-Completed,UNDER_CONS-Under Construction,UNZONED-Unzoned,Broad Acre Land",
+          "readOnly":false,
+          "maxLength":10,
+          "type":"String"
+            },
+        "StockStatus": {
+          "description":"Stock Status",
+          "example":"Land sale, House sale, AVJ display, Builder sale",
+          "readOnly":false,
+          "maxLength":20,
+          "type":"String"
+            },
+        "JobStatus": {
+          "description":"Job Status",
+          "example":"Available, Contract Issued, Closed, Lost, Conditional Contract Signed, Contract Request Deposit, Settled-Closed Won, Unconditional Contract Signed",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"String"
+            },
+        "Available": {
+          "description":"Available",
+          "example":"1 or 0",
+          "readOnly":false,
+          "maxLength":2,
+          "type":"Boolean"
+            },
+        "WIDTH": {
+          "description":"WIDTH",
+          "example":"15",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+            },
+        "DEPTH": {
+          "description":"DEPTH",
+          "example":"20",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+            },
+        "LandArea": {
+          "description":"Land Area",
+          "example":"300",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+            },
+        "NumOfLots": {
+          "description":"No of Lots",
+          "example":"1",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+            },
+        "RegistrationNo": {
+          "description":"Folio/Volume (Registration No.)",
+          "example":"IO6589456",
+          "readOnly":false,
+          "maxLength":15,
+          "type":"string"
+            },
+        "BuiltFormType": {
+          "description":"Built Form Type",
+          "example":"Villa,Duplex,Townhome",
+          "readOnly":false,
+          "maxLength":20,
+          "type":"string"
+            },
+        "BuildingID": {
+          "description":"Building ID",
+          "example":"Building A, Building B",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"string"
+            },
+        "Level": {
+          "description":"Level/Floor",
+          "example":"Ground,Level 1, Level 2",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"string"
+            },
+        "CPAllocation": {
+          "description":"Car Park Allocation",
+          "example":"1,2,3,4",
+          "readOnly":false,
+          "maxLength":1,
+          "type":"string"
+            },
+        "CPNumber": {
+          "description":"Car Park Number",
+          "example":"101,102,103",
+          "readOnly":false,
+          "maxLength":20,
+          "type":"string"
+           },
+        "StorageAllocation": {
+          "description":"Storage Allocation",
+          "example":"15 m2",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+           },
+        "ExternalArea": {
+          "description":"External Area",
+          "example":"20 m2",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+           },
+        "TotalArea": {
+          "description":"Total Area",
+          "example":"60.5,80,95",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Integer"
+           },
+        "Study": {
+          "description":"Study",
+          "example":"1=Yes,0=No",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Boolean"
+           },
+        "BikeSpace": {
+          "description":"Bike Space",
+          "example":"1=Yes,0=No",
+          "readOnly":false,
+          "maxLength":30,
+          "type":"Boolean"
+            },
+        "ConCompForecastdate": {
+          "description":"Construction Completion Date Forecast",
+          "example":"12/31/2015",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+            },
+        "ConCompActualdate": {
+          "description":"Construction Completion Date Actual",
+          "example":"12/31/2015",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+            },
+        "DepositForecastDate": {
+          "description":"Deposit Forecast Date",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+            },
+        "DepositActualDate": {
+          "description":"Deposit Actual Date",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+            },
+        "ConIssueForecastdate": {
+          "description":"Contract Issued Date Forecast",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+             },
+        "ConIssueActualdate": {
+          "description":"Contract Issued Date Actual",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+             },
+        "ConSignForecastdate": {
+          "description":"Contract Signed Date Forecast",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+             },
+        "ConSignFActualdate": {
+          "description":"Contract Signed Actual Date",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+             },
+        "FinApvForecastdate": {
+          "description":"Finance Approved Date Forecast",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+            },
+        "FinApvActualdate": {
+          "description":"Finance Approved Date Actual",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+            },
+        "UnConForecastdate": {
+          "description":"Unconditional Exchange Date Forecast",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+           },
+        "UnConActualtdate": {
+          "description":"Unconditional Exchange Date Actual",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+           },
+        "SettleForecastdate": {
+          "description":"Sales Settlement Date forecast",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+           },
+        "SettleActualdate": {
+          "description":"Sales Settlement Date actual",
+          "example":"1/15/2016",
+          "readOnly":false,
+          "maxLength":44,
+          "type":"datetime"
+           },
+        "State": {
+          "description":"State",
+          "example":"20 - NSW",
+          "readOnly":false,
+          "maxLength":20,
+          "type":"String"
+           },
+        "Project": {
+          "description":"Project",
+          "example":"20 - NSW",
+          "readOnly":false,
+          "maxLength":70,
+          "type":"String"
         },
         "body": {
           "description": "body of the content - array with objects - in story.",
@@ -397,6 +719,141 @@ NSW 2259",
         },
         "GasElectric": {
           "$ref": "#/definitions/content/definitions/GasElectric"
+          },
+        "GasElectric": {
+          "$ref": "#/definitions/content/definitions/GasElectric"
+          },
+        "ColorCode": {
+          "$ref": "#/definitions/content/definitions/ColorCode"
+          },
+        "CarAccomodation": {
+          "$ref": "#/definitions/content/definitions/CarAccomodation"
+          },
+        "Bedrooms": {
+          "$ref": "#/definitions/content/definitions/Bedrooms"
+          },
+        "BathRooms": {
+          "$ref": "#/definitions/content/definitions/BathRooms"
+          },
+        "ListPrice": {
+          "$ref": "#/definitions/content/definitions/ListPrice"
+          },
+        "Corner": {
+          "$ref": "#/definitions/content/definitions/Corner"
+          },
+        "Irregular": {
+          "$ref": "#/definitions/content/definitions/Irregular"
+          },
+        "Orientation": {
+          "$ref": "#/definitions/content/definitions/Orientation"
+          },
+        "Aspect": {
+          "$ref": "#/definitions/content/definitions/Aspect"
+          },
+        "Estate": {
+          "$ref": "#/definitions/content/definitions/Estate"
+          },
+        "Stage": {
+          "$ref": "#/definitions/content/definitions/Stage"
+          },
+        "Devstatus": {
+          "$ref": "#/definitions/content/definitions/Devstatus"
+          },
+        "StockStatus": {
+          "$ref": "#/definitions/content/definitions/StockStatus"
+          },
+        "JobStatus": {
+          "$ref": "#/definitions/content/definitions/JobStatus"
+          },
+        "Available": {
+          "$ref": "#/definitions/content/definitions/Available"
+          },
+        "WIDTH": {
+          "$ref": "#/definitions/content/definitions/WIDTH"
+          },
+        "DEPTH": {
+          "$ref": "#/definitions/content/definitions/DEPTH"
+          },
+        "LandArea": {
+          "$ref": "#/definitions/content/definitions/LandArea"
+          },
+        "NumOfLots": {
+          "$ref": "#/definitions/content/definitions/NumOfLots"
+          },
+        "RegistrationNo": {
+          "$ref": "#/definitions/content/definitions/RegistrationNo"
+          },
+        "BuiltFormType": {
+          "$ref": "#/definitions/content/definitions/BuiltFormType"
+          },
+        "BuildingID": {
+          "$ref": "#/definitions/content/definitions/BuildingID"
+          },
+        "Level": {
+          "$ref": "#/definitions/content/definitions/Level"
+          },
+        "CPAllocation": {
+          "$ref": "#/definitions/content/definitions/CPAllocation"
+          },
+        "CPNumber": {
+          "$ref": "#/definitions/content/definitions/CPNumber"
+          },
+        "StorageAllocation": {
+          "$ref": "#/definitions/content/definitions/StorageAllocation"
+          },
+        "ExternalArea": {
+          "$ref": "#/definitions/content/definitions/ExternalArea"
+          },
+        "TotalArea": {
+          "$ref": "#/definitions/content/definitions/TotalArea"
+          },
+        "Study": {
+          "$ref": "#/definitions/content/definitions/Study"
+          },
+        "BikeSpace": {
+          "$ref": "#/definitions/content/definitions/BikeSpace"
+          },
+        "ConCompForecastDate": {
+          "$ref": "#/definitions/content/definitions/ConCompForecastDate"
+          },
+        "ConCompActualdate": {
+          "$ref": "#/definitions/content/definitions/ConCompActualdate"
+          },
+        "DepositForecastdate": {
+          "$ref": "#/definitions/content/definitions/DepositForecastdate"
+          },
+        "DepositActualdate": {
+          "$ref": "#/definitions/content/definitions/DepositActualdate"
+          },
+        "ConIssueForecastdate": {
+          "$ref": "#/definitions/content/definitions/ConIssueForecastdate"
+          },
+        "ConIssueActualdate": {
+          "$ref": "#/definitions/content/definitions/ConIssueActualdate"
+          },
+        "ConSignForecastdate": {
+          "$ref": "#/definitions/content/definitions/ConSignForecastdate"
+          },
+        "ConSignActualdate": {
+          "$ref": "#/definitions/content/definitions/ConSignActualdate"
+          },
+        "FinApvForecastdate": {
+          "$ref": "#/definitions/content/definitions/FinApvForecastdate"
+          },
+        "FinApvActualdate": {
+          "$ref": "#/definitions/content/definitions/FinApvActualdate"
+          },
+        "UnConActualdate": {
+          "$ref": "#/definitions/content/definitions/UnConActualdate"
+          },
+        "SettleForecastdate": {
+          "$ref": "#/definitions/content/definitions/SettleForecastdate"
+          },
+        "SettleActualdate": {
+          "$ref": "#/definitions/content/definitions/SettleActualdate"
+          },
+        "Project": {
+          "$ref": "#/definitions/content/definitions/Project"
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
