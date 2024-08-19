@@ -667,6 +667,13 @@ NSW 2259",
           "readOnly":false,
           "maxLength":70,
           "type":"String"
+            },
+        "Default_Root": {
+          "description":"Default Root",
+          "example":"ERP_Property",
+          "readOnly":false,
+          "maxLength":70,
+          "type":"String"
         },
         "body": {
           "description": "body of the content - array with objects - in story.",
@@ -854,6 +861,9 @@ NSW 2259",
           },
         "Project": {
           "$ref": "#/definitions/content/definitions/Project"
+           },
+        "Default_Root": {
+          "$ref": "#/definitions/content/definitions/Default_Root"
         },
         "body": {
           "$ref": "#/definitions/content/definitions/body"
