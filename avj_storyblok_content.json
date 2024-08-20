@@ -173,6 +173,9 @@
               },
               "publish": {
                 "$ref": "#/definitions/story/definitions/publish"
+              },
+              "PK_ProjID": {
+                "$ref": "#/definitions/story/definitions/PK_ProjID"
               }
             },
             "type": [
@@ -229,6 +232,9 @@
         },
         "is_folder": {
           "$ref": "#/definitions/story/definitions/is_folder"
+        },
+        "PK_ProjID": {
+        "$ref": "#/definitions/story/definitions/PK_ProjID"
         },
         "id": {
           "$ref": "#/definitions/story/definitions/id"
