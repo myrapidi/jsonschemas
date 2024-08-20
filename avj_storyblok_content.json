@@ -86,7 +86,6 @@
           "description": "AX Project ID.",
           "example": "proj123",
           "readOnly": false,
-          "maxLength": 20,
           "type": [
             "string"
           ]
