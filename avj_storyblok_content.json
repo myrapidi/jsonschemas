@@ -80,13 +80,15 @@
           "readOnly": false,
           "type": [
             "string"
+          ]
         },
         "PK_ProjID": {
           "description": "AX Project ID.",
           "example": "proj123",
           "readOnly": false,
           "maxLength": 20,
-          "type": "string"
+          "type": [
+            "string"
           ]
         },
         "updated_at": {
