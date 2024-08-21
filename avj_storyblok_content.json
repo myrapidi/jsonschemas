@@ -876,6 +876,9 @@ NSW 2259",
         "SettleActualdate": {
           "$ref": "#/definitions/content/definitions/SettleActualdate"
           },
+        "State": {
+          "$ref": "#/definitions/content/definitions/State"
+          },
         "Project": {
           "$ref": "#/definitions/content/definitions/Project"
            },
