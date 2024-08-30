@@ -84,10 +84,10 @@
         },
         "PK_ProjID": {
           "description": "AX Project ID.",
-          "example": "proj123",
+          "example": "123",
           "readOnly": false,
           "type": [
-            "string"
+            "integer"
           ]
         },
         "updated_at": {
