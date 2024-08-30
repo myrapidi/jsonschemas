@@ -76,7 +76,7 @@
         },
         "slug": {
           "description": "slug for the story",
-          "example": "c8a9ee6e-9ea6-4145-8781-9ddeabe9f463",
+          "example": "0646-01-2-0112",
           "readOnly": false,
           "type": [
             "string"
@@ -88,6 +88,13 @@
           "readOnly": false,
           "type": [
             "integer"
+            },
+        "full_slug": {
+          "description": "The full slug of the story, combining the parent folder(s) and the designated story slug.",
+          "example": "properties/0646-01-2-0112",
+          "readOnly": false,
+          "type": [
+            "String"
           ]
         },
         "updated_at": {
@@ -147,6 +154,9 @@
               },
               "PK_ProjID": {
                 "$ref": "#/definitions/story/definitions/PK_ProjID"
+              },
+              "full_slug": {
+                "$ref": "#/definitions/story/definitions/full_slug"
               },
               "content": {
                 "$ref": "#/definitions/story/definitions/content"
@@ -235,6 +245,9 @@
         },
         "PK_ProjID": {
         "$ref": "#/definitions/story/definitions/PK_ProjID"
+        },
+        "full_slug": {
+        "$ref": "#/definitions/story/definitions/full_slug"
         },
         "id": {
           "$ref": "#/definitions/story/definitions/id"
