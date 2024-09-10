@@ -374,7 +374,7 @@ NSW 2259",
           "example":"214.46",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
            },
         "ColorCode": {
           "description":"Color Code",
@@ -409,7 +409,7 @@ NSW 2259",
           "example":"28000",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
            },
         "Corner": {
           "description":"Corner",
@@ -507,7 +507,7 @@ NSW 2259",
           "example":"1",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
             },
         "RegistrationNo": {
           "description":"Folio/Volume (Registration No.)",
@@ -556,7 +556,7 @@ NSW 2259",
           "example":"15 m2",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
            },
         "ExternalArea": {
           "description":"External Area",
