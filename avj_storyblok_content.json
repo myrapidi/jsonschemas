@@ -486,21 +486,21 @@ NSW 2259",
           "example":"15",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
             },
         "DEPTH": {
           "description":"DEPTH",
           "example":"20",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
             },
         "LandArea": {
           "description":"Land Area",
           "example":"300",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
             },
         "NumOfLots": {
           "description":"No of Lots",
@@ -563,14 +563,14 @@ NSW 2259",
           "example":"20 m2",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
            },
         "TotalArea": {
           "description":"Total Area",
           "example":"60.5,80,95",
           "readOnly":false,
           "maxLength":30,
-          "type":"Integer"
+          "type":"Numeric"
            },
         "Study": {
           "description":"Study",
