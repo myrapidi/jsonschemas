@@ -374,42 +374,42 @@ NSW 2259",
           "example":"214.46",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
            },
         "ColorCode": {
           "description":"Color Code",
           "example":"**V114.4P",
           "readOnly":false,
           "maxLength":10,
-          "type":"String"
+          "type":"string"
            },
         "CarAccomodation": {
           "description":"Car Accomodation",
           "example":"Car Port/Double Lockup Garage/No Garage/Tandum Lockup Garage/Single Lockup Garage",
           "readOnly":false,
           "maxLength":60,
-          "type":"String"
+          "type":"string"
            },
         "Bedrooms": {
           "description":"Bedrooms",
           "example":"1,2,3,4,5",
           "readOnly":false,
           "maxLength":2,
-          "type":"String"
+          "type":"string"
            },
         "BathRooms": {
           "description":"BathRooms",
           "example":"1,1.2,2,2.5",
           "readOnly":false,
           "maxLength":3,
-          "type":"String"
+          "type":"string"
            },
         "ListPrice": {
           "description":"List Price",
           "example":"28000",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
            },
         "Corner": {
           "description":"Corner",
@@ -486,28 +486,28 @@ NSW 2259",
           "example":"15",
           "readOnly":false,
           "maxLength":30,
-          "type":"String"
+          "type":"numeric"
             },
         "DEPTH": {
           "description":"DEPTH",
           "example":"20",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
             },
         "LandArea": {
           "description":"Land Area",
           "example":"300",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
             },
         "NumOfLots": {
           "description":"No of Lots",
           "example":"1",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
             },
         "RegistrationNo": {
           "description":"Folio/Volume (Registration No.)",
@@ -556,21 +556,21 @@ NSW 2259",
           "example":"15 m2",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
            },
         "ExternalArea": {
           "description":"External Area",
           "example":"20 m2",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
            },
         "TotalArea": {
           "description":"Total Area",
           "example":"60.5,80,95",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"numeric"
            },
         "Study": {
           "description":"Study",
