@@ -486,7 +486,7 @@ NSW 2259",
           "example":"15",
           "readOnly":false,
           "maxLength":30,
-          "type":"Numeric"
+          "type":"Decimal"
             },
         "DEPTH": {
           "description":"DEPTH",
