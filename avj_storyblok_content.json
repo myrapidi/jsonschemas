@@ -409,7 +409,7 @@ NSW 2259",
           "example":"28000",
           "readOnly":false,
           "maxLength":30,
-          "type":"numeric"
+          "type":"number"
            },
         "Corner": {
           "description":"Corner",
@@ -493,21 +493,21 @@ NSW 2259",
           "example":"20",
           "readOnly":false,
           "maxLength":30,
-          "type":"numeric"
+          "type":"number"
             },
         "LandArea": {
           "description":"Land Area",
           "example":"300",
           "readOnly":false,
           "maxLength":30,
-          "type":"numeric"
+          "type":"number"
             },
         "NumOfLots": {
           "description":"No of Lots",
           "example":"1",
           "readOnly":false,
           "maxLength":30,
-          "type":"numeric"
+          "type":"number"
             },
         "RegistrationNo": {
           "description":"Folio/Volume (Registration No.)",
@@ -563,14 +563,14 @@ NSW 2259",
           "example":"20 m2",
           "readOnly":false,
           "maxLength":30,
-          "type":"numeric"
+          "type":"number"
            },
         "TotalArea": {
           "description":"Total Area",
           "example":"60.5,80,95",
           "readOnly":false,
           "maxLength":30,
-          "type":"numeric"
+          "type":"number"
            },
         "Study": {
           "description":"Study",
