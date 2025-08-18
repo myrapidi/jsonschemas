@@ -35,6 +35,12 @@
         "report_id": { "$ref": "#/definitions/report/definitions/report_id" },
         "report_url": { "$ref": "#/definitions/report/definitions/report_url" },
         "generated_at": { "$ref": "#/definitions/report/definitions/generated_at" }
+        "Full_Name":{ "$ref": "#/definitions/report/definitions/Full_Name" }
+        "Management_Level":{ "$ref": "#/definitions/report/definitions/Management_Level" }
+        "POS_Effect_Date":{ "$ref": "#/definitions/report/definitions/POS_Effect_Date" }
+        "Position_ID":{ "$ref": "#/definitions/report/definitions/Position_ID" }
+        "Rec_POS_Change":{ "$ref": "#/definitions/report/definitions/Rec_POS_Change" }
+        "business_Title":{ "$ref": "#/definitions/report/definitions/business_Title" }
       }
     },
 
