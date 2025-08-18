@@ -1,94 +1,148 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "urn:schema:workday:wd_d365_positions_report:v1",
-  "title": "Workday WD_D365_Positions_Report",
-  "description": "Schema for the Workday Custom Report JSON response (customreport2) for WD_D365_Positions_Report.",
-  "type": "object",
+  "type": ["object"],
   "definitions": {
-    "service": {
+    "report": {
+      "description": "Workday Custom Report (RaaS) container for WD_D365_Positions_Report.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Workday Custom Report Service - WD_D365_Positions_Report",
-      "type": "object",
+      "title": "Workday Report",
+      "type": ["object"],
       "definitions": {
-        "reportEntry": {
-          "description": "Single row from the Workday WD_D365_Positions_Report.",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "Full_Name": {
-              "description": "Worker full name",
-              "type": "string",
-              "maxLength": 200
-            },
-            "Management_Level": {
-              "description": "Management level as configured in Workday",
-              "type": "string",
-              "maxLength": 100
-            },
-            "POS_Effect_Date": {
-              "description": "Position effective date (ISO, YYYY-MM-DD)",
-              "type": "string",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-            },
-            "Position_ID": {
-              "description": "Workday Position ID",
-              "type": "string",
-              "maxLength": 100
-            },
-            "Rec_POS_Change": {
-              "description": "Recent position change date (ISO, YYYY-MM-DD)",
-              "type": "string",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-            },
-            "business_Title": {
-              "description": "Business title from Workday",
-              "type": "string",
-              "maxLength": 200
-            }
-          },
-          "required": [
-            "Full_Name",
-            "Management_Level",
-            "POS_Effect_Date",
-            "Position_ID",
-            "Rec_POS_Change",
-            "business_Title"
-          ]
+        "report_id": {
+          "description": "Report technical name or path.",
+          "example": "WD_D365_Positions_Report",
+          "readOnly": true,
+          "type": ["string"]
         },
-        "reportEntryArray": {
-          "description": "Collection of report rows",
-          "type": "array",
-          "items": { "$ref": "#/definitions/service/definitions/reportEntry" }
+        "report_url": {
+          "description": "RaaS endpoint for the report.",
+          "example": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
+          "readOnly": true,
+          "type": ["string"],
+          "format": "uri"
+        },
+        "generated_at": {
+          "description": "Timestamp when the payload was generated.",
+          "example": "2025-08-18T10:42:11Z",
+          "format": "date-time",
+          "readOnly": true,
+          "type": ["string"]
         }
       },
       "properties": {
-        "Report_Entry": {
-          "description": "Top-level array returned by Workday Custom Report.",
-          "$ref": "#/definitions/service/definitions/reportEntryArray"
+        "report_id": { "$ref": "#/definitions/report/definitions/report_id" },
+        "report_url": { "$ref": "#/definitions/report/definitions/report_url" },
+        "generated_at": { "$ref": "#/definitions/report/definitions/generated_at" }
+      }
+    },
+
+    "positions": {
+      "description": "Rows returned by WD_D365_Positions_Report.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Positions",
+      "type": ["object"],
+      "definitions": {
+        "Full_Name": {
+          "description": "Worker's full name.",
+          "example": "Alicia Gómez",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "Management_Level": {
+          "description": "Management level per Workday.",
+          "example": "Manager",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "POS_Effect_Date": {
+          "description": "Position effective date (YYYY-MM-DD).",
+          "example": "2025-07-01",
+          "readOnly": false,
+          "type": ["string"],
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "Position_ID": {
+          "description": "Unique identifier of the position.",
+          "example": "P-00012345",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "Rec_POS_Change": {
+          "description": "Most recent position change date (YYYY-MM-DD).",
+          "example": "2025-08-15",
+          "readOnly": false,
+          "type": ["string"],
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "business_Title": {
+          "description": "Worker's business title.",
+          "example": "Senior Project Manager",
+          "readOnly": false,
+          "type": ["string"]
         }
       },
-      "required": ["Report_Entry"],
-      "additionalProperties": false,
-      "example": {
-        "Report_Entry": [
-          {
-            "Full_Name": "John Smith1",
-            "Management_Level": "Individual Contributor",
-            "POS_Effect_Date": "2024-08-09",
-            "Position_ID": "PO-000",
-            "Rec_POS_Change": "2024-08-09",
-            "business_Title": "Director of OM"
-          }
-        ]
+      "links": [
+        {
+          "description": "Info for an existing position row.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report/rows/{(%23%2Fdefinitions%2Fpositions%2Fdefinitions%2FPosition_ID)}",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": { "$ref": "#/definitions/positions" },
+          "title": "Info"
+        },
+        {
+          "description": "List existing rows.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "items": { "$ref": "#/definitions/positions" },
+            "type": ["array"]
+          },
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "Full_Name": { "$ref": "#/definitions/positions/definitions/Full_Name" },
+        "Management_Level": { "$ref": "#/definitions/positions/definitions/Management_Level" },
+        "POS_Effect_Date": { "$ref": "#/definitions/positions/definitions/POS_Effect_Date" },
+        "Position_ID": { "$ref": "#/definitions/positions/definitions/Position_ID" },
+        "Rec_POS_Change": { "$ref": "#/definitions/positions/definitions/Rec_POS_Change" },
+        "business_Title": { "$ref": "#/definitions/positions/definitions/business_Title" }
       }
     }
   },
+
   "properties": {
-    "Report_Entry": {
-      "$ref": "#/definitions/service/properties/Report_Entry"
+    "report": { "$ref": "#/definitions/report" },
+    "positions": {
+      "description": "Array of position rows.",
+      "type": ["array"],
+      "items": { "$ref": "#/definitions/positions" }
     }
   },
-  "required": ["Report_Entry"],
-  "additionalProperties": false
+
+  "required": ["positions"],
+
+  "description": "JSON Schema for Workday RaaS WD_D365_Positions_Report output.",
+  "id": "https://myrapidi.github.com/jsonschemas/workday/wd_d365_positions_report#",
+  "links": [
+    {
+      "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
+      "rel": "self"
+    },
+    {
+      "href": "/jsonschemas/workday/wd_d365_positions_report",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": { "additionalProperties": true }
+    }
+  ],
+  "title": "Workday – WD_D365_Positions_Report"
 }
