@@ -2,50 +2,43 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "type": ["object"],
   "definitions": {
-    "report": {
-      "description": "Workday Custom Report (RaaS) container for WD_D365_Positions_Report.",
+    "space": {
+      "description": "Workday RaaS service for WD_D365_Positions_Report.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Workday Report",
+      "title": "Workday RaaS Service",
       "type": ["object"],
       "definitions": {
-        "report_id": {
-          "description": "Report technical name or path.",
-          "example": "WD_D365_Positions_Report",
+        "tenant": {
+          "description": "Workday tenant alias.",
+          "example": "standardbiotools_preview",
           "readOnly": true,
           "type": ["string"]
         },
-        "report_url": {
-          "description": "RaaS endpoint for the report.",
+        "report_path": {
+          "description": "Workday report path.",
+          "example": "ISU_mulesoft/WD_D365_Positions_Report",
+          "readOnly": true,
+          "type": ["string"]
+        },
+        "endpoint": {
+          "description": "RaaS JSON endpoint.",
           "example": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
           "readOnly": true,
-          "type": ["string"],
-          "format": "uri"
-        },
-        "generated_at": {
-          "description": "Timestamp when the payload was generated.",
-          "example": "2025-08-18T10:42:11Z",
-          "format": "date-time",
-          "readOnly": true,
+          "format": "uri",
           "type": ["string"]
         }
       },
       "properties": {
-        "report_id": { "$ref": "#/definitions/report/definitions/report_id" },
-        "report_url": { "$ref": "#/definitions/report/definitions/report_url" },
-        "generated_at": { "$ref": "#/definitions/report/definitions/generated_at" }
-        "Full_Name":{ "$ref": "#/definitions/report/definitions/Full_Name" }
-        "Management_Level":{ "$ref": "#/definitions/report/definitions/Management_Level" }
-        "POS_Effect_Date":{ "$ref": "#/definitions/report/definitions/POS_Effect_Date" }
-        "Position_ID":{ "$ref": "#/definitions/report/definitions/Position_ID" }
-        "Rec_POS_Change":{ "$ref": "#/definitions/report/definitions/Rec_POS_Change" }
-        "business_Title":{ "$ref": "#/definitions/report/definitions/business_Title" }
+        "tenant": { "$ref": "#/definitions/space/definitions/tenant" },
+        "report_path": { "$ref": "#/definitions/space/definitions/report_path" },
+        "endpoint": { "$ref": "#/definitions/space/definitions/endpoint" }
       }
     },
 
-    "positions": {
-      "description": "Rows returned by WD_D365_Positions_Report.",
+    "stories": {
+      "description": "Rows for the Workday Positions report.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
@@ -95,60 +88,55 @@
       },
       "links": [
         {
-          "description": "Info for an existing position row.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report/rows/{(%23%2Fdefinitions%2Fpositions%2Fdefinitions%2FPosition_ID)}",
+          "description": "Fetch metadata about the report.",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}",
           "method": "GET",
           "rel": "self",
-          "targetSchema": { "$ref": "#/definitions/positions" },
-          "title": "Info"
+          "targetSchema": { "$ref": "#/definitions/space" },
+          "title": "Report Metadata"
         },
         {
-          "description": "List existing rows.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
+          "description": "List rows from the Workday report.",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}?format=json",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
-            "items": { "$ref": "#/definitions/positions" },
+            "items": { "$ref": "#/definitions/stories" },
             "type": ["array"]
           },
-          "title": "List"
+          "title": "Report Rows"
         }
       ],
       "properties": {
-        "Full_Name": { "$ref": "#/definitions/positions/definitions/Full_Name" },
-        "Management_Level": { "$ref": "#/definitions/positions/definitions/Management_Level" },
-        "POS_Effect_Date": { "$ref": "#/definitions/positions/definitions/POS_Effect_Date" },
-        "Position_ID": { "$ref": "#/definitions/positions/definitions/Position_ID" },
-        "Rec_POS_Change": { "$ref": "#/definitions/positions/definitions/Rec_POS_Change" },
-        "business_Title": { "$ref": "#/definitions/positions/definitions/business_Title" }
+        "Full_Name": { "$ref": "#/definitions/stories/definitions/Full_Name" },
+        "Management_Level": { "$ref": "#/definitions/stories/definitions/Management_Level" },
+        "POS_Effect_Date": { "$ref": "#/definitions/stories/definitions/POS_Effect_Date" },
+        "Position_ID": { "$ref": "#/definitions/stories/definitions/Position_ID" },
+        "Rec_POS_Change": { "$ref": "#/definitions/stories/definitions/Rec_POS_Change" },
+        "business_Title": { "$ref": "#/definitions/stories/definitions/business_Title" }
       }
     }
   },
-
   "properties": {
-    "report": { "$ref": "#/definitions/report" },
-    "positions": {
-      "description": "Array of position rows.",
-      "type": ["array"],
-      "items": { "$ref": "#/definitions/positions" }
+    "space": { "$ref": "#/definitions/space" },
+    "stories": {
+      "description": "Single position row schema (use as item schema for arrays).",
+      "$ref": "#/definitions/stories"
     }
   },
-
-  "required": ["positions"],
-
-  "description": "JSON Schema for Workday RaaS WD_D365_Positions_Report output.",
-  "id": "https://myrapidi.github.com/jsonschemas/workday/wd_d365_positions_report#",
+  "description": "Workday WD_D365_Positions_Report schema (read-only, RaaS).",
+  "id": "https://myrapidi.github.com/jsonschemas/workday/wd_d365_positions_report_storyblok_ro#",
   "links": [
     {
       "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
       "rel": "self"
     },
     {
-      "href": "/jsonschemas/workday/wd_d365_positions_report",
+      "href": "/jsonschemas/workday/wd_d365_positions_report_storyblok_ro",
       "method": "GET",
       "rel": "self",
       "targetSchema": { "additionalProperties": true }
     }
   ],
-  "title": "Workday – WD_D365_Positions_Report"
+  "title": "Workday – WD_D365_Positions_Report (Read-Only, Storyblok Style)"
 }
