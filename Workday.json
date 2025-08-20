@@ -57,7 +57,7 @@
           "readOnly": true,
           "type": ["string"]
         },
-        "POS_Effect_Date": {
+        "Effect_Date_for_Current_Pos": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
@@ -71,7 +71,7 @@
           "readOnly": true,
           "type": ["string"]
         },
-        "Rec_POS_Change": {
+        "Most_Rec_Pos_Change": {
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
@@ -79,7 +79,7 @@
           "format": "date",
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
-        "business_Title": {
+        "Business_Title": {
           "description": "Worker's business title.",
           "example": "Senior Project Manager",
           "readOnly": true,
@@ -110,10 +110,10 @@
       "properties": {
         "Full_Name": { "$ref": "#/definitions/stories/definitions/Full_Name" },
         "Management_Level": { "$ref": "#/definitions/stories/definitions/Management_Level" },
-        "POS_Effect_Date": { "$ref": "#/definitions/stories/definitions/POS_Effect_Date" },
+        "Effect_Date_for_Current_Pos": { "$ref": "#/definitions/stories/definitions/Effect_Date_for_Current_Pos" },
         "Position_ID": { "$ref": "#/definitions/stories/definitions/Position_ID" },
-        "Rec_POS_Change": { "$ref": "#/definitions/stories/definitions/Rec_POS_Change" },
-        "business_Title": { "$ref": "#/definitions/stories/definitions/business_Title" }
+        "Most_Rec_Pos_Change": { "$ref": "#/definitions/stories/definitions/Most_Rec_Pos_Change" },
+        "Business_Title": { "$ref": "#/definitions/stories/definitions/Business_Title" }
       }
     }
   },
