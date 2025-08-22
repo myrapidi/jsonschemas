@@ -9,7 +9,7 @@
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Workday RaaS Service",
+      "title": "Workday RaaS Services",
       "type": [
         "object"
       ],
