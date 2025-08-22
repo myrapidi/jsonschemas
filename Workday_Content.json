@@ -75,7 +75,7 @@
           "title": "Report Metadata"
         },
         {
-          "description": "List rows from the Workday report.",
+          "description": "List rows from the Workday report as JSON.",
           "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}?format=json",
           "method": "GET",
           "rel": "instances",
