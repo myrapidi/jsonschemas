@@ -1,15 +1,54 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_content_style_nospace#",
+  "title": "Workday \u2013 Positions Report Content (Storyblok-style, no-space)",
+  "description": "Storyblok-like content schema to read Workday report rows (RaaS) without using a 'space' section.",
   "type": [
     "object"
   ],
   "definitions": {
-    "report": {
-      "description": "Rows for the Workday Positions report.",
+    "context": {
+      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Positions",
+      "title": "Connection Context",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "tenant": {
+          "description": "Workday tenant alias used in the RaaS path.",
+          "example": "standardbiotools_preview",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "report_path": {
+          "description": "Workday report path in Workday (folder/name).",
+          "example": "ISU_mulesoft/WD_D365_Positions_Report",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/context/definitions/tenant"
+        },
+        "report_path": {
+          "$ref": "#/definitions/context/definitions/report_path"
+        }
+      }
+    },
+    "report": {
+      "description": "A single row from the Workday Positions report.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Report Row",
       "type": [
         "object"
       ],
@@ -30,7 +69,7 @@
             "string"
           ]
         },
-        "Effect_Date_for_Current_Pos": {
+        "POS_Effect_Date": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
@@ -40,13 +79,13 @@
         },
         "Position_ID": {
           "description": "Unique identifier of the position.",
-          "example": "P-00012345",
+          "example": "POS-00012345",
           "readOnly": true,
           "type": [
             "string"
           ]
         },
-        "Most_Rec_Pos_Change": {
+        "Rec_POS_Change": {
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
@@ -54,7 +93,7 @@
             "string"
           ]
         },
-        "Business_Title": {
+        "business_Title": {
           "description": "Worker's business title.",
           "example": "Senior Project Manager",
           "readOnly": true,
@@ -65,29 +104,61 @@
       },
       "links": [
         {
-          "description": "Fetch metadata about the report.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}",
+          "description": "Fetch report metadata.",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/space"
+            "$ref": "#/definitions/context"
           },
-          "title": "Report Metadata"
+          "title": "Info"
         },
         {
-          "description": "List rows from the Workday report as JSON.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}?format=json",
+          "description": "List report rows with optional query parameters.",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}",
           "method": "GET",
           "rel": "instances",
-          "targetSchema": {
+          "schema": {
             "type": [
-              "array"
+              "object"
             ],
+            "properties": {
+              "format": {
+                "description": "Output format.",
+                "example": "json",
+                "type": [
+                  "string"
+                ],
+                "default": "json"
+              },
+              "Position_ID": {
+                "description": "Filter: Position ID (exact match).",
+                "example": "POS-133",
+                "type": [
+                  "string"
+                ]
+              },
+              "As_Of_Date": {
+                "description": "Filter: As of date (YYYY-MM-DD).",
+                "example": "2025-08-01",
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "format"
+            ]
+          },
+          "targetSchema": {
             "items": {
               "$ref": "#/definitions/report"
-            }
+            },
+            "type": [
+              "array"
+            ]
           },
-          "title": "Report Rows"
+          "title": "List"
         }
       ],
       "properties": {
@@ -97,53 +168,17 @@
         "Management_Level": {
           "$ref": "#/definitions/report/definitions/Management_Level"
         },
-        "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
+        "POS_Effect_Date": {
+          "$ref": "#/definitions/report/definitions/POS_Effect_Date"
         },
         "Position_ID": {
           "$ref": "#/definitions/report/definitions/Position_ID"
         },
-        "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+        "Rec_POS_Change": {
+          "$ref": "#/definitions/report/definitions/Rec_POS_Change"
         },
-        "Business_Title": {
-          "$ref": "#/definitions/report/definitions/Business_Title"
-        }
-      }
-    },
-    "space": {
-      "description": "Connection variables for Workday RaaS (provided by connector).",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Connection",
-      "type": [
-        "object"
-      ],
-      "definitions": {
-        "tenant": {
-          "description": "Workday tenant alias used in the RaaS path.",
-          "example": "standardbiotools_preview",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "report_path": {
-          "description": "Workday report path 'Folder/Report_Name'.",
-          "example": "ISU_mulesoft/WD_D365_Positions_Report",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "properties": {
-        "tenant": {
-          "$ref": "#/definitions/space/definitions/tenant"
-        },
-        "report_path": {
-          "$ref": "#/definitions/space/definitions/report_path"
+        "business_Title": {
+          "$ref": "#/definitions/report/definitions/business_Title"
         }
       }
     }
@@ -152,8 +187,5 @@
     "report": {
       "$ref": "#/definitions/report"
     }
-  },
-  "description": "Workday WD_D365_Positions_Report schema (read-only, fields under report object).",
-  "id": "https://myrapidi.github.com/jsonschemas/workday/wd_d365_positions_report_object#",
-  "title": "Workday \u2013 WD_D365_Positions_Report (report object)"
+  }
 }
