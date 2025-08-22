@@ -4,18 +4,18 @@
     "object"
   ],
   "definitions": {
-    "space": {
-      "description": "Workday RaaS service for WD_D365_Positions_Report.",
+    "context": {
+      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Workday RaaS Service",
+      "title": "Connection Context",
       "type": [
         "object"
       ],
       "definitions": {
         "tenant": {
-          "description": "Workday tenant alias.",
+          "description": "Workday tenant alias used in the RaaS path.",
           "example": "standardbiotools_preview",
           "readOnly": true,
           "type": [
@@ -23,7 +23,7 @@
           ]
         },
         "report_path": {
-          "description": "Workday report path.",
+          "description": "Workday report path in Workday (folder/name).",
           "example": "ISU_mulesoft/WD_D365_Positions_Report",
           "readOnly": true,
           "type": [
@@ -33,19 +33,19 @@
       },
       "properties": {
         "tenant": {
-          "$ref": "#/definitions/space/definitions/tenant"
+          "$ref": "#/definitions/context/definitions/tenant"
         },
         "report_path": {
-          "$ref": "#/definitions/space/definitions/report_path"
+          "$ref": "#/definitions/context/definitions/report_path"
         }
       }
     },
     "report": {
-      "description": "Rows for the Workday Positions report.",
+      "description": "Rows for the Workday Positions RaaS report.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Positions",
+      "title": "Report",
       "type": [
         "object"
       ],
@@ -66,7 +66,7 @@
             "string"
           ]
         },
-        "Effect_Date_for_Current_Pos": {
+        "POS_Effect_Date": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
@@ -76,13 +76,13 @@
         },
         "Position_ID": {
           "description": "Unique identifier of the position.",
-          "example": "P-00012345",
+          "example": "POS-00012345",
           "readOnly": true,
           "type": [
             "string"
           ]
         },
-        "Most_Rec_Pos_Change": {
+        "Rec_POS_Change": {
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
@@ -90,7 +90,7 @@
             "string"
           ]
         },
-        "Business_Title": {
+        "business_Title": {
           "description": "Worker's business title.",
           "example": "Senior Project Manager",
           "readOnly": true,
@@ -102,28 +102,28 @@
       "links": [
         {
           "description": "Fetch metadata about the report.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/space"
+            "$ref": "#/definitions/context"
           },
-          "title": "Report Metadata"
+          "title": "Info"
         },
         {
-          "description": "List rows from the Workday report as JSON.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fspace%2Fdefinitions%2Freport_path)}?format=json",
+          "description": "List report rows as JSON.",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}?format=json",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
-            "type": [
-              "array"
-            ],
             "items": {
               "$ref": "#/definitions/report"
-            }
+            },
+            "type": [
+              "array"
+            ]
           },
-          "title": "Report Rows"
+          "title": "List"
         }
       ],
       "properties": {
@@ -133,31 +133,27 @@
         "Management_Level": {
           "$ref": "#/definitions/report/definitions/Management_Level"
         },
-        "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
+        "POS_Effect_Date": {
+          "$ref": "#/definitions/report/definitions/POS_Effect_Date"
         },
         "Position_ID": {
           "$ref": "#/definitions/report/definitions/Position_ID"
         },
-        "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+        "Rec_POS_Change": {
+          "$ref": "#/definitions/report/definitions/Rec_POS_Change"
         },
-        "Business_Title": {
-          "$ref": "#/definitions/report/definitions/Business_Title"
+        "business_Title": {
+          "$ref": "#/definitions/report/definitions/business_Title"
         }
       }
     }
   },
   "properties": {
-    "space": {
-      "$ref": "#/definitions/space"
-    },
     "report": {
-      "description": "Single position row schema (use as item schema for arrays).",
       "$ref": "#/definitions/report"
     }
   },
-  "description": "Workday WD_D365_Positions_Report schema (read-only, RaaS).",
-  "id": "https://myrapidi.github.com/jsonschemas/workday/wd_d365_positions_report_ro#",
-  "title": "Workday \u2013 WD_D365_Positions_Report (Read-Only)"
+  "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_style_nospace#",
+  "title": "Workday \u2013 Positions Report (Storyblok-style, no-space)"
 }
