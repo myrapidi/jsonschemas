@@ -151,12 +151,12 @@
             ]
           },
           "targetSchema": {
-            "items": {
-              "$ref": "#/definitions/report"
-            },
             "type": [
               "array"
-            ]
+            ],
+            "items": {
+              "$ref": "#/definitions/report"
+            }
           },
           "title": "List"
         }
