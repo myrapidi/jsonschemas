@@ -105,7 +105,7 @@
       "links": [
         {
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -115,7 +115,7 @@
         },
         {
           "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
           "method": "GET",
           "rel": "instances",
           "schema": {
