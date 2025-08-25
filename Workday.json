@@ -111,19 +111,51 @@
           "title": "Info"
         },
         {
-          "description": "List report rows as JSON.",
-          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}?format=json",
+          "description": "List report rows with optional query parameters.",
+          "href": "/ccx/service/customreport2/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Ftenant)}/{(%23%2Fdefinitions%2Fcontext%2Fdefinitions%2Freport_path)}",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
-            "items": {
-              "$ref": "#/definitions/report"
-            },
             "type": [
               "array"
-            ]
+            ],
+            "items": {
+              "$ref": "#/definitions/report"
+            }
           },
-          "title": "List"
+          "title": "List",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "format": {
+                "description": "Output format.",
+                "example": "json",
+                "type": [
+                  "string"
+                ],
+                "default": "json"
+              },
+              "Position_ID": {
+                "description": "Filter: Position ID (exact match).",
+                "example": "POS-133",
+                "type": [
+                  "string"
+                ]
+              },
+              "As_Of_Date": {
+                "description": "Filter: As of date (YYYY-MM-DD).",
+                "example": "2025-08-01",
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "format"
+            ]
+          }
         }
       ],
       "properties": {
