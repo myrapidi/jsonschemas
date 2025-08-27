@@ -74,7 +74,7 @@
           "example": "2025-07-01",
           "readOnly": true,
           "type": [
-            "string"
+            "datetime"
           ]
         },
         "Position_ID": {
@@ -82,7 +82,7 @@
           "example": "POS-00012345",
           "readOnly": true,
           "type": [
-            "datetime"
+            "string"
           ]
         },
         "Most_Rec_Pos_Change": {
