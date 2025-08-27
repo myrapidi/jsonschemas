@@ -82,7 +82,7 @@
           "example": "POS-00012345",
           "readOnly": true,
           "type": [
-            "string"
+            "datetime"
           ]
         },
         "Most_Rec_Pos_Change": {
@@ -90,7 +90,7 @@
           "example": "2025-08-15",
           "readOnly": true,
           "type": [
-            "string"
+            "datetime"
           ]
         },
         "Business_Title": {
@@ -142,7 +142,7 @@
                 "description": "Filter: As of date (YYYY-MM-DD).",
                 "example": "2025-08-01",
                 "type": [
-                  "string"
+                  "datetime"
                 ]
               }
             },
