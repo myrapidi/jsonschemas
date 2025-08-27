@@ -71,7 +71,7 @@
           "example": "2025-07-01",
           "readOnly": true,
           "type": [
-            "string"
+            "datetime"
           ]
         },
         "Position_ID": {
@@ -87,7 +87,7 @@
           "example": "2025-08-15",
           "readOnly": true,
           "type": [
-            "string"
+            "datetime"
           ]
         },
         "Business_Title": {
@@ -148,7 +148,7 @@
                 "description": "Filter: As of date (YYYY-MM-DD).",
                 "example": "2025-08-01",
                 "type": [
-                  "string"
+                  "datetime"
                 ]
               }
             },
