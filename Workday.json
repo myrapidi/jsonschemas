@@ -133,7 +133,7 @@
                 "default": "json"
               },
               "Position ID": {
-                "description": "Filter: Position ID (exact match). Use URL-encoded space in the URL key (Position%20ID).",
+                "description": "Filter: Position_ID (exact match). Use URL-encoded space in the URL key (Position_ID).",
                 "example": "POS-133",
                 "type": "string"
               }
