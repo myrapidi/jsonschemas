@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "type": [
     "object"
   ],
@@ -42,7 +42,6 @@
     },
     "report": {
       "description": "Rows for the Workday Positions RaaS report.",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
       "title": "Report",
@@ -52,7 +51,7 @@
       "definitions": {
         "Full_Name": {
           "description": "Worker's full name.",
-          "example": "Alicia G\u00f3mez",
+          "example": "Alicia Gómez",
           "readOnly": true,
           "type": [
             "string"
@@ -70,9 +69,8 @@
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
-          "type": [
-            "datetime"
-          ]
+          "type": "string",
+          "format": "date"
         },
         "Position_ID": {
           "description": "Unique identifier of the position.",
@@ -86,9 +84,8 @@
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
-          "type": [
-            "datetime"
-          ]
+          "type": "string",
+          "format": "date"
         },
         "Business_Title": {
           "description": "Worker's business title.",
@@ -101,7 +98,7 @@
       },
       "links": [
         {
-          "description": "Fetch report metadata.",
+          "description": "Fetch report full report (no filters).",
           "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
           "method": "GET",
           "rel": "self",
@@ -132,24 +129,13 @@
               "format": {
                 "description": "Output format.",
                 "example": "json",
-                "type": [
-                  "string"
-                ],
+                "type": "string",
                 "default": "json"
               },
-              "Position_ID": {
-                "description": "Filter: Position ID (exact match).",
+              "Position ID": {
+                "description": "Filter: Position ID (exact match). Use URL-encoded space in the URL key (Position%20ID).",
                 "example": "POS-133",
-                "type": [
-                  "string"
-                ]
-              },
-              "As_Of_Date": {
-                "description": "Filter: As of date (YYYY-MM-DD).",
-                "example": "2025-08-01",
-                "type": [
-                  "datetime"
-                ]
+                "type": "string"
               }
             },
             "required": [
@@ -187,5 +173,5 @@
   },
   "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
   "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_style_nospace#",
-  "title": "Workday \u2013 Positions Report (Storyblok-style, no-space)"
+  "title": "Workday – Positions Report (Storyblok-style, no-space)"
 }
