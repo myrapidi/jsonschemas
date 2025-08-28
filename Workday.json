@@ -1,50 +1,18 @@
 {
-  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_raas_–_positions_metadata",
+  "title": "Workday RaaS – Positions Metadata",
+  "description": "Schema for metadata extraction via RaaS",
   "type": [
     "object"
   ],
   "definitions": {
-    "context": {
-      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
+    "position": {
+      "description": "Workday RaaS Position Report Entry.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Connection Context",
-      "type": [
-        "object"
-      ],
-      "definitions": {
-        "tenant": {
-          "description": "Workday tenant alias used in the RaaS path.",
-          "example": "standardbiotools_preview",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "report_path": {
-          "description": "Workday report path in Workday (folder/name).",
-          "example": "ISU_mulesoft/WD_D365_Positions_Report",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "properties": {
-        "tenant": {
-          "$ref": "#/definitions/context/definitions/tenant"
-        },
-        "report_path": {
-          "$ref": "#/definitions/context/definitions/report_path"
-        }
-      }
-    },
-    "report": {
-      "description": "Rows for the Workday Positions RaaS report.",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Report",
+      "title": "Position Entry",
       "type": [
         "object"
       ],
@@ -96,82 +64,61 @@
           ]
         }
       },
-      "links": [
-        {
-          "description": "Fetch report full report (no filters).",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
-          "method": "GET",
-          "rel": "self",
-          "targetSchema": {
-            "$ref": "#/definitions/context"
-          },
-          "title": "Info"
-        },
-        {
-          "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
-          "method": "GET",
-          "rel": "instances",
-          "targetSchema": {
-            "type": [
-              "array"
-            ],
-            "items": {
-              "$ref": "#/definitions/report"
-            }
-          },
-          "title": "List",
-          "schema": {
-            "type": [
-              "object"
-            ],
-            "properties": {
-              "format": {
-                "description": "Output format.",
-                "example": "json",
-                "type": "string",
-                "default": "json"
-              },
-              "Position ID": {
-                "description": "Filter: Position_ID (exact match). Use URL-encoded space in the URL key (Position_ID).",
-                "example": "POS-133",
-                "type": "string"
-              }
-            },
-            "required": [
-              "format"
-            ]
-          }
-        }
-      ],
       "properties": {
         "Full_Name": {
-          "$ref": "#/definitions/report/definitions/Full_Name"
+          "$ref": "#/definitions/position/definitions/Full_Name"
         },
         "Management_Level": {
-          "$ref": "#/definitions/report/definitions/Management_Level"
+          "$ref": "#/definitions/position/definitions/Management_Level"
         },
         "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
+          "$ref": "#/definitions/position/definitions/Effect_Date_for_Current_Pos"
         },
         "Position_ID": {
-          "$ref": "#/definitions/report/definitions/Position_ID"
+          "$ref": "#/definitions/position/definitions/Position_ID"
         },
         "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+          "$ref": "#/definitions/position/definitions/Most_Rec_Pos_Change"
         },
         "Business_Title": {
-          "$ref": "#/definitions/report/definitions/Business_Title"
+          "$ref": "#/definitions/position/definitions/Business_Title"
         }
       }
     }
   },
   "properties": {
-    "report": {
-      "$ref": "#/definitions/report"
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/position"
+      }
     }
   },
-  "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_style_nospace#",
-  "title": "Workday – Positions Report (Storyblok-style, no-space)"
+  "links": [
+    {
+      "rel": "self",
+      "description": "Fetch full Workday report (unfiltered).",
+      "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
+      "method": "GET"
+    },
+    {
+      "rel": "instances",
+      "description": "Fetch filtered report using Position_ID prompt.",
+      "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?Position_ID={Position_ID}&format=json",
+      "method": "GET",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Position_ID": {
+            "type": "string",
+            "description": "Workday report prompt key: Position_ID",
+            "example": "POS-133"
+          }
+        },
+        "required": [
+          "Position_ID"
+        ]
+      }
+    }
+  ]
 }
