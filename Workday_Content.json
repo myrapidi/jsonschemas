@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "id": "https://myrapidi.github.com/jsonschemas/workday_positions_content_raas",
-  "title": "Workday RaaS \u2013 Position Report Content",
-  "description": "Workday positions RaaS content schema using same layout as Storyblok",
+  "title": "Workday Positions RaaS Content Schema",
+  "description": "Content schema for Workday Position report",
   "type": "object",
   "properties": {
     "Report_Entry": {
