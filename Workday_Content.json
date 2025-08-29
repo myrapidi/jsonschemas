@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_positions_content#",
-  "title": "Workday RaaS Report Content - Position Details",
-  "description": "Schema for reading Workday positions content via RaaS (REST API).",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_positions_content_raas",
+  "title": "Workday RaaS \u2013 Position Report Content",
+  "description": "Workday positions RaaS content schema using same layout as Storyblok",
   "type": "object",
   "properties": {
     "Report_Entry": {
@@ -14,13 +14,17 @@
             "description": "Worker's full name.",
             "example": "Alicia G\u00f3mez",
             "readOnly": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           "Management_Level": {
             "description": "Management level per Workday.",
             "example": "Manager",
             "readOnly": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           "Effect_Date_for_Current_Pos": {
             "description": "Position effective date (YYYY-MM-DD).",
@@ -33,7 +37,9 @@
             "description": "Unique identifier of the position.",
             "example": "POS-00012345",
             "readOnly": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           "Most_Rec_Pos_Change": {
             "description": "Most recent position change date (YYYY-MM-DD).",
@@ -46,13 +52,11 @@
             "description": "Worker's business title.",
             "example": "Senior Project Manager",
             "readOnly": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           }
-        },
-        "required": [
-          "Position_ID",
-          "Most_Rec_Pos_Change"
-        ]
+        }
       }
     }
   }
