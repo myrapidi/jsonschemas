@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_positions_raas",
-  "title": "Workday RaaS \u2013 Position Report",
-  "description": "Workday positions RaaS schema using same layout as Storyblok",
+  "type": [
+    "object"
+  ],
   "definitions": {
     "Full_Name": {
       "description": "Worker's full name.",
@@ -51,42 +51,26 @@
       ]
     }
   },
+  "properties": {
+    "stories": {
+      "$ref": "#/definitions/stories"
+    }
+  },
+  "description": "Schema to access Workday Position report via RaaS",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_positions_raas",
   "links": [
     {
-      "rel": "instances",
       "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
+      "rel": "self"
+    },
+    {
+      "href": "/jsonschemas/avj_storyblok",
       "method": "GET",
+      "rel": "self",
       "targetSchema": {
-        "type": "object",
-        "properties": {
-          "Report_Entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "Full_Name": {
-                  "$ref": "#/definitions/Full_Name"
-                },
-                "Management_Level": {
-                  "$ref": "#/definitions/Management_Level"
-                },
-                "Effect_Date_for_Current_Pos": {
-                  "$ref": "#/definitions/Effect_Date_for_Current_Pos"
-                },
-                "Position_ID": {
-                  "$ref": "#/definitions/Position_ID"
-                },
-                "Most_Rec_Pos_Change": {
-                  "$ref": "#/definitions/Most_Rec_Pos_Change"
-                },
-                "Business_Title": {
-                  "$ref": "#/definitions/Business_Title"
-                }
-              }
-            }
-          }
-        }
+        "additionalProperties": true
       }
     }
-  ]
+  ],
+  "title": "Workday Positions RaaS Schema"
 }
