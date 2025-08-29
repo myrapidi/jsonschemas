@@ -1,21 +1,24 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_positions#",
-  "title": "Workday RaaS Report - Position Details",
-  "description": "Schema for reading Workday positions data via RaaS (REST API).",
-  "type": "object",
-  "properties": {
+  "id": "https://myrapidi.github.com/jsonschemas/workday_positions_raas",
+  "title": "Workday RaaS \u2013 Position Report",
+  "description": "Workday positions RaaS schema using same layout as Storyblok",
+  "definitions": {
     "Full_Name": {
       "description": "Worker's full name.",
       "example": "Alicia G\u00f3mez",
       "readOnly": true,
-      "type": "string"
+      "type": [
+        "string"
+      ]
     },
     "Management_Level": {
       "description": "Management level per Workday.",
       "example": "Manager",
       "readOnly": true,
-      "type": "string"
+      "type": [
+        "string"
+      ]
     },
     "Effect_Date_for_Current_Pos": {
       "description": "Position effective date (YYYY-MM-DD).",
@@ -28,7 +31,9 @@
       "description": "Unique identifier of the position.",
       "example": "POS-00012345",
       "readOnly": true,
-      "type": "string"
+      "type": [
+        "string"
+      ]
     },
     "Most_Rec_Pos_Change": {
       "description": "Most recent position change date (YYYY-MM-DD).",
@@ -41,26 +46,43 @@
       "description": "Worker's business title.",
       "example": "Senior Project Manager",
       "readOnly": true,
-      "type": "string"
+      "type": [
+        "string"
+      ]
     }
   },
-  "required": [
-    "Position_ID",
-    "Most_Rec_Pos_Change"
-  ],
   "links": [
     {
-      "description": "Get Workday positions via RaaS",
+      "rel": "instances",
       "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
       "method": "GET",
-      "rel": "instances",
       "targetSchema": {
         "type": "object",
         "properties": {
           "Report_Entry": {
             "type": "array",
             "items": {
-              "$ref": "#"
+              "type": "object",
+              "properties": {
+                "Full_Name": {
+                  "$ref": "#/definitions/Full_Name"
+                },
+                "Management_Level": {
+                  "$ref": "#/definitions/Management_Level"
+                },
+                "Effect_Date_for_Current_Pos": {
+                  "$ref": "#/definitions/Effect_Date_for_Current_Pos"
+                },
+                "Position_ID": {
+                  "$ref": "#/definitions/Position_ID"
+                },
+                "Most_Rec_Pos_Change": {
+                  "$ref": "#/definitions/Most_Rec_Pos_Change"
+                },
+                "Business_Title": {
+                  "$ref": "#/definitions/Business_Title"
+                }
+              }
             }
           }
         }
