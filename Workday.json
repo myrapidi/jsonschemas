@@ -1,25 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_raas_–_root_flat_metadata",
-  "title": "Workday RaaS – Root Flat Metadata",
-  "description": "All fields exposed at root level for easy consumption",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_positions#",
+  "title": "Workday RaaS Report - Position Details",
+  "description": "Schema for reading Workday positions data via RaaS (REST API).",
   "type": "object",
   "properties": {
     "Full_Name": {
       "description": "Worker's full name.",
-      "example": "Alicia Gómez",
+      "example": "Alicia G\u00f3mez",
       "readOnly": true,
-      "type": [
-        "string"
-      ]
+      "type": "string"
     },
     "Management_Level": {
       "description": "Management level per Workday.",
       "example": "Manager",
       "readOnly": true,
-      "type": [
-        "string"
-      ]
+      "type": "string"
     },
     "Effect_Date_for_Current_Pos": {
       "description": "Position effective date (YYYY-MM-DD).",
@@ -32,9 +28,7 @@
       "description": "Unique identifier of the position.",
       "example": "POS-00012345",
       "readOnly": true,
-      "type": [
-        "string"
-      ]
+      "type": "string"
     },
     "Most_Rec_Pos_Change": {
       "description": "Most recent position change date (YYYY-MM-DD).",
@@ -47,43 +41,29 @@
       "description": "Worker's business title.",
       "example": "Senior Project Manager",
       "readOnly": true,
-      "type": [
-        "string"
-      ]
+      "type": "string"
     }
   },
   "required": [
-    "Full_Name",
-    "Management_Level",
-    "Effect_Date_for_Current_Pos",
     "Position_ID",
-    "Most_Rec_Pos_Change",
-    "Business_Title"
+    "Most_Rec_Pos_Change"
   ],
   "links": [
     {
-      "rel": "self",
-      "description": "Fetch full Workday report (unfiltered).",
+      "description": "Get Workday positions via RaaS",
       "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
-      "method": "GET"
-    },
-    {
-      "rel": "instances",
-      "description": "Fetch filtered report using Position_ID prompt.",
-      "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?Position_ID={Position_ID}&format=json",
       "method": "GET",
-      "schema": {
+      "rel": "instances",
+      "targetSchema": {
         "type": "object",
         "properties": {
-          "Position_ID": {
-            "type": "string",
-            "description": "Workday report prompt key: Position_ID",
-            "example": "POS-133"
+          "Report_Entry": {
+            "type": "array",
+            "items": {
+              "$ref": "#"
+            }
           }
-        },
-        "required": [
-          "Position_ID"
-        ]
+        }
       }
     }
   ]
