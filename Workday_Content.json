@@ -1,10 +1,12 @@
-[
-  {
-    "Full_Name": "Alicia Gómez",
-    "Management_Level": "Manager",
-    "Effect_Date_for_Current_Pos": "2025-07-01",
-    "Position_ID": "POS-00012345",
-    "Most_Rec_Pos_Change": "2025-08-15",
-    "Business_Title": "Senior Project Manager"
-  }
-]
+{
+  "Report_Entry": [
+    {
+      "Full_Name": "Alicia Gómez",
+      "Management_Level": "Manager",
+      "Effect_Date_for_Current_Pos": "2025-07-01",
+      "Position_ID": "POS-00012345",
+      "Most_Rec_Pos_Change": "2025-08-15",
+      "Business_Title": "Senior Project Manager"
+    }
+  ]
+}
