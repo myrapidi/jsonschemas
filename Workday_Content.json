@@ -1,12 +1,85 @@
 {
-  "Report_Entry": [
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_raas_content#",
+  "title": "Workday Positions Content",
+  "description": "Workday data content for Rapidi integration.",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "position": {
+      "description": "Position entry",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Position",
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "Full_Name": {
+          "description": "Worker's full name.",
+          "example": "Alicia Gómez",
+          "type": [
+            "string"
+          ]
+        },
+        "Management_Level": {
+          "description": "Management level per Workday.",
+          "example": "Manager",
+          "type": [
+            "string"
+          ]
+        },
+        "Effect_Date_for_Current_Pos": {
+          "description": "Position effective date (YYYY-MM-DD).",
+          "example": "2025-07-01",
+          "type": "string",
+          "format": "date"
+        },
+        "Position_ID": {
+          "description": "Unique identifier of the position.",
+          "example": "POS-00012345",
+          "type": [
+            "string"
+          ]
+        },
+        "Most_Rec_Pos_Change": {
+          "description": "Most recent position change date (YYYY-MM-DD).",
+          "example": "2025-08-15",
+          "type": "string",
+          "format": "date"
+        },
+        "Business_Title": {
+          "description": "Worker's business title.",
+          "example": "Senior Project Manager",
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  },
+  "properties": {
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/position"
+      }
+    }
+  },
+  "links": [
     {
-      "Full_Name": "Alicia Gómez",
-      "Management_Level": "Manager",
-      "Effect_Date_for_Current_Pos": "2025-07-01",
-      "Position_ID": "POS-00012345",
-      "Most_Rec_Pos_Change": "2025-08-15",
-      "Business_Title": "Senior Project Manager"
+      "href": "https://wd5-impl-services1.workday.com",
+      "rel": "self"
+    },
+    {
+      "href": "/jsonschemas/workday_raas_content",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "additionalProperties": true
+      }
     }
   ]
 }
