@@ -1,85 +1,90 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_raas_storyblok_style",
-  "title": "Workday Positions Schema - Storyblok Style",
-  "description": "Workday schema that mimics Storyblok structure for Rapidi compatibility.",
-  "type": [
-    "object"
-  ],
-  "definitions": {
+  "id": "https://myrapidi.github.com/jsonschemas/workday_final_field_visible",
+  "title": "Workday RaaS Schema with Visible Fields",
+  "description": "Minimal, no-indirection schema to ensure Rapidi reads fields",
+  "type": "object",
+  "properties": {
     "Report_Entry": {
-      "description": "Report entry for Workday position.",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Report Entry",
-      "type": [
-        "object"
-      ],
-      "properties": {
-        "Full_Name": {
-          "description": "Worker's full name.",
-          "example": "Alicia Gómez",
-          "type": [
-            "string"
-          ]
-        },
-        "Management_Level": {
-          "description": "Management level per Workday.",
-          "example": "Manager",
-          "type": [
-            "string"
-          ]
-        },
-        "Effect_Date_for_Current_Pos": {
-          "description": "Position effective date (YYYY-MM-DD).",
-          "example": "2025-07-01",
-          "type": "string",
-          "format": "date"
-        },
-        "Position_ID": {
-          "description": "Unique identifier of the position.",
-          "example": "POS-00012345",
-          "type": [
-            "string"
-          ]
-        },
-        "Most_Rec_Pos_Change": {
-          "description": "Most recent position change date (YYYY-MM-DD).",
-          "example": "2025-08-15",
-          "type": "string",
-          "format": "date"
-        },
-        "Business_Title": {
-          "description": "Worker's business title.",
-          "example": "Senior Project Manager",
-          "type": [
-            "string"
-          ]
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Full_Name": {
+            "type": "string",
+            "description": "Worker's full name.",
+            "example": "Alicia Gómez"
+          },
+          "Management_Level": {
+            "type": "string",
+            "description": "Management level per Workday.",
+            "example": "Manager"
+          },
+          "Effect_Date_for_Current_Pos": {
+            "type": "string",
+            "format": "date",
+            "description": "Position effective date (YYYY-MM-DD).",
+            "example": "2025-07-01"
+          },
+          "Position_ID": {
+            "type": "string",
+            "description": "Unique identifier of the position.",
+            "example": "POS-00012345"
+          },
+          "Most_Rec_Pos_Change": {
+            "type": "string",
+            "format": "date",
+            "description": "Most recent position change date (YYYY-MM-DD).",
+            "example": "2025-08-15"
+          },
+          "Business_Title": {
+            "type": "string",
+            "description": "Worker's business title.",
+            "example": "Senior Project Manager"
+          }
         }
       }
     }
   },
-  "properties": {
-    "Report_Entry": {
-      "$ref": "#/definitions/Report_Entry"
-    }
-  },
   "links": [
     {
-      "description": "List entries from Report_Entry",
+      "rel": "instances",
       "href": "/Report_Entry",
       "method": "GET",
-      "rel": "instances",
       "targetSchema": {
+        "type": "array",
         "items": {
-          "$ref": "#/definitions/Report_Entry"
-        },
-        "type": [
-          "array"
-        ]
-      },
-      "title": "List Report Entries"
+          "type": "object",
+          "properties": {
+            "Full_Name": {
+              "type": "string",
+              "description": "Worker's full name."
+            },
+            "Management_Level": {
+              "type": "string",
+              "description": "Management level per Workday."
+            },
+            "Effect_Date_for_Current_Pos": {
+              "type": "string",
+              "format": "date",
+              "description": "Position effective date."
+            },
+            "Position_ID": {
+              "type": "string",
+              "description": "Unique identifier of the position."
+            },
+            "Most_Rec_Pos_Change": {
+              "type": "string",
+              "format": "date",
+              "description": "Most recent position change date."
+            },
+            "Business_Title": {
+              "type": "string",
+              "description": "Worker's business title."
+            }
+          }
+        }
+      }
     }
   ]
 }
