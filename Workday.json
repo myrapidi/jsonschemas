@@ -1,76 +1,41 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "type": [
-    "object"
-  ],
-  "definitions": {
-    "Full_Name": {
-      "description": "Worker's full name.",
-      "example": "Alicia G\u00f3mez",
-      "readOnly": true,
-      "type": [
-        "string"
-      ]
-    },
-    "Management_Level": {
-      "description": "Management level per Workday.",
-      "example": "Manager",
-      "readOnly": true,
-      "type": [
-        "string"
-      ]
-    },
-    "Effect_Date_for_Current_Pos": {
-      "description": "Position effective date (YYYY-MM-DD).",
-      "example": "2025-07-01",
-      "readOnly": true,
-      "type": "string",
-      "format": "date"
-    },
-    "Position_ID": {
-      "description": "Unique identifier of the position.",
-      "example": "POS-00012345",
-      "readOnly": true,
-      "type": [
-        "string"
-      ]
-    },
-    "Most_Rec_Pos_Change": {
-      "description": "Most recent position change date (YYYY-MM-DD).",
-      "example": "2025-08-15",
-      "readOnly": true,
-      "type": "string",
-      "format": "date"
-    },
-    "Business_Title": {
-      "description": "Worker's business title.",
-      "example": "Senior Project Manager",
-      "readOnly": true,
-      "type": [
-        "string"
-      ]
-    }
-  },
-  "properties": {
-    "stories": {
-      "$ref": "#/definitions/stories"
-    }
-  },
-  "description": "Schema to access Workday Position report via RaaS",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_positions_raas",
-  "links": [
-    {
-      "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
-      "rel": "self"
-    },
-    {
-      "href": "/jsonschemas/avj_storyblok",
-      "method": "GET",
-      "rel": "self",
-      "targetSchema": {
-        "additionalProperties": true
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "Full_Name": {
+        "description": "Worker's full name.",
+        "example": "Alicia Gómez",
+        "type": "string"
+      },
+      "Management_Level": {
+        "description": "Management level per Workday.",
+        "example": "Manager",
+        "type": "string"
+      },
+      "Effect_Date_for_Current_Pos": {
+        "description": "Position effective date (YYYY-MM-DD).",
+        "example": "2025-07-01",
+        "type": "string",
+        "format": "date"
+      },
+      "Position_ID": {
+        "description": "Unique identifier of the position.",
+        "example": "POS-00012345",
+        "type": "string"
+      },
+      "Most_Rec_Pos_Change": {
+        "description": "Most recent position change date (YYYY-MM-DD).",
+        "example": "2025-08-15",
+        "type": "string",
+        "format": "date"
+      },
+      "Business_Title": {
+        "description": "Worker's business title.",
+        "example": "Senior Project Manager",
+        "type": "string"
       }
     }
-  ],
-  "title": "Workday Positions RaaS Schema"
+  }
 }
