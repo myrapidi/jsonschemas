@@ -80,6 +80,21 @@
       "targetSchema": {
         "additionalProperties": true
       }
+    },
+    {
+      "description": "List positions from Workday",
+      "href": "/Report_Entry",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "items": {
+          "$ref": "#/definitions/position"
+        },
+        "type": [
+          "array"
+        ]
+      },
+      "title": "List Positions"
     }
   ]
 }
