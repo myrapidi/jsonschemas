@@ -1,41 +1,94 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "properties": {
-      "Full_Name": {
-        "description": "Worker's full name.",
-        "example": "Alicia Gómez",
-        "type": "string"
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "positions": {
+      "description": "Workday Position Report",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Positions",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "Full_Name": {
+          "description": "Worker's full name.",
+          "example": "Alicia Gómez",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Management_Level": {
+          "description": "Management level per Workday.",
+          "example": "Manager",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Effect_Date_for_Current_Pos": {
+          "description": "Position effective date (YYYY-MM-DD).",
+          "example": "2025-07-01",
+          "readOnly": true,
+          "type": "string",
+          "format": "date"
+        },
+        "Position_ID": {
+          "description": "Unique identifier of the position.",
+          "example": "POS-00012345",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Most_Rec_Pos_Change": {
+          "description": "Most recent position change date (YYYY-MM-DD).",
+          "example": "2025-08-15",
+          "readOnly": true,
+          "type": "string",
+          "format": "date"
+        },
+        "Business_Title": {
+          "description": "Worker's business title.",
+          "example": "Senior Project Manager",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
       },
-      "Management_Level": {
-        "description": "Management level per Workday.",
-        "example": "Manager",
-        "type": "string"
-      },
-      "Effect_Date_for_Current_Pos": {
-        "description": "Position effective date (YYYY-MM-DD).",
-        "example": "2025-07-01",
-        "type": "string",
-        "format": "date"
-      },
-      "Position_ID": {
-        "description": "Unique identifier of the position.",
-        "example": "POS-00012345",
-        "type": "string"
-      },
-      "Most_Rec_Pos_Change": {
-        "description": "Most recent position change date (YYYY-MM-DD).",
-        "example": "2025-08-15",
-        "type": "string",
-        "format": "date"
-      },
-      "Business_Title": {
-        "description": "Worker's business title.",
-        "example": "Senior Project Manager",
-        "type": "string"
+      "properties": {
+        "Full_Name": {
+          "$ref": "#/definitions/positions/definitions/Full_Name"
+        },
+        "Management_Level": {
+          "$ref": "#/definitions/positions/definitions/Management_Level"
+        },
+        "Effect_Date_for_Current_Pos": {
+          "$ref": "#/definitions/positions/definitions/Effect_Date_for_Current_Pos"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/positions/definitions/Position_ID"
+        },
+        "Most_Rec_Pos_Change": {
+          "$ref": "#/definitions/positions/definitions/Most_Rec_Pos_Change"
+        },
+        "Business_Title": {
+          "$ref": "#/definitions/positions/definitions/Business_Title"
+        }
       }
     }
-  }
+  },
+  "properties": {
+    "positions": {
+      "$ref": "#/definitions/positions"
+    }
+  },
+  "description": "The Workday Positions schema for Rapidi metadata reading.",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_raas",
+  "title": "Workday Positions"
 }
