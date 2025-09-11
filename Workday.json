@@ -1,90 +1,108 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_final_field_visible",
-  "title": "Workday RaaS Schema with Visible Fields",
-  "description": "Minimal, no-indirection schema to ensure Rapidi reads fields",
-  "type": "object",
+  "id": "https://myrapidi.github.com/jsonschemas/wd_raas_positions#",
+  "title": "Workday RaaS – Positions Report (Read Only)",
+  "description": "Schema to READ the Workday RaaS Positions report. No create/update/delete operations.",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "Full_Name": {
+      "description": "Full name of the worker.",
+      "example": "Alicia Gómez",
+      "readOnly": false,
+      "type": [
+        "string"
+      ]
+    },
+    "Management_Level": {
+      "description": "Worker's management level.",
+      "example": "Manager",
+      "readOnly": false,
+      "type": [
+        "string"
+      ]
+    },
+    "Effect_Date_for_Current_Pos": {
+      "description": "Effective date of current position.",
+      "example": "2025-07-01",
+      "format": "date",
+      "readOnly": false,
+      "type": [
+        "string"
+      ]
+    },
+    "Position_ID": {
+      "description": "Position identifier.",
+      "example": "POS-00012345",
+      "readOnly": false,
+      "type": [
+        "string"
+      ]
+    },
+    "Most_Rec_Pos_Change": {
+      "description": "Date of most recent position change.",
+      "example": "2025-08-15",
+      "format": "date",
+      "readOnly": false,
+      "type": [
+        "string"
+      ]
+    },
+    "Business_Title": {
+      "description": "Worker's business title.",
+      "example": "Senior Project Manager",
+      "readOnly": false,
+      "type": [
+        "string"
+      ]
+    },
+    "report_entry": {
+      "description": "Single row/entry from the RaaS report.",
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "Full_Name": {
+          "$ref": "#/definitions/Full_Name"
+        },
+        "Management_Level": {
+          "$ref": "#/definitions/Management_Level"
+        },
+        "Effect_Date_for_Current_Pos": {
+          "$ref": "#/definitions/Effect_Date_for_Current_Pos"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/Position_ID"
+        },
+        "Most_Rec_Pos_Change": {
+          "$ref": "#/definitions/Most_Rec_Pos_Change"
+        },
+        "Business_Title": {
+          "$ref": "#/definitions/Business_Title"
+        }
+      },
+      "required": []
+    }
+  },
   "properties": {
     "Report_Entry": {
-      "type": "array",
+      "description": "Array of report entries returned by the Workday report.",
+      "type": [
+        "array"
+      ],
       "items": {
-        "type": "object",
-        "properties": {
-          "Full_Name": {
-            "type": "string",
-            "description": "Worker's full name.",
-            "example": "Alicia Gómez"
-          },
-          "Management_Level": {
-            "type": "string",
-            "description": "Management level per Workday.",
-            "example": "Manager"
-          },
-          "Effect_Date_for_Current_Pos": {
-            "type": "string",
-            "format": "date",
-            "description": "Position effective date (YYYY-MM-DD).",
-            "example": "2025-07-01"
-          },
-          "Position_ID": {
-            "type": "string",
-            "description": "Unique identifier of the position.",
-            "example": "POS-00012345"
-          },
-          "Most_Rec_Pos_Change": {
-            "type": "string",
-            "format": "date",
-            "description": "Most recent position change date (YYYY-MM-DD).",
-            "example": "2025-08-15"
-          },
-          "Business_Title": {
-            "type": "string",
-            "description": "Worker's business title.",
-            "example": "Senior Project Manager"
-          }
-        }
+        "$ref": "#/definitions/report_entry"
       }
     }
   },
   "links": [
     {
-      "rel": "instances",
-      "href": "/Report_Entry",
+      "description": "Fetch the report results.",
+      "href": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report?format=json",
       "method": "GET",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "Full_Name": {
-              "type": "string",
-              "description": "Worker's full name."
-            },
-            "Management_Level": {
-              "type": "string",
-              "description": "Management level per Workday."
-            },
-            "Effect_Date_for_Current_Pos": {
-              "type": "string",
-              "format": "date",
-              "description": "Position effective date."
-            },
-            "Position_ID": {
-              "type": "string",
-              "description": "Unique identifier of the position."
-            },
-            "Most_Rec_Pos_Change": {
-              "type": "string",
-              "format": "date",
-              "description": "Most recent position change date."
-            },
-            "Business_Title": {
-              "type": "string",
-              "description": "Worker's business title."
-            }
-          }
-        }
-      }
+      "rel": "self",
+      "title": "Fetch"
     }
   ]
 }
