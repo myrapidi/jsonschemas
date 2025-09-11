@@ -1,141 +1,50 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/wd_raas_positions_content#",
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "https://myrapidi.github.com/jsonschemas/wd_raas_positions_content_v2#",
   "title": "Workday RaaS – Positions Report (Content Layout)",
-  "description": "Schema reflecting a content-style layout for reading Workday RaaS reports.",
-  "type": [
-    "object"
-  ],
+  "description": "Content-style layout for reading Workday RaaS Positions report.",
+  "type": "object",
   "definitions": {
-    "service": {
-      "description": "Workday RaaS service for Positions report.",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Workday RaaS API – Positions",
-      "type": [
-        "object"
-      ],
-      "definitions": {
-        "service_id": {
-          "description": "Identifier for the service definition (static).",
-          "example": "wd_raas_positions",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "description": {
-          "description": "Description of the service.",
-          "example": "Read-only access to the Workday RaaS Positions report.",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "properties": {
-        "service_id": {
-          "$ref": "#/definitions/service/definitions/service_id"
-        },
-        "description": {
-          "$ref": "#/definitions/service/definitions/description"
-        }
-      }
-    },
     "report": {
-      "description": "Positions report wrapper object.",
+      "description": "Positions report wrapper object (array of entries).",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
       "title": "Positions Report",
-      "type": [
-        "object"
-      ],
+      "type": "object",
       "definitions": {
-        "Full_Name": {
-          "description": "Full name of the worker.",
-          "example": "Alicia Gómez",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Management_Level": {
-          "description": "Worker's management level.",
-          "example": "Manager",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Effect_Date_for_Current_Pos": {
-          "description": "Effective date of current position.",
-          "example": "2025-07-01",
-          "format": "date",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Position_ID": {
-          "description": "Position identifier.",
-          "example": "POS-00012345",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Most_Rec_Pos_Change": {
-          "description": "Date of most recent position change.",
-          "example": "2025-08-15",
-          "format": "date",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Business_Title": {
-          "description": "Worker's business title.",
-          "example": "Senior Project Manager",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
         "report_entry": {
-          "description": "Single row/entry from the RaaS report.",
-          "type": [
-            "object"
-          ],
+          "description": "Single row from the RaaS report.",
+          "type": "object",
           "properties": {
             "Full_Name": {
-              "$ref": "#/definitions/report/definitions/Full_Name"
+              "type": "string"
             },
             "Management_Level": {
-              "$ref": "#/definitions/report/definitions/Management_Level"
+              "type": "string"
             },
             "Effect_Date_for_Current_Pos": {
-              "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
+              "type": "string",
+              "format": "date"
             },
             "Position_ID": {
-              "$ref": "#/definitions/report/definitions/Position_ID"
+              "type": "string"
             },
             "Most_Rec_Pos_Change": {
-              "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+              "type": "string",
+              "format": "date"
             },
             "Business_Title": {
-              "$ref": "#/definitions/report/definitions/Business_Title"
+              "type": "string"
             }
-          }
+          },
+          "additionalProperties": true
         }
       },
       "properties": {
         "Report_Entry": {
           "description": "Array of report entries returned by the Workday report.",
-          "type": [
-            "array"
-          ],
+          "type": "array",
           "items": {
             "$ref": "#/definitions/report/definitions/report_entry"
           }
@@ -153,9 +62,6 @@
     }
   },
   "properties": {
-    "service": {
-      "$ref": "#/definitions/service"
-    },
     "report": {
       "$ref": "#/definitions/report"
     }
