@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/wd_raas_positions#",
+  "id": "https://myrapidi.github.com/jsonschemas/Workday#",
   "title": "Workday RaaS – Positions Report (Read Only)",
   "description": "Schema to READ the Workday RaaS Positions report. No create/update/delete operations.",
   "type": [
@@ -86,7 +86,7 @@
     }
   },
   "properties": {
-    "Report_Entry": {
+    "report_entry": {
       "description": "Array of report entries returned by the Workday report.",
       "type": [
         "array"
