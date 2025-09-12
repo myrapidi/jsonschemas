@@ -24,7 +24,7 @@
         },
         "report_path": {
           "description": "Workday report path in Workday (folder/name).",
-          "example": "ISU_mulesoft/WD_D365_Positions_Report",
+          "example": "ISU_mulesoft/D365_Positions_Report",
           "readOnly": true,
           "type": [
             "string"
@@ -102,7 +102,7 @@
       "links": [
         {
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -112,7 +112,7 @@
         },
         {
           "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/WD_D365_Positions_Report",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
