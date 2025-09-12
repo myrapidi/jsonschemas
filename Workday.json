@@ -52,7 +52,7 @@
       "definitions": {
         "Full_Name": {
           "description": "Worker's full name.",
-          "example": "Alicia G\u00f3mez",
+          "example": "Alicia Gomez",
           "readOnly": true,
           "type": [
             "string"
