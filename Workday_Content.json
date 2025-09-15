@@ -1,184 +1,122 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_Content#",
-  "title": "Workday Positions Report Content (Storyblok-style, no-space)",
-  "description": "Storyblok-like content schema to read Workday report rows (RaaS) without using a 'space' section.",
+  "id": "https://myrapidi.github.com/jsonschemas/Workday_RaaS_Content_StoryblokStyle#",
+  "title": "Workday – D365 Positions (RaaS) – Storyblok-style content mapping",
+  "description": "Storyblok content-style mapping for Workday RaaS. In this mapping: 'report' ≈ 'space', and 'story' ≈ 'Report_Entry'.",
   "type": [
     "object"
   ],
   "definitions": {
-    "context": {
-      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
+    "report": {
+      "description": "A Workday RaaS report (maps to Storyblok 'space').",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Connection Context",
+      "title": "Workday RaaS Report",
       "type": [
         "object"
       ],
       "definitions": {
-        "tenant": {
-          "description": "Workday tenant alias used in the RaaS path.",
-          "example": "standardbiotools_preview",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "report_path": {
-          "description": "Workday report path in Workday (folder/name).",
+        "report_name": {
+          "description": "Path/name of the report in Workday (folder/name).",
           "example": "ISU_mulesoft/D365_Positions_Report",
           "readOnly": true,
           "type": [
             "string"
           ]
+        },
+        "endpoint": {
+          "description": "Fully qualified RaaS endpoint URL.",
+          "example": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
         }
       },
       "properties": {
-        "tenant": {
-          "$ref": "#/definitions/context/definitions/tenant"
+        "report_name": {
+          "$ref": "#/definitions/report/definitions/report_name"
         },
-        "report_path": {
-          "$ref": "#/definitions/context/definitions/report_path"
+        "endpoint": {
+          "$ref": "#/definitions/report/definitions/endpoint"
         }
       }
     },
-    "report": {
-      "description": "A single row from the Workday Positions report.",
+    "story": {
+      "description": "Single Workday RaaS record (maps to Storyblok 'story').",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Report Row",
+      "title": "Report_Entry",
       "type": [
         "object"
       ],
       "definitions": {
-        "Full_Name": {
-          "description": "Worker's full name.",
-          "example": "Alicia G\u00f3mez",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "Management_Level": {
-          "description": "Management level per Workday.",
-          "example": "Manager",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "Effect_Date_for_Current_Pos": {
-          "description": "Position effective date (YYYY-MM-DD).",
-          "example": "2025-07-01",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "Position_ID": {
-          "description": "Unique identifier of the position.",
-          "example": "POS-00012345",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
-        "Most_Rec_Pos_Change": {
-          "description": "Most recent position change date (YYYY-MM-DD).",
-          "example": "2025-08-15",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
+        "Active_Status": {
+          "description": "Active status of the position.",
+          "example": true,
+          "readOnly": false,
+          "type": "Boolean"
         },
         "Business_Title": {
-          "description": "Worker's business title.",
-          "example": "Senior Project Manager",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "description": "Business title of the worker.",
+          "example": "Director of Software Operations",
+          "readOnly": false,
+          "type": "string"
+        },
+        "Effect_Date_for_Current_Pos": {
+          "description": "Effective date for the current position.",
+          "example": "2024-08-09",
+          "readOnly": false,
+          "type": "datetime"
+        },
+        "Full_Name": {
+          "description": "Full name of the worker.",
+          "example": "Gregory Harris",
+          "readOnly": false,
+          "type": "string"
+        },
+        "Management_Level": {
+          "description": "Worker's management level.",
+          "example": "Individual Contributor",
+          "readOnly": false,
+          "type": "string"
+        },
+        "Most_Rec_Pos_Change": {
+          "description": "Most recent position change date.",
+          "example": "2024-08-09",
+          "readOnly": false,
+          "type": "datetime"
+        },
+        "Position_ID": {
+          "description": "Workday Position ID.",
+          "example": "POS-133",
+          "readOnly": false,
+          "type": "string"
         }
       },
-      "links": [
-        {
-          "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
-          "method": "GET",
-          "rel": "self",
-          "targetSchema": {
-            "$ref": "#/definitions/context"
-          },
-          "title": "Info"
-        },
-        {
-          "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
-          "method": "GET",
-          "rel": "instances",
-          "schema": {
-            "type": [
-              "object"
-            ],
-            "properties": {
-              "format": {
-                "description": "Output format.",
-                "example": "json",
-                "type": [
-                  "string"
-                ],
-                "default": "json"
-              },
-              "Position_ID": {
-                "description": "Filter: Position ID (exact match).",
-                "example": "POS-133",
-                "type": [
-                  "string"
-                ]
-              },
-              "As_Of_Date": {
-                "description": "Filter: As of date (YYYY-MM-DD).",
-                "example": "2025-08-01",
-                "type": [
-                  "string"
-                ]
-              }
-            },
-            "required": [
-              "format"
-            ]
-          },
-          "targetSchema": {
-            "type": [
-              "array"
-            ],
-            "items": {
-              "$ref": "#/definitions/report"
-            }
-          },
-          "title": "List"
-        }
-      ],
       "properties": {
-        "Full_Name": {
-          "$ref": "#/definitions/report/definitions/Full_Name"
-        },
-        "Management_Level": {
-          "$ref": "#/definitions/report/definitions/Management_Level"
-        },
-        "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
-        },
-        "Position_ID": {
-          "$ref": "#/definitions/report/definitions/Position_ID"
-        },
-        "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+        "Active_Status": {
+          "$ref": "#/definitions/story/definitions/Active_Status"
         },
         "Business_Title": {
-          "$ref": "#/definitions/report/definitions/Business_Title"
+          "$ref": "#/definitions/story/definitions/Business_Title"
+        },
+        "Effect_Date_for_Current_Pos": {
+          "$ref": "#/definitions/story/definitions/Effect_Date_for_Current_Pos"
+        },
+        "Full_Name": {
+          "$ref": "#/definitions/story/definitions/Full_Name"
+        },
+        "Management_Level": {
+          "$ref": "#/definitions/story/definitions/Management_Level"
+        },
+        "Most_Rec_Pos_Change": {
+          "$ref": "#/definitions/story/definitions/Most_Rec_Pos_Change"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/story/definitions/Position_ID"
         }
       }
     }
@@ -186,7 +124,9 @@
   "properties": {
     "report": {
       "$ref": "#/definitions/report"
+    },
+    "story": {
+      "$ref": "#/definitions/story"
     }
   }
 }
-
