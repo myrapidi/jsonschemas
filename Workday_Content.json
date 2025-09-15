@@ -1,11 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_Content#",
   "title": "Workday Positions Report Content (Storyblok-style, no-space)",
   "description": "Storyblok-like content schema to read Workday report rows (RaaS) without using a 'space' section.",
-  "type": [
-    "object"
-  ],
   "definitions": {
     "context": {
       "description": "Connection variables for Workday RaaS (tenant alias and report path).",
@@ -55,7 +51,7 @@
       "definitions": {
         "Full_Name": {
           "description": "Worker's full name.",
-          "example": "Alicia G\u00f3mez",
+          "example": "Alicia Gómez",
           "readOnly": true,
           "type": [
             "string"
@@ -183,9 +179,22 @@
       }
     }
   },
+  "type": "object",
+  "required": [
+    "Report_Entry"
+  ],
   "properties": {
-    "report": {
-      "$ref": "#/definitions/report"
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "report": {
+            "$ref": "#/definitions/report"
+          }
+        }
+      }
     }
   }
 }
