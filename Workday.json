@@ -1,154 +1,74 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/Workday_SB_Schema#",
-  "title": "Workday – D365 Positions (RaaS) – Schema (Storyblok-style, no 'story')",
-  "description": "Mapping Storyblok concepts to Workday RaaS: 'report' ≈ space, 'Report_Entry' ≈ story (but no 'story' key present).",
-  "type": [
-    "object"
-  ],
-  "definitions": {
+  "id": "https://myrapidi.github.com/jsonschemas/Workday_SB_Schema_v2#",
+  "title": "Workday – D365 Positions (RaaS) – Schema v2 (inline Report_Entry)",
+  "description": "Root has 'report' (metadata) and 'Report_Entry' (array of rows). No $ref for row fields.",
+  "type": "object",
+  "properties": {
     "report": {
+      "title": "report",
       "description": "Workday RaaS report metadata (maps to Storyblok 'space').",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
-      "title": "Report",
-      "type": [
-        "object"
-      ],
-      "definitions": {
+      "type": "object",
+      "properties": {
         "report_name": {
+          "type": "string",
           "description": "Path/name of the Workday report (folder/name).",
           "example": "ISU_mulesoft/D365_Positions_Report",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "readOnly": true
         },
         "endpoint": {
+          "type": "string",
           "description": "Fully qualified RaaS endpoint URL.",
           "example": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "readOnly": true
         }
       },
-      "properties": {
-        "report_name": {
-          "$ref": "#/definitions/report/definitions/report_name"
-        },
-        "endpoint": {
-          "$ref": "#/definitions/report/definitions/endpoint"
-        }
-      }
+      "additionalProperties": true
     },
     "Report_Entry": {
-      "description": "Single Workday RaaS row (maps to Storyblok 'story' conceptually).",
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "stability": "beta",
-      "strictProperties": true,
       "title": "Report_Entry",
-      "type": [
-        "object"
-      ],
-      "definitions": {
-        "Active_Status": {
-          "description": "Active status of the position.",
-          "example": true,
-          "readOnly": false,
-          "type": [
-            "boolean"
-          ]
+      "description": "Array of Workday RaaS rows.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Active_Status": {
+            "type": "boolean",
+            "description": "Active status of the position."
+          },
+          "Business_Title": {
+            "type": "string",
+            "description": "Business title of the worker."
+          },
+          "Effect_Date_for_Current_Pos": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Effective date for the current position."
+          },
+          "Full_Name": {
+            "type": "string",
+            "description": "Full name of the worker."
+          },
+          "Management_Level": {
+            "type": "string",
+            "description": "Worker's management level."
+          },
+          "Most_Rec_Pos_Change": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Most recent position change date."
+          },
+          "Position_ID": {
+            "type": "string",
+            "description": "Workday Position ID."
+          }
         },
-        "Business_Title": {
-          "description": "Business title of the worker.",
-          "example": "Director of Software Operations",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Effect_Date_for_Current_Pos": {
-          "description": "Effective date for the current position.",
-          "example": "2024-08-09T00:00:00Z",
-          "format": "date-time",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Full_Name": {
-          "description": "Full name of the worker.",
-          "example": "Gregory Harris",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Management_Level": {
-          "description": "Worker's management level.",
-          "example": "Individual Contributor",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Most_Rec_Pos_Change": {
-          "description": "Most recent position change date.",
-          "example": "2024-08-09T00:00:00Z",
-          "format": "date-time",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Position_ID": {
-          "description": "Workday Position ID.",
-          "example": "POS-133",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "properties": {
-        "Active_Status": {
-          "$ref": "#/definitions/Report_Entry/definitions/Active_Status"
-        },
-        "Business_Title": {
-          "$ref": "#/definitions/Report_Entry/definitions/Business_Title"
-        },
-        "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/Report_Entry/definitions/Effect_Date_for_Current_Pos"
-        },
-        "Full_Name": {
-          "$ref": "#/definitions/Report_Entry/definitions/Full_Name"
-        },
-        "Management_Level": {
-          "$ref": "#/definitions/Report_Entry/definitions/Management_Level"
-        },
-        "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/Report_Entry/definitions/Most_Rec_Pos_Change"
-        },
-        "Position_ID": {
-          "$ref": "#/definitions/Report_Entry/definitions/Position_ID"
-        }
+        "additionalProperties": true
       }
     }
   },
   "required": [
     "Report_Entry"
   ],
-  "properties": {
-    "report": {
-      "$ref": "#/definitions/report"
-    },
-    "Report_Entry": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Report_Entry"
-      }
-    }
-  }
+  "additionalProperties": true
 }
