@@ -1,8 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "type": [
-    "object"
-  ],
+  "title": "Workday – Positions Report (Storyblok-style, no-space)",
+  "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
   "definitions": {
     "context": {
       "description": "Connection variables for Workday RaaS (tenant alias and report path).",
@@ -180,12 +179,22 @@
       }
     }
   },
+  "type": "object",
+  "required": [
+    "Report_Entry"
+  ],
   "properties": {
-    "report": {
-      "$ref": "#/definitions/report"
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "report": {
+            "$ref": "#/definitions/report"
+          }
+        }
+      }
     }
-  },
-  "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_style_nospace#",
-  "title": "Workday \u2013 Positions Report (Storyblok-style, no-space)"
+  }
 }
