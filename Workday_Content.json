@@ -1,37 +1,31 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/Workday_RaaS_Content_StoryblokStyle#",
-  "title": "Workday – D365 Positions (RaaS) – Storyblok-style content mapping",
-  "description": "Storyblok content-style mapping for Workday RaaS. In this mapping: 'report' ≈ 'space', and 'story' ≈ 'Report_Entry'.",
+  "id": "https://myrapidi.github.com/jsonschemas/Workday_SB_Content#",
+  "title": "Workday – D365 Positions (RaaS) – Content (Storyblok-style, no 'story')",
+  "description": "Content-style mapping for Workday RaaS without any 'story' key. Use with items path $.Report_Entry[*] when reading from RaaS.",
   "type": [
     "object"
   ],
   "definitions": {
     "report": {
-      "description": "A Workday RaaS report (maps to Storyblok 'space').",
+      "description": "Workday RaaS report metadata (maps to Storyblok 'space').",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Workday RaaS Report",
-      "type": [
-        "object"
-      ],
+      "title": "Report",
+      "type": "object",
       "definitions": {
         "report_name": {
-          "description": "Path/name of the report in Workday (folder/name).",
+          "description": "Path/name of the Workday report (folder/name).",
           "example": "ISU_mulesoft/D365_Positions_Report",
           "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "type": "string"
         },
         "endpoint": {
           "description": "Fully qualified RaaS endpoint URL.",
           "example": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
           "readOnly": true,
-          "type": [
-            "string"
-          ]
+          "type": "string"
         }
       },
       "properties": {
@@ -43,15 +37,13 @@
         }
       }
     },
-    "story": {
-      "description": "Single Workday RaaS record (maps to Storyblok 'story').",
+    "Report_Entry": {
+      "description": "Single Workday RaaS row (maps to Storyblok 'story' conceptually).",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "stability": "beta",
       "strictProperties": true,
       "title": "Report_Entry",
-      "type": [
-        "object"
-      ],
+      "type": "object",
       "definitions": {
         "Active_Status": {
           "description": "Active status of the position.",
@@ -67,7 +59,7 @@
         },
         "Effect_Date_for_Current_Pos": {
           "description": "Effective date for the current position.",
-          "example": "2024-08-09",
+          "example": "2024-08-09T00:00:00Z",
           "readOnly": false,
           "type": "datetime"
         },
@@ -85,7 +77,7 @@
         },
         "Most_Rec_Pos_Change": {
           "description": "Most recent position change date.",
-          "example": "2024-08-09",
+          "example": "2024-08-09T00:00:00Z",
           "readOnly": false,
           "type": "datetime"
         },
@@ -98,35 +90,60 @@
       },
       "properties": {
         "Active_Status": {
-          "$ref": "#/definitions/story/definitions/Active_Status"
+          "$ref": "#/definitions/Report_Entry/definitions/Active_Status"
         },
         "Business_Title": {
-          "$ref": "#/definitions/story/definitions/Business_Title"
+          "$ref": "#/definitions/Report_Entry/definitions/Business_Title"
         },
         "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/story/definitions/Effect_Date_for_Current_Pos"
+          "$ref": "#/definitions/Report_Entry/definitions/Effect_Date_for_Current_Pos"
         },
         "Full_Name": {
-          "$ref": "#/definitions/story/definitions/Full_Name"
+          "$ref": "#/definitions/Report_Entry/definitions/Full_Name"
         },
         "Management_Level": {
-          "$ref": "#/definitions/story/definitions/Management_Level"
+          "$ref": "#/definitions/Report_Entry/definitions/Management_Level"
         },
         "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/story/definitions/Most_Rec_Pos_Change"
+          "$ref": "#/definitions/Report_Entry/definitions/Most_Rec_Pos_Change"
         },
         "Position_ID": {
-          "$ref": "#/definitions/story/definitions/Position_ID"
+          "$ref": "#/definitions/Report_Entry/definitions/Position_ID"
         }
       }
     }
   },
+  "required": [
+    "Report_Entry"
+  ],
   "properties": {
     "report": {
       "$ref": "#/definitions/report"
     },
-    "story": {
-      "$ref": "#/definitions/story"
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Report_Entry"
+      }
     }
-  }
+  },
+  "examples": [
+    {
+      "report": {
+        "report_name": "ISU_mulesoft/D365_Positions_Report",
+        "endpoint": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=POS-133"
+      },
+      "Report_Entry": [
+        {
+          "Active_Status": true,
+          "Business_Title": "Director of Software Operations",
+          "Effect_Date_for_Current_Pos": "2024-08-09T00:00:00Z",
+          "Full_Name": "Gregory Harris",
+          "Management_Level": "Individual Contributor",
+          "Most_Rec_Pos_Change": "2024-08-09T00:00:00Z",
+          "Position_ID": "POS-133"
+        }
+      ]
+    }
+  ]
 }
