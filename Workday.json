@@ -1,74 +1,192 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.com/jsonschemas/Workday_SB_Schema_v2#",
-  "title": "Workday – D365 Positions (RaaS) – Schema v2 (inline Report_Entry)",
-  "description": "Root has 'report' (metadata) and 'Report_Entry' (array of rows). No $ref for row fields.",
-  "type": "object",
-  "properties": {
-    "report": {
-      "title": "report",
-      "description": "Workday RaaS report metadata (maps to Storyblok 'space').",
-      "type": "object",
-      "properties": {
-        "report_name": {
-          "type": "string",
-          "description": "Path/name of the Workday report (folder/name).",
-          "example": "ISU_mulesoft/D365_Positions_Report",
-          "readOnly": true
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "context": {
+      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Connection Context",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "tenant": {
+          "description": "Workday tenant alias used in the RaaS path.",
+          "example": "standardbiotools_preview",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
         },
-        "endpoint": {
-          "type": "string",
-          "description": "Fully qualified RaaS endpoint URL.",
-          "example": "https://wd5-impl-services1.workday.com/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
-          "readOnly": true
+        "report_path": {
+          "description": "Workday report path in Workday (folder/name).",
+          "example": "ISU_mulesoft/D365_Positions_Report",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
         }
       },
-      "additionalProperties": true
-    },
-    "Report_Entry": {
-      "title": "Report_Entry",
-      "description": "Array of Workday RaaS rows.",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "Active_Status": {
-            "type": "boolean",
-            "description": "Active status of the position."
-          },
-          "Business_Title": {
-            "type": "string",
-            "description": "Business title of the worker."
-          },
-          "Effect_Date_for_Current_Pos": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Effective date for the current position."
-          },
-          "Full_Name": {
-            "type": "string",
-            "description": "Full name of the worker."
-          },
-          "Management_Level": {
-            "type": "string",
-            "description": "Worker's management level."
-          },
-          "Most_Rec_Pos_Change": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Most recent position change date."
-          },
-          "Position_ID": {
-            "type": "string",
-            "description": "Workday Position ID."
-          }
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/context/definitions/tenant"
         },
-        "additionalProperties": true
+        "report_path": {
+          "$ref": "#/definitions/context/definitions/report_path"
+        }
+      }
+    },
+    "report": {
+      "description": "Rows for the Workday Positions RaaS report.",
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Report",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "Full_Name": {
+          "description": "Worker's full name.",
+          "example": "Alicia Gomez",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Management_Level": {
+          "description": "Management level per Workday.",
+          "example": "Manager",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Effect_Date_for_Current_Pos": {
+          "description": "Position effective date (YYYY-MM-DD).",
+          "example": "2025-07-01",
+          "readOnly": true,
+          "type": [
+            "date"
+          ]
+        },
+        "Position_ID": {
+          "description": "Unique identifier of the position.",
+          "example": "POS-00012345",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Most_Rec_Pos_Change": {
+          "description": "Most recent position change date (YYYY-MM-DD).",
+          "example": "2025-08-15",
+          "readOnly": true,
+          "type": [
+            "date"
+          ]
+        },
+        "Business_Title": {
+          "description": "Worker's business title.",
+          "example": "Senior Project Manager",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Fetch report metadata.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": {
+            "$ref": "#/definitions/context"
+          },
+          "title": "Info"
+        },
+        {
+          "description": "List report rows with optional query parameters.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "$ref": "#/definitions/report"
+            }
+          },
+          "title": "List",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "format": {
+                "description": "Output format.",
+                "example": "json",
+                "type": [
+                  "string"
+                ],
+                "const": "json"
+              },
+              "Position_ID": {
+                "description": "Filter: Position ID (exact match).",
+                "example": "POS-133",
+                "type": [
+                  "string"
+                ]
+              },
+              "As_Of_Date": {
+                "description": "Filter: As of date (YYYY-MM-DD).",
+                "example": "2025-08-01",
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "format"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "Full_Name": {
+          "$ref": "#/definitions/report/definitions/Full_Name"
+        },
+        "Management_Level": {
+          "$ref": "#/definitions/report/definitions/Management_Level"
+        },
+        "Effect_Date_for_Current_Pos": {
+          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/report/definitions/Position_ID"
+        },
+        "Most_Rec_Pos_Change": {
+          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+        },
+        "Business_Title": {
+          "$ref": "#/definitions/report/definitions/Business_Title"
+        }
       }
     }
   },
-  "required": [
-    "Report_Entry"
-  ],
-  "additionalProperties": true
+  "properties": {
+    "report": {
+      "$ref": "#/definitions/report"
+    }
+  },
+  "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
+  "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_style_nospace#",
+  "title": "Workday \u2013 Positions Report (Storyblok-style, no-space)"
 }
+
