@@ -71,7 +71,7 @@
           "example": "2025-07-01",
           "readOnly": true,
           "type": [
-            "date"
+            "string"
           ]
         },
         "Position_ID": {
@@ -87,7 +87,7 @@
           "example": "2025-08-15",
           "readOnly": true,
           "type": [
-            "date"
+            "string"
           ]
         },
         "Business_Title": {
