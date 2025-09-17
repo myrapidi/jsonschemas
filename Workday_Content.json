@@ -55,7 +55,7 @@
       "definitions": {
         "Full_Name": {
           "description": "Worker's full name.",
-          "example": "Alicia G\u00f3mez",
+          "example": "Alicia Gómez",
           "readOnly": true,
           "type": [
             "string"
@@ -105,7 +105,7 @@
       "links": [
         {
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -115,7 +115,7 @@
         },
         {
           "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -129,7 +129,7 @@
                 "type": [
                   "string"
                 ],
-                "default": "json"
+                "const": "json"
               },
               "Position_ID": {
                 "description": "Filter: Position ID (exact match).",
