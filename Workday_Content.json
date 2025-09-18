@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "id": "https://myrapidi.github.com/jsonschemas/workday_Content#",
   "title": "Workday Positions Report Content (Storyblok-style, no-space)",
-  "description": "Storyblok-like content schema to read Workday report rows (RaaS) without using a 'space' section.",
+  "description": "Content schema to read Workday report rows (RaaS). The filter is baked into the href using %%POSITION_ID%% to avoid Rapidi adding a second '?' when appending parameters.",
   "type": [
     "object"
   ],
@@ -114,8 +114,8 @@
           "title": "Info"
         },
         {
-          "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "description": "List report rows with a baked-in Position_ID filter (placeholder).",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=%%POSITION_ID%%",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -130,20 +130,6 @@
                   "string"
                 ],
                 "const": "json"
-              },
-              "Position_ID": {
-                "description": "Filter: Position ID (exact match).",
-                "example": "POS-133",
-                "type": [
-                  "string"
-                ]
-              },
-              "As_Of_Date": {
-                "description": "Filter: As of date (YYYY-MM-DD).",
-                "example": "2025-08-01",
-                "type": [
-                  "string"
-                ]
               }
             },
             "required": [
