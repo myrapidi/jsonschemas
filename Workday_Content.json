@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "id": "https://myrapidi.github.com/jsonschemas/workday_Content#",
   "title": "Workday Positions Report Content (Storyblok-style, no-space)",
-  "description": "Content schema to read Workday report rows (RaaS). The filter is baked into the href using %%POSITION_ID%% to avoid Rapidi adding a second '?' when appending parameters.",
+  "description": "Content schema to read Workday report rows (RaaS).",
   "type": [
     "object"
   ],
@@ -114,8 +114,8 @@
           "title": "Info"
         },
         {
-          "description": "List report rows with a baked-in Position_ID filter (placeholder).",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=Position_ID",
+          "description": "List report rows.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=POS-133",
           "method": "GET",
           "rel": "instances",
           "schema": {
