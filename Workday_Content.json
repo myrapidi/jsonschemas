@@ -115,7 +115,7 @@
         },
         {
           "description": "List report rows with a baked-in Position_ID filter (placeholder).",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=%%Position_ID%",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=Position_ID",
           "method": "GET",
           "rel": "instances",
           "schema": {
