@@ -69,7 +69,7 @@
         "Effect_Date_for_Current_Pos": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
-          "format:"date",
+          "format":"date-time",
           "readOnly": true,
           "type": [
             "string"
@@ -79,7 +79,6 @@
           "description": "Unique identifier of the position.",
           "example": "POS-00012345",
           "readOnly": true,
-          "format":"date",
           "type": [
             "string"
           ]
@@ -88,7 +87,7 @@
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
-          "format: "date-time",
+          "format": "date-time",
           "type": [
             "string"
           ]
