@@ -73,7 +73,7 @@
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
-          "format:"date",
+          "format":"date",
           "type": [
             "string"
           ]
@@ -90,7 +90,7 @@
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
-          "format:"date",
+          "format":"date",
           "type": [
             "string"
           ]
