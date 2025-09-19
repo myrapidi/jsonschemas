@@ -86,6 +86,7 @@
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
+          "format: "date-time",
           "type": [
             "string"
           ]
