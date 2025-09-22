@@ -117,7 +117,7 @@
         },
         {
           "description": "List report rows.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Postion_ID=A12345678",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=A12345678",
           "method": "GET",
           "rel": "instances",
           "schema": {
