@@ -69,7 +69,7 @@
         "Effect_Date_for_Current_Pos": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
-          "format":"date-time",
+          "format":"date",
           "readOnly": true,
           "type": [
             "string"
@@ -87,7 +87,7 @@
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
-          "format": "date-time",
+          "format": "date",
           "type": [
             "string"
           ]
