@@ -114,7 +114,7 @@
         },
         {
           "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json&Position_ID=A12345678",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
