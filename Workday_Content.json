@@ -95,6 +95,14 @@
             "string"
           ]
         },
+        "Format": {
+          "description": "Expected format for the report",
+          "example": "json",
+          "readonly": true,
+          "format": "json",
+          "type": "string"
+          ]
+        },
         "Business_Title": {
           "description": "Worker's business title.",
           "example": "Senior Project Manager",
