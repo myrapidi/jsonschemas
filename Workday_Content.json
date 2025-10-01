@@ -73,7 +73,7 @@
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
-          "format":"date",
+          "format": "date",
           "type": [
             "string"
           ]
@@ -90,7 +90,7 @@
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
-          "format":"date",
+          "format": "date",
           "type": [
             "string"
           ]
@@ -107,7 +107,7 @@
       "links": [
         {
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -117,25 +117,12 @@
         },
         {
           "description": "List report rows.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "instances",
           "schema": {
             "type": [
               "object"
-            ],
-            "properties": {
-              "format": {
-                "description": "Output format.",
-                "example": "json",
-                "type": [
-                  "string"
-                ],
-                "const": "json"
-              }
-            },
-            "required": [
-              "format"
             ]
           },
           "targetSchema": {
