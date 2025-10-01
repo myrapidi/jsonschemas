@@ -95,7 +95,7 @@
             "string"
           ]
         },
-        "Format": {
+        "format": {
           "description": "Expected format for the report",
           "example": "json",
           "readonly": true,
@@ -175,7 +175,7 @@
           "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
         },
         "Format" :{
-          "$ref": "#/definitions/report/definitions/Format"
+          "$ref": "#/definitions/report/definitions/format"
         },
         "Business_Title": {
           "$ref": "#/definitions/report/definitions/Business_Title"
