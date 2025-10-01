@@ -69,7 +69,7 @@
         "Effect_Date_for_Current_Pos": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
-          "format":"date",
+          "format": "date",
           "readOnly": true,
           "type": [
             "string"
@@ -104,7 +104,7 @@
       "links": [
         {
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -114,7 +114,7 @@
         },
         {
           "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "instances",
           "targetSchema": {
@@ -131,14 +131,6 @@
               "object"
             ],
             "properties": {
-              "format": {
-                "description": "Output format.",
-                "example": "json",
-                "type": [
-                  "string"
-                ],
-                "const": "json"
-              },
               "Position_ID": {
                 "description": "Filter: Position ID (exact match).",
                 "example": "POS-133",
@@ -153,10 +145,7 @@
                   "string"
                 ]
               }
-            },
-            "required": [
-              "format"
-            ]
+            }
           }
         }
       ],
