@@ -100,7 +100,8 @@
           "example": "json",
           "readonly": true,
           "format": "json",
-          "type": "string"
+          "type": [
+            "string"
           ]
         },
         "Business_Title": {
@@ -172,6 +173,9 @@
         },
         "Most_Rec_Pos_Change": {
           "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+        },
+        "Format" :{
+          "$ref": "#/definitions/report/definitions/Format"
         },
         "Business_Title": {
           "$ref": "#/definitions/report/definitions/Business_Title"
