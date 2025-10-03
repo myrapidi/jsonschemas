@@ -1,15 +1,18 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Workday#",
+  "title": "Workday Positions Report",
+  "description": "Workday RaaS schema for WD_D365_Positions_Report. Note: Workday RaaS is read-only (GET). POST/PATCH links are illustrative and will not work against RaaS.",
   "type": [
     "object"
   ],
   "definitions": {
     "context": {
-      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "StandardBioTools Workday API",
+      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Connection Context",
       "type": [
         "object"
       ],
@@ -41,11 +44,11 @@
       }
     },
     "report": {
-      "description": "Rows for the Workday Positions RaaS report.",
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Report",
+      "description": "Rows for the Workday Positions RaaS report.",
       "stability": "beta",
       "strictProperties": true,
-      "title": "Report",
       "type": [
         "object"
       ],
@@ -101,31 +104,43 @@
           ]
         }
       },
+      "properties": {
+        "Full_Name": {
+          "$ref": "#/definitions/report/definitions/Full_Name"
+        },
+        "Management_Level": {
+          "$ref": "#/definitions/report/definitions/Management_Level"
+        },
+        "Effect_Date_for_Current_Pos": {
+          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/report/definitions/Position_ID"
+        },
+        "Most_Rec_Pos_Change": {
+          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
+        },
+        "Business_Title": {
+          "$ref": "#/definitions/report/definitions/Business_Title"
+        }
+      },
       "links": [
         {
+          "title": "Info",
           "description": "Fetch report metadata.",
           "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/context"
-          },
-          "title": "Info"
+            "$ref": "#/definitions/report"
+          }
         },
         {
+          "title": "List",
           "description": "List report rows with optional query parameters.",
           "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "instances",
-          "targetSchema": {
-            "type": [
-              "array"
-            ],
-            "items": {
-              "$ref": "#/definitions/report"
-            }
-          },
-          "title": "List",
           "schema": {
             "type": [
               "object"
@@ -146,137 +161,115 @@
                 ]
               }
             }
+          },
+          "targetSchema": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "$ref": "#/definitions/report"
+            }
           }
         },
         {
-          "description": "Create or upsert a downstream record (e.g., Storyblok entry). Note: Workday RaaS itself is read-only; this POST is for the integration target.",
-          "href": "urn:rapidi:target:create",
+          "title": "Create",
+          "description": "Create a new Position (illustrative only; RaaS is read-only).",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "POST",
           "rel": "create",
-          "title": "Create (target)",
           "schema": {
             "type": [
               "object"
             ],
             "properties": {
               "Full_Name": {
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               "Management_Level": {
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               "Effect_Date_for_Current_Pos": {
-                "type": "string",
+                "type": [
+                  "string"
+                ],
                 "format": "date"
               },
               "Position_ID": {
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               "Most_Rec_Pos_Change": {
-                "type": "string",
+                "type": [
+                  "string"
+                ],
                 "format": "date"
               },
               "Business_Title": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true
-          },
-          "targetSchema": {
-            "type": [
-              "object"
-            ],
-            "properties": {
-              "status": {
                 "type": [
                   "string"
-                ],
-                "example": "accepted"
-              },
-              "id": {
-                "type": [
-                  "string"
-                ],
-                "description": "Target system identifier"
+                ]
               }
             }
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/report"
           }
         },
         {
-          "description": "Patch/update a downstream record by key (e.g., Storyblok entry). Note: Workday RaaS is read-only; this PATCH targets the destination system.",
-          "href": "urn:rapidi:target:update",
+          "title": "Update",
+          "description": "Update an existing Position (illustrative only; RaaS is read-only).",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "PATCH",
           "rel": "update",
-          "title": "Patch (target)",
           "schema": {
             "type": [
               "object"
             ],
             "properties": {
               "Full_Name": {
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               "Management_Level": {
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               "Effect_Date_for_Current_Pos": {
-                "type": "string",
+                "type": [
+                  "string"
+                ],
                 "format": "date"
               },
               "Position_ID": {
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               "Most_Rec_Pos_Change": {
-                "type": "string",
+                "type": [
+                  "string"
+                ],
                 "format": "date"
               },
               "Business_Title": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true
-          },
-          "targetSchema": {
-            "type": [
-              "object"
-            ],
-            "properties": {
-              "status": {
                 "type": [
                   "string"
-                ],
-                "example": "updated"
-              },
-              "id": {
-                "type": [
-                  "string"
-                ],
-                "description": "Target system identifier"
+                ]
               }
             }
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/report"
           }
         }
-      ],
-      "properties": {
-        "Full_Name": {
-          "$ref": "#/definitions/report/definitions/Full_Name"
-        },
-        "Management_Level": {
-          "$ref": "#/definitions/report/definitions/Management_Level"
-        },
-        "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
-        },
-        "Position_ID": {
-          "$ref": "#/definitions/report/definitions/Position_ID"
-        },
-        "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
-        },
-        "Business_Title": {
-          "$ref": "#/definitions/report/definitions/Business_Title"
-        }
-      }
+      ]
     }
   },
   "properties": {
@@ -284,66 +277,17 @@
       "$ref": "#/definitions/report"
     }
   },
-  "description": "Workday RaaS schema (Storyblok-style) for WD_D365_Positions_Report. No 'space' key present.",
-  "id": "https://myrapidi.github.com/jsonschemas/workday_storyblok_style_nospace#",
-  "title": "Workday – Positions Report (Storyblok-style, no-space)",
   "links": [
     {
-      "description": "Bulk create in downstream target from an array of report rows.",
-      "href": "urn:rapidi:target:bulk_create",
-      "method": "POST",
-      "rel": "bulk-create",
-      "title": "Bulk Create (target)",
-      "schema": {
-        "type": [
-          "array"
-        ],
-        "items": {
-          "type": [
-            "object"
-          ],
-          "properties": {
-            "Full_Name": {
-              "type": "string"
-            },
-            "Management_Level": {
-              "type": "string"
-            },
-            "Effect_Date_for_Current_Pos": {
-              "type": "string",
-              "format": "date"
-            },
-            "Position_ID": {
-              "type": "string"
-            },
-            "Most_Rec_Pos_Change": {
-              "type": "string",
-              "format": "date"
-            },
-            "Business_Title": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": true
-        }
-      },
-      "targetSchema": {
-        "type": [
-          "object"
-        ],
-        "properties": {
-          "status": {
-            "type": [
-              "string"
-            ]
-          },
-          "count": {
-            "type": [
-              "integer"
-            ]
-          }
-        }
-      }
+      "href": "https://wd5-impl-services1.workday.com",
+      "rel": "self",
+      "title": "Workday Host"
+    },
+    {
+      "href": "/jsonschemas/Workday",
+      "method": "GET",
+      "rel": "self",
+      "title": "This Schema"
     }
   ]
 }
