@@ -134,6 +134,114 @@
             }
           },
           "title": "List"
+        },
+        {
+          "description": "Create or upsert a downstream record (e.g., Storyblok entry). Note: Workday RaaS itself is read-only; this POST is for the integration target.",
+          "href": "urn:rapidi:target:create",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create (target)",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "Full_Name": {
+                "type": "string"
+              },
+              "Management_Level": {
+                "type": "string"
+              },
+              "Effect_Date_for_Current_Pos": {
+                "type": "string",
+                "format": "date"
+              },
+              "Position_ID": {
+                "type": "string"
+              },
+              "Most_Rec_Pos_Change": {
+                "type": "string",
+                "format": "date"
+              },
+              "Business_Title": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          },
+          "targetSchema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "status": {
+                "type": [
+                  "string"
+                ],
+                "example": "accepted"
+              },
+              "id": {
+                "type": [
+                  "string"
+                ],
+                "description": "Target system identifier"
+              }
+            }
+          }
+        },
+        {
+          "description": "Patch/update a downstream record by key (e.g., Storyblok entry). Note: Workday RaaS is read-only; this PATCH targets the destination system.",
+          "href": "urn:rapidi:target:update",
+          "method": "PATCH",
+          "rel": "update",
+          "title": "Patch (target)",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "Full_Name": {
+                "type": "string"
+              },
+              "Management_Level": {
+                "type": "string"
+              },
+              "Effect_Date_for_Current_Pos": {
+                "type": "string",
+                "format": "date"
+              },
+              "Position_ID": {
+                "type": "string"
+              },
+              "Most_Rec_Pos_Change": {
+                "type": "string",
+                "format": "date"
+              },
+              "Business_Title": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          },
+          "targetSchema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "status": {
+                "type": [
+                  "string"
+                ],
+                "example": "updated"
+              },
+              "id": {
+                "type": [
+                  "string"
+                ],
+                "description": "Target system identifier"
+              }
+            }
+          }
         }
       ],
       "properties": {
@@ -162,5 +270,64 @@
     "report": {
       "$ref": "#/definitions/report"
     }
-  }
+  },
+  "links": [
+    {
+      "description": "Bulk create in downstream target from an array of report rows.",
+      "href": "urn:rapidi:target:bulk_create",
+      "method": "POST",
+      "rel": "bulk-create",
+      "title": "Bulk Create (target)",
+      "schema": {
+        "type": [
+          "array"
+        ],
+        "items": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "Full_Name": {
+              "type": "string"
+            },
+            "Management_Level": {
+              "type": "string"
+            },
+            "Effect_Date_for_Current_Pos": {
+              "type": "string",
+              "format": "date"
+            },
+            "Position_ID": {
+              "type": "string"
+            },
+            "Most_Rec_Pos_Change": {
+              "type": "string",
+              "format": "date"
+            },
+            "Business_Title": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "targetSchema": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "status": {
+            "type": [
+              "string"
+            ]
+          },
+          "count": {
+            "type": [
+              "integer"
+            ]
+          }
+        }
+      }
+    }
+  ]
 }
