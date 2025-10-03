@@ -269,12 +269,19 @@
             "$ref": "#/definitions/report"
           }
         }
+      ],
+      "required": [
+        "Position_ID"
       ]
     }
   },
   "properties": {
-    "report": {
-      "$ref": "#/definitions/report"
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/report"
+      },
+      "minItems": 0
     }
   },
   "links": [
@@ -289,5 +296,9 @@
       "rel": "self",
       "title": "This Schema"
     }
-  ]
+  ],
+  "required": [
+    "Report_Entry"
+  ],
+  "x-rapidi-recordsPath": "Report_Entry"
 }
