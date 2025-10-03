@@ -254,23 +254,12 @@
             }
           }
         }
-      ],
-      "required": [
-        "Position_ID"
       ]
     }
   },
   "properties": {
-    "Report_Entry": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/report"
-      },
-      "minItems": 0
+    "report": {
+      "$ref": "#/definitions/report"
     }
-  },
-  "required": [
-    "Report_Entry"
-  ],
-  "x-rapidi-recordsPath": "Report_Entry"
+  }
 }
