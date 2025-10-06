@@ -243,7 +243,13 @@
             "type": [
               "object"
             ],
-            "properties": {}
+            "properties": {
+              "Position_ID": {
+              "description": "Filter: Position ID (exact match).",
+              "example": "POS-250103",
+              "type": ["string"]
+              }
+            }
           },
           "targetSchema": {
             "type": [
