@@ -128,7 +128,7 @@
         {
           "title": "Create",
           "description": "Create a new position (illustrative only; RaaS is read-only).",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
+          "href": "/data/PositionsV2",
           "method": "POST",
           "rel": "create",
           "schema": {
@@ -177,7 +177,7 @@
         {
           "title": "Update",
           "description": "Update an existing position (illustrative only; RaaS is read-only).",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
+          "href": "/data/PositionsV2(dataAreaId='{dataAreaId}',PositionId='{PositionId}')",
           "method": "PATCH",
           "rel": "update",
           "schema": {
