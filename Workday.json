@@ -1,37 +1,8 @@
 {
-  "title": "Workday RaaS (Multi-Report)",
-  "description": "Schema covering Employee, Position Worker Assignment, and Position Hierarchies. RaaS is read-only (GET). POST/PATCH/DELETE links are illustrative only.",
+  "title": "Workday RaaS Schema (Tables Exposed)",
+  "description": "Schema with explicit top-level properties representing tables.",
   "type": "object",
   "definitions": {
-    "context": {
-      "title": "Connection Context",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "tenant": {
-          "type": "string",
-          "description": "e.g., standardbiotools_preview"
-        },
-        "folder": {
-          "type": "string",
-          "description": "e.g., ISU_mulesoft"
-        },
-        "Report_Name": {
-          "type": "string",
-          "enum": [
-            "D365_Employee",
-            "D365_Position_Worker_Assignment",
-            "D365_Position_Hierarchies"
-          ],
-          "description": "Target report name"
-        }
-      },
-      "required": [
-        "tenant",
-        "folder",
-        "Report_Name"
-      ]
-    },
     "reports": {
       "D365_Employee": {
         "title": "D365_Employee Row",
@@ -139,213 +110,26 @@
           "Position_ID"
         ]
       }
-    },
-    "report": {
-      "title": "Workday RaaS Row (Any supported report)",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/reports/D365_Employee"
-        },
-        {
-          "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
-        },
-        {
-          "$ref": "#/definitions/reports/D365_Position_Hierarchies"
-        }
-      ]
     }
   },
   "properties": {
-    "context": {
-      "$ref": "#/definitions/context"
-    },
-    "Report_Entry": {
+    "D365_Employee": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/report"
+        "$ref": "#/definitions/reports/D365_Employee"
+      }
+    },
+    "D365_Position_Worker_Assignment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
+      }
+    },
+    "D365_Position_Hierarchies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/reports/D365_Position_Hierarchies"
       }
     }
-  },
-  "required": [
-    "context",
-    "Report_Entry"
-  ],
-  "links": [
-    {
-      "title": "Create (generic)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (generic)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (generic)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (generic)",
-      "description": "GET rows for the selected report (Report_Name).",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    },
-    {
-      "title": "Create (D365_Employee)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (D365_Employee)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (D365_Employee)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (D365_Employee)",
-      "description": "GET rows from D365_Employee. Append filters (e.g., Employee_ID).",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    },
-    {
-      "title": "Create (D365_Position_Worker_Assignment)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (D365_Position_Worker_Assignment)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (D365_Position_Worker_Assignment)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (D365_Position_Worker_Assignment)",
-      "description": "GET rows from D365_Position_Worker_Assignment. Append filters (e.g., Position_ID).",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    },
-    {
-      "title": "Create (D365_Position_Hierarchies)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (D365_Position_Hierarchies)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (D365_Position_Hierarchies)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (D365_Position_Hierarchies)",
-      "description": "GET rows from D365_Position_Hierarchies. Append filters (e.g., Position_ID).",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    }
-  ]
+  }
 }
