@@ -1,12 +1,10 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://myrapidi.github.io/jsonschemas/workday_content_all#",
-  "title": "Workday RaaS Content (All Reports)",
-  "description": "Content file with explicit links for Employee, Position Worker Assignment, and Position Hierarchies. RaaS is read-only (GET).",
+  "title": "Workday RaaS Content (Tables Exposed)",
+  "description": "Exposes top-level properties (tables) so Rapidi can Read Design. Each table maps to one Workday RaaS report.",
+  "type": "object",
   "context": {
     "tenant": "standardbiotools_preview",
-    "folder": "ISU_mulesoft",
-    "Report_Name": "D365_Employee"
+    "folder": "ISU_mulesoft"
   },
   "definitions": {
     "reports": {
@@ -116,244 +114,87 @@
           "Position_ID"
         ]
       }
-    },
-    "report": {
-      "title": "Workday RaaS Row (Any supported report)",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/reports/D365_Employee"
-        },
-        {
-          "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
-        },
-        {
-          "$ref": "#/definitions/reports/D365_Position_Hierarchies"
-        }
-      ]
     }
   },
-  "links": [
-    {
-      "title": "Create (generic)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (generic)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (generic)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (generic)",
-      "description": "GET rows for the selected report (Report_Name).",
-      "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    },
-    {
-      "title": "Create (D365_Employee)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (D365_Employee)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (D365_Employee)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (D365_Employee)",
-      "description": "GET rows from D365_Employee. Append filters (e.g., Employee_ID).",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    },
-    {
-      "title": "Create (D365_Position_Worker_Assignment)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (D365_Position_Worker_Assignment)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (D365_Position_Worker_Assignment)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (D365_Position_Worker_Assignment)",
-      "description": "GET rows from D365_Position_Worker_Assignment. Append filters (e.g., Position_ID).",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    },
-    {
-      "title": "Create (D365_Position_Hierarchies)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-      "method": "POST",
-      "rel": "create",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Update (D365_Position_Hierarchies)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-      "method": "PATCH",
-      "rel": "update",
-      "schema": {
-        "type": [
-          "object"
-        ]
-      }
-    },
-    {
-      "title": "Delete (D365_Position_Hierarchies)",
-      "description": "Illustrative only; RaaS is read-only.",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-      "method": "DELETE",
-      "rel": "delete"
-    },
-    {
-      "title": "List (D365_Position_Hierarchies)",
-      "description": "GET rows from D365_Position_Hierarchies. Append filters (e.g., Position_ID).",
-      "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-      "method": "GET",
-      "rel": "instances",
-      "targetSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/report"
-        }
-      }
-    }
-  ],
-  "examples": {
+  "properties": {
     "D365_Employee": {
-      "Report_Entry": [
+      "title": "D365_Employee",
+      "description": "Table for D365_Employee RaaS entries (GET-only).",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/reports/D365_Employee"
+      },
+      "primaryKey": [
+        "Employee_ID"
+      ],
+      "links": [
         {
-          "Active_Status": "1",
-          "Company": "Standard BioTools",
-          "Cost_Center": "4211 R&D Genomics - Software Dev",
-          "Cost_Center_-_ID": "4211",
-          "Employee_ID": "133",
-          "Hire_Date": "2001-04-16",
-          "Preferred_Name_-_First_Name": "Gregory",
-          "Preferred_Name_-_Last_Name": "Harris"
+          "title": "List D365_Employee",
+          "description": "Fetch rows (append filters as needed).",
+          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/reports/D365_Employee"
+            }
+          }
         }
       ]
     },
     "D365_Position_Worker_Assignment": {
-      "Report_Entry": [
+      "title": "D365_Position_Worker_Assignment",
+      "description": "Table for D365_Position_Worker_Assignment RaaS entries (GET-only).",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
+      },
+      "primaryKey": [
+        "Position_ID"
+      ],
+      "links": [
         {
-          "Active_Status": "1",
-          "Current_Position_Filled_-_Effective_Date": "2001-04-16",
-          "Employee_ID": "133",
-          "Last_Functionally_Updated": "2024-12-31T12:48:06.439-08:00",
-          "Position_ID": "POS-133"
+          "title": "List D365_Position_Worker_Assignment",
+          "description": "Fetch rows (append filters as needed).",
+          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
+            }
+          }
         }
       ]
     },
     "D365_Position_Hierarchies": {
-      "Report_Entry": [
+      "title": "D365_Position_Hierarchies",
+      "description": "Table for D365_Position_Hierarchies RaaS entries (GET-only).",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/reports/D365_Position_Hierarchies"
+      },
+      "primaryKey": [
+        "Position_ID"
+      ],
+      "links": [
         {
-          "Active_Status": "1",
-          "Full_Name": "Gregory Harris",
-          "HIERARCHYTYPENAME": "&#xa;",
-          "Manager_s_Position_group": [
-            {
-              "Manager_Most_Rec_POS_Change": "2024-09-09",
-              "Manager_POS_ID": "POS-210067"
+          "title": "List D365_Position_Hierarchies",
+          "description": "Fetch rows (append filters as needed).",
+          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "targetSchema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/reports/D365_Position_Hierarchies"
             }
-          ],
-          "Position_ID": "POS-133",
-          "VALIDFROM": "&#xa;",
-          "VALIDTO": "&#xa;"
+          }
         }
       ]
     }
   },
-  "generated_at": "2025-10-10T10:29:58.045572Z"
+  "generated_at": "2025-10-10T10:44:30.331801Z"
 }
