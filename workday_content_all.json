@@ -410,7 +410,7 @@
                 "Active_Status": {
                     "title": "Active_Status",
                     "type": [
-                        "string"
+                        "boolean"
                     ]
                 },
                 "Current_Position_Filled_-_Effective_Date": {
@@ -423,13 +423,13 @@
                 "Employee_ID": {
                     "title": "Employee_ID",
                     "type": [
-                        "string"
+                        "integer"
                     ]
                 },
                 "Last_Functionally_Updated": {
                     "title": "Last_Functionally_Updated",
                     "type": [
-                        "string"
+                        "date-time"
                     ]
                 },
                 "Position_ID": {
@@ -514,7 +514,7 @@
                 "Active_Status": {
                     "title": "Active_Status",
                     "type": [
-                        "string"
+                        "boolean"
                     ]
                 },
                 "Full_Name": {
