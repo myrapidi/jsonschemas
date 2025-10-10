@@ -1,645 +1,246 @@
 {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$id": "https://myrapidi.github.io/jsonschemas/workday_content_all#",
-    "title": "Workday Positions Report Content",
-    "description": "Content schema to read Workday report rows (RaaS). Note: RaaS is read-only (GET). POST/PATCH links are illustrative only.",
-    "type": [
-        "object"
-    ],
-    "definitions": {
-        "context": {
-            "$schema": "http://json-schema.org/draft-04/hyper-schema",
-            "title": "Connection Context",
-            "description": "Connection variables for Workday RaaS (tenant alias and report path).",
-            "stability": "beta",
-            "strictProperties": true,
-            "type": [
-                "object"
-            ],
-            "definitions": {
-                "tenant": {
-                    "description": "Workday tenant alias used in the RaaS path.",
-                    "example": "standardbiotools_preview",
-                    "readOnly": true,
-                    "type": [
-                        "string"
-                    ]
-                },
-                "report_path": {
-                    "description": "Workday report path in Workday (folder/name).",
-                    "example": "ISU_mulesoft/D365_Positions_Report",
-                    "readOnly": true,
-                    "type": [
-                        "string"
-                    ]
-                }
-            },
-            "properties": {
-                "tenant": {
-                    "$ref": "#/definitions/context/definitions/tenant"
-                },
-                "report_path": {
-                    "$ref": "#/definitions/context/definitions/report_path"
-                }
-            }
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/workday_content_all#",
+  "title": "Workday RaaS Content (Aligned to Endpoint Names)",
+  "description": "Content schema to read Workday report rows (RaaS). Each top-level definition matches its Workday endpoint name exactly.",
+  "type": ["object"],
+  "definitions": {
+    "context": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Connection Context",
+      "description": "Connection variables for Workday RaaS (tenant alias and report path).",
+      "stability": "beta",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "tenant": {
+          "description": "Workday tenant alias used in the RaaS path.",
+          "example": "standardbiotools_preview",
+          "readOnly": true,
+          "type": ["string"]
         },
-        "D365_Positions_Report": {
-            "$schema": "http://json-schema.org/draft-04/hyper-schema",
-            "title": "Report Row",
-            "description": "A single row from the Workday Positions report.",
-            "stability": "beta",
-            "strictProperties": true,
-            "type": [
-                "object"
-            ],
-            "definitions": {
-                "Full_Name": {
-                    "description": "Worker's full name.",
-                    "example": "Alicia Gómez",
-                    "readOnly": true,
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Management_Level": {
-                    "description": "Management level per Workday.",
-                    "example": "Manager",
-                    "readOnly": true,
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Effect_Date_for_Current_Pos": {
-                    "description": "Position effective date (YYYY-MM-DD).",
-                    "example": "2025-07-01",
-                    "readOnly": true,
-                    "format": "date",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Position_ID": {
-                    "description": "Unique identifier of the position.",
-                    "example": "POS-00012345",
-                    "readOnly": true,
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Most_Rec_Pos_Change": {
-                    "description": "Most recent position change date (YYYY-MM-DD).",
-                    "example": "2025-08-15",
-                    "readOnly": true,
-                    "format": "date",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Business_Title": {
-                    "description": "Worker's business title.",
-                    "example": "Senior Project Manager",
-                    "readOnly": true,
-                    "type": [
-                        "string"
-                    ]
-                }
-            },
-            "properties": {
-                "Full_Name": {
-                    "$ref": "#/definitions/report/definitions/Full_Name"
-                },
-                "Management_Level": {
-                    "$ref": "#/definitions/report/definitions/Management_Level"
-                },
-                "Effect_Date_for_Current_Pos": {
-                    "$ref": "#/definitions/report/definitions/Effect_Date_for_Current_Pos"
-                },
-                "Position_ID": {
-                    "$ref": "#/definitions/report/definitions/Position_ID"
-                },
-                "Most_Rec_Pos_Change": {
-                    "$ref": "#/definitions/report/definitions/Most_Rec_Pos_Change"
-                },
-                "Business_Title": {
-                    "$ref": "#/definitions/report/definitions/Business_Title"
-                }
-            },
-            "links": [
-                {
-                    "title": "Create",
-                    "description": "Create a new position (illustrative only; RaaS is read-only).",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
-                    "method": "POST",
-                    "rel": "create",
-                    "schema": {
-                        "type": [
-                            "object"
-                        ],
-                        "properties": {
-                            "Full_Name": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Management_Level": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Effect_Date_for_Current_Pos": {
-                                "type": [
-                                    "string"
-                                ],
-                                "format": "date"
-                            },
-                            "Position_ID": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Most_Rec_Pos_Change": {
-                                "type": [
-                                    "string"
-                                ],
-                                "format": "date"
-                            },
-                            "Business_Title": {
-                                "type": [
-                                    "string"
-                                ]
-                            }
-                        }
-                    },
-                    "targetSchema": {
-                        "$ref": "#/definitions/D365_Positions_Report"
-                    }
-                },
-                {
-                    "title": "Update",
-                    "description": "Update an existing position (illustrative only; RaaS is read-only).",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
-                    "method": "PATCH",
-                    "rel": "update",
-                    "schema": {
-                        "type": [
-                            "object"
-                        ],
-                        "properties": {
-                            "Full_Name": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Management_Level": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Effect_Date_for_Current_Pos": {
-                                "type": [
-                                    "string"
-                                ],
-                                "format": "date"
-                            },
-                            "Position_ID": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Most_Rec_Pos_Change": {
-                                "type": [
-                                    "string"
-                                ],
-                                "format": "date"
-                            },
-                            "Business_Title": {
-                                "type": [
-                                    "string"
-                                ]
-                            }
-                        }
-                    },
-                    "targetSchema": {
-                        "$ref": "#/definitions/report"
-                    }
-                },
-                {
-                    "title": "Info",
-                    "description": "Fetch report metadata.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
-                    "method": "GET",
-                    "rel": "self",
-                    "targetSchema": {
-                        "$ref": "#/definitions/D365_Positions_Report"
-                    }
-                },
-                {
-                    "title": "List",
-                    "description": "List existing positions.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
-                    "method": "GET",
-                    "rel": "instances",
-                    "schema": {
-                        "type": [
-                            "object"
-                        ],
-                        "properties": {
-                            "Position_ID": {
-                                "description": "Filter: Position ID (exact match).",
-                                "example": "POS-250103",
-                                "type": [
-                                    "string"
-                                ]
-                            }
-                        }
-                    },
-                    "targetSchema": {
-                        "type": [
-                            "array"
-                        ],
-                        "items": {
-                            "$ref": "#/definitions/D365_Positions_Report"
-                        }
-                    }
-                }
-            ]
-        },
-        "D365_Employee": {
-            "$schema": "http://json-schema.org/draft-04/hyper-schema",
-            "title": "D365_Employee",
-            "description": "Workday RaaS: D365_Employee",
-            "stability": "beta",
-            "strictProperties": true,
-            "type": [
-                "object"
-            ],
-            "definitions": {
-                "Active_Status": {
-                    "title": "Active_Status",
-                    "type": [
-                        "boolean"
-                    ]
-                },
-                "Company": {
-                    "title": "Company",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Cost_Center": {
-                    "title": "Cost_Center",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Cost_Center_-_ID": {
-                    "title": "Cost_Center_-_ID",
-                    "type": [
-                        "integer"
-                    ]
-                },
-                "Employee_ID": {
-                    "title": "Employee_ID",
-                    "type": [
-                        "integer"
-                    ]
-                },
-                "Hire_Date": {
-                    "title": "Hire_Date",
-                    "type": [
-                        "string"
-                    ],
-                    "format": "date"
-                },
-                "Preferred_Name_-_First_Name": {
-                    "title": "Preferred_Name_-_First_Name",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Preferred_Name_-_Last_Name": {
-                    "title": "Preferred_Name_-_Last_Name",
-                    "type": [
-                        "string"
-                    ]
-                }
-            },
-            "properties": {
-                "Active_Status": {
-                    "$ref": "#/definitions/employee_report/definitions/Active_Status"
-                },
-                "Company": {
-                    "$ref": "#/definitions/employee_report/definitions/Company"
-                },
-                "Cost_Center": {
-                    "$ref": "#/definitions/employee_report/definitions/Cost_Center"
-                },
-                "Cost_Center_-_ID": {
-                    "$ref": "#/definitions/employee_report/definitions/Cost_Center_-_ID"
-                },
-                "Employee_ID": {
-                    "$ref": "#/definitions/employee_report/definitions/Employee_ID"
-                },
-                "Hire_Date": {
-                    "$ref": "#/definitions/employee_report/definitions/Hire_Date"
-                },
-                "Preferred_Name_-_First_Name": {
-                    "$ref": "#/definitions/employee_report/definitions/Preferred_Name_-_First_Name"
-                },
-                "Preferred_Name_-_Last_Name": {
-                    "$ref": "#/definitions/employee_report/definitions/Preferred_Name_-_Last_Name"
-                }
-            },
-            "links": [
-                {
-                    "title": "Info",
-                    "description": "Fetch report metadata.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
-                    "method": "GET",
-                    "rel": "self",
-                    "targetSchema": {
-                        "$ref": "#/definitions/D365_Employee"
-                    }
-                },
-                {
-                    "title": "List",
-                    "description": "List existing positions.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
-                    "method": "GET",
-                    "rel": "instances",
-                    "schema": {
-                        "type": [
-                            "object"
-                        ],
-                        "properties": {
-                            "Position_ID": {
-                                "description": "Filter: Position ID (exact match).",
-                                "example": "POS-250103",
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Employee_ID": {
-                                "type": [
-                                    "string"
-                                ]
-                            }
-                        }
-                    },
-                    "targetSchema": {
-                        "items": {
-                            "$ref": "#/definitions/D365_Employee"
-                        },
-                        "type": [
-                            "array"
-                        ]
-                    }
-                }
-            ]
-        },
-        "D365_Position_Worker_Assignment": {
-            "$schema": "http://json-schema.org/draft-04/hyper-schema",
-            "title": "position_worker_assignment_report",
-            "description": "Workday RaaS: D365_Position_Worker_Assignment",
-            "stability": "beta",
-            "strictProperties": true,
-            "type": [
-                "object"
-            ],
-            "definitions": {
-                "Active_Status": {
-                    "title": "Active_Status",
-                    "type": [
-                        "boolean"
-                    ]
-                },
-                "Current_Position_Filled_-_Effective_Date": {
-                    "title": "Current_Position_Filled_-_Effective_Date",
-                    "type": [
-                        "string"
-                    ],
-                    "format": "date"
-                },
-                "Employee_ID": {
-                    "title": "Employee_ID",
-                    "type": [
-                        "integer"
-                    ]
-                },
-                "Last_Functionally_Updated": {
-                    "title": "Last_Functionally_Updated",
-                    "type": [
-                        "date-time"
-                    ]
-                },
-                "Position_ID": {
-                    "title": "Position_ID",
-                    "type": [
-                        "string"
-                    ]
-                }
-            },
-            "properties": {
-                "Active_Status": {
-                    "$ref": "#/definitions/position_worker_assignment_report/definitions/Active_Status"
-                },
-                "Current_Position_Filled_-_Effective_Date": {
-                    "$ref": "#/definitions/position_worker_assignment_report/definitions/Current_Position_Filled_-_Effective_Date"
-                },
-                "Employee_ID": {
-                    "$ref": "#/definitions/position_worker_assignment_report/definitions/Employee_ID"
-                },
-                "Last_Functionally_Updated": {
-                    "$ref": "#/definitions/position_worker_assignment_report/definitions/Last_Functionally_Updated"
-                },
-                "Position_ID": {
-                    "$ref": "#/definitions/position_worker_assignment_report/definitions/Position_ID"
-                }
-            },
-            "links": [
-                {
-                    "title": "Info",
-                    "description": "Fetch report metadata.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
-                    "method": "GET",
-                    "rel": "self",
-                    "targetSchema": {
-                        "$ref": "#/definitions/D365_Position_Worker_Assignment"
-                    }
-                },
-                {
-                    "title": "List",
-                    "description": "List existing positions.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
-                    "method": "GET",
-                    "rel": "instances",
-                    "schema": {
-                        "type": [
-                            "object"
-                        ],
-                        "properties": {
-                            "Position_ID": {
-                                "type": [
-                                    "string"
-                                ]
-                            },
-                            "Employee_ID": {
-                                "type": [
-                                    "string"
-                                ]
-                            }
-                        }
-                    },
-                    "targetSchema": {
-                        "items": {
-                            "$ref": "#/definitions/D365_Position_Worker_Assignment"
-                        },
-                        "type": [
-                            "array"
-                        ]
-                    }
-                }
-            ]
-        },
-        "D365_Position_Hierarchies": {
-            "$schema": "http://json-schema.org/draft-04/hyper-schema",
-            "title": "position_hierarchies_report",
-            "description": "Workday RaaS: D365_Position_Hierarchies",
-            "stability": "beta",
-            "strictProperties": true,
-            "type": [
-                "object"
-            ],
-            "definitions": {
-                "Active_Status": {
-                    "title": "Active_Status",
-                    "type": [
-                        "boolean"
-                    ]
-                },
-                "Full_Name": {
-                    "title": "Full_Name",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "HIERARCHYTYPENAME": {
-                    "title": "HIERARCHYTYPENAME",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Position_ID": {
-                    "title": "Position_ID",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "VALIDFROM": {
-                    "title": "VALIDFROM",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "VALIDTO": {
-                    "title": "VALIDTO",
-                    "type": [
-                        "string"
-                    ]
-                },
-                "Manager_Most_Rec_POS_Change": {
-                    "title": "Manager_Most_Rec_POS_Change",
-                    "type": [
-                        "string"
-                    ],
-                    "format": "date"
-                },
-                "Manager_POS_ID": {
-                    "title": "Manager_POS_ID",
-                    "type": [
-                        "string"
-                    ]
-                }
-            },
-            "properties": {
-                "Active_Status": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/Active_Status"
-                },
-                "Full_Name": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/Full_Name"
-                },
-                "HIERARCHYTYPENAME": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/HIERARCHYTYPENAME"
-                },
-                "Position_ID": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/Position_ID"
-                },
-                "VALIDFROM": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/VALIDFROM"
-                },
-                "VALIDTO": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/VALIDTO"
-                },
-                "Manager_Most_Rec_POS_Change": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/Manager_Most_Rec_POS_Change"
-                },
-                "Manager_POS_ID": {
-                    "$ref": "#/definitions/position_hierarchies_report/definitions/Manager_POS_ID"
-                }
-            },
-            "links": [
-                {
-                    "title": "Info",
-                    "description": "Fetch report metadata.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-                    "method": "GET",
-                    "rel": "self",
-                    "targetSchema": {
-                        "$ref": "#/definitions/D365_Position_Hierarchies"
-                    }
-                },
-                {
-                    "title": "List",
-                    "description": "List existing positions.",
-                    "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-                    "method": "GET",
-                    "rel": "instances",
-                    "schema": {
-                        "type": [
-                            "object"
-                        ],
-                        "properties": {
-                            "Position_ID": {
-                                "type": [
-                                    "string"
-                                ]
-                            }
-                        }
-                    },
-                    "targetSchema": {
-                        "items": {
-                            "$ref": "#/definitions/D365_Position_Hierarchies"
-                        },
-                        "type": [
-                            "array"
-                        ]
-                    }
-                }
-            ]
+        "report_path": {
+          "description": "Workday report path in Workday (folder/name).",
+          "example": "ISU_mulesoft/D365_Positions_Report",
+          "readOnly": true,
+          "type": ["string"]
         }
+      },
+      "properties": {
+        "tenant": { "$ref": "#/definitions/context/definitions/tenant" },
+        "report_path": { "$ref": "#/definitions/context/definitions/report_path" }
+      }
     },
-    "properties": {
-        "report": {
-            "$ref": "#/definitions/D365_Positions_Report"
+
+    "D365_Positions_Report": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "D365_Positions_Report",
+      "description": "A single row from the Workday Positions report.",
+      "stability": "beta",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "Full_Name": { "description": "Worker's full name.", "example": "Alicia Gómez", "readOnly": true, "type": ["string"] },
+        "Management_Level": { "description": "Management level per Workday.", "example": "Manager", "readOnly": true, "type": ["string"] },
+        "Effect_Date_for_Current_Pos": { "description": "Position effective date (YYYY-MM-DD).", "example": "2025-07-01", "readOnly": true, "format": "date", "type": ["string"] },
+        "Position_ID": { "description": "Unique identifier of the position.", "example": "POS-00012345", "readOnly": true, "type": ["string"] },
+        "Most_Rec_Pos_Change": { "description": "Most recent position change date (YYYY-MM-DD).", "example": "2025-08-15", "readOnly": true, "format": "date", "type": ["string"] },
+        "Business_Title": { "description": "Worker's business title.", "example": "Senior Project Manager", "readOnly": true, "type": ["string"] }
+      },
+      "properties": {
+        "Full_Name": { "$ref": "#/definitions/D365_Positions_Report/definitions/Full_Name" },
+        "Management_Level": { "$ref": "#/definitions/D365_Positions_Report/definitions/Management_Level" },
+        "Effect_Date_for_Current_Pos": { "$ref": "#/definitions/D365_Positions_Report/definitions/Effect_Date_for_Current_Pos" },
+        "Position_ID": { "$ref": "#/definitions/D365_Positions_Report/definitions/Position_ID" },
+        "Most_Rec_Pos_Change": { "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Rec_Pos_Change" },
+        "Business_Title": { "$ref": "#/definitions/D365_Positions_Report/definitions/Business_Title" }
+      },
+      "links": [
+        {
+          "title": "Info",
+          "description": "Fetch report metadata.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": { "$ref": "#/definitions/D365_Positions_Report" }
         },
-        "employee_report": {
-            "$ref": "#/definitions/D365_Employee"
-        },
-        "position_worker_assignment_report": {
-            "$ref": "#/definitions/D365_Position_Worker_Assignment"
-        },
-        "position_hierarchies_report": {
-            "$ref": "#/definitions/D365_Position_Hierarchies"
+        {
+          "title": "List",
+          "description": "List existing positions.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "Position_ID": { "description": "Filter: Position ID (exact match).", "example": "POS-250103", "type": ["string"] }
+            }
+          },
+          "targetSchema": { "type": ["array"], "items": { "$ref": "#/definitions/D365_Positions_Report" } }
         }
+      ]
+    },
+
+    "D365_Employee": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "D365_Employee",
+      "description": "Workday RaaS: D365_Employee",
+      "stability": "beta",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "Active_Status": { "title": "Active_Status", "type": ["string"] },
+        "Company": { "title": "Company", "type": ["string"] },
+        "Cost_Center": { "title": "Cost_Center", "type": ["string"] },
+        "Cost_Center_-_ID": { "title": "Cost_Center_-_ID", "type": ["string"] },
+        "Employee_ID": { "title": "Employee_ID", "type": ["string"] },
+        "Hire_Date": { "title": "Hire_Date", "type": ["string"], "format": "date" },
+        "Preferred_Name_-_First_Name": { "title": "Preferred_Name_-_First_Name", "type": ["string"] },
+        "Preferred_Name_-_Last_Name": { "title": "Preferred_Name_-_Last_Name", "type": ["string"] }
+      },
+      "properties": {
+        "Active_Status": { "$ref": "#/definitions/D365_Employee/definitions/Active_Status" },
+        "Company": { "$ref": "#/definitions/D365_Employee/definitions/Company" },
+        "Cost_Center": { "$ref": "#/definitions/D365_Employee/definitions/Cost_Center" },
+        "Cost_Center_-_ID": { "$ref": "#/definitions/D365_Employee/definitions/Cost_Center_-_ID" },
+        "Employee_ID": { "$ref": "#/definitions/D365_Employee/definitions/Employee_ID" },
+        "Hire_Date": { "$ref": "#/definitions/D365_Employee/definitions/Hire_Date" },
+        "Preferred_Name_-_First_Name": { "$ref": "#/definitions/D365_Employee/definitions/Preferred_Name_-_First_Name" },
+        "Preferred_Name_-_Last_Name": { "$ref": "#/definitions/D365_Employee/definitions/Preferred_Name_-_Last_Name" }
+      },
+      "links": [
+        {
+          "title": "Info",
+          "description": "Fetch report metadata.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": { "$ref": "#/definitions/D365_Employee" }
+        },
+        {
+          "title": "List",
+          "description": "List employees.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "Position_ID": { "description": "Optional filter.", "type": ["string"] },
+              "Employee_ID": { "type": ["string"] }
+            }
+          },
+          "targetSchema": { "type": ["array"], "items": { "$ref": "#/definitions/D365_Employee" } }
+        }
+      ]
+    },
+
+    "D365_Position_Worker_Assignment": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "D365_Position_Worker_Assignment",
+      "description": "Workday RaaS: D365_Position_Worker_Assignment",
+      "stability": "beta",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "Active_Status": { "title": "Active_Status", "type": ["string"] },
+        "Current_Position_Filled_-_Effective_Date": { "title": "Current_Position_Filled_-_Effective_Date", "type": ["string"], "format": "date" },
+        "Employee_ID": { "title": "Employee_ID", "type": ["string"] },
+        "Last_Functionally_Updated": { "title": "Last_Functionally_Updated", "type": ["string"] },
+        "Position_ID": { "title": "Position_ID", "type": ["string"] }
+      },
+      "properties": {
+        "Active_Status": { "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Active_Status" },
+        "Current_Position_Filled_-_Effective_Date": { "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Current_Position_Filled_-_Effective_Date" },
+        "Employee_ID": { "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Employee_ID" },
+        "Last_Functionally_Updated": { "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Last_Functionally_Updated" },
+        "Position_ID": { "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Position_ID" }
+      },
+      "links": [
+        {
+          "title": "Info",
+          "description": "Fetch report metadata.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": { "$ref": "#/definitions/D365_Position_Worker_Assignment" }
+        },
+        {
+          "title": "List",
+          "description": "List position-worker assignments.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "Position_ID": { "type": ["string"] },
+              "Employee_ID": { "type": ["string"] }
+            }
+          },
+          "targetSchema": { "type": ["array"], "items": { "$ref": "#/definitions/D365_Position_Worker_Assignment" } }
+        }
+      ]
+    },
+
+    "D365_Position_Hierarchies": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "D365_Position_Hierarchies",
+      "description": "Workday RaaS: D365_Position_Hierarchies",
+      "stability": "beta",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "Active_Status": { "title": "Active_Status", "type": ["string"] },
+        "Full_Name": { "title": "Full_Name", "type": ["string"] },
+        "HIERARCHYTYPENAME": { "title": "HIERARCHYTYPENAME", "type": ["string"] },
+        "Position_ID": { "title": "Position_ID", "type": ["string"] },
+        "VALIDFROM": { "title": "VALIDFROM", "type": ["string"] },
+        "VALIDTO": { "title": "VALIDTO", "type": ["string"] },
+        "Manager_Most_Rec_POS_Change": { "title": "Manager_Most_Rec_POS_Change", "type": ["string"], "format": "date" },
+        "Manager_POS_ID": { "title": "Manager_POS_ID", "type": ["string"] }
+      },
+      "properties": {
+        "Active_Status": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Active_Status" },
+        "Full_Name": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Full_Name" },
+        "HIERARCHYTYPENAME": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/HIERARCHYTYPENAME" },
+        "Position_ID": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Position_ID" },
+        "VALIDFROM": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/VALIDFROM" },
+        "VALIDTO": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/VALIDTO" },
+        "Manager_Most_Rec_POS_Change": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_Most_Rec_POS_Change" },
+        "Manager_POS_ID": { "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_POS_ID" }
+      },
+      "links": [
+        {
+          "title": "Info",
+          "description": "Fetch report metadata.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": { "$ref": "#/definitions/D365_Position_Hierarchies" }
+        },
+        {
+          "title": "List",
+          "description": "List position hierarchies.",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "Position_ID": { "type": ["string"] }
+            }
+          },
+          "targetSchema": { "type": ["array"], "items": { "$ref": "#/definitions/D365_Position_Hierarchies" } }
+        }
+      ]
     }
+  },
+
+  "properties": {
+    "D365_Positions_Report": { "$ref": "#/definitions/D365_Positions_Report" },
+    "D365_Employee": { "$ref": "#/definitions/D365_Employee" },
+    "D365_Position_Worker_Assignment": { "$ref": "#/definitions/D365_Position_Worker_Assignment" },
+    "D365_Position_Hierarchies": { "$ref": "#/definitions/D365_Position_Hierarchies" }
+  }
 }
