@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/workday_content_all#",
   "title": "Workday RaaS Content (All Reports)",
   "description": "Content file with explicit links for Employee, Position Worker Assignment, and Position Hierarchies. RaaS is read-only (GET).",
   "context": {
