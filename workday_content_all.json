@@ -43,7 +43,7 @@
                 }
             }
         },
-        "report": {
+        "D365_Positions_Report": {
             "$schema": "http://json-schema.org/draft-04/hyper-schema",
             "title": "Report Row",
             "description": "A single row from the Workday Positions report.",
@@ -171,7 +171,7 @@
                         }
                     },
                     "targetSchema": {
-                        "$ref": "#/definitions/report"
+                        "$ref": "#/definitions/D365_Positions_Report"
                     }
                 },
                 {
@@ -230,7 +230,7 @@
                     "method": "GET",
                     "rel": "self",
                     "targetSchema": {
-                        "$ref": "#/definitions/report"
+                        "$ref": "#/definitions/D365_Positions_Report"
                     }
                 },
                 {
@@ -258,15 +258,15 @@
                             "array"
                         ],
                         "items": {
-                            "$ref": "#/definitions/report"
+                            "$ref": "#/definitions/D365_Positions_Report"
                         }
                     }
                 }
             ]
         },
-        "employee_report": {
+        "D365_Employee": {
             "$schema": "http://json-schema.org/draft-04/hyper-schema",
-            "title": "employee_report",
+            "title": "D365_Employee",
             "description": "Workday RaaS: D365_Employee",
             "stability": "beta",
             "strictProperties": true,
@@ -277,7 +277,7 @@
                 "Active_Status": {
                     "title": "Active_Status",
                     "type": [
-                        "string"
+                        "boolean"
                     ]
                 },
                 "Company": {
@@ -295,13 +295,13 @@
                 "Cost_Center_-_ID": {
                     "title": "Cost_Center_-_ID",
                     "type": [
-                        "string"
+                        "integer"
                     ]
                 },
                 "Employee_ID": {
                     "title": "Employee_ID",
                     "type": [
-                        "string"
+                        "integer"
                     ]
                 },
                 "Hire_Date": {
@@ -358,7 +358,7 @@
                     "method": "GET",
                     "rel": "self",
                     "targetSchema": {
-                        "$ref": "#/definitions/report"
+                        "$ref": "#/definitions/D365_Employee"
                     }
                 },
                 {
@@ -388,7 +388,7 @@
                     },
                     "targetSchema": {
                         "items": {
-                            "$ref": "#/definitions/employee_report"
+                            "$ref": "#/definitions/D365_Employee"
                         },
                         "type": [
                             "array"
@@ -397,7 +397,7 @@
                 }
             ]
         },
-        "position_worker_assignment_report": {
+        "D365_Position_Worker_Assignment": {
             "$schema": "http://json-schema.org/draft-04/hyper-schema",
             "title": "position_worker_assignment_report",
             "description": "Workday RaaS: D365_Position_Worker_Assignment",
@@ -464,7 +464,7 @@
                     "method": "GET",
                     "rel": "self",
                     "targetSchema": {
-                        "$ref": "#/definitions/report"
+                        "$ref": "#/definitions/D365_Position_Worker_Assignment"
                     }
                 },
                 {
@@ -492,7 +492,7 @@
                     },
                     "targetSchema": {
                         "items": {
-                            "$ref": "#/definitions/position_worker_assignment_report"
+                            "$ref": "#/definitions/D365_Position_Worker_Assignment"
                         },
                         "type": [
                             "array"
@@ -501,7 +501,7 @@
                 }
             ]
         },
-        "position_hierarchies_report": {
+        "D365_Position_Hierarchies": {
             "$schema": "http://json-schema.org/draft-04/hyper-schema",
             "title": "position_hierarchies_report",
             "description": "Workday RaaS: D365_Position_Hierarchies",
@@ -595,7 +595,7 @@
                     "method": "GET",
                     "rel": "self",
                     "targetSchema": {
-                        "$ref": "#/definitions/report"
+                        "$ref": "#/definitions/D365_Position_Hierarchies"
                     }
                 },
                 {
@@ -618,7 +618,7 @@
                     },
                     "targetSchema": {
                         "items": {
-                            "$ref": "#/definitions/position_hierarchies_report"
+                            "$ref": "#/definitions/D365_Position_Hierarchies"
                         },
                         "type": [
                             "array"
@@ -630,16 +630,16 @@
     },
     "properties": {
         "report": {
-            "$ref": "#/definitions/report"
+            "$ref": "#/definitions/D365_Positions_Report"
         },
         "employee_report": {
-            "$ref": "#/definitions/employee_report"
+            "$ref": "#/definitions/D365_Employee"
         },
         "position_worker_assignment_report": {
-            "$ref": "#/definitions/position_worker_assignment_report"
+            "$ref": "#/definitions/D365_Position_Worker_Assignment"
         },
         "position_hierarchies_report": {
-            "$ref": "#/definitions/position_hierarchies_report"
+            "$ref": "#/definitions/D365_Position_Hierarchies"
         }
     }
 }
