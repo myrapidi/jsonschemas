@@ -92,8 +92,8 @@
         "Active_Status": { "title": "Active_Status", "type": ["boolean"] },
         "Company": { "title": "Company", "type": ["string"] },
         "Cost_Center": { "title": "Cost_Center", "type": ["string"] },
-        "Cost_Center_-_ID": { "title": "Cost_Center_-_ID", "type": ["integer"] },
-        "Employee_ID": { "title": "Employee_ID", "type": ["integer"] },
+        "Cost_Center_-_ID": { "title": "Cost_Center_-_ID", "type": ["string"] },
+        "Employee_ID": { "title": "Employee_ID", "type": ["string"] },
         "Hire_Date": { "title": "Hire_Date", "type": ["string"], "format": "date" },
         "Preferred_Name_-_First_Name": { "title": "Preferred_Name_-_First_Name", "type": ["string"] },
         "Preferred_Name_-_Last_Name": { "title": "Preferred_Name_-_Last_Name", "type": ["string"] }
@@ -127,7 +127,7 @@
             "type": ["object"],
             "properties": {
               "Position_ID": { "description": "Optional filter.", "type": ["string"] },
-              "Employee_ID": { "type": ["integer"] }
+              "Employee_ID": { "type": ["string"] }
             }
           },
           "targetSchema": { "type": ["array"], "items": { "$ref": "#/definitions/D365_Employee" } }
@@ -145,7 +145,7 @@
       "definitions": {
         "Active_Status": { "title": "Active_Status", "type": ["boolean"] },
         "Current_Position_Filled_-_Effective_Date": { "title": "Current_Position_Filled_-_Effective_Date", "type": ["string"], "format": "date" },
-        "Employee_ID": { "title": "Employee_ID", "type": ["integer"] },
+        "Employee_ID": { "title": "Employee_ID", "type": ["string"] },
         "Last_Functionally_Updated": { "title": "Last_Functionally_Updated", "type": ["string"] },
         "Position_ID": { "title": "Position_ID", "type": ["string"] }
       },
