@@ -1,15 +1,17 @@
 {
-  "title": "Workday RaaS Content (Tables Exposed)",
-  "description": "Exposes top-level properties (tables) so Rapidi can Read Design. Each table maps to one Workday RaaS report.",
+  "title": "Workday RaaS Content",
+  "description": "Exposes three tables with inline field lists. targetSchema mirrors Workday's { Report_Entry: [...] } payload so 'Read Design' can detect fields.",
   "type": "object",
   "context": {
     "tenant": "standardbiotools_preview",
     "folder": "ISU_mulesoft"
   },
-  "definitions": {
-    "reports": {
-      "D365_Employee": {
-        "title": "D365_Employee Row",
+  "properties": {
+    "D365_Employee": {
+      "title": "D365_Employee",
+      "description": "Table for D365_Employee (Workday RaaS). Response wraps rows in Report_Entry[].",
+      "type": "array",
+      "items": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -43,8 +45,70 @@
           "Employee_ID"
         ]
       },
-      "D365_Position_Worker_Assignment": {
-        "title": "D365_Position_Worker_Assignment Row",
+      "primaryKey": [
+        "Employee_ID"
+      ],
+      "links": [
+        {
+          "title": "List D365_Employee",
+          "description": "Fetch rows (append filters as needed).",
+          "rel": "instances",
+          "method": "GET",
+          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
+          "targetSchema": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "Report_Entry": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "Active_Status": {
+                      "type": "string"
+                    },
+                    "Company": {
+                      "type": "string"
+                    },
+                    "Cost_Center": {
+                      "type": "string"
+                    },
+                    "Cost_Center_-_ID": {
+                      "type": "string"
+                    },
+                    "Employee_ID": {
+                      "type": "string"
+                    },
+                    "Hire_Date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "Preferred_Name_-_First_Name": {
+                      "type": "string"
+                    },
+                    "Preferred_Name_-_Last_Name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Employee_ID"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "Report_Entry"
+            ]
+          }
+        }
+      ]
+    },
+    "D365_Position_Worker_Assignment": {
+      "title": "D365_Position_Worker_Assignment",
+      "description": "Table for D365_Position_Worker_Assignment (Workday RaaS). Response wraps rows in Report_Entry[].",
+      "type": "array",
+      "items": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -70,8 +134,62 @@
           "Position_ID"
         ]
       },
-      "D365_Position_Hierarchies": {
-        "title": "D365_Position_Hierarchies Row",
+      "primaryKey": [
+        "Position_ID"
+      ],
+      "links": [
+        {
+          "title": "List D365_Position_Worker_Assignment",
+          "description": "Fetch rows (append filters as needed).",
+          "rel": "instances",
+          "method": "GET",
+          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
+          "targetSchema": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "Report_Entry": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "Active_Status": {
+                      "type": "string"
+                    },
+                    "Current_Position_Filled_-_Effective_Date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "Employee_ID": {
+                      "type": "string"
+                    },
+                    "Last_Functionally_Updated": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "Position_ID": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Position_ID"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "Report_Entry"
+            ]
+          }
+        }
+      ]
+    },
+    "D365_Position_Hierarchies": {
+      "title": "D365_Position_Hierarchies",
+      "description": "Table for D365_Position_Hierarchies (Workday RaaS). Response wraps rows in Report_Entry[].",
+      "type": "array",
+      "items": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -113,68 +231,6 @@
         "required": [
           "Position_ID"
         ]
-      }
-    }
-  },
-  "properties": {
-    "D365_Employee": {
-      "title": "D365_Employee",
-      "description": "Table for D365_Employee RaaS entries (GET-only).",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/reports/D365_Employee"
-      },
-      "primaryKey": [
-        "Employee_ID"
-      ],
-      "links": [
-        {
-          "title": "List D365_Employee",
-          "description": "Fetch rows (append filters as needed).",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Employee?format=json",
-          "method": "GET",
-          "rel": "instances",
-          "targetSchema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/reports/D365_Employee"
-            }
-          }
-        }
-      ]
-    },
-    "D365_Position_Worker_Assignment": {
-      "title": "D365_Position_Worker_Assignment",
-      "description": "Table for D365_Position_Worker_Assignment RaaS entries (GET-only).",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
-      },
-      "primaryKey": [
-        "Position_ID"
-      ],
-      "links": [
-        {
-          "title": "List D365_Position_Worker_Assignment",
-          "description": "Fetch rows (append filters as needed).",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Worker_Assignment?format=json",
-          "method": "GET",
-          "rel": "instances",
-          "targetSchema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/reports/D365_Position_Worker_Assignment"
-            }
-          }
-        }
-      ]
-    },
-    "D365_Position_Hierarchies": {
-      "title": "D365_Position_Hierarchies",
-      "description": "Table for D365_Position_Hierarchies RaaS entries (GET-only).",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/reports/D365_Position_Hierarchies"
       },
       "primaryKey": [
         "Position_ID"
@@ -183,18 +239,67 @@
         {
           "title": "List D365_Position_Hierarchies",
           "description": "Fetch rows (append filters as needed).",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
-          "method": "GET",
           "rel": "instances",
+          "method": "GET",
+          "href": "/ccx/service/customreport2/{tenant}/{folder}/D365_Position_Hierarchies?format=json",
           "targetSchema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/reports/D365_Position_Hierarchies"
-            }
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "Report_Entry": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "Active_Status": {
+                      "type": "string"
+                    },
+                    "Full_Name": {
+                      "type": "string"
+                    },
+                    "HIERARCHYTYPENAME": {
+                      "type": "string"
+                    },
+                    "Manager_s_Position_group": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "Manager_Most_Rec_POS_Change": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "Manager_POS_ID": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "Position_ID": {
+                      "type": "string"
+                    },
+                    "VALIDFROM": {
+                      "type": "string"
+                    },
+                    "VALIDTO": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Position_ID"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "Report_Entry"
+            ]
           }
         }
       ]
     }
   },
-  "generated_at": "2025-10-10T10:44:30.331801Z"
+  "generated_at": "2025-10-10T10:57:46.218422Z"
 }
