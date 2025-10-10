@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "https://myrapidi.github.io/jsonschemas/Workday#",
-  "title": "Workday RaaS Schema (All Reports)",
-  "description": "Unified schema for Workday RaaS reports (Employee, Position Worker Assignment, Position Hierarchies). Uses dynamic placeholders in URLs and is read-only (GET). POST/PATCH links are illustrative only.",
+  "title": "Workday Positions Report",
+  "description": "Workday RaaS schema for WD_D365_Positions_Report. Note: Workday RaaS is read-only (GET). POST/PATCH links are illustrative and will not work against RaaS.",
   "type": [
     "object"
   ],
@@ -25,25 +25,12 @@
             "string"
           ]
         },
-        "folder": {
-          "description": "Workday report folder.",
-          "example": "ISU_mulesoft",
+        "report_path": {
+          "description": "Workday report path in Workday (folder/name).",
+          "example": "ISU_mulesoft/D365_Positions_Report",
           "readOnly": true,
           "type": [
             "string"
-          ]
-        },
-        "Report_Name": {
-          "description": "Workday report name (dynamic).",
-          "example": "D365_Employee",
-          "readOnly": true,
-          "type": [
-            "string"
-          ],
-          "enum": [
-            "D365_Employee",
-            "D365_Position_Worker_Assignment",
-            "D365_Position_Hierarchies"
           ]
         }
       },
@@ -51,11 +38,8 @@
         "tenant": {
           "$ref": "#/definitions/context/definitions/tenant"
         },
-        "folder": {
-          "$ref": "#/definitions/context/definitions/folder"
-        },
-        "Report_Name": {
-          "$ref": "#/definitions/context/definitions/Report_Name"
+        "report_path": {
+          "$ref": "#/definitions/context/definitions/report_path"
         }
       }
     },
@@ -144,7 +128,7 @@
         {
           "title": "Info",
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -154,7 +138,7 @@
         {
           "title": "List",
           "description": "List report rows with optional query parameters.",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -190,7 +174,7 @@
         {
           "title": "Create",
           "description": "Create a new Position (illustrative only; RaaS is read-only).",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "POST",
           "rel": "create",
           "schema": {
@@ -239,7 +223,7 @@
         {
           "title": "Update",
           "description": "Update an existing Position (illustrative only; RaaS is read-only).",
-          "href": "/ccx/service/customreport2/{tenant}/{folder}/{Report_Name}?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report",
           "method": "PATCH",
           "rel": "update",
           "schema": {
