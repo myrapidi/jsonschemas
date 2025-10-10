@@ -43,7 +43,7 @@
         }
       }
     },
-    "report": {
+    "D365_Positions_Report": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Report",
       "description": "Rows for the Workday Positions RaaS report.",
@@ -132,7 +132,7 @@
           "method": "GET",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/report"
+            "$ref": "#/definitions/D365_Positions_Report"
           }
         },
         {
@@ -167,7 +167,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/definitions/report"
+              "$ref": "#/definitions/D365_Positions_Report"
             }
           }
         },
@@ -217,7 +217,7 @@
             }
           },
           "targetSchema": {
-            "$ref": "#/definitions/report"
+            "$ref": "#/definitions/D365_Positions_Report"
           }
         },
         {
@@ -266,7 +266,7 @@
             }
           },
           "targetSchema": {
-            "$ref": "#/definitions/report"
+            "$ref": "#/definitions/D365_Positions_Report"
           }
         }
       ]
@@ -274,7 +274,7 @@
   },
   "properties": {
     "report": {
-      "$ref": "#/definitions/report"
+      "$ref": "#/definitions/D365_Positions_Report"
     }
   },
   "links": [
