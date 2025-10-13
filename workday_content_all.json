@@ -95,7 +95,7 @@
             "string"
           ]
         },
-        "Most_Rec_Pos_Change_start": {
+        "Most_Recent_Position_Change_start": {
           "description": "Most recent position change date (YYYY-MM-DD).",
           "example": "2025-08-15",
           "readOnly": true,
@@ -129,8 +129,8 @@
         "Most_Rec_Pos_Change": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Rec_Pos_Change"
         },
-        "Most_Rec_Pos_Change_start": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Rec_Pos_Change_start"
+        "Most_Recent_Position_Change_start": {
+          "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Recent_Position_Change_start"
         },
         "Business_Title": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Business_Title"
