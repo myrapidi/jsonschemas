@@ -73,12 +73,23 @@
           "schema": {
             "type": ["object"],
             "properties": {
-              "Position_ID": { "description": "Filter: Position ID (exact match).", "example": "POS-250103", "type": ["string"] }
+              "Position_ID": { 
+                "description": "Filter: Position ID (exact match).",
+                "example": "POS-250103", 
+                "type": "string"
+              },
+              "Most_Recent_Position_Change_start" :{
+                "description": "Most Recent Position Start Prompt",
+                "example":"2025-10-09",
+                "type":"String",
+                "format":"date"
+              }
             }
           },
-          "targetSchema": { "type": ["array"], "items": { "$ref": "#/definitions/D365_Positions_Report" } }
+          "targetSchema": { 
+            "type": "array", 
+            "items": { "$ref": "#/definitions/D365_Positions_Report" }
         }
-      ]
     },
 
     "D365_Employee": {
