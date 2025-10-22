@@ -89,83 +89,70 @@
     }
   },
   "properties": {
-    "Dayforce_Timesheet": { "$ref": "#/definitions/Dayforce_Timesheet" },
-    "Dayforce_EmployeeRawPunches": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" },
-    "Dayforce_PayAdjustments": { "$ref": "#/definitions/Dayforce_PayAdjustments" },
-    "Dayforce_EmployeePayAdjustXRefCode": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustXRefCode" }
+    "Dayforce_Timesheet": {
+      "allOf": [ { "$ref": "#/definitions/Dayforce_Timesheet" } ],
+      "examples": [
+        {
+          "TimesheetId": "TS12345",
+          "EmployeeId": "E1001",
+          "StartDate": "2025-10-20",
+          "EndDate": "2025-10-26",
+          "Status": "Open",
+          "TotalHours": 40
+        }
+      ]
+    },
+    "Dayforce_EmployeeRawPunches": {
+      "allOf": [ { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } ],
+      "examples": [
+        {
+          "PunchId": "P12345",
+          "EmployeeId": "E1001",
+          "PunchDateTime": "2025-10-20T08:00:00",
+          "PunchType": "ClockIn"
+        }
+      ]
+    },
+    "Dayforce_PayAdjustments": {
+      "allOf": [ { "$ref": "#/definitions/Dayforce_PayAdjustments" } ],
+      "examples": [
+        {
+          "EmployeePayAdjustXRefCode": "PA12345",
+          "EmployeeXRefCode": "E1001",
+          "PayAdjustmentCodeXRefCode": "LOA_ICI",
+          "Hours": 8,
+          "Amount": 0
+        }
+      ]
+    },
+    "Dayforce_EmployeePayAdjustXRefCode": {
+      "allOf": [ { "$ref": "#/definitions/Dayforce_EmployeePayAdjustXRefCode" } ],
+      "examples": [
+        {
+          "EmployeePayAdjustXRefCode": "PA12345",
+          "EmployeeXRefCode": "E1001",
+          "PayAdjustmentCodeXRefCode": "LOA_ICI",
+          "Hours": 8,
+          "Amount": 0
+        }
+      ]
+    }
   },
   "links": [
-    {
-      "rel": "get",
-      "href": "/Dayforce_Timesheet",
-      "method": "GET",
-      "description": "Retrieve timesheet records."
-    },
-    {
-      "rel": "create",
-      "href": "/Dayforce_Timesheet",
-      "method": "POST",
-      "description": "Insert a new timesheet."
-    },
-    {
-      "rel": "update",
-      "href": "/Dayforce_Timesheet/{TimesheetId}",
-      "method": "PUT",
-      "description": "Update an existing timesheet."
-    },
-    {
-      "rel": "get",
-      "href": "/Dayforce_EmployeeRawPunches",
-      "method": "GET",
-      "description": "Retrieve employee raw punches."
-    },
-    {
-      "rel": "create",
-      "href": "/Dayforce_EmployeeRawPunches",
-      "method": "POST",
-      "description": "Insert new raw punches."
-    },
-    {
-      "rel": "update",
-      "href": "/Dayforce_EmployeeRawPunches/{PunchId}",
-      "method": "PUT",
-      "description": "Update an existing raw punch."
-    },
-    {
-      "rel": "get",
-      "href": "/Dayforce_PayAdjustments",
-      "method": "GET",
-      "description": "Retrieve pay adjustments."
-    },
-    {
-      "rel": "create",
-      "href": "/Dayforce_PayAdjustments",
-      "method": "POST",
-      "description": "Insert new pay adjustment."
-    },
-    {
-      "rel": "update",
-      "href": "/Dayforce_PayAdjustments/{EmployeePayAdjustXRefCode}",
-      "method": "PUT",
-      "description": "Update an existing pay adjustment."
-    },
-    {
-      "rel": "get",
-      "href": "/Dayforce_EmployeePayAdjustXRefCode",
-      "method": "GET",
-      "description": "Retrieve Employee Pay Adjustment XRef codes."
-    },
-    {
-      "rel": "create",
-      "href": "/Dayforce_EmployeePayAdjustXRefCode",
-      "method": "POST",
-      "description": "Insert a new Employee Pay Adjustment XRef code."
-    },
-    {
-      "rel": "update",
-      "href": "/Dayforce_EmployeePayAdjustXRefCode/{EmployeePayAdjustXRefCode}",
-      "method": "PUT",
-      "description": "Update an existing Employee Pay Adjustment XRef code."
-    }
+    { "rel": "get", "href": "/Dayforce_Timesheet", "method": "GET" },
+    { "rel": "create", "href": "/Dayforce_Timesheet", "method": "POST" },
+    { "rel": "update", "href": "/Dayforce_Timesheet/{TimesheetId}", "method": "PUT" },
+
+    { "rel": "get", "href": "/Dayforce_EmployeeRawPunches", "method": "GET" },
+    { "rel": "create", "href": "/Dayforce_EmployeeRawPunches", "method": "POST" },
+    { "rel": "update", "href": "/Dayforce_EmployeeRawPunches/{PunchId}", "method": "PUT" },
+
+    { "rel": "get", "href": "/Dayforce_PayAdjustments", "method": "GET" },
+    { "rel": "create", "href": "/Dayforce_PayAdjustments", "method": "POST" },
+    { "rel": "update", "href": "/Dayforce_PayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PUT" },
+
+    { "rel": "get", "href": "/Dayforce_EmployeePayAdjustXRefCode", "method": "GET" },
+    { "rel": "create", "href": "/Dayforce_EmployeePayAdjustXRefCode", "method": "POST" },
+    { "rel": "update", "href": "/Dayforce_EmployeePayAdjustXRefCode/{EmployeePayAdjustXRefCode}", "method": "PUT" }
   ]
 }
