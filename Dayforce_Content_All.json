@@ -95,9 +95,77 @@
     "Dayforce_EmployeePayAdjustXRefCode": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustXRefCode" }
   },
   "links": [
-    { "rel": "self", "href": "/Dayforce_Timesheet" },
-    { "rel": "self", "href": "/Dayforce_EmployeeRawPunches" },
-    { "rel": "self", "href": "/Dayforce_PayAdjustments" },
-    { "rel": "self", "href": "/Dayforce_EmployeePayAdjustXRefCode" }
+    {
+      "rel": "get",
+      "href": "/Dayforce_Timesheet",
+      "method": "GET",
+      "description": "Retrieve timesheet records."
+    },
+    {
+      "rel": "create",
+      "href": "/Dayforce_Timesheet",
+      "method": "POST",
+      "description": "Insert a new timesheet."
+    },
+    {
+      "rel": "update",
+      "href": "/Dayforce_Timesheet/{TimesheetId}",
+      "method": "PUT",
+      "description": "Update an existing timesheet."
+    },
+    {
+      "rel": "get",
+      "href": "/Dayforce_EmployeeRawPunches",
+      "method": "GET",
+      "description": "Retrieve employee raw punches."
+    },
+    {
+      "rel": "create",
+      "href": "/Dayforce_EmployeeRawPunches",
+      "method": "POST",
+      "description": "Insert new raw punches."
+    },
+    {
+      "rel": "update",
+      "href": "/Dayforce_EmployeeRawPunches/{PunchId}",
+      "method": "PUT",
+      "description": "Update an existing raw punch."
+    },
+    {
+      "rel": "get",
+      "href": "/Dayforce_PayAdjustments",
+      "method": "GET",
+      "description": "Retrieve pay adjustments."
+    },
+    {
+      "rel": "create",
+      "href": "/Dayforce_PayAdjustments",
+      "method": "POST",
+      "description": "Insert new pay adjustment."
+    },
+    {
+      "rel": "update",
+      "href": "/Dayforce_PayAdjustments/{EmployeePayAdjustXRefCode}",
+      "method": "PUT",
+      "description": "Update an existing pay adjustment."
+    },
+    {
+      "rel": "get",
+      "href": "/Dayforce_EmployeePayAdjustXRefCode",
+      "method": "GET",
+      "description": "Retrieve Employee Pay Adjustment XRef codes."
+    },
+    {
+      "rel": "create",
+      "href": "/Dayforce_EmployeePayAdjustXRefCode",
+      "method": "POST",
+      "description": "Insert a new Employee Pay Adjustment XRef code."
+    },
+    {
+      "rel": "update",
+      "href": "/Dayforce_EmployeePayAdjustXRefCode/{EmployeePayAdjustXRefCode}",
+      "method": "PUT",
+      "description": "Update an existing Employee Pay Adjustment XRef code."
+    }
   ]
 }
