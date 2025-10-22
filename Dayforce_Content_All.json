@@ -1,235 +1,129 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce#",
+  "title": "Dayforce API Schema",
+  "description": "Dayforce schema for Timesheet, EmployeeRawPunches, PayAdjustments, and EmployeePayAdjustXRefCode.",
+  "type": ["object"],
   "definitions": {
     "Dayforce_Timesheet": {
-      "type": "object",
-      "properties": {
-        "TimesheetId": { "type": "string" },
-        "EmployeeId": { "type": "string" },
-        "StartDate": { "type": "string", "format": "date" },
-        "EndDate": { "type": "string", "format": "date" },
-        "Status": { "type": "string" },
-        "TotalHours": { "type": "number" },
-        "CreatedDateTime": { "type": "string", "format": "date-time" },
-        "ModifiedDateTime": { "type": "string", "format": "date-time" },
+      "$schema": "http://json-schema.org/draft-06/hyper-schema",
+      "title": "Timesheet",
+      "description": "Timesheet records for employees.",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "TimesheetId": { "type": ["string"], "description": "Unique identifier for the timesheet.", "example": "TS12345" },
+        "EmployeeId": { "type": ["string"], "description": "Employee unique identifier.", "example": "E1001" },
+        "StartDate": { "type": ["string"], "format": "date", "description": "Timesheet period start date.", "example": "2025-10-20" },
+        "EndDate": { "type": ["string"], "format": "date", "description": "Timesheet period end date.", "example": "2025-10-26" },
+        "Status": { "type": ["string"], "description": "Timesheet status.", "example": "Open" },
+        "TotalHours": { "type": ["number"], "description": "Total hours worked.", "example": 40 },
+        "CreatedDateTime": { "type": ["string"], "format": "date-time", "description": "Creation timestamp.", "example": "2025-10-20T08:00:00" },
+        "ModifiedDateTime": { "type": ["string"], "format": "date-time", "description": "Last modified timestamp.", "example": "2025-10-20T12:00:00" },
         "Entries": {
-          "type": "array",
+          "type": ["array"],
+          "description": "Daily timesheet entries.",
           "items": {
             "type": "object",
+            "definitions": {
+              "Date": { "type": ["string"], "format": "date", "description": "Entry date.", "example": "2025-10-20" },
+              "ProjectCode": { "type": ["string"], "description": "Project code.", "example": "PRJ001" },
+              "HoursWorked": { "type": ["number"], "description": "Hours worked that day.", "example": 8 },
+              "WorkType": { "type": ["string"], "description": "Type of work.", "example": "Regular" },
+              "Comments": { "type": ["string"], "description": "Optional comments.", "example": "Worked on project setup" }
+            },
             "properties": {
-              "Date": { "type": "string", "format": "date" },
-              "ProjectCode": { "type": "string" },
-              "HoursWorked": { "type": "number" },
-              "WorkType": { "type": "string" },
-              "Comments": { "type": "string" }
+              "Date": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Entries/definitions/Date" },
+              "ProjectCode": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Entries/definitions/ProjectCode" },
+              "HoursWorked": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Entries/definitions/HoursWorked" },
+              "WorkType": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Entries/definitions/WorkType" },
+              "Comments": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Entries/definitions/Comments" }
             }
           }
         }
+      },
+      "properties": {
+        "TimesheetId": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/TimesheetId" },
+        "EmployeeId": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/EmployeeId" },
+        "StartDate": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/StartDate" },
+        "EndDate": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/EndDate" },
+        "Status": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Status" },
+        "TotalHours": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/TotalHours" },
+        "CreatedDateTime": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/CreatedDateTime" },
+        "ModifiedDateTime": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/ModifiedDateTime" },
+        "Entries": { "$ref": "#/definitions/Dayforce_Timesheet/definitions/Entries" }
       }
     },
     "Dayforce_EmployeeRawPunches": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema",
+      "title": "EmployeeRawPunches",
+      "description": "Raw punches for employees.",
+      "strictProperties": true,
+      "type": ["object"],
+      "definitions": {
+        "PunchId": { "type": ["string"], "description": "Punch unique ID.", "example": "P12345" },
+        "EmployeeId": { "type": ["string"], "description": "Employee unique identifier.", "example": "E1001" },
+        "PunchDateTime": { "type": ["string"], "format": "date-time", "description": "Punch timestamp.", "example": "2025-10-20T08:00:00" },
+        "PunchType": { "type": ["string"], "description": "Type of punch (ClockIn/Out).", "example": "ClockIn" },
+        "JobCode": { "type": ["string"], "description": "Job code.", "example": "JOB01" },
+        "DepartmentCode": { "type": ["string"], "description": "Department code.", "example": "DEPT01" },
+        "Comments": { "type": ["string"], "description": "Optional comments.", "example": "" }
+      },
       "properties": {
-        "PunchId": { "type": "string" },
-        "EmployeeId": { "type": "string" },
-        "PunchDateTime": { "type": "string", "format": "date-time" },
-        "PunchType": { "type": "string" },
-        "JobCode": { "type": "string" },
-        "DepartmentCode": { "type": "string" },
-        "Comments": { "type": "string" }
-      }
-    },
-    "Dayforce_PayAdjustments": {
-      "type": "object",
-      "properties": {
-        "EmployeePayAdjustXRefCode": { "type": "string" },
-        "OrgUnitXRefCode": { "type": "string" },
-        "EmployeeXRefCode": { "type": "string" },
-        "PayAdjustmentCodeXRefCode": { "type": "string" },
-        "PayAdjustmentDate": { "type": "string", "format": "date-time" },
-        "Hours": { "type": "number" },
-        "Amount": { "type": "number" },
-        "JobXRefCode": { "type": "string" },
-        "DepartmentXRefCode": { "type": "string" },
-        "PayCategoryXRefCode": { "type": "string" },
-        "ProjectXRefCode": { "type": "string" },
-        "DocketXRefCode": { "type": "string" },
-        "PieceQuantity": { "type": "number" },
-        "IsPremium": { "type": "boolean" },
-        "IsDeleted": { "type": "boolean" },
-        "Rate": { "type": "number" },
-        "PayDate": { "type": "string", "format": "date-time" },
-        "ReferenceDate": { "type": "string", "format": "date" },
-        "EmployeeComment": { "type": "string" },
-        "ManagerComment": { "type": "string" },
-        "ManagerAuthorized": { "type": "boolean" },
-        "EmployeeAuthorized": { "type": "boolean" },
-        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" }
-      }
-    },
-    "Dayforce_EmployeePayAdjustXRefCode": {
-      "type": "object",
-      "properties": {
-        "EmployeePayAdjustXRefCode": { "type": "string" },
-        "EmployeeXRefCode": { "type": "string" },
-        "PayAdjustmentCodeXRefCode": { "type": "string" },
-        "OrgUnitXRefCode": { "type": "string" },
-        "ReferenceDate": { "type": "string", "format": "date" },
-        "Amount": { "type": "number" },
-        "Hours": { "type": "number" },
-        "IsPremium": { "type": "boolean" },
-        "IsDeleted": { "type": "boolean" },
-        "ManagerAuthorized": { "type": "boolean" },
-        "EmployeeAuthorized": { "type": "boolean" },
-        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" }
+        "PunchId": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/PunchId" },
+        "EmployeeId": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/EmployeeId" },
+        "PunchDateTime": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/PunchDateTime" },
+        "PunchType": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/PunchType" },
+        "JobCode": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/JobCode" },
+        "DepartmentCode": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/DepartmentCode" },
+        "Comments": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches/definitions/Comments" }
       }
     }
   },
   "properties": {
-    "Dayforce_Timesheet": {
-      "type": "object",
-      "properties": {
-        "TimesheetId": { "type": "string" },
-        "EmployeeId": { "type": "string" },
-        "StartDate": { "type": "string", "format": "date" },
-        "EndDate": { "type": "string", "format": "date" },
-        "Status": { "type": "string" },
-        "TotalHours": { "type": "number" },
-        "CreatedDateTime": { "type": "string", "format": "date-time" },
-        "ModifiedDateTime": { "type": "string", "format": "date-time" },
-        "Entries": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "Date": { "type": "string", "format": "date" },
-              "ProjectCode": { "type": "string" },
-              "HoursWorked": { "type": "number" },
-              "WorkType": { "type": "string" },
-              "Comments": { "type": "string" }
-            }
-          }
-        }
-      },
-      "examples": [
-        {
-          "TimesheetId": "TS12345",
-          "EmployeeId": "E1001",
-          "StartDate": "2025-10-20",
-          "EndDate": "2025-10-26",
-          "Status": "Open",
-          "TotalHours": 40,
-          "Entries": [
-            { "Date": "2025-10-20", "ProjectCode": "PRJ001", "HoursWorked": 8, "WorkType": "Regular", "Comments": "Worked on project setup" }
-          ]
-        }
-      ]
-    },
-    "Dayforce_EmployeeRawPunches": {
-      "type": "object",
-      "properties": {
-        "PunchId": { "type": "string" },
-        "EmployeeId": { "type": "string" },
-        "PunchDateTime": { "type": "string", "format": "date-time" },
-        "PunchType": { "type": "string" },
-        "JobCode": { "type": "string" },
-        "DepartmentCode": { "type": "string" },
-        "Comments": { "type": "string" }
-      },
-      "examples": [
-        {
-          "PunchId": "P12345",
-          "EmployeeId": "E1001",
-          "PunchDateTime": "2025-10-20T08:00:00",
-          "PunchType": "ClockIn",
-          "JobCode": "JOB01",
-          "DepartmentCode": "DEPT01"
-        }
-      ]
-    },
-    "Dayforce_PayAdjustments": {
-      "type": "object",
-      "properties": {
-        "EmployeePayAdjustXRefCode": { "type": "string" },
-        "OrgUnitXRefCode": { "type": "string" },
-        "EmployeeXRefCode": { "type": "string" },
-        "PayAdjustmentCodeXRefCode": { "type": "string" },
-        "PayAdjustmentDate": { "type": "string", "format": "date-time" },
-        "Hours": { "type": "number" },
-        "Amount": { "type": "number" },
-        "JobXRefCode": { "type": "string" },
-        "DepartmentXRefCode": { "type": "string" },
-        "PayCategoryXRefCode": { "type": "string" },
-        "ProjectXRefCode": { "type": "string" },
-        "DocketXRefCode": { "type": "string" },
-        "PieceQuantity": { "type": "number" },
-        "IsPremium": { "type": "boolean" },
-        "IsDeleted": { "type": "boolean" },
-        "Rate": { "type": "number" },
-        "PayDate": { "type": "string", "format": "date-time" },
-        "ReferenceDate": { "type": "string", "format": "date" },
-        "EmployeeComment": { "type": "string" },
-        "ManagerComment": { "type": "string" },
-        "ManagerAuthorized": { "type": "boolean" },
-        "EmployeeAuthorized": { "type": "boolean" },
-        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" }
-      },
-      "examples": [
-        {
-          "EmployeePayAdjustXRefCode": "PA12345",
-          "EmployeeXRefCode": "E1001",
-          "PayAdjustmentCodeXRefCode": "LOA_ICI",
-          "Hours": 8,
-          "Amount": 0
-        }
-      ]
-    },
-    "Dayforce_EmployeePayAdjustXRefCode": {
-      "type": "object",
-      "properties": {
-        "EmployeePayAdjustXRefCode": { "type": "string" },
-        "EmployeeXRefCode": { "type": "string" },
-        "PayAdjustmentCodeXRefCode": { "type": "string" },
-        "OrgUnitXRefCode": { "type": "string" },
-        "ReferenceDate": { "type": "string", "format": "date" },
-        "Amount": { "type": "number" },
-        "Hours": { "type": "number" },
-        "IsPremium": { "type": "boolean" },
-        "IsDeleted": { "type": "boolean" },
-        "ManagerAuthorized": { "type": "boolean" },
-        "EmployeeAuthorized": { "type": "boolean" },
-        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" }
-      },
-      "examples": [
-        {
-          "EmployeePayAdjustXRefCode": "PA12345",
-          "EmployeeXRefCode": "E1001",
-          "PayAdjustmentCodeXRefCode": "LOA_ICI",
-          "Hours": 8,
-          "Amount": 0
-        }
-      ]
-    }
+    "Timesheet": { "$ref": "#/definitions/Dayforce_Timesheet" },
+    "EmployeeRawPunches": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }
   },
   "links": [
-    { "rel": "get", "href": "/Dayforce_Timesheet", "method": "GET" },
-    { "rel": "create", "href": "/Dayforce_Timesheet", "method": "POST" },
-    { "rel": "update", "href": "/Dayforce_Timesheet/{TimesheetId}", "method": "PUT" },
-
-    { "rel": "get", "href": "/Dayforce_EmployeeRawPunches", "method": "GET" },
-    { "rel": "create", "href": "/Dayforce_EmployeeRawPunches", "method": "POST" },
-    { "rel": "update", "href": "/Dayforce_EmployeeRawPunches/{PunchId}", "method": "PUT" },
-
-    { "rel": "get", "href": "/Dayforce_PayAdjustments", "method": "GET" },
-    { "rel": "create", "href": "/Dayforce_PayAdjustments", "method": "POST" },
-    { "rel": "update", "href": "/Dayforce_PayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PUT" },
-
-    { "rel": "get", "href": "/Dayforce_EmployeePayAdjustXRefCode", "method": "GET" },
-    { "rel": "create", "href": "/Dayforce_EmployeePayAdjustXRefCode", "method": "POST" },
-    { "rel": "update", "href": "/Dayforce_EmployeePayAdjustXRefCode/{EmployeePayAdjustXRefCode}", "method": "PUT" }
+    {
+      "rel": "get",
+      "href": "/Dayforce_Timesheet",
+      "method": "GET",
+      "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" }
+    },
+    {
+      "rel": "create",
+      "href": "/Dayforce_Timesheet",
+      "method": "POST",
+      "schema": { "$ref": "#/definitions/Dayforce_Timesheet" },
+      "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" }
+    },
+    {
+      "rel": "update",
+      "href": "/Dayforce_Timesheet/{TimesheetId}",
+      "method": "PUT",
+      "schema": { "$ref": "#/definitions/Dayforce_Timesheet" },
+      "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" }
+    },
+    {
+      "rel": "get",
+      "href": "/Dayforce_EmployeeRawPunches",
+      "method": "GET",
+      "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }
+    },
+    {
+      "rel": "create",
+      "href": "/Dayforce_EmployeeRawPunches",
+      "method": "POST",
+      "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" },
+      "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }
+    },
+    {
+      "rel": "update",
+      "href": "/Dayforce_EmployeeRawPunches/{PunchId}",
+      "method": "PUT",
+      "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" },
+      "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }
+    }
   ]
 }
