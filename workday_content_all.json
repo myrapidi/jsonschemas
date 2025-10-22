@@ -69,7 +69,7 @@
             "string"
           ]
         },
-        "Effect_Date_for_Current_Pos": {
+        "Effective_Date_for_Current_Position": {
           "description": "Position effective date (YYYY-MM-DD).",
           "example": "2025-07-01",
           "readOnly": true,
@@ -134,8 +134,8 @@
         "Management_Level": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Management_Level"
         },
-        "Effect_Date_for_Current_Pos": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Effect_Date_for_Current_Pos"
+        "Effective_Date_for_Current_Position": {
+          "$ref": "#/definitions/D365_Positions_Report/definitions/Effective_Date_for_Current_Position"
         },
         "Position_ID": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Position_ID"
@@ -467,8 +467,8 @@
             "string"
           ]
         },
-        "HIERARCHYTYPENAME": {
-          "title": "HIERARCHYTYPENAME",
+        "Hierarchy_Type_Name": {
+          "title": "Hierarchy_Type_Name",
           "type": [
             "string"
           ]
@@ -491,7 +491,7 @@
             "string"
           ]
         },
-        "Manager_Most_Rec_POS_Change": {
+        "Manager_Most_Recent_Pos_Change": {
           "title": "Manager_Most_Rec_POS_Change",
           "type": [
             "string"
@@ -512,8 +512,8 @@
         "Full_Name": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Full_Name"
         },
-        "HIERARCHYTYPENAME": {
-          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/HIERARCHYTYPENAME"
+        "Hierarchy_Type_Name": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Hierarchy_Type_Name"
         },
         "Position_ID": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Position_ID"
@@ -524,7 +524,7 @@
         "VALIDTO": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/VALIDTO"
         },
-        "Manager_Most_Rec_POS_Change": {
+        "Manager_Most_Recent_POS_Change": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_Most_Rec_POS_Change"
         },
         "Manager_POS_ID": {
