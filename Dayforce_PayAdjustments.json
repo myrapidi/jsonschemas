@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "https://github.com/myrapidi/jsonschemas/blob/main/Dayforce_PayAdjustments.json",
   "title": "Dayforce PayAdjustments",
   "description": "JSON schema for sending PayAdjustments data to Dayforce via API integration.",
