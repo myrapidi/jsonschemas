@@ -104,6 +104,20 @@
             "string"
           ]
         },
+        "Position": {
+          "description": "Position description.",
+          "example": "P100006 Vice President, Technology Research",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "Active_Status": {
+          "title": "Active_Status",
+          "type": [
+            "boolean"
+          ]
+        },
         "Business_Title": {
           "description": "Worker's business title.",
           "example": "Senior Project Manager",
@@ -131,6 +145,12 @@
         },
         "Most_Recent_Position_Change_start": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Recent_Position_Change_start"
+        },
+        "Position": {
+          "$ref": "#/definitions/D365_Positions_Report/definitions/Position"  
+        },
+        "Active_Status": {
+          "$ref": "#/definitions/D365_Positions_Report/definitions/Active_Status"
         },
         "Business_Title": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Business_Title"
