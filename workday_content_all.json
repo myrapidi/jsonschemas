@@ -233,6 +233,12 @@
             "string"
           ]
         },
+        "primaryWorkEmail": {
+          "title": "primaryWorkEmail",
+          "type": [
+            "string"
+          ]
+        },
         "Preferred_Name_-_Last_Name": {
           "title": "Preferred_Name_-_Last_Name",
           "type": [
