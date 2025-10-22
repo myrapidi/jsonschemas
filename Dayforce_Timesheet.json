@@ -1,94 +1,72 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://myrapidi.github.io/jsonschemas/Dayforce_Timesheet.json",
   "title": "Dayforce_Timesheet",
-  "description": "Dayforce Timesheet data structure for API integration",
   "type": "object",
+  "description": "Timesheet data schema for Dayforce integration.",
   "properties": {
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "EmployeeXRefCode": {
-          "type": "string",
-          "description": "External reference code identifying the employee for whom the timesheet is recorded."
-        },
-        "OrgUnitXRefCode": {
-          "type": "string",
-          "description": "External reference code for the organization unit or department."
-        },
-        "PayPeriodStartDate": {
-          "type": "string",
-          "format": "date",
-          "description": "Start date of the pay period for this timesheet."
-        },
-        "PayPeriodEndDate": {
-          "type": "string",
-          "format": "date",
-          "description": "End date of the pay period for this timesheet."
-        },
-        "TimesheetDate": {
-          "type": "string",
-          "format": "date",
-          "description": "The date this timesheet entry applies to."
-        },
-        "JobXRefCode": {
-          "type": "string",
-          "description": "External reference code of the job assigned to this timesheet entry."
-        },
-        "DepartmentXRefCode": {
-          "type": "string",
-          "description": "External reference code for the department related to this timesheet entry."
-        },
-        "ProjectXRefCode": {
-          "type": "string",
-          "description": "External reference code of the project related to this entry, if applicable."
-        },
-        "PayCategoryXRefCode": {
-          "type": "string",
-          "description": "External reference code of the pay category for the recorded hours."
-        },
-        "ShiftXRefCode": {
-          "type": "string",
-          "description": "External reference code for the shift worked, if applicable."
-        },
-        "StartTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Start time of the employee’s work for the day."
-        },
-        "EndTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "End time of the employee’s work for the day."
-        },
-        "HoursWorked": {
-          "type": "number",
-          "description": "Total number of hours worked during the shift."
-        },
-        "BreakMinutes": {
-          "type": "number",
-          "description": "Total break duration in minutes during the work shift."
-        },
-        "IsOvertime": {
-          "type": "boolean",
-          "description": "Indicates whether the hours worked include overtime."
-        },
-        "IsApproved": {
-          "type": "boolean",
-          "description": "Indicates whether the timesheet entry has been approved by a manager."
-        },
-        "IsDeleted": {
-          "type": "boolean",
-          "description": "Indicates whether the timesheet entry has been marked as deleted."
-        },
-        "Comment": {
-          "type": "string",
-          "description": "Employee or manager comment regarding this timesheet entry."
-        },
-        "ReferenceDate": {
-          "type": "string",
-          "format": "date",
-          "description": "Optional reference date related to the timesheet entry."
+    "TimesheetId": {
+      "type": "string",
+      "description": "Unique identifier for the timesheet."
+    },
+    "EmployeeId": {
+      "type": "string",
+      "description": "Unique identifier of the employee associated with this timesheet."
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the timesheet period (YYYY-MM-DD)."
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the timesheet period (YYYY-MM-DD)."
+    },
+    "Status": {
+      "type": "string",
+      "description": "Status of the timesheet (e.g. Open, Submitted, Approved)."
+    },
+    "TotalHours": {
+      "type": "number",
+      "description": "Total hours worked during the period."
+    },
+    "CreatedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the timesheet was created."
+    },
+    "ModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the timesheet was last modified."
+    },
+    "Entries": {
+      "type": "array",
+      "description": "List of daily work entries belonging to this timesheet.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of the entry (YYYY-MM-DD)."
+          },
+          "ProjectCode": {
+            "type": "string",
+            "description": "Optional project or task code."
+          },
+          "HoursWorked": {
+            "type": "number",
+            "description": "Hours worked for the given day."
+          },
+          "WorkType": {
+            "type": "string",
+            "description": "Type of work (e.g. Regular, Overtime, Holiday)."
+          },
+          "Comments": {
+            "type": "string",
+            "description": "Optional comments or notes for the day."
+          }
         }
       }
     }
