@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "type": "object",
-  "properties": {
+  "definitions": {
     "Dayforce_Timesheet": {
       "type": "object",
       "properties": {
@@ -73,5 +72,16 @@
         }
       }
     }
-  }
+  },
+  "properties": {
+    "Dayforce_Timesheet": {
+      "$ref": "#/definitions/Dayforce_Timesheet"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "/Dayforce_Timesheet"
+    }
+  ]
 }
