@@ -259,6 +259,13 @@
             "string"
           ]
         },
+        "termination_date": {
+          "title": "termination_date",
+          "type": [
+            "string"
+          ]
+          "format": "date"
+        },
         "Preferred_Name_-_Last_Name": {
           "title": "Preferred_Name_-_Last_Name",
           "type": [
@@ -289,7 +296,10 @@
           "$ref": "#/definitions/D365_Employee/definitions/Preferred_Name_-_First_Name"
         },
           "primaryWorkEmail": {
-           "$ref": "#/definitions/D365_Employee/definitions/primaryWorkEmail" 
+           "$ref": "#/definitions/D365_Employee/definitions/primaryWorkEmail"
+        },
+          "termination_date": {
+           "$ref": "#/definitions/D365_Employee/definitions/termination_date"  
         },
         "Preferred_Name_-_Last_Name": {
           "$ref": "#/definitions/D365_Employee/definitions/Preferred_Name_-_Last_Name"
@@ -376,6 +386,13 @@
             "string"
           ]
         },
+        "termination_date": {
+          "title": "termination_date",
+          "type": [
+            "string"
+          ]
+          "format": "date"
+        },
         "Position_ID": {
           "title": "Position_ID",
           "type": [
@@ -395,6 +412,9 @@
         },
         "Last_Functionally_Updated": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Last_Functionally_Updated"
+        },
+        "termination_date": {
+          "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/termination_date"  
         },
         "Position_ID": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Position_ID"
@@ -498,6 +518,13 @@
           ],
           "format": "date"
         },
+        "termination_date": {
+          "title": "termination_date",
+          "type": [
+            "string"
+          ]
+          "format": "date"
+        },
         "Manager_POS_ID": {
           "title": "Manager_POS_ID",
           "type": [
@@ -526,6 +553,9 @@
         },
         "Manager_Most_Recent_POS_Change": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_Most_Rec_POS_Change"
+        },
+        "termination_date": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/termination_date"  
         },
         "Manager_POS_ID": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_POS_ID"
