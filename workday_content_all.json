@@ -216,6 +216,13 @@
             "boolean"
           ]
         },
+        "definitions": {
+          "Active": {
+            "title": "Active",
+            "type": [
+              "boolean"
+            ]
+          },
         "Company": {
           "title": "Company",
           "type": [
@@ -276,6 +283,9 @@
       "properties": {
         "Active_Status": {
           "$ref": "#/definitions/D365_Employee/definitions/Active_Status"
+        },
+        "Active": {
+          "$ref": "#/definitions/D365_Employee/definitions/Active"
         },
         "Company": {
           "$ref": "#/definitions/D365_Employee/definitions/Company"
