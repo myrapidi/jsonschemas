@@ -222,6 +222,19 @@
               "boolean"
             ]
           },
+        "Non_Active": {
+          "title": "Non_Active",
+          "type": [
+            "boolean"
+          ]
+        },
+        "term_date_on_after": {
+          "title": "term_date_on_after",
+          "type": [
+            "string"
+          ]
+          "format":"date"
+        },  
         "Company": {
           "title": "Company",
           "type": [
@@ -285,6 +298,12 @@
         },
         "Active": {
           "$ref": "#/definitions/D365_Employee/definitions/Active"
+        },
+        "Non_Active": {
+          "$ref": "#/definitions/D365_Employee/definitions/Non_Active"
+        },
+        "term_date_on_after": {
+          "$ref": "#/definitions/D365_Employee/definitions/term_date_on_after"
         },
         "Company": {
           "$ref": "#/definitions/D365_Employee/definitions/Company"
