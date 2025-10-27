@@ -216,7 +216,6 @@
             "boolean"
           ]
         },
-        "definitions": {
           "Active": {
             "title": "Active",
             "type": [
