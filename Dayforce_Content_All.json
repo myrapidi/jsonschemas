@@ -144,7 +144,7 @@
       "links": [
         { "rel": "get", "href": "/EmployeePayAdjustments", "method": "GET", "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } },
         { "rel": "create", "href": "/EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } },
-        { "rel": "update", "href": "/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } }
+        { "rel": "patch", "href": "/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PATCH", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } }
       ]
     },
     "EmployeeTimeAdjustments": {
