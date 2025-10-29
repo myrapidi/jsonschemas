@@ -176,7 +176,7 @@
       "links": [
         { "rel": "get", "href": "/EmployeeTimeAdjustments", "method": "GET", "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" } },
         { "rel": "create", "href": "/EmployeeTimeAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" } },
-        { "rel": "update", "href": "/EmployeeTimeAdjustments/{EmployeeTimeAdjustXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" } }
+        { "rel": "patch", "href": "/EmployeeTimeAdjustments/{EmployeeTimeAdjustXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" } }
       ]
     }
   },
