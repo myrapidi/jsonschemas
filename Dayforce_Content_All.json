@@ -1,78 +1,92 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://myrapidi.github.io/jsonschemas/dayforce_content_all#",
-  "title": "Dayforce API Schema",
-  "description": "Unified schema for Dayforce endpoints.",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_Content_All#",
+  "title": "Dayforce Content All",
+  "description": "Combined Dayforce schema for Timesheet, EmployeeRawPunches, EmployeeTimeAdjustments, and EmployeePayAdjustments",
   "type": "object",
   "properties": {
-    "EmployeePayAdjustments": {
-      "title": "EmployeePayAdjustments",
-      "description": "Employee pay adjustment records.",
+    "Timesheet": {
       "type": "object",
+      "title": "Dayforce Timesheet",
+      "description": "Employee timesheet records",
       "properties": {
-        "EmployeePayAdjustXRefCode": { "type": "string" },
+        "EmployeeXRefCode": { "type": "string" },
+        "OrgUnitXRefCode": { "type": "string" },
+        "WorkAssignmentXRefCode": { "type": "string" },
+        "TimesheetDate": { "type": "string", "format": "date-time" },
+        "StartTime": { "type": "string", "format": "date-time" },
+        "EndTime": { "type": "string", "format": "date-time" },
+        "HoursWorked": { "type": "number" },
+        "MealBreakMinutes": { "type": "integer" },
+        "Comment": { "type": "string" },
+        "IsDeleted": { "type": "boolean" }
+      },
+      "required": ["EmployeeXRefCode", "OrgUnitXRefCode", "TimesheetDate"]
+    },
+    "EmployeeRawPunches": {
+      "type": "object",
+      "title": "Dayforce Employee Raw Punches",
+      "description": "Raw punch clock data",
+      "properties": {
+        "EmployeeXRefCode": { "type": "string" },
+        "OrgUnitXRefCode": { "type": "string" },
+        "PunchDateTime": { "type": "string", "format": "date-time" },
+        "PunchType": { "type": "string" },
+        "DeviceName": { "type": "string" },
+        "IsEdited": { "type": "boolean" },
+        "Comment": { "type": "string" }
+      },
+      "required": ["EmployeeXRefCode", "PunchDateTime", "PunchType"]
+    },
+    "EmployeeTimeAdjustments": {
+      "type": "object",
+      "title": "Dayforce Employee Time Adjustments",
+      "description": "Employee time adjustments",
+      "properties": {
         "OrgUnitXRefCode": { "type": "string" },
         "EmployeeXRefCode": { "type": "string" },
         "PayAdjustmentCodeXRefCode": { "type": "string" },
         "PayAdjustmentDate": { "type": "string", "format": "date-time" },
         "Hours": { "type": "number" },
         "Amount": { "type": "number" },
-        "JobXRefCode": { "type": "string" },
-        "DepartmentXRefCode": { "type": "string" },
-        "PayCategoryXRefCode": { "type": "string" },
-        "ProjectXRefCode": { "type": "string" },
-        "DocketXRefCode": { "type": "string" },
-        "PieceQuantity": { "type": "number" },
         "IsPremium": { "type": "boolean" },
         "IsDeleted": { "type": "boolean" },
-        "Rate": { "type": "number" },
-        "PayDate": { "type": "string", "format": "date-time" },
-        "ReferenceDate": { "type": "string", "format": "date" },
-        "EmployeeComment": { "type": "string" },
-        "ManagerComment": { "type": "string" },
-        "ManagerAuthorized": { "type": "boolean" },
-        "EmployeeAuthorized": { "type": "boolean" },
-        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" }
-      },
-      "required": ["EmployeeXRefCode", "OrgUnitXRefCode", "PayAdjustmentCodeXRefCode", "PayAdjustmentDate"]
-    },
-
-    "EmployeeTimeAdjustments": {
-      "title": "EmployeeTimeAdjustments",
-      "description": "Time adjustment records for employees.",
-      "type": "object",
-      "properties": {
-        "EmployeeTimeAdjustXRefCode": { "type": "string" },
-        "EmployeeXRefCode": { "type": "string" },
-        "OrgUnitXRefCode": { "type": "string" },
-        "DateWorked": { "type": "string", "format": "date" },
-        "StartTime": { "type": "string", "format": "date-time" },
-        "EndTime": { "type": "string", "format": "date-time" },
-        "Hours": { "type": "number" },
-        "PayCodeXRefCode": { "type": "string" },
-        "IsDeleted": { "type": "boolean" },
-        "EmployeeComment": { "type": "string" },
-        "ManagerComment": { "type": "string" },
         "ManagerAuthorized": { "type": "boolean" },
         "EmployeeAuthorized": { "type": "boolean" }
       },
-      "required": ["EmployeeXRefCode", "OrgUnitXRefCode", "DateWorked", "Hours"]
+      "required": ["OrgUnitXRefCode", "EmployeeXRefCode", "PayAdjustmentCodeXRefCode", "PayAdjustmentDate"]
+    },
+    "EmployeePayAdjustments": {
+      "type": "object",
+      "title": "Dayforce Employee Pay Adjustments",
+      "description": "Employee pay adjustments",
+      "properties": {
+        "OrgUnitXRefCode": { "type": "string" },
+        "EmployeeXRefCode": { "type": "string" },
+        "PayAdjustmentCodeXRefCode": { "type": "string" },
+        "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+        "Hours": { "type": "number" },
+        "Amount": { "type": "number" },
+        "PieceQuantity": { "type": ["number","null"] },
+        "IsPremium": { "type": "boolean" },
+        "IsDeleted": { "type": "boolean" },
+        "ManagerAuthorized": { "type": "boolean" },
+        "EmployeeAuthorized": { "type": "boolean" }
+      },
+      "required": ["OrgUnitXRefCode", "EmployeeXRefCode", "PayAdjustmentCodeXRefCode", "PayAdjustmentDate"]
     }
   },
-
   "links": [
-    {
-      "rel": "create",
-      "href": "/EmployeePayAdjustments",
-      "method": "POST",
-      "schema": { "$ref": "#/properties/EmployeePayAdjustments" }
-    },
-    {
-      "rel": "create",
-      "href": "/EmployeeTimeAdjustments",
-      "method": "POST",
-      "schema": { "$ref": "#/properties/EmployeeTimeAdjustments" }
-    }
+    { "rel": "create", "href": "/Dayforce_Timesheet", "method": "POST", "schema": { "$ref": "#/properties/Timesheet" } },
+    { "rel": "update", "href": "/Dayforce_Timesheet/{EmployeeXRefCode}", "method": "PUT", "schema": { "$ref": "#/properties/Timesheet" } },
+
+    { "rel": "create", "href": "/Dayforce_EmployeeRawPunches", "method": "POST", "schema": { "$ref": "#/properties/EmployeeRawPunches" } },
+    { "rel": "update", "href": "/Dayforce_EmployeeRawPunches/{EmployeeXRefCode}", "method": "PUT", "schema": { "$ref": "#/properties/EmployeeRawPunches" } },
+
+    { "rel": "create", "href": "/Dayforce_EmployeeTimeAdjustments", "method": "POST", "schema": { "$ref": "#/properties/EmployeeTimeAdjustments" } },
+    { "rel": "update", "href": "/Dayforce_EmployeeTimeAdjustments/{EmployeeXRefCode}", "method": "PUT", "schema": { "$ref": "#/properties/EmployeeTimeAdjustments" } },
+
+    { "rel": "create", "href": "/Dayforce_EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/properties/EmployeePayAdjustments" } },
+    { "rel": "update", "href": "/Dayforce_EmployeePayAdjustments/{EmployeeXRefCode}", "method": "PUT", "schema": { "$ref": "#/properties/EmployeePayAdjustments" } }
   ]
 }
