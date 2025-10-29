@@ -2,137 +2,77 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "https://myrapidi.github.io/jsonschemas/dayforce_content_all#",
   "title": "Dayforce API Schema",
-  "description": "Unified schema for Dayforce Timesheet, EmployeeRawPunches, EmployeePayAdjustments, and EmployeeTimeAdjustments.",
-  "type": ["object"],
-  "definitions": {
-    "Dayforce_Timesheet": {
-      "title": "Timesheet",
-      "description": "Timesheet records for employees.",
-      "type": ["object"],
-      "properties": {
-        "TimesheetId": { "type": ["string"], "description": "Unique identifier for the timesheet." },
-        "EmployeeId": { "type": ["string"], "description": "Employee unique identifier." },
-        "StartDate": { "type": ["string"], "format": "date", "description": "Timesheet period start date." },
-        "EndDate": { "type": ["string"], "format": "date", "description": "Timesheet period end date." },
-        "Status": { "type": ["string"], "description": "Timesheet status." },
-        "TotalHours": { "type": ["number"], "description": "Total hours worked." },
-        "CreatedDateTime": { "type": ["string"], "format": "date-time", "description": "Creation timestamp." },
-        "ModifiedDateTime": { "type": ["string"], "format": "date-time", "description": "Last modified timestamp." },
-        "Entries": {
-          "type": ["array"],
-          "description": "Daily timesheet entries.",
-          "items": {
-            "type": "object",
-            "properties": {
-              "Date": { "type": ["string"], "format": "date", "description": "Entry date." },
-              "ProjectCode": { "type": ["string"], "description": "Project code." },
-              "HoursWorked": { "type": ["number"], "description": "Hours worked that day." },
-              "WorkType": { "type": ["string"], "description": "Type of work (e.g., Regular, Overtime)." },
-              "Comments": { "type": ["string"], "description": "Optional comments." }
-            }
-          }
-        }
-      }
-    },
-
-    "Dayforce_EmployeeRawPunches": {
-      "title": "EmployeeRawPunches",
-      "description": "Raw punch records for employee clock-ins and clock-outs.",
-      "type": ["object"],
-      "properties": {
-        "PunchId": { "type": ["string"], "description": "Unique punch ID." },
-        "EmployeeId": { "type": ["string"], "description": "Employee unique identifier." },
-        "PunchDateTime": { "type": ["string"], "format": "date-time", "description": "Timestamp of the punch." },
-        "PunchType": { "type": ["string"], "description": "Type of punch (ClockIn/ClockOut)." },
-        "JobCode": { "type": ["string"], "description": "Job code for this punch." },
-        "DepartmentCode": { "type": ["string"], "description": "Department code for this punch." },
-        "Comments": { "type": ["string"], "description": "Optional comments." }
-      }
-    },
-
-    "Dayforce_EmployeePayAdjustments": {
+  "description": "Unified schema for Dayforce endpoints.",
+  "type": "object",
+  "properties": {
+    "EmployeePayAdjustments": {
       "title": "EmployeePayAdjustments",
-      "description": "Pay adjustment records for employees.",
-      "type": ["object"],
+      "description": "Employee pay adjustment records.",
+      "type": "object",
       "properties": {
-        "OrgUnitXRefCode": { "type": ["string"], "description": "Organization unit external reference code." },
-        "EmployeeXRefCode": { "type": ["string"], "description": "Employee external reference code." },
-        "PayAdjustmentCodeXRefCode": { "type": ["string"], "description": "Pay adjustment code reference." },
-        "PayAdjustmentDate": { "type": ["string"], "format": "date-time", "description": "Date of pay adjustment." },
-        "Hours": { "type": ["number"], "description": "Number of hours adjusted." },
-        "Amount": { "type": ["number"], "description": "Amount adjusted." },
-        "PieceQuantity": { "type": ["number"], "description": "Quantity for piece work (if applicable)." },
-        "IsPremium": { "type": ["boolean"], "description": "Indicates if the adjustment is premium pay." },
-        "IsDeleted": { "type": ["boolean"], "description": "Indicates if the record is deleted." },
-        "ManagerAuthorized": { "type": ["boolean"], "description": "Indicates if manager authorized the adjustment." },
-        "EmployeeAuthorized": { "type": ["boolean"], "description": "Indicates if employee authorized the adjustment." }
+        "EmployeePayAdjustXRefCode": { "type": "string" },
+        "OrgUnitXRefCode": { "type": "string" },
+        "EmployeeXRefCode": { "type": "string" },
+        "PayAdjustmentCodeXRefCode": { "type": "string" },
+        "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+        "Hours": { "type": "number" },
+        "Amount": { "type": "number" },
+        "JobXRefCode": { "type": "string" },
+        "DepartmentXRefCode": { "type": "string" },
+        "PayCategoryXRefCode": { "type": "string" },
+        "ProjectXRefCode": { "type": "string" },
+        "DocketXRefCode": { "type": "string" },
+        "PieceQuantity": { "type": "number" },
+        "IsPremium": { "type": "boolean" },
+        "IsDeleted": { "type": "boolean" },
+        "Rate": { "type": "number" },
+        "PayDate": { "type": "string", "format": "date-time" },
+        "ReferenceDate": { "type": "string", "format": "date" },
+        "EmployeeComment": { "type": "string" },
+        "ManagerComment": { "type": "string" },
+        "ManagerAuthorized": { "type": "boolean" },
+        "EmployeeAuthorized": { "type": "boolean" },
+        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
+        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "OrgUnitXRefCode",
-        "EmployeeXRefCode",
-        "PayAdjustmentCodeXRefCode",
-        "PayAdjustmentDate",
-        "Hours",
-        "Amount"
-      ]
+      "required": ["EmployeeXRefCode", "OrgUnitXRefCode", "PayAdjustmentCodeXRefCode", "PayAdjustmentDate"]
     },
 
-    "Dayforce_EmployeeTimeAdjustments": {
+    "EmployeeTimeAdjustments": {
       "title": "EmployeeTimeAdjustments",
-      "description": "Employee time adjustment records (for modifying recorded hours).",
-      "type": ["object"],
+      "description": "Time adjustment records for employees.",
+      "type": "object",
       "properties": {
-        "OrgUnitXRefCode": { "type": ["string"], "description": "Organization unit external reference code." },
-        "EmployeeXRefCode": { "type": ["string"], "description": "Employee external reference code." },
-        "TimeCodeXRefCode": { "type": ["string"], "description": "Time code reference (e.g., OVERTIME, REGULAR)." },
-        "WorkDate": { "type": ["string"], "format": "date-time", "description": "Date of the work adjustment." },
-        "StartTime": { "type": ["string"], "format": "date-time", "description": "Start time for the adjusted work period." },
-        "EndTime": { "type": ["string"], "format": "date-time", "description": "End time for the adjusted work period." },
-        "Hours": { "type": ["number"], "description": "Adjusted number of hours." },
-        "IsDeleted": { "type": ["boolean"], "description": "Indicates if this time adjustment is deleted." },
-        "Comments": { "type": ["string"], "description": "Optional comments about the adjustment." }
+        "EmployeeTimeAdjustXRefCode": { "type": "string" },
+        "EmployeeXRefCode": { "type": "string" },
+        "OrgUnitXRefCode": { "type": "string" },
+        "DateWorked": { "type": "string", "format": "date" },
+        "StartTime": { "type": "string", "format": "date-time" },
+        "EndTime": { "type": "string", "format": "date-time" },
+        "Hours": { "type": "number" },
+        "PayCodeXRefCode": { "type": "string" },
+        "IsDeleted": { "type": "boolean" },
+        "EmployeeComment": { "type": "string" },
+        "ManagerComment": { "type": "string" },
+        "ManagerAuthorized": { "type": "boolean" },
+        "EmployeeAuthorized": { "type": "boolean" }
       },
-      "required": [
-        "OrgUnitXRefCode",
-        "EmployeeXRefCode",
-        "TimeCodeXRefCode",
-        "WorkDate",
-        "StartTime",
-        "EndTime",
-        "Hours"
-      ]
+      "required": ["EmployeeXRefCode", "OrgUnitXRefCode", "DateWorked", "Hours"]
     }
   },
-  "properties": {
-    "Timesheet": { "$ref": "#/definitions/Dayforce_Timesheet" },
-    "EmployeeRawPunches": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" },
-    "EmployeePayAdjustments": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" },
-    "EmployeeTimeAdjustments": { "$ref": "#/definitions/Dayforce_EmployeeTimeAdjustments" }
-  },
+
   "links": [
     {
       "rel": "create",
       "href": "/EmployeePayAdjustments",
       "method": "POST",
-      "schema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" }
+      "schema": { "$ref": "#/properties/EmployeePayAdjustments" }
     },
     {
       "rel": "create",
       "href": "/EmployeeTimeAdjustments",
       "method": "POST",
-      "schema": { "$ref": "#/definitions/Dayforce_EmployeeTimeAdjustments" }
-    },
-    {
-      "rel": "create",
-      "href": "/EmployeeRawPunches",
-      "method": "POST",
-      "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }
-    },
-    {
-      "rel": "create",
-      "href": "/Timesheet",
-      "method": "POST",
-      "schema": { "$ref": "#/definitions/Dayforce_Timesheet" }
+      "schema": { "$ref": "#/properties/EmployeeTimeAdjustments" }
     }
   ]
 }
