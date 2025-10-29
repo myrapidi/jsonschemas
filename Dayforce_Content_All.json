@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce#",
+  "$id": "https://myrapidi.github.io/jsonschemas/dayforce_content_all#",
   "title": "Dayforce API Schema",
   "description": "Unified schema for Dayforce Timesheet, EmployeeRawPunches, EmployeePayAdjustments, and EmployeeTimeAdjustments.",
   "type": ["object"],
