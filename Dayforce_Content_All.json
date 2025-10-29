@@ -143,8 +143,7 @@
       },
       "links": [
         { "rel": "get", "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/EmployeePayAdjustments", "method": "GET", "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } },
-        { "rel": "create", "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } },
-        { "rel": "update", "href": "/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PATCH", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } }
+        { "rel": "create", "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } }
       ]
     },
     "EmployeeTimeAdjustments": {
