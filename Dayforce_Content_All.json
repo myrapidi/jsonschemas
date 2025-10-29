@@ -139,15 +139,15 @@
     "EmployeePayAdjustments": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" }
   },
   "links": [
-    { "rel": "get", "href": "/Dayforce_Timesheet", "method": "GET", "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" } },
-    { "rel": "create", "href": "/Dayforce_Timesheet", "method": "POST", "schema": { "$ref": "#/definitions/Dayforce_Timesheet" }, "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" } },
-    { "rel": "update", "href": "/Dayforce_Timesheet/{TimesheetId}", "method": "PUT", "schema": { "$ref": "#/definitions/Dayforce_Timesheet" }, "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" } },
+  { "rel": "get", "href": "/Timesheets", "method": "GET", "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" } },
+  { "rel": "create", "href": "/Timesheets", "method": "POST", "schema": { "$ref": "#/definitions/Dayforce_Timesheet" }, "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" } },
+  { "rel": "update", "href": "/Timesheets/{TimesheetId}", "method": "PUT", "schema": { "$ref": "#/definitions/Dayforce_Timesheet" }, "targetSchema": { "$ref": "#/definitions/Dayforce_Timesheet" } },
 
-    { "rel": "get", "href": "/Dayforce_EmployeeRawPunches", "method": "GET", "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } },
-    { "rel": "create", "href": "/Dayforce_EmployeeRawPunches", "method": "POST", "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } },
-    { "rel": "update", "href": "/Dayforce_EmployeeRawPunches/{PunchId}", "method": "PUT", "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } },
+  { "rel": "get", "href": "/EmployeeRawPunches", "method": "GET", "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } },
+  { "rel": "create", "href": "/EmployeeRawPunches", "method": "POST", "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } },
+  { "rel": "update", "href": "/EmployeeRawPunches/{PunchId}", "method": "PUT", "schema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeeRawPunches" } },
 
-    { "rel": "create", "href": "/Dayforce_EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" } },
-    { "rel": "update", "href": "/Dayforce_EmployeePayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" } }
+  { "rel": "create", "href": "/EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" } },
+  { "rel": "update", "href": "/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/Dayforce_EmployeePayAdjustments" } }
   ]
 }
