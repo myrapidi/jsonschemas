@@ -539,12 +539,19 @@
             "string"
           ]
         },
-        "Manager_Most_Recent_Pos_Change": {
-          "title": "Manager_Most_Rec_POS_Change",
-          "type": [
-            "string"
-          ],
-          "format": "date"
+        "MManager_s_Position_group": {
+          "title": "Manager_s_Position_group",
+          "type": "array",
+          "items": {
+            "type":"object",
+            "strictproperties": true,
+            "properties": {
+            "Manager_Most_Recent_Pos_Change": { "type": "string", "format": "date" }, 
+            "Manager_Pos_ID": { "type": "string"}
+            },
+            "required":["Manager_Pos_ID"],
+            "additionalProperties": false
+          }
         },
         "termination_date": {
           "title": "termination_date",
@@ -552,13 +559,6 @@
             "string"
           ]
           "format": "date"
-        },
-        "Manager_POS_ID": {
-          "title": "Manager_POS_ID",
-          "type": [
-            "string"
-          ]
-        }
       },
       "properties": {
         "Active_Status": {
@@ -579,14 +579,11 @@
         "VALIDTO": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/VALIDTO"
         },
-        "Manager_Most_Recent_POS_Change": {
-          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_Most_Rec_POS_Change"
-        },
         "termination_date": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/termination_date"  
         },
         "Manager_POS_ID": {
-          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_POS_ID"
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
         }
       },
       "links": [
