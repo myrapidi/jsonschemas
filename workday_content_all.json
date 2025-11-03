@@ -55,7 +55,7 @@
       "definitions": {
         "Full_Name": {
           "description": "Worker's full name.",
-          "example": "Alicia G\u00f3mez",
+          "example": "Alicia Gómez",
           "readOnly": true,
           "type": [
             "string"
@@ -147,7 +147,7 @@
           "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Recent_Position_Change_start"
         },
         "Position": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Position"  
+          "$ref": "#/definitions/D365_Positions_Report/definitions/Position"
         },
         "Active_Status": {
           "$ref": "#/definitions/D365_Positions_Report/definitions/Active_Status"
@@ -216,12 +216,12 @@
             "boolean"
           ]
         },
-          "Active": {
-            "title": "Active",
-            "type": [
-              "boolean"
-            ]
-          },
+        "Active": {
+          "title": "Active",
+          "type": [
+            "boolean"
+          ]
+        },
         "Non_Active": {
           "title": "Non_Active",
           "type": [
@@ -232,9 +232,9 @@
           "title": "term_date_on_after",
           "type": [
             "string"
-          ]
-          "format":"date"
-        },  
+          ],
+          "format": "date"
+        },
         "Company": {
           "title": "Company",
           "type": [
@@ -282,7 +282,7 @@
           "title": "termination_date",
           "type": [
             "string"
-          ]
+          ],
           "format": "date"
         },
         "Preferred_Name_-_Last_Name": {
@@ -323,11 +323,11 @@
         "Preferred_Name_-_First_Name": {
           "$ref": "#/definitions/D365_Employee/definitions/Preferred_Name_-_First_Name"
         },
-          "primaryWorkEmail": {
-           "$ref": "#/definitions/D365_Employee/definitions/primaryWorkEmail"
+        "primaryWorkEmail": {
+          "$ref": "#/definitions/D365_Employee/definitions/primaryWorkEmail"
         },
-          "termination_date": {
-           "$ref": "#/definitions/D365_Employee/definitions/termination_date"  
+        "termination_date": {
+          "$ref": "#/definitions/D365_Employee/definitions/termination_date"
         },
         "Preferred_Name_-_Last_Name": {
           "$ref": "#/definitions/D365_Employee/definitions/Preferred_Name_-_Last_Name"
@@ -418,7 +418,7 @@
           "title": "termination_date",
           "type": [
             "string"
-          ]
+          ],
           "format": "date"
         },
         "Position_ID": {
@@ -442,7 +442,7 @@
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Last_Functionally_Updated"
         },
         "termination_date": {
-          "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/termination_date"  
+          "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/termination_date"
         },
         "Position_ID": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Position_ID"
@@ -535,29 +535,27 @@
         },
         "VALIDTO": {
           "title": "VALIDTO",
-          "type": ["string"]
-        },
-        "Manager_s_Position_group": {
-          "title": "Manager_s_Position_group",
-          "type": "array",
-          "items": {
-            "type":"object",
-            "strictproperties": true,
-            "properties": {
-            "Manager_Most_Recent_Pos_Change": { "type": "string", "format": "date" }, 
-            "Manager_Pos_ID": { "type": "string"}
-            },
-            "required":["Manager_Pos_ID"],
-            "additionalProperties": false
-          }
-        }
-      },
-        "termination_date": {
-          "title": "termination_date",
           "type": [
             "string"
           ]
-          "format": "date"
+        },
+        "Manager_s_Position_group": {
+          "title": "Manager_s_Position_group",
+          "description": "Array of manager entries for a position.",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/ManagerEntry"
+          }
+        }
+      },
+      "termination_date": {
+        "title": "termination_date",
+        "type": [
+          "string"
+        ],
+        "format": "date"
       },
       "properties": {
         "Active_Status": {
@@ -579,7 +577,7 @@
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/VALIDTO"
         },
         "termination_date": {
-          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/termination_date"  
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/termination_date"
         },
         "Manager_s_Position_group": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
@@ -624,6 +622,48 @@
           }
         }
       ]
+    },
+    "ManagerEntry": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Manager Entry",
+      "description": "One manager row for a position (child).",
+      "stability": "beta",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "parentObject": {
+        "D365_Position_Hierarchies": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
+        }
+      },
+      "definitions": {
+        "Manager_Pos_ID": {
+          "description": "Manager Position ID",
+          "example": "POS-210045",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Manager_Most_Recent_Pos_Change": {
+          "description": "Most recent manager position change (YYYY-MM-DD)",
+          "example": "2024-08-09",
+          "format": "date",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "Manager_Pos_ID": {
+          "$ref": "#/definitions/ManagerEntry/definitions/Manager_Pos_ID"
+        },
+        "Manager_Most_Recent_Pos_Change": {
+          "$ref": "#/definitions/ManagerEntry/definitions/Manager_Most_Recent_Pos_Change"
+        }
+      }
     }
   },
   "properties": {
