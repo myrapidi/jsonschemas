@@ -678,6 +678,9 @@
     },
     "D365_Position_Hierarchies": {
       "$ref": "#/definitions/D365_Position_Hierarchies"
+    },
+    "ManagerEntry": {
+      "$ref": "#/definitions/ManagerEntry"
     }
   }
 }
