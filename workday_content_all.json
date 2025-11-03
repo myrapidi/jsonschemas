@@ -537,7 +537,7 @@
           "title": "VALIDTO",
           "type": ["string"]
         },
-        "MManager_s_Position_group": {
+        "Manager_s_Position_group": {
           "title": "Manager_s_Position_group",
           "type": "array",
           "items": {
