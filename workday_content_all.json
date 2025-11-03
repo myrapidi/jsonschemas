@@ -581,7 +581,7 @@
         "termination_date": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/termination_date"  
         },
-        "Manager_POS_ID": {
+        "Manager_s_Position_group": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
         }
       },
