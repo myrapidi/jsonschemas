@@ -654,6 +654,14 @@
           "type": [
             "string"
           ]
+        },
+        "Position_ID": {
+          "description": "Inherited from parent D365_Position_Hierarchies (used to link child rows to the parent position).",
+          "readOnly": true,
+          "type": [
+            "string"
+          ],
+          "example": "P200417"
         }
       },
       "properties": {
@@ -662,6 +670,9 @@
         },
         "Manager_Most_Recent_Pos_Change": {
           "$ref": "#/definitions/ManagerEntry/definitions/Manager_Most_Recent_Pos_Change"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/ManagerEntry/definitions/Position_ID"
         }
       }
     }
