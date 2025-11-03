@@ -535,9 +535,7 @@
         },
         "VALIDTO": {
           "title": "VALIDTO",
-          "type": [
-            "string"
-          ]
+          "type": ["string"]
         },
         "MManager_s_Position_group": {
           "title": "Manager_s_Position_group",
@@ -552,7 +550,8 @@
             "required":["Manager_Pos_ID"],
             "additionalProperties": false
           }
-        },
+        }
+      },
         "termination_date": {
           "title": "termination_date",
           "type": [
