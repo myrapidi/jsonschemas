@@ -207,7 +207,8 @@
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         }
         ]
-    },
+    }
+},
   "properties": {
     "Timesheet": { "$ref": "#/definitions/Timesheet" },
     "EmployeeRawPunches": { "$ref": "#/definitions/EmployeeRawPunches" },
