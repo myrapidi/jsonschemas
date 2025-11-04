@@ -180,64 +180,34 @@
       ]
     },
     "LaborMetricTypes": {
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "LaborMetricTypes",
-      "description": "Defines Labor Metric Type records for configuration and integration within Dayforce.",
-      "strictProperties": true,
-      "type": "object",
-      "definitions": {
-        "Name": {
-          "type": "string",
-          "description": "The name of the labor metric type.",
-          "example": "Department"
+        "$schema": "http://json-schema.org/draft-04/hyper-schema",
+        "title": "LaborMetricTypes",
+        "description": "Defines Labor Metric Type records for configuration and integration within Dayforce.",
+        "strictProperties": true,
+        "type": "object",
+        "definitions": {
+        "Name": { "type": "string", "description": "The name of the labor metric type.", "example": "Department" },
+        "Description": { "type": "string", "description": "Description of the labor metric type.", "example": "Department-level labor tracking." },
+        "ClockTransferCode": { "type": "string", "description": "Optional code used for clock transfer or time tracking integrations.", "example": "DEPT" },
+        "LaborMetricTypeXRefCode": { "type": "string", "description": "Unique external reference code for the labor metric type.", "example": "DEPT01" }
         },
-        "Description": {
-          "type": "string",
-          "description": "Description of the labor metric type.",
-          "example": "Department-level labor tracking."
-        },
-        "ClockTransferCode": {
-          "type": "string",
-          "description": "Optional code used for clock transfer or time tracking integrations.",
-          "example": "DEPT"
-        },
-        "LaborMetricTypeXRefCode": {
-          "type": "string",
-          "description": "Unique external reference code for the labor metric type.",
-          "example": "DEPT01"
-        }
-      },
-      "properties": {
+        "properties": {
         "Name": { "$ref": "#/definitions/LaborMetricTypes/definitions/Name" },
         "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
         "ClockTransferCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/ClockTransferCode" },
         "LaborMetricTypeXRefCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricTypeXRefCode" }
-      },
-      "required": ["Name", "LaborMetricTypeXRefCode"],
-      "links": [
-        {
-          "rel": "get",
-          "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
-          "method": "GET",
-          "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         },
+        "required": ["Name", "LaborMetricTypeXRefCode"],
+        "links": [
         {
-          "rel": "create",
-          "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/LaborMetricTypes",
-          "method": "POST",
-          "schema": { "$ref": "#/definitions/LaborMetricTypes" },
-          "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
-        },
-        {
-          "rel": "patch",
-          "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
-          "method": "PATCH",
-          "schema": { "$ref": "#/definitions/LaborMetricTypes" },
-          "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        "rel": "create",
+        "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/LaborMetricTypes",
+        "method": "POST",
+        "schema": { "$ref": "#/definitions/LaborMetricTypes" },
+        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         }
-      ]
-    }
-  },
+        ]
+    },
   "properties": {
     "Timesheet": { "$ref": "#/definitions/Timesheet" },
     "EmployeeRawPunches": { "$ref": "#/definitions/EmployeeRawPunches" },
