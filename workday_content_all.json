@@ -27,7 +27,7 @@
         },
         "report_path": {
           "description": "Workday report path in Workday (folder/name).",
-          "example": "ISU_mulesoft/D365_Positions_Report",
+          "example": "ISU_mulesoft/D365_Position_Report",
           "readOnly": true,
           "type": [
             "string"
@@ -43,9 +43,9 @@
         }
       }
     },
-    "D365_Positions_Report": {
+    "D365_Position_Report": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "D365_Positions_Report",
+      "title": "D365_Position_Report",
       "description": "A single row from the Workday Positions report.",
       "stability": "beta",
       "strictProperties": true,
@@ -129,48 +129,48 @@
       },
       "properties": {
         "Full_Name": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Full_Name"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Full_Name"
         },
         "Management_Level": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Management_Level"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Management_Level"
         },
         "Effective_Date_for_Current_Position": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Effective_Date_for_Current_Position"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Effective_Date_for_Current_Position"
         },
         "Position_ID": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Position_ID"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Position_ID"
         },
         "Most_Rec_Pos_Change": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Rec_Pos_Change"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Most_Rec_Pos_Change"
         },
         "Most_Recent_Position_Change_start": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Most_Recent_Position_Change_start"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Most_Recent_Position_Change_start"
         },
         "Position": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Position"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Position"
         },
         "Active_Status": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Active_Status"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Active_Status"
         },
         "Business_Title": {
-          "$ref": "#/definitions/D365_Positions_Report/definitions/Business_Title"
+          "$ref": "#/definitions/D365_Position_Report/definitions/Business_Title"
         }
       },
       "links": [
         {
           "title": "Info",
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Report?format=json",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
-            "$ref": "#/definitions/D365_Positions_Report"
+            "$ref": "#/definitions/D365_Position_Report"
           }
         },
         {
           "title": "List",
           "description": "List existing positions.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Positions_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Report?format=json",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -194,7 +194,7 @@
           "targetSchema": {
             "type": "array",
             "items": {
-              "$ref": "#/definitions/D365_Positions_Report"
+              "$ref": "#/definitions/D365_Position_Report"
             }
           }
         }
@@ -678,8 +678,8 @@
     }
   },
   "properties": {
-    "D365_Positions_Report": {
-      "$ref": "#/definitions/D365_Positions_Report"
+    "D365_Position_Report": {
+      "$ref": "#/definitions/D365_Position_Report"
     },
     "D365_Employee": {
       "$ref": "#/definitions/D365_Employee"
