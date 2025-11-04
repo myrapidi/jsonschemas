@@ -180,43 +180,59 @@
       ]
     },
     "LaborMetricTypes": {
-    "$schema": "http://json-schema.org/draft-04/hyper-schema",
-    "title": "LaborMetricTypes",
-    "description": "Labor metric type records in Dayforce.",
-    "strictProperties": true,
-    "type": "object",
-    "definitions": {
-        "Code": { "type": "string", "description": "Unique code for the labor metric type", "example": "OT" },
-        "Description": { "type": "string", "description": "Description of the labor metric type", "example": "Overtime Hours" },
-        "DisplayOrder": { "type": "integer", "description": "Order for display purposes", "example": 1 },
-        "IsActive": { "type": "boolean", "description": "Indicates if the labor metric type is active", "example": true }
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "LaborMetricTypes",
+  "description": "Labor metric type records in Dayforce.",
+  "strictProperties": true,
+  "type": "object",
+  "definitions": {
+    "LaborMetricType": {
+        "type": "object",
+        "properties": {
+            "Name": { "type": "string", "description": "Name of the labor metric type", "example": "Overtime" },
+            "Description": { "type": "string", "description": "Description of the labor metric type", "example": "Overtime Hours" },
+            "ClockTransferCode": { "type": "string", "description": "Optional clock transfer code", "example": "CT01" },
+            "LaborMetricTypeXRefCode": { "type": "string", "description": "Unique identifier for labor metric type", "example": "LM123" }
+        },
+        "required": ["Name", "Description", "LaborMetricTypeXRefCode"]
+        },
+        "ProcessResult": {
+        "type": "object",
+        "properties": {
+            "Code": { "type": "string", "description": "Error or success code", "example": "SYS_OK" },
+            "Context": { "type": "string", "description": "Context for the result", "example": "LaborMetricType" },
+            "Level": { "type": "string", "description": "Level of the result (INFO/ERROR)", "example": "INFO" },
+            "Message": { "type": "string", "description": "Detailed message", "example": "Labor metric type created successfully" }
+        }
+        }
     },
     "properties": {
-        "Code": { "$ref": "#/definitions/LaborMetricTypes/definitions/Code" },
-        "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
-        "DisplayOrder": { "$ref": "#/definitions/LaborMetricTypes/definitions/DisplayOrder" },
-        "IsActive": { "$ref": "#/definitions/LaborMetricTypes/definitions/IsActive" }
+        "Data": { "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricType" },
+        "ProcessResults": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/LaborMetricTypes/definitions/ProcessResult" }
+        }
     },
     "links": [
         {
-            "rel": "get",
-            "href": "/LaborMetricTypes",
-            "method": "GET",
-            "targetSchema": { "$ref": "#/LaborMetricTypes" }
-            },
-            {
-            "rel": "create",
-            "href": "/LaborMetricTypes",
-            "method": "POST",
-            "schema": { "$ref": "#/LaborMetricTypes" },
-            "targetSchema": { "$ref": "#/LaborMetricTypes" }
-            },
-            {
-            "rel": "patch",
-            "href": "/LaborMetricTypes/{Code}",
-            "method": "PUT",
-            "schema": { "$ref": "#/LaborMetricTypes" },
-            "targetSchema": { "$ref": "#/LaborMetricTypes" }
+        "rel": "get",
+        "href": "/LaborMetricTypes",
+        "method": "GET",
+        "targetSchema": { "$ref": "#/LaborMetricTypes" }
+        },
+        {
+        "rel": "create",
+        "href": "/LaborMetricTypes",
+        "method": "POST",
+        "schema": { "$ref": "#/LaborMetricTypes" },
+        "targetSchema": { "$ref": "#/LaborMetricTypes" }
+        },
+        {
+        "rel": "patch",
+        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}",
+        "method": "PUT",
+        "schema": { "$ref": "#/LaborMetricTypes" },
+        "targetSchema": { "$ref": "#/LaborMetricTypes" }
         }
     ]
     }
