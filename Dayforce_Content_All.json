@@ -143,7 +143,8 @@
       },
       "links": [
         { "rel": "get", "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/EmployeePayAdjustments", "method": "GET", "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } },
-        { "rel": "create", "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } }
+        { "rel": "create", "href": "https://canstage251.dayforcehcm.com/Api/nmbstage/v1/EmployeePayAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } },
+        { "rel": "update", "href": "/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}", "method": "PATCH", "schema": { "$ref": "#/definitions/EmployeePayAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeePayAdjustments" } }
       ]
     },
     "EmployeeTimeAdjustments": {
@@ -177,9 +178,8 @@
         { "rel": "create", "href": "/EmployeeTimeAdjustments", "method": "POST", "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" } },
         { "rel": "patch", "href": "/EmployeeTimeAdjustments/{EmployeeTimeAdjustXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }, "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" } }
       ]
-    }
-  },
-  "LaborMetricTypes": {
+    },
+    "LaborMetricTypes": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "LaborMetricTypes",
       "description": "Defines Labor Metric Type records for configuration and integration within Dayforce.",
