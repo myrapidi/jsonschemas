@@ -180,29 +180,76 @@
       ]
     },
     "LaborMetricTypes": {
-        "$schema": "http://json-schema.org/draft-04/hyper-schema",
-        "title": "LaborMetricTypes",
-        "description": "Labor metric type records.",
-        "strictProperties": true,
-        "type": "object",
-        "definitions": {
-            "LaborMetricTypeXRefCode": { "type": "string", "description": "Unique identifier for labor metric type", "example": "LMT123" },
-            "Name": { "type": "string", "description": "Name of the labor metric type", "example": "Overtime" },
-            "Description": { "type": "string", "description": "Description of the labor metric type", "example": "Overtime hours worked" },
-            "ClockTransferCode": { "type": "string", "description": "Code used for clock transfer", "example": "OT" }
+    "$schema": "http://json-schema.org/draft-04/hyper-schema",
+    "title": "LaborMetricTypes",
+    "description": "Labor metric type records in Dayforce.",
+    "strictProperties": true,
+    "type": "object",
+    "definitions": {
+        "LaborMetricTypeXRefCode": {
+        "type": "string",
+        "description": "Unique identifier for the labor metric type",
+        "example": "JobCode"
         },
-        "properties": {
-            "LaborMetricTypeXRefCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricTypeXRefCode" },
-            "Name": { "$ref": "#/definitions/LaborMetricTypes/definitions/Name" },
-            "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
-            "ClockTransferCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/ClockTransferCode" }
+        "Name": {
+        "type": "string",
+        "description": "Name of the labor metric type",
+        "example": "Job Code"
         },
-        "links": [
-            { "rel": "get", "href": "/LaborMetricTypes", "method": "GET", "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" } },
-            { "rel": "create", "href": "/LaborMetricTypes", "method": "POST", "schema": { "$ref": "#/definitions/LaborMetricTypes" }, "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" } },
-            { "rel": "patch", "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}", "method": "PUT", "schema": { "$ref": "#/definitions/LaborMetricTypes" }, "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" } }
-        ]
-    }   
+        "Description": {
+        "type": "string",
+        "description": "Description of the labor metric type",
+        "example": "Used for categorizing job codes"
+        },
+        "CreatedDateTime": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Record creation timestamp",
+        "example": "2025-10-20T08:00:00Z"
+        },
+        "ModifiedDateTime": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Record last modified timestamp",
+        "example": "2025-10-20T12:00:00Z"
+        },
+        "clientNamespace": {
+        "type": "string",
+        "description": "Uniquely identifies the client's Dayforce instance",
+        "example": "nmbstage"
+        }
+    },
+    "properties": {
+        "LaborMetricTypeXRefCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricTypeXRefCode" },
+        "Name": { "$ref": "#/definitions/LaborMetricTypes/definitions/Name" },
+        "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
+        "CreatedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/CreatedDateTime" },
+        "ModifiedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/ModifiedDateTime" },
+        "clientNamespace": { "$ref": "#/definitions/LaborMetricTypes/definitions/clientNamespace" }
+    },
+    "links": [
+        {
+        "rel": "get",
+        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={clientNamespace}",
+        "method": "GET",
+        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        },
+        {
+        "rel": "create",
+        "href": "/LaborMetricTypes?clientNamespace={clientNamespace}",
+        "method": "POST",
+        "schema": { "$ref": "#/definitions/LaborMetricTypes" },
+        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        },
+        {
+        "rel": "patch",
+        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={clientNamespace}",
+        "method": "PUT",
+        "schema": { "$ref": "#/definitions/LaborMetricTypes" },
+        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        }
+    ]
+    }
 },
   "properties": {
     "Timesheet": { "$ref": "#/definitions/Timesheet" },
