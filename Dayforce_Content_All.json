@@ -180,45 +180,45 @@
       ]
     },
     "LaborMetricTypes": {
-        "$schema": "http://json-schema.org/draft-04/hyper-schema",
-        "title": "LaborMetricTypes",
-        "description": "Labor metric type records in Dayforce.",
-        "strictProperties": true,
-        "type": "object",
-        "definitions": {
-            "Code": { "type": "string", "description": "Unique code for the labor metric type", "example": "OT" },
-            "Description": { "type": "string", "description": "Description of the labor metric type", "example": "Overtime Hours" },
-            "DisplayOrder": { "type": "integer", "description": "Order for display purposes", "example": 1 },
-            "IsActive": { "type": "boolean", "description": "Indicates if the labor metric type is active", "example": true }
-        },
-        "properties": {
-            "Code": { "$ref": "#/definitions/Code" },
-            "Description": { "$ref": "#/definitions/Description" },
-            "DisplayOrder": { "$ref": "#/definitions/DisplayOrder" },
-            "IsActive": { "$ref": "#/definitions/IsActive" }
-        },
-        "links": [
+    "$schema": "http://json-schema.org/draft-04/hyper-schema",
+    "title": "LaborMetricTypes",
+    "description": "Labor metric type records in Dayforce.",
+    "strictProperties": true,
+    "type": "object",
+    "definitions": {
+        "Code": { "type": "string", "description": "Unique code for the labor metric type", "example": "OT" },
+        "Description": { "type": "string", "description": "Description of the labor metric type", "example": "Overtime Hours" },
+        "DisplayOrder": { "type": "integer", "description": "Order for display purposes", "example": 1 },
+        "IsActive": { "type": "boolean", "description": "Indicates if the labor metric type is active", "example": true }
+    },
+    "properties": {
+        "Code": { "$ref": "#/definitions/LaborMetricTypes/definitions/Code" },
+        "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
+        "DisplayOrder": { "$ref": "#/definitions/LaborMetricTypes/definitions/DisplayOrder" },
+        "IsActive": { "$ref": "#/definitions/LaborMetricTypes/definitions/IsActive" }
+    },
+    "links": [
+        {
+            "rel": "get",
+            "href": "/LaborMetricTypes",
+            "method": "GET",
+            "targetSchema": { "$ref": "#/LaborMetricTypes" }
+            },
             {
-                "rel": "get",
-                "href": "/LaborMetricTypes",
-                "method": "GET",
-                "targetSchema": { "$ref": "#/LaborMetricTypes" }
-                },
-                {
-                "rel": "create",
-                "href": "/LaborMetricTypes",
-                "method": "POST",
-                "schema": { "$ref": "#/LaborMetricTypes" },
-                "targetSchema": { "$ref": "#/LaborMetricTypes" }
-                },
-                {
-                "rel": "patch",
-                "href": "/LaborMetricTypes/{Code}",
-                "method": "PUT",
-                "schema": { "$ref": "#/LaborMetricTypes" },
-                "targetSchema": { "$ref": "#/LaborMetricTypes" }
-            }
-        ]
+            "rel": "create",
+            "href": "/LaborMetricTypes",
+            "method": "POST",
+            "schema": { "$ref": "#/LaborMetricTypes" },
+            "targetSchema": { "$ref": "#/LaborMetricTypes" }
+            },
+            {
+            "rel": "patch",
+            "href": "/LaborMetricTypes/{Code}",
+            "method": "PUT",
+            "schema": { "$ref": "#/LaborMetricTypes" },
+            "targetSchema": { "$ref": "#/LaborMetricTypes" }
+        }
+    ]
     }
 },
   "properties": {
