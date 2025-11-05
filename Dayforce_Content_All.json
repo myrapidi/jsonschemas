@@ -264,7 +264,7 @@
     "links": [
         {
         "rel": "get",
-        "href": "https://canstage251.dayforcehcm.com/api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
+        "href": "https://canstage251.dayforcehcm.com/api/nmbconfig/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
         "method": "GET",
         "targetSchema": {
             "$ref": "#/definitions/LaborMetricTypes"
@@ -272,7 +272,7 @@
         },
         {
         "rel": "create",
-        "href": "https://canstage251.dayforcehcm.com/api/nmbstage/v1/LaborMetricTypes?isValidateOnly=false",
+        "href": "https://canstage251.dayforcehcm.com/api/nmbconfig/v1/LaborMetricTypes?isValidateOnly=false",
         "method": "POST",
         "schema": {
             "$ref": "#/definitions/LaborMetricTypes"
@@ -283,7 +283,7 @@
         },
         {
         "rel": "patch",
-        "href": "https://canstage251.dayforcehcm.com/api/nmbstage/v1/LaborMetricTypes?isValidateOnly=false",
+        "href": "https://canstage251.dayforcehcm.com/api/nmbconfig/v1/LaborMetricTypes?isValidateOnly=false",
         "method": "PATCH",
         "schema": {
             "$ref": "#/definitions/LaborMetricTypes"
