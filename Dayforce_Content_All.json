@@ -230,20 +230,20 @@
     "links": [
         {
         "rel": "get",
-        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={clientNamespace}",
+        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={nmbstage}",
         "method": "GET",
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         },
         {
         "rel": "create",
-        "href": "/LaborMetricTypes?clientNamespace={clientNamespace}",
+        "href": "/LaborMetricTypes?clientNamespace={nmbstage}",
         "method": "POST",
         "schema": { "$ref": "#/definitions/LaborMetricTypes" },
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         },
         {
         "rel": "patch",
-        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={clientNamespace}",
+        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={nmbstage}",
         "method": "PUT",
         "schema": { "$ref": "#/definitions/LaborMetricTypes" },
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
