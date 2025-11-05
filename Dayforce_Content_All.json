@@ -180,76 +180,117 @@
       ]
     },
     "LaborMetricTypes": {
-    "$schema": "http://json-schema.org/draft-04/hyper-schema",
-    "title": "LaborMetricTypes",
-    "description": "Labor metric type records in Dayforce.",
-    "strictProperties": true,
-    "type": "object",
-
-    "definitions": {
-        "LaborMetricTypeXRefCode": {
-        "type": "string",
-        "description": "Unique identifier for the labor metric type",
-        "example": "JobCode"
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "LaborMetricTypes",
+  "description": "Represents Labor Metric Type records in Dayforce (environment: nmbstage).",
+  "strictProperties": true,
+  "type": "object",
+  "definitions": {
+    "LaborMetricTypeXRefCode": {
+      "type": "string",
+      "description": "Unique identifier for the labor metric type record.",
+      "example": "JobCode"
+    },
+    "ShortName": {
+      "type": "string",
+      "description": "Short display name for the labor metric type.",
+      "example": "JOB"
+    },
+    "LongName": {
+      "type": "string",
+      "description": "Full descriptive name of the labor metric type.",
+      "example": "Job Code"
+    },
+    "ClockTransferCode": {
+      "type": "string",
+      "description": "Code used for clock transfer configuration (optional).",
+      "example": "JOB"
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "description": "Indicates whether this labor metric type is marked as deleted.",
+      "example": false
+    },
+    "ProcessResults": {
+      "type": "array",
+      "description": "List of messages or results returned from the API.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Code": {
+            "type": "string",
+            "description": "Result code indicating success or failure.",
+            "example": "SYS_OK"
+          },
+          "Context": {
+            "type": "string",
+            "description": "Context for the result, usually the affected entity.",
+            "example": "LaborMetricType"
+          },
+          "Level": {
+            "type": "string",
+            "description": "Severity level (INFO, WARNING, ERROR).",
+            "example": "INFO"
+          },
+          "Message": {
+            "type": "string",
+            "description": "Detailed description of the result.",
+            "example": "Labor metric type created successfully."
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "LaborMetricTypeXRefCode": {
+        "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricTypeXRefCode"
         },
-        "Name": {
-        "type": "string",
-        "description": "Name of the labor metric type",
-        "example": "Job Code"
+        "ShortName": {
+        "$ref": "#/definitions/LaborMetricTypes/definitions/ShortName"
         },
-        "Description": {
-        "type": "string",
-        "description": "Description of the labor metric type",
-        "example": "Used for categorizing job codes"
+        "LongName": {
+        "$ref": "#/definitions/LaborMetricTypes/definitions/LongName"
         },
         "ClockTransferCode": {
-        "type": "string",
-        "description": "Code used for clock transfer integration",
-        "example": "12345"
+        "$ref": "#/definitions/LaborMetricTypes/definitions/ClockTransferCode"
         },
-        "CreatedDateTime": {
-        "type": "string",
-        "format": "date-time",
-        "description": "Record creation timestamp",
-        "example": "2025-10-20T08:00:00Z"
+        "IsDeleted": {
+        "$ref": "#/definitions/LaborMetricTypes/definitions/IsDeleted"
         },
-        "ModifiedDateTime": {
-        "type": "string",
-        "format": "date-time",
-        "description": "Record last modified timestamp",
-        "example": "2025-10-20T12:00:00Z"
+        "ProcessResults": {
+        "$ref": "#/definitions/LaborMetricTypes/definitions/ProcessResults"
         }
     },
-
-    "properties": {
-        "LaborMetricTypeXRefCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricTypeXRefCode" },
-        "Name": { "$ref": "#/definitions/LaborMetricTypes/definitions/Name" },
-        "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
-        "ClockTransferCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/ClockTransferCode" },
-        "CreatedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/CreatedDateTime" },
-        "ModifiedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/ModifiedDateTime" }
-    },
-
     "links": [
         {
         "rel": "get",
-        "href": "/api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
+        "href": "https://canstage251.dayforcehcm.com/api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
         "method": "GET",
-        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        "targetSchema": {
+            "$ref": "#/definitions/LaborMetricTypes"
+        }
         },
         {
         "rel": "create",
-        "href": "/api/nmbstage/v1/LaborMetricTypes",
+        "href": "https://canstage251.dayforcehcm.com/api/nmbstage/v1/LaborMetricTypes?isValidateOnly=false",
         "method": "POST",
-        "schema": { "$ref": "#/definitions/LaborMetricTypes" },
-        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        "schema": {
+            "$ref": "#/definitions/LaborMetricTypes"
+        },
+        "targetSchema": {
+            "$ref": "#/definitions/LaborMetricTypes"
+        }
         },
         {
         "rel": "patch",
-        "href": "/api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
-        "method": "PUT",
-        "schema": { "$ref": "#/definitions/LaborMetricTypes" },
-        "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
+        "href": "https://canstage251.dayforcehcm.com/api/nmbstage/v1/LaborMetricTypes?isValidateOnly=false",
+        "method": "PATCH",
+        "schema": {
+            "$ref": "#/definitions/LaborMetricTypes"
+        },
+        "targetSchema": {
+            "$ref": "#/definitions/LaborMetricTypes"
+        }
         }
     ]
     }
