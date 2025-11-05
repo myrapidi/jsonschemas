@@ -185,6 +185,7 @@
     "description": "Labor metric type records in Dayforce.",
     "strictProperties": true,
     "type": "object",
+
     "definitions": {
         "LaborMetricTypeXRefCode": {
         "type": "string",
@@ -201,6 +202,11 @@
         "description": "Description of the labor metric type",
         "example": "Used for categorizing job codes"
         },
+        "ClockTransferCode": {
+        "type": "string",
+        "description": "Code used for clock transfer integration",
+        "example": "12345"
+        },
         "CreatedDateTime": {
         "type": "string",
         "format": "date-time",
@@ -212,38 +218,35 @@
         "format": "date-time",
         "description": "Record last modified timestamp",
         "example": "2025-10-20T12:00:00Z"
-        },
-        "clientNamespace": {
-        "type": "string",
-        "description": "Uniquely identifies the client's Dayforce instance",
-        "example": "nmbstage"
         }
     },
+
     "properties": {
         "LaborMetricTypeXRefCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/LaborMetricTypeXRefCode" },
         "Name": { "$ref": "#/definitions/LaborMetricTypes/definitions/Name" },
         "Description": { "$ref": "#/definitions/LaborMetricTypes/definitions/Description" },
+        "ClockTransferCode": { "$ref": "#/definitions/LaborMetricTypes/definitions/ClockTransferCode" },
         "CreatedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/CreatedDateTime" },
-        "ModifiedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/ModifiedDateTime" },
-        "clientNamespace": { "$ref": "#/definitions/LaborMetricTypes/definitions/clientNamespace" }
+        "ModifiedDateTime": { "$ref": "#/definitions/LaborMetricTypes/definitions/ModifiedDateTime" }
     },
+
     "links": [
         {
         "rel": "get",
-        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={nmbstage}",
+        "href": "/api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
         "method": "GET",
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         },
         {
         "rel": "create",
-        "href": "/LaborMetricTypes?clientNamespace={nmbstage}",
+        "href": "/api/nmbstage/v1/LaborMetricTypes",
         "method": "POST",
         "schema": { "$ref": "#/definitions/LaborMetricTypes" },
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
         },
         {
         "rel": "patch",
-        "href": "/LaborMetricTypes/{LaborMetricTypeXRefCode}?clientNamespace={nmbstage}",
+        "href": "/api/nmbstage/v1/LaborMetricTypes/{LaborMetricTypeXRefCode}",
         "method": "PUT",
         "schema": { "$ref": "#/definitions/LaborMetricTypes" },
         "targetSchema": { "$ref": "#/definitions/LaborMetricTypes" }
