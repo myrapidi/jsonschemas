@@ -707,6 +707,6 @@
     "EmployeeTimeAdjustments": {
       "$ref": "#/definitions/EmployeeTimeAdjustments"
     },
-    "LaborMetrics": { "ref": "#/definitions/LaborMetrics" }
+    "LaborMetrics": { "$ref": "#/definitions/LaborMetrics" }
   }
 }
