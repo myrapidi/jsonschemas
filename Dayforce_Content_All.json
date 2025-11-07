@@ -618,6 +618,11 @@
             "required": ["OrgUnitXRefCode"]
           }
         },
+                "LaborMetricsTypeXRefCode": {
+          "type": "string",
+          "description": "Reference to the labor metric type this code belongs to.",
+          "example": "JobCode"
+        },
         "IsDeleted": {
           "type": "boolean",
           "description": "Indicates whether this labor metric code record is marked as deleted.",
