@@ -607,15 +607,9 @@
           "type": "array",
           "description": "List of organization unit reference codes linked to this labor metric code.",
           "items": {
-            "type": "object",
-            "properties": {
-              "OrgUnitXRefCode": {
-                "type": "string",
-                "description": "Reference code for an organization unit.",
-                "example": "ORG001"
-              }
-            },
-            "required": ["OrgUnitXRefCode"]
+            "type": "string",
+            "description": "Reference code for an organization unit.",
+            "example": "ORG001"
           }
         },
         "LaborMetricsTypeXRefCode": {
