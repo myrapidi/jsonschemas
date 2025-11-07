@@ -618,7 +618,7 @@
             "required": ["OrgUnitXRefCode"]
           }
         },
-                "LaborMetricsTypeXRefCode": {
+        "LaborMetricsTypeXRefCode": {
           "type": "string",
           "description": "Reference to the labor metric type this code belongs to.",
           "example": "JobCode"
