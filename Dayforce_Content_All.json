@@ -607,14 +607,16 @@
           "type": "array",
           "description": "List of organization unit reference codes linked to this labor metric code.",
           "items": {
-            "type": "string",
-            "example": "ORG001"
+            "type": "object",
+            "properties": {
+              "OrgUnitXRefCode": {
+                "type": "string",
+                "description": "Reference code for an organization unit.",
+                "example": "ORG001"
+              }
+            },
+            "required": ["OrgUnitXRefCode"]
           }
-        },
-        "LaborMetricsTypeXRefCode": {
-          "type": "string",
-          "description": "Reference to the labor metric type this code belongs to.",
-          "example": "JobCode"
         },
         "IsDeleted": {
           "type": "boolean",
@@ -705,6 +707,6 @@
     "EmployeeTimeAdjustments": {
       "$ref": "#/definitions/EmployeeTimeAdjustments"
     },
-    "LaborMetrics": { "$ref": "#/definitions/LaborMetrics" }
+    "LaborMetrics": { "ref": "#/definitions/LaborMetrics" }
   }
 }
