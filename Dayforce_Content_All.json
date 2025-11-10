@@ -585,115 +585,96 @@
         "EffectiveFrom": {
           "type": "string",
           "format": "date-time",
-          "description": "Date and time when this labor metric code becomes effective.",
-          "example": "2025-01-01T00:00:00Z"
+          "description": "Start date for this labor metric code."
         },
         "EffectiveEnd": {
           "type": "string",
           "format": "date-time",
-          "description": "Date and time when this labor metric code expires (if applicable).",
-          "example": "2025-12-31T23:59:59Z"
+          "description": "End date for this labor metric code."
         },
         "ClockTransferCode": {
           "type": "string",
-          "description": "Clock transfer code associated with this labor metric code (optional).",
-          "example": "CT01"
+          "description": "Clock transfer code associated with this labor metric."
         },
         "LedgerCode": {
           "type": "string",
-          "description": "Ledger code associated with this labor metric code (optional).",
-          "example": "LGR001"
+          "description": "Ledger code associated with this labor metric."
         },
         "OrgUnitXRefCodes": {
           "type": "array",
-          "description": "List of organization unit reference codes linked to this labor metric code.",
-          "items": {
-            "type": "string",
-            "description": "Reference code for an organization unit.",
-            "example": "ORG001"
-          }
+          "items": { "type": "string" },
+          "description": "Organization unit reference codes linked to this labor metric."
         },
         "LaborMetricsTypeXRefCode": {
           "type": "string",
-          "description": "Reference to the labor metric type this code belongs to.",
-          "example": "JobCode"
+          "description": "Reference to the labor metric type this code belongs to."
         },
         "IsDeleted": {
           "type": "boolean",
-          "description": "Indicates whether this labor metric code record is marked as deleted.",
-          "example": false
+          "description": "Indicates if this record is marked as deleted."
         },
         "CreatedDateTime": {
           "type": "string",
-          "format": "date-time",
-          "description": "Record creation timestamp.",
-          "example": "2025-11-05T08:00:00Z"
+          "format": "date-time"
         },
         "ModifiedDateTime": {
           "type": "string",
-          "format": "date-time",
-          "description": "Record last modified timestamp.",
-          "example": "2025-11-05T12:00:00Z"
+          "format": "date-time"
         }
       },
       "properties": {
         "LaborMetricsCodeXRefCode": {
-          "$ref": "#/definitions/LaborMetricsCodeXRefCode"
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
         },
         "ShortName": {
-          "$ref": "#/definitions/ShortName"
+          "$ref": "#/definitions/LaborMetrics/definitions/ShortName"
         },
         "LongName": {
-          "$ref": "#/definitions/LongName"
+          "$ref": "#/definitions/LaborMetrics/definitions/LongName"
         },
         "EffectiveFrom": {
-          "$ref": "#/definitions/EffectiveFrom"
+          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveFrom"
         },
         "EffectiveEnd": {
-          "$ref": "#/definitions/EffectiveEnd"
+          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveEnd"
         },
         "ClockTransferCode": {
-          "$ref": "#/definitions/ClockTransferCode"
+          "$ref": "#/definitions/LaborMetrics/definitions/ClockTransferCode"
         },
         "LedgerCode": {
-          "$ref": "#/definitions/LedgerCode"
+          "$ref": "#/definitions/LaborMetrics/definitions/LedgerCode"
         },
         "OrgUnitXRefCodes": {
-          "$ref": "#/definitions/OrgUnitXRefCodes"
+          "$ref": "#/definitions/LaborMetrics/definitions/OrgUnitXRefCodes"
         },
         "LaborMetricsTypeXRefCode": {
-          "$ref": "#/definitions/LaborMetricsTypeXRefCode"
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
         },
         "IsDeleted": {
-          "$ref": "#/definitions/IsDeleted"
+          "$ref": "#/definitions/LaborMetrics/definitions/IsDeleted"
         },
         "CreatedDateTime": {
-          "$ref": "#/definitions/CreatedDateTime"
+          "$ref": "#/definitions/LaborMetrics/definitions/CreatedDateTime"
         },
         "ModifiedDateTime": {
-          "$ref": "#/definitions/ModifiedDateTime"
+          "$ref": "#/definitions/LaborMetrics/definitions/ModifiedDateTime"
         }
       },
       "links": [
         {
           "rel": "get",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
-          "method": "GET",
-          "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
+          "method": "GET"
         },
         {
-          "rel": "post",
+          "rel": "create",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
-          "method": "POST",
-          "schema": { "$ref": "#/definitions/LaborMetrics" },
-          "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
+          "method": "POST"
         },
         {
           "rel": "update",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
-          "method": "PATCH",
-          "schema": { "$ref": "#/definitions/LaborMetrics" },
-          "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
+          "method": "PATCH"
         }
       ]
     }
