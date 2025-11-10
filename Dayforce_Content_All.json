@@ -565,6 +565,7 @@
       "description": "Labor Metrics records in Dayforce.",
       "strictProperties": true,
       "type": "object",
+      "key": "LaborMetricsCodeXRefCode",
       "definitions": {
         "LaborMetricsCodeXRefCode": {
           "type": "string",
@@ -637,40 +638,40 @@
       },
       "properties": {
         "LaborMetricsCodeXRefCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
+          "$ref": "#/definitions/LaborMetricsCodeXRefCode"
         },
         "ShortName": {
-          "$ref": "#/definitions/LaborMetrics/definitions/ShortName"
+          "$ref": "#/definitions/ShortName"
         },
         "LongName": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LongName"
+          "$ref": "#/definitions/LongName"
         },
         "EffectiveFrom": {
-          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveFrom"
+          "$ref": "#/definitions/EffectiveFrom"
         },
         "EffectiveEnd": {
-          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveEnd"
+          "$ref": "#/definitions/EffectiveEnd"
         },
         "ClockTransferCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/ClockTransferCode"
+          "$ref": "#/definitions/ClockTransferCode"
         },
         "LedgerCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LedgerCode"
+          "$ref": "#/definitions/LedgerCode"
         },
         "OrgUnitXRefCodes": {
-          "$ref": "#/definitions/LaborMetrics/definitions/OrgUnitXRefCodes"
+          "$ref": "#/definitions/OrgUnitXRefCodes"
         },
         "LaborMetricsTypeXRefCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
+          "$ref": "#/definitions/LaborMetricsTypeXRefCode"
         },
         "IsDeleted": {
-          "$ref": "#/definitions/LaborMetrics/definitions/IsDeleted"
+          "$ref": "#/definitions/IsDeleted"
         },
         "CreatedDateTime": {
-          "$ref": "#/definitions/LaborMetrics/definitions/CreatedDateTime"
+          "$ref": "#/definitions/CreatedDateTime"
         },
         "ModifiedDateTime": {
-          "$ref": "#/definitions/LaborMetrics/definitions/ModifiedDateTime"
+          "$ref": "#/definitions/ModifiedDateTime"
         }
       },
       "links": [
@@ -681,7 +682,7 @@
           "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
         },
         {
-          "rel": "create",
+          "rel": "post",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
           "method": "POST",
           "schema": { "$ref": "#/definitions/LaborMetrics" },
@@ -690,7 +691,7 @@
         {
           "rel": "update",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
-          "method": "PUT",
+          "method": "PATCH",
           "schema": { "$ref": "#/definitions/LaborMetrics" },
           "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
         }
