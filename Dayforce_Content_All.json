@@ -688,7 +688,7 @@
           "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
         },
         {
-          "rel": "put",
+          "rel": "update",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
           "method": "PUT",
           "schema": { "$ref": "#/definitions/LaborMetrics" },
