@@ -560,124 +560,129 @@
       ]
     },
     "LaborMetrics": {
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "LaborMetrics",
-      "description": "Labor Metrics records in Dayforce.",
-      "strictProperties": true,
-      "type": "object",
-      "key": "LaborMetricsCodeXRefCode",
-      "definitions": {
-        "LaborMetricsCodeXRefCode": {
-          "type": "string",
-          "description": "Unique identifier for the labor metric code record.",
-          "example": "LM001"
-        },
-        "ShortName": {
-          "type": "string",
-          "description": "Short display name of the labor metric code.",
-          "example": "OT"
-        },
-        "LongName": {
-          "type": "string",
-          "description": "Full descriptive name of the labor metric code.",
-          "example": "Overtime Code"
-        },
-        "EffectiveFrom": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Start date for this labor metric code."
-        },
-        "EffectiveEnd": {
-          "type": "string",
-          "format": "date-time",
-          "description": "End date for this labor metric code."
-        },
-        "ClockTransferCode": {
-          "type": "string",
-          "description": "Clock transfer code associated with this labor metric."
-        },
-        "LedgerCode": {
-          "type": "string",
-          "description": "Ledger code associated with this labor metric."
-        },
-        "OrgUnitXRefCodes": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Organization unit reference codes linked to this labor metric."
-        },
-        "LaborMetricsTypeXRefCode": {
-          "type": "string",
-          "description": "Reference to the labor metric type this code belongs to."
-        },
-        "IsDeleted": {
-          "type": "boolean",
-          "description": "Indicates if this record is marked as deleted."
-        },
-        "CreatedDateTime": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "ModifiedDateTime": {
-          "type": "string",
-          "format": "date-time"
-        }
-      },
-      "properties": {
-        "LaborMetricsCodeXRefCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
-        },
-        "ShortName": {
-          "$ref": "#/definitions/LaborMetrics/definitions/ShortName"
-        },
-        "LongName": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LongName"
-        },
-        "EffectiveFrom": {
-          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveFrom"
-        },
-        "EffectiveEnd": {
-          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveEnd"
-        },
-        "ClockTransferCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/ClockTransferCode"
-        },
-        "LedgerCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LedgerCode"
-        },
-        "OrgUnitXRefCodes": {
-          "$ref": "#/definitions/LaborMetrics/definitions/OrgUnitXRefCodes"
-        },
-        "LaborMetricsTypeXRefCode": {
-          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
-        },
-        "IsDeleted": {
-          "$ref": "#/definitions/LaborMetrics/definitions/IsDeleted"
-        },
-        "CreatedDateTime": {
-          "$ref": "#/definitions/LaborMetrics/definitions/CreatedDateTime"
-        },
-        "ModifiedDateTime": {
-          "$ref": "#/definitions/LaborMetrics/definitions/ModifiedDateTime"
-        }
-      },
-      "links": [
-        {
-          "rel": "get",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
-          "method": "GET"
-        },
-        {
-          "rel": "create",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
-          "method": "POST"
-        },
-        {
-          "rel": "update",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
-          "method": "PATCH"
-        }
-      ]
+  "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+  "title": "LaborMetrics",
+  "description": "Labor Metrics records in Dayforce.",
+  "type": "object",
+  "strictProperties": true,
+  "key": "LaborMetricsCodeXRefCode",
+
+  "definitions": {
+    "LaborMetricsCodeXRefCode": {
+      "type": "string",
+      "description": "Unique identifier for the labor metric code record.",
+      "example": "LM001"
+    },
+    "ShortName": {
+      "type": "string",
+      "description": "Short display name of the labor metric code.",
+      "example": "OT"
+    },
+    "LongName": {
+      "type": "string",
+      "description": "Full descriptive name of the labor metric code.",
+      "example": "Overtime Code"
+    },
+    "EffectiveFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start date for this labor metric code."
+    },
+    "EffectiveEnd": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End date for this labor metric code."
+    },
+    "ClockTransferCode": {
+      "type": "string",
+      "description": "Clock transfer code associated with this labor metric."
+    },
+    "LedgerCode": {
+      "type": "string",
+      "description": "Ledger code associated with this labor metric."
+    },
+    "OrgUnitXRefCodes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Organization unit reference codes linked to this labor metric."
+    },
+    "LaborMetricsTypeXRefCode": {
+      "type": "string",
+      "description": "Reference to the labor metric type this code belongs to."
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "description": "Indicates if this record is marked as deleted."
     }
+  },
+
+  "properties": {
+    "LaborMetricsCodeXRefCode": { "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode" },
+    "ShortName": { "$ref": "#/definitions/LaborMetrics/definitions/ShortName" },
+    "LongName": { "$ref": "#/definitions/LaborMetrics/definitions/LongName" },
+    "EffectiveFrom": { "$ref": "#/definitions/LaborMetrics/definitions/EffectiveFrom" },
+    "EffectiveEnd": { "$ref": "#/definitions/LaborMetrics/definitions/EffectiveEnd" },
+    "ClockTransferCode": { "$ref": "#/definitions/LaborMetrics/definitions/ClockTransferCode" },
+    "LedgerCode": { "$ref": "#/definitions/LaborMetrics/definitions/LedgerCode" },
+    "OrgUnitXRefCodes": { "$ref": "#/definitions/LaborMetrics/definitions/OrgUnitXRefCodes" },
+    "LaborMetricsTypeXRefCode": { "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode" },
+    "IsDeleted": { "$ref": "#/definitions/LaborMetrics/definitions/IsDeleted" }
+  },
+
+  "links": [
+    {
+      "rel": "instances",
+      "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
+      "method": "GET",
+      "title": "List existing labor metrics"
+    },
+    {
+      "rel": "self",
+      "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
+      "method": "GET",
+      "title": "Get a specific labor metric"
+    },
+    {
+      "rel": "create",
+      "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
+      "method": "POST",
+      "title": "Create a new labor metric",
+      "schema": {
+        "properties": {
+          "LaborMetricsCodeXRefCode": { "type": "string" },
+          "ShortName": { "type": "string" },
+          "LongName": { "type": "string" },
+          "EffectiveFrom": { "type": "string", "format": "date-time" },
+          "EffectiveEnd": { "type": "string", "format": "date-time" },
+          "ClockTransferCode": { "type": "string" },
+          "LedgerCode": { "type": "string" },
+          "OrgUnitXRefCodes": { "type": "array", "items": { "type": "string" } },
+          "LaborMetricsTypeXRefCode": { "type": "string" },
+          "IsDeleted": { "type": "boolean" }
+        }
+      }
+    },
+    {
+      "rel": "update",
+      "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
+      "method": "PATCH",
+      "title": "Update an existing labor metric",
+      "schema": {
+        "properties": {
+          "ShortName": { "type": "string" },
+          "LongName": { "type": "string" },
+          "EffectiveFrom": { "type": "string", "format": "date-time" },
+          "EffectiveEnd": { "type": "string", "format": "date-time" },
+          "ClockTransferCode": { "type": "string" },
+          "LedgerCode": { "type": "string" },
+          "OrgUnitXRefCodes": { "type": "array", "items": { "type": "string" } },
+          "LaborMetricsTypeXRefCode": { "type": "string" },
+          "IsDeleted": { "type": "boolean" }
+        }
+      }
+    }
+  ]
+}
   },
   "properties": {
     "Timesheet": { "$ref": "#/definitions/Timesheet" },
