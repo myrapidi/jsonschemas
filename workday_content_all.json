@@ -498,7 +498,6 @@
       "title": "D365_Position_Hierarchies",
       "description": "Workday RaaS: D365_Position_Hierarchies",
       "stability": "beta",
-      "strictProperties": true,
       "type": [
         "object"
       ],
@@ -540,13 +539,26 @@
           ]
         },
         "Manager_s_Position_group": {
-          "title": "Manager_s_Position_group",
-          "description": "Array of manager entries for a position.",
-          "type": [
-            "array"
-          ],
-          "items": {
-            "$ref": "#/definitions/ManagerEntry"
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "ManagerEntry": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ManagerEntry"
+                  }
+                },
+                {
+                  "$ref": "#/definitions/ManagerEntry"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Workday may return an array, a single object, or null."
+            }
           }
         }
       },
@@ -621,22 +633,17 @@
             }
           }
         }
-      ]
+      ],
+      "additionalProperties": true
     },
     "ManagerEntry": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Manager Entry",
       "description": "One manager row for a position (child).",
       "stability": "beta",
-      "strictProperties": true,
       "type": [
         "object"
       ],
-      "parentObject": {
-        "D365_Position_Hierarchies": {
-          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
-        }
-      },
       "definitions": {
         "Manager_Pos_ID": {
           "description": "Manager Position ID",
@@ -674,7 +681,8 @@
         "Position_ID": {
           "$ref": "#/definitions/ManagerEntry/definitions/Position_ID"
         }
-      }
+      },
+      "additionalProperties": true
     }
   },
   "properties": {
