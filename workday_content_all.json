@@ -539,28 +539,10 @@
           ]
         },
         "Manager_s_Position_group": {
-          "type": "object",
-          "additionalProperties": true,
-          "properties": {
-            "ManagerEntry": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/ManagerEntry"
-                  }
-                },
-                {
-                  "$ref": "#/definitions/ManagerEntry"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Workday may return an array, a single object, or null."
-            }
-          }
-        }
+              "title":  "body of content - array with fields",
+              "type": [
+                "array"
+          ]
       },
       "termination_date": {
         "title": "termination_date",
@@ -636,7 +618,7 @@
       ],
       "additionalProperties": true
     },
-    "ManagerEntry": {
+    "Manager_s_Position_group": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Manager Entry",
       "description": "One manager row for a position (child).",
@@ -673,13 +655,13 @@
       },
       "properties": {
         "Manager_Pos_ID": {
-          "$ref": "#/definitions/ManagerEntry/definitions/Manager_Pos_ID"
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Pos_ID"
         },
         "Manager_Most_Recent_Pos_Change": {
-          "$ref": "#/definitions/ManagerEntry/definitions/Manager_Most_Recent_Pos_Change"
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
         },
         "Position_ID": {
-          "$ref": "#/definitions/ManagerEntry/definitions/Position_ID"
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Position_ID"
         }
       },
       "additionalProperties": true
@@ -698,8 +680,8 @@
     "D365_Position_Hierarchies": {
       "$ref": "#/definitions/D365_Position_Hierarchies"
     },
-    "ManagerEntry": {
-      "$ref": "#/definitions/ManagerEntry"
+    "Manager_s_Position_group": {
+      "$ref": "#/definitions/Manager_s_Position_group"
     }
   }
 }
