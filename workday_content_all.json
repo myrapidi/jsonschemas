@@ -498,6 +498,7 @@
       "title": "D365_Position_Hierarchies",
       "description": "Workday RaaS: D365_Position_Hierarchies",
       "stability": "beta",
+      "strictProperties": true,
       "type": [
         "object"
       ],
@@ -539,40 +540,14 @@
           ]
         },
         "Manager_s_Position_group": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ManagerEntry"
-              }
-            },
-            {
-              "type": "object",
-              "additionalProperties": true,
-              "properties": {
-                "ManagerEntry": {
-                  "anyOf": [
-                    {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/definitions/ManagerEntry"
-                      }
-                    },
-                    {
-                      "$ref": "#/definitions/ManagerEntry"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "null"
-            }
+          "title": "Manager_s_Position_group",
+          "description": "Array of manager entries for a position.",
+          "type": [
+            "array"
           ],
-          "description": "Workday may return an array of manager items, or an object with ManagerEntry, or null."
+          "items": {
+            "$ref": "#/definitions/Manager_s_Position_group"
+          }
         }
       },
       "termination_date": {
@@ -605,40 +580,7 @@
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/termination_date"
         },
         "Manager_s_Position_group": {
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ManagerEntry"
-              }
-            },
-            {
-              "type": "object",
-              "additionalProperties": true,
-              "properties": {
-                "ManagerEntry": {
-                  "anyOf": [
-                    {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/definitions/ManagerEntry"
-                      }
-                    },
-                    {
-                      "$ref": "#/definitions/ManagerEntry"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Workday may return an array of manager items, or an object with ManagerEntry, or null."
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
         }
       },
       "links": [
@@ -679,17 +621,22 @@
             }
           }
         }
-      ],
-      "additionalProperties": true
+      ]
     },
-    "ManagerEntry": {
+    "Manager_s_Position_group": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Manager Entry",
       "description": "One manager row for a position (child).",
       "stability": "beta",
+      "strictProperties": true,
       "type": [
         "object"
       ],
+      "parentObject": {
+        "D365_Position_Hierarchies": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
+        }
+      },
       "definitions": {
         "Manager_Pos_ID": {
           "description": "Manager Position ID",
@@ -707,28 +654,19 @@
           "type": [
             "string"
           ]
-        },
-        "Position_ID": {
-          "description": "Inherited from parent D365_Position_Hierarchies (used to link child rows to the parent position).",
-          "readOnly": true,
-          "type": [
-            "string"
-          ],
-          "example": "P200417"
         }
       },
       "properties": {
         "Manager_Pos_ID": {
-          "$ref": "#/definitions/ManagerEntry/definitions/Manager_Pos_ID"
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Pos_ID"
         },
         "Manager_Most_Recent_Pos_Change": {
-          "$ref": "#/definitions/ManagerEntry/definitions/Manager_Most_Recent_Pos_Change"
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
         },
         "Position_ID": {
-          "$ref": "#/definitions/ManagerEntry/definitions/Position_ID"
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Position_ID"
         }
-      },
-      "additionalProperties": true
+      }
     }
   },
   "properties": {
@@ -744,8 +682,8 @@
     "D365_Position_Hierarchies": {
       "$ref": "#/definitions/D365_Position_Hierarchies"
     },
-    "ManagerEntry": {
-      "$ref": "#/definitions/ManagerEntry"
+    "Manager_s_Position_group": {
+      "$ref": "#/definitions/Manager_s_Position_group"
     }
   }
 }
