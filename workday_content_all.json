@@ -34,10 +34,7 @@
           ]
         }
       },
-      "properties": {
-        "tenant": {
-          "$ref": "#/definitions/context/definitions/tenant"
-        },
+      
         "report_path": {
           "$ref": "#/definitions/context/definitions/report_path"
         }
@@ -682,4 +679,9 @@
         "$ref": "#/definitions/Manager_s_Position_group"
       }
     }
-  }
+  ,
+  "properties": {
+        "tenant": {
+          "$ref": "#/definitions/context/definitions/tenant"
+        
+}
