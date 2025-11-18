@@ -539,22 +539,18 @@
             "string"
           ]
         },
+        "termination_date": {
+          "title": "termination_date",
+          "type": [
+            "string"
+          ]
+        },
         "Manager_s_Position_group": {
           "title": "Manager_s_Position_group",
           "description": "Array of manager entries for a position.",
           "type": [
             "array"
-          ],
-          "items": {
-            "$ref": "#/definitions/Manager_s_Position_group"
-        }
-      },
-      "termination_date": {
-        "title": "termination_date",
-        "type": [
-          "string"
-        ],
-        "format": "date"
+          ]
         }
       },
       "properties": {
@@ -584,85 +580,85 @@
         }
       }
     },
-      "links": [
-        {
-          "title": "Info",
-          "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-          "method": "GET",
-          "rel": "self",
-          "targetSchema": {
+    "links": [
+      {
+        "title": "Info",
+        "description": "Fetch report metadata.",
+        "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
+        "method": "GET",
+        "rel": "self",
+        "targetSchema": {
+          "$ref": "#/definitions/D365_Position_Hierarchies"
+        }
+      },
+      {
+        "title": "List",
+        "description": "List position hierarchies.",
+        "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
+        "method": "GET",
+        "rel": "instances",
+        "schema": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "Position_ID": {
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "targetSchema": {
+          "type": [
+            "array"
+          ],
+          "items": {
             "$ref": "#/definitions/D365_Position_Hierarchies"
           }
-        },
-        {
-          "title": "List",
-          "description": "List position hierarchies.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
-          "method": "GET",
-          "rel": "instances",
-          "schema": {
-            "type": [
-              "object"
-            ],
-            "properties": {
-              "Position_ID": {
-                "type": [
-                  "string"
-                ]
-              }
-            }
-          },
-          "targetSchema": {
-            "type": [
-              "array"
-            ],
-            "items": {
-              "$ref": "#/definitions/D365_Position_Hierarchies"
-            }
-          }
         }
-      ]
+      }
+    ]
+  },
+  "Manager_s_Position_group": {
+    "$schema": "http://json-schema.org/draft-04/hyper-schema",
+    "title": "Manager Entry",
+    "description": "One manager row for a position (child).",
+    "stability": "beta",
+    "strictProperties": true,
+    "type": [
+      "object"
+    ],
+    "parentObject": {
+      "D365_Position_Hierarchies": {
+        "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
+      }
     },
-    "Manager_s_Position_group": {
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "Manager Entry",
-      "description": "One manager row for a position (child).",
-      "stability": "beta",
-      "strictProperties": true,
-      "type": [
-        "object"
-      ],
-      "parentObject": {
-        "D365_Position_Hierarchies": {
-          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
-        }
+    "definitions": {
+      "Manager_Pos_ID": {
+        "description": "Manager Position ID",
+        "example": "POS-210045",
+        "readOnly": false,
+        "type": [
+          "string"
+        ]
       },
-      "definitions": {
-        "Manager_Pos_ID": {
-          "description": "Manager Position ID",
-          "example": "POS-210045",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "Manager_Most_Recent_Pos_Change": {
-          "description": "Most recent manager position change (YYYY-MM-DD)",
-          "example": "2024-08-09",
-          "format": "date",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        }
+      "Manager_Most_Recent_Pos_Change": {
+        "description": "Most recent manager position change (YYYY-MM-DD)",
+        "example": "2024-08-09",
+        "format": "date",
+        "readOnly": false,
+        "type": [
+          "string"
+        ]
+      }
+    },
+    "properties": {
+      "Manager_Pos_ID": {
+        "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Pos_ID"
       },
-      "properties": {
-        "Manager_Pos_ID": {
-          "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Pos_ID"
-        },
-        "Manager_Most_Recent_Pos_Change": {
-          "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
+      "Manager_Most_Recent_Pos_Change": {
+        "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
       }
     }
   },
