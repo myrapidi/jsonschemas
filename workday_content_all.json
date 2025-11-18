@@ -55,7 +55,7 @@
       "definitions": {
         "Full_Name": {
           "description": "Worker's full name.",
-          "example": "Alicia Gómez",
+          "example": "Alicia G\u00f3mez",
           "readOnly": true,
           "type": [
             "string"
@@ -662,9 +662,6 @@
         },
         "Manager_Most_Recent_Pos_Change": {
           "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
-        },
-        "Position_ID": {
-          "$ref": "#/definitions/Manager_s_Position_group/definitions/Position_ID"
         }
       }
     }
