@@ -547,7 +547,6 @@
           ],
           "items": {
             "$ref": "#/definitions/Manager_s_Position_group"
-          }
         }
       },
       "termination_date": {
@@ -556,6 +555,7 @@
           "string"
         ],
         "format": "date"
+        }
       },
       "properties": {
         "Active_Status": {
@@ -582,7 +582,8 @@
         "Manager_s_Position_group": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Manager_s_Position_group"
         }
-      },
+      }
+    },
       "links": [
         {
           "title": "Info",
@@ -662,10 +663,6 @@
         },
         "Manager_Most_Recent_Pos_Change": {
           "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
-        },
-        "Position_ID": {
-          "$ref": "#/definitions/Manager_s_Position_group/definitions/Position_ID"
-        }
       }
     }
   },
