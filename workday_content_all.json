@@ -34,7 +34,10 @@
           ]
         }
       },
-      
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/context/definitions/tenant"
+        },
         "report_path": {
           "$ref": "#/definitions/context/definitions/report_path"
         }
@@ -545,14 +548,14 @@
           "items": {
             "$ref": "#/definitions/Manager_s_Position_group"
           }
-        },
-        "termination_date": {
-          "title": "termination_date",
-          "type": [
-            "string"
-          ],
-          "format": "date"
         }
+      },
+      "termination_date": {
+        "title": "termination_date",
+        "type": [
+          "string"
+        ],
+        "format": "date"
       },
       "properties": {
         "Active_Status": {
@@ -659,29 +662,28 @@
         },
         "Manager_Most_Recent_Pos_Change": {
           "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
+        },
+        "Position_ID": {
+          "$ref": "#/definitions/Manager_s_Position_group/definitions/Position_ID"
         }
       }
-    },
-    "properties": {
-      "D365_Position_Report": {
-        "$ref": "#/definitions/D365_Position_Report"
-      },
-      "D365_Employee": {
-        "$ref": "#/definitions/D365_Employee"
-      },
-      "D365_Position_Worker_Assignment": {
-        "$ref": "#/definitions/D365_Position_Worker_Assignment"
-      },
-      "D365_Position_Hierarchies": {
-        "$ref": "#/definitions/D365_Position_Hierarchies"
-      },
-      "Manager_s_Position_group": {
-        "$ref": "#/definitions/Manager_s_Position_group"
-      }
     }
-  ,
+  },
   "properties": {
-        "tenant": {
-          "$ref": "#/definitions/context/definitions/tenant"
-        
+    "D365_Position_Report": {
+      "$ref": "#/definitions/D365_Position_Report"
+    },
+    "D365_Employee": {
+      "$ref": "#/definitions/D365_Employee"
+    },
+    "D365_Position_Worker_Assignment": {
+      "$ref": "#/definitions/D365_Position_Worker_Assignment"
+    },
+    "D365_Position_Hierarchies": {
+      "$ref": "#/definitions/D365_Position_Hierarchies"
+    },
+    "Manager_s_Position_group": {
+      "$ref": "#/definitions/Manager_s_Position_group"
+    }
+  }
 }
