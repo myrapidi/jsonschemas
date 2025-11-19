@@ -3,10 +3,15 @@
   "title": "Dayforce Content All (Subset)",
   "type": "object",
   "definitions": {
-    "EmployeePayAdjustment": {
+    "EmployeePayAdjustments": {
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "title": "EmployeePayAdjustments",
+      "description": "Employee Pay Adjustments records in Dayforce.",
       "type": "object",
-      "strictProperties": false,
-      "properties": {
+      "strictProperties": true,
+      "key": "EmployeePayAdjustXRefCode",
+
+      "definitions": {
         "EmployeePayAdjustXRefCode": { "type": "string" },
         "OrgUnitXRefCode": { "type": "string" },
         "EmployeeXRefCode": { "type": "string" },
@@ -32,30 +37,170 @@
         "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
         "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
 
+        "LaborMetricsItem": {
+          "type": "object",
+          "description": "Single labor metrics item.",
+          "strictProperties": false,
+          "properties": {
+            "LaborMetricsTypeXRefCode": {
+              "type": "string",
+              "description": "External reference code for the labor metrics type."
+            },
+            "LaborMetricsCodeXRefCode": {
+              "type": "string",
+              "description": "External reference code for the labor metrics code."
+            }
+          }
+        },
+
         "LaborMetrics": {
           "type": "array",
-          "items": { "$ref": "#/definitions/LaborMetric" }
+          "description": "Array of labor metrics related to the pay adjustment.",
+          "items": {
+            "$ref": "#/definitions/LaborMetricsItem"
+          }
         }
       },
+
+      "properties": {
+        "EmployeePayAdjustXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustXRefCode"
+        },
+        "OrgUnitXRefCode": { "$ref": "#/definitions/OrgUnitXRefCode" },
+        "EmployeeXRefCode": { "$ref": "#/definitions/EmployeeXRefCode" },
+        "PayAdjustmentCodeXRefCode": {
+          "$ref": "#/definitions/PayAdjustmentCodeXRefCode"
+        },
+        "PayAdjustmentDate": { "$ref": "#/definitions/PayAdjustmentDate" },
+        "Hours": { "$ref": "#/definitions/Hours" },
+        "Amount": { "$ref": "#/definitions/Amount" },
+        "JobXRefCode": { "$ref": "#/definitions/JobXRefCode" },
+        "DepartmentXRefCode": { "$ref": "#/definitions/DepartmentXRefCode" },
+        "PayCategoryXRefCode": { "$ref": "#/definitions/PayCategoryXRefCode" },
+        "ProjectXRefCode": { "$ref": "#/definitions/ProjectXRefCode" },
+        "DocketXRefCode": { "$ref": "#/definitions/DocketXRefCode" },
+        "PieceQuantity": { "$ref": "#/definitions/PieceQuantity" },
+        "IsPremium": { "$ref": "#/definitions/IsPremium" },
+        "IsDeleted": { "$ref": "#/definitions/IsDeleted" },
+        "Rate": { "$ref": "#/definitions/Rate" },
+        "PayDate": { "$ref": "#/definitions/PayDate" },
+        "ReferenceDate": { "$ref": "#/definitions/ReferenceDate" },
+        "EmployeeComment": { "$ref": "#/definitions/EmployeeComment" },
+        "ManagerComment": { "$ref": "#/definitions/ManagerComment" },
+        "ManagerAuthorized": { "$ref": "#/definitions/ManagerAuthorized" },
+        "EmployeeAuthorized": { "$ref": "#/definitions/EmployeeAuthorized" },
+        "AdjustPeriodStartDate": {
+          "$ref": "#/definitions/AdjustPeriodStartDate"
+        },
+        "AdjustPeriodEndDate": { "$ref": "#/definitions/AdjustPeriodEndDate" },
+        "LaborMetrics": { "$ref": "#/definitions/LaborMetrics" }
+      },
+
       "links": [
         {
           "rel": "instances",
-          "href": "/EmployeePayAdjustments",
+          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
           "method": "GET",
-          "targetSchema": {
-            "type": "array",
-            "items": { "$ref": "#/definitions/EmployeePayAdjustment" }
-          }
+          "title": "List existing Employee Pay Adjustments"
         },
         {
+          "rel": "self",
+          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "method": "GET",
+          "title": "Get a specific Employee Pay Adjustment"
+        },
+
+        {
           "rel": "create",
-          "href": "/EmployeePayAdjustments",
+          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
           "method": "POST",
-          "schema": { "$ref": "#/definitions/EmployeePayAdjustment" }
+          "title": "Create a new Employee Pay Adjustment",
+          "schema": {
+            "properties": {
+              "EmployeePayAdjustXRefCode": { "type": "string" },
+              "OrgUnitXRefCode": { "type": "string" },
+              "EmployeeXRefCode": { "type": "string" },
+              "PayAdjustmentCodeXRefCode": { "type": "string" },
+              "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+              "Hours": { "type": "number" },
+              "Amount": { "type": "number" },
+              "JobXRefCode": { "type": "string" },
+              "DepartmentXRefCode": { "type": "string" },
+              "PayCategoryXRefCode": { "type": "string" },
+              "ProjectXRefCode": { "type": "string" },
+              "DocketXRefCode": { "type": "string" },
+              "PieceQuantity": { "type": "number" },
+              "IsPremium": { "type": "boolean" },
+              "Rate": { "type": "number" },
+              "PayDate": { "type": "string", "format": "date-time" },
+              "ReferenceDate": { "type": "string", "format": "date-time" },
+              "EmployeeComment": { "type": "string" },
+              "ManagerComment": { "type": "string" },
+              "ManagerAuthorized": { "type": "boolean" },
+              "EmployeeAuthorized": { "type": "boolean" },
+              "AdjustPeriodStartDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "AdjustPeriodEndDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+
+              "LaborMetrics": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetricsItem"
+                }
+              }
+            }
+          }
+        },
+
+        {
+          "rel": "update",
+          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "method": "PATCH",
+          "title": "Update an existing Employee Pay Adjustment",
+          "schema": {
+            "properties": {
+              "OrgUnitXRefCode": { "type": "string" },
+              "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+              "Hours": { "type": "number" },
+              "Amount": { "type": "number" },
+              "JobXRefCode": { "type": "string" },
+              "DepartmentXRefCode": { "type": "string" },
+              "PayCategoryXRefCode": { "type": "string" },
+              "ProjectXRefCode": { "type": "string" },
+              "DocketXRefCode": { "type": "string" },
+              "PieceQuantity": { "type": "number" },
+              "IsPremium": { "type": "boolean" },
+              "Rate": { "type": "number" },
+              "EmployeeComment": { "type": "string" },
+              "ManagerComment": { "type": "string" },
+              "ManagerAuthorized": { "type": "boolean" },
+              "EmployeeAuthorized": { "type": "boolean" },
+              "AdjustPeriodStartDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "AdjustPeriodEndDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "IsDeleted": { "type": "boolean" },
+
+              "LaborMetrics": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetricsItem"
+                }
+              }
+            }
+          }
         }
       ]
     },
-
     "LaborMetrics": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "LaborMetrics",
