@@ -654,6 +654,12 @@
           "type": [
             "string"
           ]
+        },
+        "Position_ID": {
+    "description": "Parent Position ID (copied from D365_Position_Hierarchies.Position_ID)",
+    "example": "POS-133",
+    "readOnly": false,
+    "type": [ "string" ]
         }
       },
       "properties": {
@@ -662,8 +668,9 @@
         },
         "Manager_Most_Recent_Pos_Change": {
           "$ref": "#/definitions/Manager_s_Position_group/definitions/Manager_Most_Recent_Pos_Change"
-        }
-      }
+        },
+        "Position_ID": {
+         "$ref": "#/definitions/Manager_s_Position_group/definitions/Position_ID"
     }
   },
   "properties": {
