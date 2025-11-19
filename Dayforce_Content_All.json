@@ -238,88 +238,202 @@
       "key": "EmployeePayAdjustXRefCode",
 
       "definitions": {
-        "EmployeePayAdjustXRefCode": { "type": "string" },
-        "OrgUnitXRefCode": { "type": "string" },
-        "EmployeeXRefCode": { "type": "string" },
-        "PayAdjustmentCodeXRefCode": { "type": "string" },
-        "PayAdjustmentDate": { "type": "string", "format": "date-time" },
-        "Hours": { "type": "number" },
-        "Amount": { "type": "number" },
-        "JobXRefCode": { "type": "string" },
-        "DepartmentXRefCode": { "type": "string" },
-        "PayCategoryXRefCode": { "type": "string" },
-        "ProjectXRefCode": { "type": "string" },
-        "DocketXRefCode": { "type": "string" },
-        "PieceQuantity": { "type": "number" },
-        "IsPremium": { "type": "boolean" },
-        "IsDeleted": { "type": "boolean" },
-        "Rate": { "type": "number" },
-        "PayDate": { "type": "string", "format": "date-time" },
-        "ReferenceDate": { "type": "string", "format": "date-time" },
-        "EmployeeComment": { "type": "string" },
-        "ManagerComment": { "type": "string" },
-        "ManagerAuthorized": { "type": "boolean" },
-        "EmployeeAuthorized": { "type": "boolean" },
-        "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-        "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
-
-        "LaborMetricsItem": {
-          "type": "object",
-          "description": "Single labor metrics item.",
-          "strictProperties": false,
-          "properties": {
-            "LaborMetricsTypeXRefCode": {
-              "type": "string",
-              "description": "External reference code for the labor metrics type."
-            },
-            "LaborMetricsCodeXRefCode": {
-              "type": "string",
-              "description": "External reference code for the labor metrics code."
-            }
-          }
+        "EmployeePayAdjustXRefCode": {
+          "type": "string",
+          "description": "Unique identifier for the Employee Pay Adjustment record."
         },
-
+        "OrgUnitXRefCode": {
+          "type": "string",
+          "description": "External reference code for the organizational unit."
+        },
+        "EmployeeXRefCode": {
+          "type": "string",
+          "description": "External reference code for the employee."
+        },
+        "PayAdjustmentCodeXRefCode": {
+          "type": "string",
+          "description": "External reference code for the pay adjustment code."
+        },
+        "PayAdjustmentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the pay adjustment."
+        },
+        "Hours": {
+          "type": "number",
+          "description": "Number of hours for the pay adjustment."
+        },
+        "Amount": {
+          "type": "number",
+          "description": "Amount of the pay adjustment."
+        },
+        "JobXRefCode": {
+          "type": "string",
+          "description": "External reference code for the job."
+        },
+        "DepartmentXRefCode": {
+          "type": "string",
+          "description": "External reference code for the department."
+        },
+        "PayCategoryXRefCode": {
+          "type": "string",
+          "description": "External reference code for the pay category."
+        },
+        "ProjectXRefCode": {
+          "type": "string",
+          "description": "External reference code for the project."
+        },
+        "DocketXRefCode": {
+          "type": "string",
+          "description": "External reference code for the docket."
+        },
+        "PieceQuantity": {
+          "type": "number",
+          "description": "Piecework quantity associated with the adjustment."
+        },
+        "IsPremium": {
+          "type": "boolean",
+          "description": "Indicates whether the adjustment is premium pay."
+        },
+        "IsDeleted": {
+          "type": "boolean",
+          "description": "Indicates whether the pay adjustment record is deleted."
+        },
+        "Rate": {
+          "type": "number",
+          "description": "Rate associated with the pay adjustment."
+        },
+        "PayDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Pay date for the adjustment."
+        },
+        "ReferenceDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Reference date for the adjustment."
+        },
+        "EmployeeComment": {
+          "type": "string",
+          "description": "Employee comment related to the pay adjustment."
+        },
+        "ManagerComment": {
+          "type": "string",
+          "description": "Manager comment related to the pay adjustment."
+        },
+        "ManagerAuthorized": {
+          "type": "boolean",
+          "description": "Indicates whether the manager has authorized the adjustment."
+        },
+        "EmployeeAuthorized": {
+          "type": "boolean",
+          "description": "Indicates whether the employee has authorized the adjustment."
+        },
+        "AdjustPeriodStartDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Adjustment period start date."
+        },
+        "AdjustPeriodEndDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Adjustment period end date."
+        },
         "LaborMetrics": {
           "type": "array",
-          "description": "Array of labor metrics related to the pay adjustment.",
+          "description": "Array of labor metrics related to this pay adjustment.",
           "items": {
-            "$ref": "#/definitions/LaborMetricsItem"
+            "type": "object",
+            "properties": {
+              "LaborMetricsTypeXRefCode": {
+                "type": "string",
+                "description": "External reference code for the labor metrics type."
+              },
+              "LaborMetricsCodeXRefCode": {
+                "type": "string",
+                "description": "External reference code for the labor metrics code."
+              }
+            }
           }
         }
       },
 
       "properties": {
         "EmployeePayAdjustXRefCode": {
-          "$ref": "#/definitions/EmployeePayAdjustXRefCode"
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustXRefCode"
         },
-        "OrgUnitXRefCode": { "$ref": "#/definitions/OrgUnitXRefCode" },
-        "EmployeeXRefCode": { "$ref": "#/definitions/EmployeeXRefCode" },
+        "OrgUnitXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/OrgUnitXRefCode"
+        },
+        "EmployeeXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeXRefCode"
+        },
         "PayAdjustmentCodeXRefCode": {
-          "$ref": "#/definitions/PayAdjustmentCodeXRefCode"
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentCodeXRefCode"
         },
-        "PayAdjustmentDate": { "$ref": "#/definitions/PayAdjustmentDate" },
-        "Hours": { "$ref": "#/definitions/Hours" },
-        "Amount": { "$ref": "#/definitions/Amount" },
-        "JobXRefCode": { "$ref": "#/definitions/JobXRefCode" },
-        "DepartmentXRefCode": { "$ref": "#/definitions/DepartmentXRefCode" },
-        "PayCategoryXRefCode": { "$ref": "#/definitions/PayCategoryXRefCode" },
-        "ProjectXRefCode": { "$ref": "#/definitions/ProjectXRefCode" },
-        "DocketXRefCode": { "$ref": "#/definitions/DocketXRefCode" },
-        "PieceQuantity": { "$ref": "#/definitions/PieceQuantity" },
-        "IsPremium": { "$ref": "#/definitions/IsPremium" },
-        "IsDeleted": { "$ref": "#/definitions/IsDeleted" },
-        "Rate": { "$ref": "#/definitions/Rate" },
-        "PayDate": { "$ref": "#/definitions/PayDate" },
-        "ReferenceDate": { "$ref": "#/definitions/ReferenceDate" },
-        "EmployeeComment": { "$ref": "#/definitions/EmployeeComment" },
-        "ManagerComment": { "$ref": "#/definitions/ManagerComment" },
-        "ManagerAuthorized": { "$ref": "#/definitions/ManagerAuthorized" },
-        "EmployeeAuthorized": { "$ref": "#/definitions/EmployeeAuthorized" },
+        "PayAdjustmentDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentDate"
+        },
+        "Hours": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Hours"
+        },
+        "Amount": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Amount"
+        },
+        "JobXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/JobXRefCode"
+        },
+        "DepartmentXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/DepartmentXRefCode"
+        },
+        "PayCategoryXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayCategoryXRefCode"
+        },
+        "ProjectXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ProjectXRefCode"
+        },
+        "DocketXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/DocketXRefCode"
+        },
+        "PieceQuantity": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+        },
+        "IsPremium": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
+        },
+        "IsDeleted": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsDeleted"
+        },
+        "Rate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Rate"
+        },
+        "PayDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayDate"
+        },
+        "ReferenceDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ReferenceDate"
+        },
+        "EmployeeComment": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeComment"
+        },
+        "ManagerComment": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerComment"
+        },
+        "ManagerAuthorized": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerAuthorized"
+        },
+        "EmployeeAuthorized": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeAuthorized"
+        },
         "AdjustPeriodStartDate": {
-          "$ref": "#/definitions/AdjustPeriodStartDate"
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodStartDate"
         },
-        "AdjustPeriodEndDate": { "$ref": "#/definitions/AdjustPeriodEndDate" },
-        "LaborMetrics": { "$ref": "#/definitions/LaborMetrics" }
+        "AdjustPeriodEndDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
+        },
+        "LaborMetrics": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+        }
       },
 
       "links": [
@@ -335,7 +449,6 @@
           "method": "GET",
           "title": "Get a specific Employee Pay Adjustment"
         },
-
         {
           "rel": "create",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
@@ -372,17 +485,19 @@
                 "type": "string",
                 "format": "date-time"
               },
-
               "LaborMetrics": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetricsItem"
+                  "type": "object",
+                  "properties": {
+                    "LaborMetricsTypeXRefCode": { "type": "string" },
+                    "LaborMetricsCodeXRefCode": { "type": "string" }
+                  }
                 }
               }
             }
           }
         },
-
         {
           "rel": "update",
           "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
@@ -415,15 +530,119 @@
                 "format": "date-time"
               },
               "IsDeleted": { "type": "boolean" },
-
               "LaborMetrics": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetricsItem"
+                  "type": "object",
+                  "properties": {
+                    "LaborMetricsTypeXRefCode": { "type": "string" },
+                    "LaborMetricsCodeXRefCode": { "type": "string" }
+                  }
                 }
               }
             }
           }
+        }
+      ]
+    },
+
+    "EmployeeTimeAdjustments": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "EmployeeTimeAdjustments",
+      "description": "Employee time adjustment records.",
+      "strictProperties": true,
+      "type": "object",
+      "definitions": {
+        "EmployeeTimeAdjustXRefCode": {
+          "type": "string",
+          "description": "Unique identifier for time adjustment",
+          "example": "TADJ123"
+        },
+        "EmployeeXRefCode": {
+          "type": "string",
+          "description": "Employee unique identifier",
+          "example": "E1001"
+        },
+        "AdjustmentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date/time of adjustment",
+          "example": "2025-10-20T08:00:00Z"
+        },
+        "HoursAdjusted": {
+          "type": "number",
+          "description": "Hours adjusted",
+          "example": 2
+        },
+        "Reason": {
+          "type": "string",
+          "description": "Reason for adjustment",
+          "example": "Overtime correction"
+        },
+        "ApprovedByManager": {
+          "type": "boolean",
+          "description": "Approval status",
+          "example": true
+        },
+        "CreatedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Record creation timestamp",
+          "example": "2025-10-20T08:00:00Z"
+        },
+        "ModifiedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Record last modified timestamp",
+          "example": "2025-10-20T12:00:00Z"
+        }
+      },
+      "properties": {
+        "EmployeeTimeAdjustXRefCode": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/EmployeeTimeAdjustXRefCode"
+        },
+        "EmployeeXRefCode": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/EmployeeXRefCode"
+        },
+        "AdjustmentDate": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/AdjustmentDate"
+        },
+        "HoursAdjusted": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/HoursAdjusted"
+        },
+        "Reason": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/Reason"
+        },
+        "ApprovedByManager": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/ApprovedByManager"
+        },
+        "CreatedDateTime": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/CreatedDateTime"
+        },
+        "ModifiedDateTime": {
+          "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/ModifiedDateTime"
+        }
+      },
+      "links": [
+        {
+          "rel": "get",
+          "href": "/EmployeeTimeAdjustments",
+          "method": "GET",
+          "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }
+        },
+        {
+          "rel": "create",
+          "href": "/EmployeeTimeAdjustments",
+          "method": "POST",
+          "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" },
+          "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }
+        },
+        {
+          "rel": "patch",
+          "href": "/EmployeeTimeAdjustments/{EmployeeTimeAdjustXRefCode}",
+          "method": "PUT",
+          "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" },
+          "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }
         }
       ]
     },
@@ -453,43 +672,55 @@
         "EffectiveFrom": {
           "type": "string",
           "format": "date-time",
-          "description": "Date and time when this labor metric code becomes effective."
+          "description": "Date and time when this labor metric code becomes effective.",
+          "example": "2025-01-01T00:00:00Z"
         },
         "EffectiveEnd": {
           "type": "string",
           "format": "date-time",
-          "description": "Date and time when this labor metric code expires."
+          "description": "Date and time when this labor metric code expires (if applicable).",
+          "example": "2025-12-31T23:59:59Z"
         },
         "ClockTransferCode": {
           "type": "string",
-          "description": "Clock transfer code for this labor metric."
+          "description": "Clock transfer code associated with this labor metric code (optional).",
+          "example": "CT01"
         },
         "LedgerCode": {
           "type": "string",
-          "description": "Ledger code associated with this labor metric."
+          "description": "Ledger code associated with this labor metric code (optional).",
+          "example": "LGR001"
         },
         "OrgUnitXRefCodes": {
           "type": "array",
-          "items": { "type": "string" },
-          "description": "List of org unit codes linked to this labor metric."
+          "description": "List of organization unit reference codes linked to this labor metric code.",
+          "items": {
+            "type": "string",
+            "description": "Reference code for an organization unit.",
+            "example": "ORG001"
+          }
         },
         "LaborMetricsTypeXRefCode": {
           "type": "string",
-          "description": "Reference to the labor metrics type."
+          "description": "Reference to the labor metric type this code belongs to.",
+          "example": "JobCode"
         },
         "IsDeleted": {
           "type": "boolean",
-          "description": "Indicates if the record is deleted."
+          "description": "Indicates whether this labor metric code record is marked as deleted.",
+          "example": false
         },
         "CreatedDateTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Record creation timestamp."
+          "description": "Record creation timestamp.",
+          "example": "2025-11-05T08:00:00Z"
         },
         "ModifiedDateTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Record modification timestamp."
+          "description": "Record last modified timestamp.",
+          "example": "2025-11-05T12:00:00Z"
         }
       },
       "properties": {
@@ -553,124 +784,6 @@
         }
       ]
     }
-  },
-  "links": [
-    {
-      "rel": "instances",
-      "href": "/LaborMetrics",
-      "method": "GET",
-      "targetSchema": {
-        "type": "array",
-        "items": { "$ref": "#/definitions/LaborMetric" }
-      }
-    },
-    {
-      "rel": "create",
-      "href": "/LaborMetrics",
-      "method": "POST",
-      "schema": { "$ref": "#/definitions/LaborMetric" }
-    }
-  ],
-
-  "EmployeeTimeAdjustments": {
-    "$schema": "http://json-schema.org/draft-04/hyper-schema",
-    "title": "EmployeeTimeAdjustments",
-    "description": "Employee time adjustment records.",
-    "strictProperties": true,
-    "type": "object",
-    "definitions": {
-      "EmployeeTimeAdjustXRefCode": {
-        "type": "string",
-        "description": "Unique identifier for time adjustment",
-        "example": "TADJ123"
-      },
-      "EmployeeXRefCode": {
-        "type": "string",
-        "description": "Employee unique identifier",
-        "example": "E1001"
-      },
-      "AdjustmentDate": {
-        "type": "string",
-        "format": "date-time",
-        "description": "Date/time of adjustment",
-        "example": "2025-10-20T08:00:00Z"
-      },
-      "HoursAdjusted": {
-        "type": "number",
-        "description": "Hours adjusted",
-        "example": 2
-      },
-      "Reason": {
-        "type": "string",
-        "description": "Reason for adjustment",
-        "example": "Overtime correction"
-      },
-      "ApprovedByManager": {
-        "type": "boolean",
-        "description": "Approval status",
-        "example": true
-      },
-      "CreatedDateTime": {
-        "type": "string",
-        "format": "date-time",
-        "description": "Record creation timestamp",
-        "example": "2025-10-20T08:00:00Z"
-      },
-      "ModifiedDateTime": {
-        "type": "string",
-        "format": "date-time",
-        "description": "Record last modified timestamp",
-        "example": "2025-10-20T12:00:00Z"
-      }
-    },
-    "properties": {
-      "EmployeeTimeAdjustXRefCode": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/EmployeeTimeAdjustXRefCode"
-      },
-      "EmployeeXRefCode": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/EmployeeXRefCode"
-      },
-      "AdjustmentDate": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/AdjustmentDate"
-      },
-      "HoursAdjusted": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/HoursAdjusted"
-      },
-      "Reason": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/Reason"
-      },
-      "ApprovedByManager": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/ApprovedByManager"
-      },
-      "CreatedDateTime": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/CreatedDateTime"
-      },
-      "ModifiedDateTime": {
-        "$ref": "#/definitions/EmployeeTimeAdjustments/definitions/ModifiedDateTime"
-      }
-    },
-    "links": [
-      {
-        "rel": "get",
-        "href": "/EmployeeTimeAdjustments",
-        "method": "GET",
-        "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }
-      },
-      {
-        "rel": "create",
-        "href": "/EmployeeTimeAdjustments",
-        "method": "POST",
-        "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" },
-        "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }
-      },
-      {
-        "rel": "patch",
-        "href": "/EmployeeTimeAdjustments/{EmployeeTimeAdjustXRefCode}",
-        "method": "PUT",
-        "schema": { "$ref": "#/definitions/EmployeeTimeAdjustments" },
-        "targetSchema": { "$ref": "#/definitions/EmployeeTimeAdjustments" }
-      }
-    ]
   },
   "properties": {
     "Timesheet": { "$ref": "#/definitions/Timesheet" },
