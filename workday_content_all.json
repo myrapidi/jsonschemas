@@ -113,13 +113,17 @@
           ]
         },
         "Active_Status": {
-          "title": "Active_Status",
+          "description": "Active_Status",
+          "example": "0",
+          "readOnly": true,
           "type": [
             "boolean"
           ]
         },
         "termination_date": {
-          "title": "Termination Date",
+          "description": "Termination Date",
+          "example": "2025-09-30",
+          "readOnly": true,
           "format": "date",
           "type": [
             "string"
