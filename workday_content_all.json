@@ -118,6 +118,13 @@
             "boolean"
           ]
         },
+        "termination_date": {
+          "title": "Termination Date",
+          "format": "date",
+          "type": [
+            "string"
+          ]
+        },
         "Business_Title": {
           "description": "Worker's business title.",
           "example": "Senior Project Manager",
@@ -151,6 +158,9 @@
         },
         "Active_Status": {
           "$ref": "#/definitions/D365_Position_Report/definitions/Active_Status"
+        },
+        "termination_date": {
+          "$ref": "#/definitions/D365_Position_Report/definitions/termination_date"
         },
         "Business_Title": {
           "$ref": "#/definitions/D365_Position_Report/definitions/Business_Title"
