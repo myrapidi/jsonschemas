@@ -509,6 +509,12 @@
             "boolean"
           ]
         },
+        "CF_Worker_s_manager_position_ID": {
+          "title":"Manager Position ID",
+          "type": [
+            "string"
+          ]
+        },
         "Full_Name": {
           "title": "Full_Name",
           "type": [
@@ -560,6 +566,9 @@
       "properties": {
         "Active_Status": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Active_Status"
+        },
+        "CF_Worker_s_manager_position_ID": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/CF_Worker_s_manager_position_ID"
         },
         "Full_Name": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Full_Name"
