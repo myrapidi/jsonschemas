@@ -439,19 +439,19 @@
       "links": [
         {
           "rel": "instances",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
           "method": "GET",
           "title": "List existing Employee Pay Adjustments"
         },
         {
           "rel": "self",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
           "method": "GET",
           "title": "Get a specific Employee Pay Adjustment"
         },
         {
           "rel": "create",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
           "method": "POST",
           "title": "Create a new Employee Pay Adjustment",
           "schema": {
@@ -500,7 +500,7 @@
         },
         {
           "rel": "update",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
           "method": "PATCH",
           "title": "Update an existing Employee Pay Adjustment",
           "schema": {
@@ -764,20 +764,20 @@
       "links": [
         {
           "rel": "get",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
           "method": "GET",
           "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
         },
         {
           "rel": "create",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
           "method": "POST",
           "schema": { "$ref": "#/definitions/LaborMetrics" },
           "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
         },
         {
           "rel": "patch",
-          "href": "https://canconfig251.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
           "method": "PATCH",
           "schema": { "$ref": "#/definitions/LaborMetrics" },
           "targetSchema": { "$ref": "#/definitions/LaborMetrics" }
