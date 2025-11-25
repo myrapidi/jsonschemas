@@ -568,14 +568,14 @@
           "items": {
             "$ref": "#/definitions/Manager_s_Position_group"
           }
-        }
-      },
+        },
       "termination_date": {
         "title": "termination_date",
         "type": [
           "string"
         ],
         "format": "date"
+      }
       },
       "properties": {
         "Active_Status": {
