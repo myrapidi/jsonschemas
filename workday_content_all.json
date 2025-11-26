@@ -416,6 +416,13 @@
           ],
           "format": "date"
         },
+        "term_date_on_after": {
+          "title": "term_date_on_after",
+          "type": [
+            "string"
+          ],
+          "format": "date"
+        },
         "Employee_ID": {
           "title": "Employee_ID",
           "type": [
@@ -448,6 +455,9 @@
         },
         "Current_Position_Filled_-_Effective_Date": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Current_Position_Filled_-_Effective_Date"
+        },
+        "term_date_on_after": {
+          "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/term_date_on_after"
         },
         "Employee_ID": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Employee_ID"
