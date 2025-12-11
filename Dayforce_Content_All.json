@@ -1,12 +1,24 @@
 {
   "$schema": "http://json-schema.org/draft-04/hyper-schema",
   "title": "EmployeePayAdjustments",
-  "description": "Employee Pay Adjustment records for Dayforce EmployeePayAdjustments POST.",
-  "type": "object",
+  "description": "Employee Pay Adjustment payload for Dayforce POST.",
   "strictProperties": true,
-  "key": "EmployeeXRefCode",
+  "type": "object",
+
+  "definitions": {
+    "LaborMetrics": {
+      "type": "object",
+      "properties": {
+        "LaborMetricsTypeXRefCode": { "type": "string" },
+        "LaborMetricsCodeXRefCode": { "type": "string" }
+      },
+      "required": []
+    }
+  },
+
   "properties": {
     "EmployeeXRefCode": { "type": "string" },
+    "PayAdjustmentCodeXRefCode": { "type": "string" },
     "Amount": { "type": "number" },
     "JobXRefCode": { "type": "string" },
     "DepartmentXRefCode": { "type": "string" },
@@ -17,30 +29,26 @@
     "IsPremium": { "type": "boolean" },
     "IsDeleted": { "type": "boolean" },
     "Rate": { "type": "number" },
-    "PayDate": { "type": "string", "format": "date-time" },
-    "ReferenceDate": { "type": "string", "format": "date-time" },
+    "PayDate": { "type": "string" },
+    "ReferenceDate": { "type": "string" },
     "EmployeeComment": { "type": "string" },
     "ManagerComment": { "type": "string" },
     "ManagerAuthorized": { "type": "boolean" },
     "EmployeeAuthorized": { "type": "boolean" },
-    "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
-    "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
+    "AdjustPeriodStartDate": { "type": "string" },
+    "AdjustPeriodEndDate": { "type": "string" },
 
     "LaborMetrics": {
       "type": "array",
-      "items": {
-        "$ref": "#/definitions/LaborMetricsItem"
-      }
+      "arrayItem": { "$ref": "#/definitions/LaborMetrics" }
     }
   },
 
-  "definitions": {
-    "LaborMetricsItem": {
-      "type": "object",
-      "properties": {
-        "LaborMetricsTypeXRefCode": { "type": "string" },
-        "LaborMetricsCodeXRefCode": { "type": "string" }
-      }
-    }
-  }
+  "required": [
+    "EmployeeXRefCode",
+    "PayAdjustmentCodeXRefCode",
+    "PayDate"
+  ],
+
+  "additionalProperties": false
 }
