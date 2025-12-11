@@ -581,6 +581,27 @@
             "string"
           ]
         },
+        "Active": {
+          "description":"Active",
+          "example": "1",
+          "readOnly": true,
+          "type":[
+            "boolean"
+          ]
+        },
+        "Non_Active": {
+          "title": "Non_Active",
+          "type": [
+            "boolean"
+          ]
+        },
+        "term_date_on_after": {
+          "title":"term_date_on_after",
+          "type": [
+            "string"
+          ],
+          "format":"date"
+        },
         "Position_ID": {
           "title": "Position_ID",
           "type": [
@@ -629,6 +650,15 @@
         },
         "Hierarchy_Type_Name": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Hierarchy_Type_Name"
+        },
+        "Active": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Active"
+        },
+        "Non_Active": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Non_Active"
+        },
+        "term_date_on_after": {
+          "$ref": "#/definitions/D365_Position_Hierarchies/definitions/term_date_on_after"
         },
         "Position_ID": {
           "$ref": "#/definitions/D365_Position_Hierarchies/definitions/Position_ID"
