@@ -1,9 +1,10 @@
 {
-  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "$schema": "http://json-schema.org/draft-06/hyper-schema#",
   "title": "EmployeePayAdjustments",
-  "description": "Employee Pay Adjustment payload for Dayforce POST.",
-  "strictProperties": true,
+  "description": "Employee Pay Adjustments records in Dayforce.",
   "type": "object",
+  "strictProperties": true,
+  "key": "EmployeePayAdjustXRefCode",
 
   "definitions": {
     "LaborMetrics": {
@@ -13,42 +14,239 @@
         "LaborMetricsCodeXRefCode": { "type": "string" }
       },
       "required": []
+    },
+    "EmployeePayAdjustXRefCode": {
+      "type": "string",
+      "description": "Unique identifier for the Employee Pay Adjustment record."
+    },
+    "OrgUnitXRefCode": {
+      "type": "string",
+      "description": "External reference code for the organizational unit."
+    },
+    "EmployeeXRefCode": {
+      "type": "string",
+      "description": "External reference code for the employee."
+    },
+    "PayAdjustmentCodeXRefCode": {
+      "type": "string",
+      "description": "External reference code for the pay adjustment code."
+    },
+    "PayAdjustmentDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date of the pay adjustment."
+    },
+    "Hours": {
+      "type": "number",
+      "description": "Number of hours for the pay adjustment."
+    },
+    "Amount": {
+      "type": "number",
+      "description": "Amount of the pay adjustment."
+    },
+    "JobXRefCode": {
+      "type": "string",
+      "description": "External reference code for the job."
+    },
+    "DepartmentXRefCode": {
+      "type": "string",
+      "description": "External reference code for the department."
+    },
+    "PayCategoryXRefCode": {
+      "type": "string",
+      "description": "External reference code for the pay category."
+    },
+    "ProjectXRefCode": {
+      "type": "string",
+      "description": "External reference code for the project."
+    },
+    "DocketXRefCode": {
+      "type": "string",
+      "description": "External reference code for the docket."
+    },
+    "PieceQuantity": {
+      "type": "number",
+      "description": "Piecework quantity associated with the adjustment."
+    },
+    "IsPremium": {
+      "type": "boolean",
+      "description": "Indicates whether the adjustment is premium pay."
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "description": "Indicates whether the pay adjustment record is deleted."
+    },
+    "Rate": {
+      "type": "number",
+      "description": "Rate associated with the pay adjustment."
+    },
+    "PayDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Pay date for the adjustment."
+    },
+    "ReferenceDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Reference date for the adjustment."
+    },
+    "EmployeeComment": {
+      "type": "string",
+      "description": "Employee comment related to the pay adjustment."
+    },
+    "ManagerComment": {
+      "type": "string",
+      "description": "Manager comment related to the pay adjustment."
+    },
+    "ManagerAuthorized": {
+      "type": "boolean",
+      "description": "Indicates whether the manager has authorized the adjustment."
+    },
+    "EmployeeAuthorized": {
+      "type": "boolean",
+      "description": "Indicates whether the employee has authorized the adjustment."
+    },
+    "AdjustPeriodStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Adjustment period start date."
+    },
+    "AdjustPeriodEndDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Adjustment period end date."
     }
   },
 
   "properties": {
-    "EmployeeXRefCode": { "type": "string" },
-    "PayAdjustmentCodeXRefCode": { "type": "string" },
-    "Amount": { "type": "number" },
-    "JobXRefCode": { "type": "string" },
-    "DepartmentXRefCode": { "type": "string" },
-    "PayCategoryXRefCode": { "type": "string" },
-    "ProjectXRefCode": { "type": "string" },
-    "DocketXRefCode": { "type": "string" },
-    "PieceQuantity": { "type": "number" },
-    "IsPremium": { "type": "boolean" },
-    "IsDeleted": { "type": "boolean" },
-    "Rate": { "type": "number" },
-    "PayDate": { "type": "string" },
-    "ReferenceDate": { "type": "string" },
-    "EmployeeComment": { "type": "string" },
-    "ManagerComment": { "type": "string" },
-    "ManagerAuthorized": { "type": "boolean" },
-    "EmployeeAuthorized": { "type": "boolean" },
-    "AdjustPeriodStartDate": { "type": "string" },
-    "AdjustPeriodEndDate": { "type": "string" },
-
+    "EmployeePayAdjustXRefCode": {
+      "$ref": "#/definitions/EmployeePayAdjustXRefCode"
+    },
+    "OrgUnitXRefCode": { "$ref": "#/definitions/OrgUnitXRefCode" },
+    "EmployeeXRefCode": { "$ref": "#/definitions/EmployeeXRefCode" },
+    "PayAdjustmentCodeXRefCode": {
+      "$ref": "#/definitions/PayAdjustmentCodeXRefCode"
+    },
+    "PayAdjustmentDate": { "$ref": "#/definitions/PayAdjustmentDate" },
+    "Hours": { "$ref": "#/definitions/Hours" },
+    "Amount": { "$ref": "#/definitions/Amount" },
+    "JobXRefCode": { "$ref": "#/definitions/JobXRefCode" },
+    "DepartmentXRefCode": { "$ref": "#/definitions/DepartmentXRefCode" },
+    "PayCategoryXRefCode": { "$ref": "#/definitions/PayCategoryXRefCode" },
+    "ProjectXRefCode": { "$ref": "#/definitions/ProjectXRefCode" },
+    "DocketXRefCode": { "$ref": "#/definitions/DocketXRefCode" },
+    "PieceQuantity": { "$ref": "#/definitions/PieceQuantity" },
+    "IsPremium": { "$ref": "#/definitions/IsPremium" },
+    "IsDeleted": { "$ref": "#/definitions/IsDeleted" },
+    "Rate": { "$ref": "#/definitions/Rate" },
+    "PayDate": { "$ref": "#/definitions/PayDate" },
+    "ReferenceDate": { "$ref": "#/definitions/ReferenceDate" },
+    "EmployeeComment": { "$ref": "#/definitions/EmployeeComment" },
+    "ManagerComment": { "$ref": "#/definitions/ManagerComment" },
+    "ManagerAuthorized": { "$ref": "#/definitions/ManagerAuthorized" },
+    "EmployeeAuthorized": { "$ref": "#/definitions/EmployeeAuthorized" },
+    "AdjustPeriodStartDate": { "$ref": "#/definitions/AdjustPeriodStartDate" },
+    "AdjustPeriodEndDate": { "$ref": "#/definitions/AdjustPeriodEndDate" },
     "LaborMetrics": {
       "type": "array",
       "arrayItem": { "$ref": "#/definitions/LaborMetrics" }
     }
   },
 
-  "required": [
-    "EmployeeXRefCode",
-    "PayAdjustmentCodeXRefCode",
-    "PayDate"
-  ],
-
-  "additionalProperties": false
+  "links": [
+    {
+      "rel": "instances",
+      "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+      "method": "GET",
+      "title": "List existing Employee Pay Adjustments"
+    },
+    {
+      "rel": "self",
+      "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+      "method": "GET",
+      "title": "Get a specific Employee Pay Adjustment"
+    },
+    {
+      "rel": "create",
+      "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+      "method": "POST",
+      "title": "Create a new Employee Pay Adjustment",
+      "schema": {
+        "properties": {
+          "EmployeePayAdjustXRefCode": { "type": "string" },
+          "OrgUnitXRefCode": { "type": "string" },
+          "EmployeeXRefCode": { "type": "string" },
+          "PayAdjustmentCodeXRefCode": { "type": "string" },
+          "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+          "Hours": { "type": "number" },
+          "Amount": { "type": "number" },
+          "JobXRefCode": { "type": "string" },
+          "DepartmentXRefCode": { "type": "string" },
+          "PayCategoryXRefCode": { "type": "string" },
+          "ProjectXRefCode": { "type": "string" },
+          "DocketXRefCode": { "type": "string" },
+          "PieceQuantity": { "type": "number" },
+          "IsPremium": { "type": "boolean" },
+          "Rate": { "type": "number" },
+          "PayDate": { "type": "string", "format": "date-time" },
+          "ReferenceDate": { "type": "string", "format": "date-time" },
+          "EmployeeComment": { "type": "string" },
+          "ManagerComment": { "type": "string" },
+          "ManagerAuthorized": { "type": "boolean" },
+          "EmployeeAuthorized": { "type": "boolean" },
+          "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
+          "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
+          "LaborMetrics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LaborMetricsTypeXRefCode": { "type": "string" },
+                "LaborMetricsCodeXRefCode": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "rel": "update",
+      "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+      "method": "PATCH",
+      "title": "Update an existing Employee Pay Adjustment",
+      "schema": {
+        "properties": {
+          "OrgUnitXRefCode": { "type": "string" },
+          "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+          "Hours": { "type": "number" },
+          "Amount": { "type": "number" },
+          "JobXRefCode": { "type": "string" },
+          "DepartmentXRefCode": { "type": "string" },
+          "PayCategoryXRefCode": { "type": "string" },
+          "ProjectXRefCode": { "type": "string" },
+          "DocketXRefCode": { "type": "string" },
+          "PieceQuantity": { "type": "number" },
+          "IsPremium": { "type": "boolean" },
+          "Rate": { "type": "number" },
+          "EmployeeComment": { "type": "string" },
+          "ManagerComment": { "type": "string" },
+          "ManagerAuthorized": { "type": "boolean" },
+          "EmployeeAuthorized": { "type": "boolean" },
+          "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
+          "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
+          "IsDeleted": { "type": "boolean" },
+          "LaborMetrics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LaborMetricsTypeXRefCode": { "type": "string" },
+                "LaborMetricsCodeXRefCode": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
