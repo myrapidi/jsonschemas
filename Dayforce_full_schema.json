@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://myrapidi.github.io/jsonschemas/dayforce_content_all#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_full_schema#",
   "title": "Dayforce Content (Aligned to Endpoint Names)",
   "description": "Content schema to read Dayforce API data. Each top-level definition matches its Dayforce endpoint name exactly.",
   "type": "object",
