@@ -207,7 +207,9 @@
           "method": "GET",
           "title": "List existing Employee Pay Adjustments",
           "targetSchema": {
-            "type": "array",
+            "type": [
+              "array"
+            ],
             "items": {
               "$ref": "#/definitions/EmployeePayAdjustments"
             }
@@ -275,6 +277,14 @@
               "Rate": {
                 "type": "number"
               },
+              "PayDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "ReferenceDate": {
+                "type": "string",
+                "format": "date-time"
+              },
               "EmployeeComment": {
                 "type": "string"
               },
@@ -294,9 +304,6 @@
               "AdjustPeriodEndDate": {
                 "type": "string",
                 "format": "date-time"
-              },
-              "IsDeleted": {
-                "type": "boolean"
               },
               "LaborMetrics": {
                 "type": "array",
@@ -349,6 +356,7 @@
       }
     }
   },
+
   "properties": {
     "EmployeePayAdjustments": {
       "$ref": "#/definitions/EmployeePayAdjustments"
