@@ -117,10 +117,8 @@
         "LaborMetrics": {
           "title": "LaborMetrics",
           "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LaborMetrics"
-          }
+          "type": "object",
+          "$ref": "#/definitions/LaborMetrics"
         }
       },
       "properties": {
