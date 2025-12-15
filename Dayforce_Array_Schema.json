@@ -309,7 +309,7 @@
               "LaborMetrics": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/LaborMetrics"
+                  "$ref": "#/definitions/LaborMetrics/definitions"
                 }
               }
             }
