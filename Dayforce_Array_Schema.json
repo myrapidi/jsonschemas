@@ -115,8 +115,12 @@
           "description": "Adjustment period end date."
         },
         "LaborMetrics": {
-          "type": "object",
-          "$ref": "#/definitions/LaborMetrics"
+          "title": "LaborMetrics",
+          "description": "Array of Labor Metrics items attached to the pay adjustment.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LaborMetrics"
+          }
         }
       },
       "properties": {
