@@ -197,7 +197,10 @@
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
         },
         "LaborMetrics": {
-          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+          "type": "array",
+          "items": {
+          "$ref": "#/definitions/LaborMetrics"
+          }
         }
       },
       "links": [
