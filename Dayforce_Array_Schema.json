@@ -303,6 +303,9 @@
   "properties": {
     "EmployeePayAdjustments": {
       "$ref": "#/definitions/EmployeePayAdjustments"
+    },
+    "LaborMetrics": {
+      "$ref": "#/definitions/LaborMetrics"
     }
   }
 }
