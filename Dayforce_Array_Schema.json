@@ -117,7 +117,9 @@
         "LaborMetrics": {
           "title": "LaborMetrics",
           "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": ["array"]
+          "type": [
+            "array"
+          ]
         }
       },
       "properties": {
@@ -303,10 +305,10 @@
                 "format": "date-time"
               },
               "LaborMetrics": {
-                "type": ["array"],
-                "items": {
-                  "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
-                }
+                "type": [
+                  "array"
+                ],
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
               }
             }
           }
