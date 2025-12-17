@@ -273,9 +273,13 @@
       "$schema": "http://json-schema.org/draft-06/hyper-schema#",
       "title": "LaborMetrics",
       "description": "One Labor Metrics item for a Pay Adjustment.",
-      "type": "object",
+      "type": [ 
+        "object"
+      ],
       "strictProperties": true,
-
+      "parentObject": {
+        "EmployeePayAdjustments": { "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustments" }
+      },
       "definitions": {
         "LaborMetricsTypeXRefCode": {
           "type": "string",
