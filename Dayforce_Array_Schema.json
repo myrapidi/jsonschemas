@@ -117,10 +117,7 @@
         "LaborMetrics": {
           "title": "LaborMetrics",
           "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LaborMetrics"
-          }
+          "type": ["array"]
         }
       },
       "properties": {
@@ -199,10 +196,7 @@
         "LaborMetrics": {
           "title": "LaborMetrics",
           "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LaborMetrics"
-          }
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
         }
       },
       "links": [
@@ -309,9 +303,9 @@
                 "format": "date-time"
               },
               "LaborMetrics": {
-                "type": "array",
+                "type": ["array"],
                 "items": {
-                  "$ref": "#/definitions/LaborMetrics"
+                  "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
                 }
               }
             }
@@ -323,7 +317,7 @@
       "$schema": "http://json-schema.org/draft-06/hyper-schema#",
       "title": "LaborMetrics",
       "description": "One Labor Metrics item for a Pay Adjustment.",
-      "type": "object",
+      "type": ["object"],
       "strictProperties": true,
       "parentObject": {
         "EmployeePayAdjustments": {
@@ -332,11 +326,11 @@
       },
       "definitions": {
         "LaborMetricsTypeXRefCode": {
-          "type": "string",
+          "type": ["string"],
           "description": "External reference code for the Labor Metric type."
         },
         "LaborMetricsCodeXRefCode": {
-          "type": "string",
+          "type": ["string"],
           "description": "External reference code for the Labor Metric code."
         }
       },
