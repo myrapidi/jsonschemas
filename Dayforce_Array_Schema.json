@@ -278,7 +278,7 @@
       ],
       "strictProperties": true,
       "parentObject": {
-        "EmployeePayAdjustments": { "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustments" }
+        "EmployeePayAdjustments": { "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics" }
       },
       "definitions": {
         "LaborMetricsTypeXRefCode": {
