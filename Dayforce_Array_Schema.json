@@ -199,12 +199,7 @@
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
         },
         "LaborMetrics": {
-          "title": "LaborMetrics",
-          "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
-          }
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
         }
       },
 
