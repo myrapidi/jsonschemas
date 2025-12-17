@@ -115,6 +115,11 @@
           "type": "string",
           "format": "date-time",
           "description": "Adjustment period end date."
+        },
+        "LaborMetrics": {
+          "type": "object",
+          "title": "LaborMetrics",
+          "description": "Array of Labor Metrics items attached to the pay adjustment."
         }
       },
 
