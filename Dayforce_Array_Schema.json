@@ -255,7 +255,8 @@
               "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
               "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
               "LaborMetrics": {
-                "type": "array",
+                "type": [ "array" 
+                  ],
                 "items": {
                   "$ref": "#/definitions/LaborMetrics"
                 }
