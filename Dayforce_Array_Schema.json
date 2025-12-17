@@ -2,8 +2,9 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_full_schema#",
   "title": "Dayforce Content (Aligned to Endpoint Names)",
-  "description": "Content schema to read Dayforce API data. Each top-level definition matches its Dayforce endpoint name exactly.",
+  "description": "Content schema to read and write Dayforce API data. Each top-level definition matches its Dayforce endpoint name exactly.",
   "type": "object",
+
   "definitions": {
     "EmployeePayAdjustments": {
       "$schema": "http://json-schema.org/draft-06/hyper-schema#",
@@ -12,6 +13,7 @@
       "type": "object",
       "strictProperties": true,
       "key": "EmployeePayAdjustXRefCode",
+
       "definitions": {
         "EmployeePayAdjustXRefCode": {
           "type": "string",
@@ -113,18 +115,9 @@
           "type": "string",
           "format": "date-time",
           "description": "Adjustment period end date."
-        },
-        "LaborMetrics": {
-          "title": "LaborMetrics",
-          "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": [
-            "array"
-          ],
-          "items": {
-            "$ref": "#/definitions/LaborMetrics"
-          }
         }
       },
+
       "properties": {
         "EmployeePayAdjustXRefCode": {
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustXRefCode"
@@ -201,9 +194,13 @@
         "LaborMetrics": {
           "title": "LaborMetrics",
           "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LaborMetrics"
+          }
         }
       },
+
       "links": [
         {
           "rel": "instances",
@@ -211,7 +208,7 @@
           "method": "GET",
           "title": "List existing Employee Pay Adjustments",
           "targetSchema": {
-            "type": ["array"],
+            "type": "array",
             "items": {
               "$ref": "#/definitions/EmployeePayAdjustments"
             }
@@ -232,113 +229,61 @@
           "method": "POST",
           "title": "Create a new Employee Pay Adjustment",
           "schema": {
+            "type": "object",
             "properties": {
-              "EmployeePayAdjustXRefCode": {
-                "type": "string"
-              },
-              "OrgUnitXRefCode": {
-                "type": "string"
-              },
-              "EmployeeXRefCode": {
-                "type": "string"
-              },
-              "PayAdjustmentCodeXRefCode": {
-                "type": "string"
-              },
-              "PayAdjustmentDate": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "Hours": {
-                "type": "number"
-              },
-              "Amount": {
-                "type": "number"
-              },
-              "JobXRefCode": {
-                "type": "string"
-              },
-              "DepartmentXRefCode": {
-                "type": "string"
-              },
-              "PayCategoryXRefCode": {
-                "type": "string"
-              },
-              "ProjectXRefCode": {
-                "type": "string"
-              },
-              "DocketXRefCode": {
-                "type": "string"
-              },
-              "PieceQuantity": {
-                "type": "number"
-              },
-              "IsPremium": {
-                "type": "boolean"
-              },
-              "Rate": {
-                "type": "number"
-              },
-              "PayDate": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "ReferenceDate": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "EmployeeComment": {
-                "type": "string"
-              },
-              "ManagerComment": {
-                "type": "string"
-              },
-              "ManagerAuthorized": {
-                "type": "boolean"
-              },
-              "EmployeeAuthorized": {
-                "type": "boolean"
-              },
-              "AdjustPeriodStartDate": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "AdjustPeriodEndDate": {
-                "type": "string",
-                "format": "date-time"
-              },
+              "EmployeePayAdjustXRefCode": { "type": "string" },
+              "OrgUnitXRefCode": { "type": "string" },
+              "EmployeeXRefCode": { "type": "string" },
+              "PayAdjustmentCodeXRefCode": { "type": "string" },
+              "PayAdjustmentDate": { "type": "string", "format": "date-time" },
+              "Hours": { "type": "number" },
+              "Amount": { "type": "number" },
+              "JobXRefCode": { "type": "string" },
+              "DepartmentXRefCode": { "type": "string" },
+              "PayCategoryXRefCode": { "type": "string" },
+              "ProjectXRefCode": { "type": "string" },
+              "DocketXRefCode": { "type": "string" },
+              "PieceQuantity": { "type": "number" },
+              "IsPremium": { "type": "boolean" },
+              "Rate": { "type": "number" },
+              "PayDate": { "type": "string", "format": "date-time" },
+              "ReferenceDate": { "type": "string", "format": "date-time" },
+              "EmployeeComment": { "type": "string" },
+              "ManagerComment": { "type": "string" },
+              "ManagerAuthorized": { "type": "boolean" },
+              "EmployeeAuthorized": { "type": "boolean" },
+              "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
+              "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
               "LaborMetrics": {
-                "type": [
-                  "array"
-                ],
-                "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/LaborMetrics"
+                }
               }
             }
           }
         }
       ]
     },
+
     "LaborMetrics": {
       "$schema": "http://json-schema.org/draft-06/hyper-schema#",
       "title": "LaborMetrics",
       "description": "One Labor Metrics item for a Pay Adjustment.",
-      "type": ["object"],
+      "type": "object",
       "strictProperties": true,
-      "parentObject": {
-        "EmployeePayAdjustments": {
-          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
-        }
-      },
+
       "definitions": {
         "LaborMetricsTypeXRefCode": {
-          "type": ["string"],
+          "type": "string",
           "description": "External reference code for the Labor Metric type."
         },
         "LaborMetricsCodeXRefCode": {
-          "type": ["string"],
+          "type": "string",
           "description": "External reference code for the Labor Metric code."
         }
       },
+
       "properties": {
         "LaborMetricsTypeXRefCode": {
           "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
@@ -349,12 +294,10 @@
       }
     }
   },
+
   "properties": {
     "EmployeePayAdjustments": {
       "$ref": "#/definitions/EmployeePayAdjustments"
-    },
-    "LaborMetrics": {
-      "$ref": "#/definitions/LaborMetrics"
     }
   }
 }
