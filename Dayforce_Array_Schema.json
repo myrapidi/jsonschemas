@@ -119,9 +119,10 @@
         "LaborMetrics": {
           "title": "LaborMetrics",
           "description": "Array of Labor Metrics items attached to the pay adjustment.",
-          "type": [
-              "array"
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LaborMetrics"
+          }
         }
       },
 
@@ -257,8 +258,7 @@
               "AdjustPeriodStartDate": { "type": "string", "format": "date-time" },
               "AdjustPeriodEndDate": { "type": "string", "format": "date-time" },
               "LaborMetrics": {
-                "type": [ "array" 
-                  ],
+                "type": "array",
                 "items": {
                   "$ref": "#/definitions/LaborMetrics"
                 }
@@ -273,9 +273,7 @@
       "$schema": "http://json-schema.org/draft-06/hyper-schema#",
       "title": "LaborMetrics",
       "description": "One Labor Metrics item for a Pay Adjustment.",
-      "type": [ 
-        "object"
-      ],
+      "type": "object",
       "strictProperties": true,
       "parentObject": {
         "EmployeePayAdjustments": { "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics" }
