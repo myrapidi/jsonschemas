@@ -1,0 +1,485 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_full_schema#",
+  "title": "Dayforce Content (Aligned to Endpoint Names)",
+  "description": "Content schema to read and write Dayforce API data. Each top-level definition matches its Dayforce endpoint name exactly.",
+  "type": [
+    "object"
+  ],
+
+  "definitions": {
+    "EmployeePayAdjustments": {
+      "description": "Employee Pay Adjustments records in Dayforce.",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "EmployeePayAdjustments",
+      "type": [
+        "object"
+      ],
+
+      "definitions": {
+        "EmployeePayAdjustXRefCode": {
+          "description": "Unique identifier for the Employee Pay Adjustment record.",
+          "example": "EPA123456",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "OrgUnitXRefCode": {
+          "description": "External reference code for the organizational unit.",
+          "example": "NORTHERN_MAT_AND_BRIDGE_EAST_LIMITED_PARTNERSHIP_TORONTO_OPERATIONS_UNION",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "EmployeeXRefCode": {
+          "description": "External reference code for the employee.",
+          "example": "E0066",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayAdjustmentCodeXRefCode": {
+          "description": "External reference code for the pay adjustment code.",
+          "example": "REG_ICI",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayAdjustmentDate": {
+          "description": "Date of the pay adjustment.",
+          "example": "2025-12-10T03:30:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Hours": {
+          "description": "Number of hours for the pay adjustment.",
+          "example": 9.0,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "Amount": {
+          "description": "Amount of the pay adjustment.",
+          "example": 150.50,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "JobXRefCode": {
+          "description": "External reference code for the job.",
+          "example": "JOB001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "DepartmentXRefCode": {
+          "description": "External reference code for the department.",
+          "example": "DEPT001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayCategoryXRefCode": {
+          "description": "External reference code for the pay category.",
+          "example": "REGULAR",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ProjectXRefCode": {
+          "description": "External reference code for the project.",
+          "example": "PROJ001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "DocketXRefCode": {
+          "description": "External reference code for the docket.",
+          "example": "NIGHT_SHIFT",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PieceQuantity": {
+          "description": "Piecework quantity associated with the adjustment.",
+          "example": 10,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "IsPremium": {
+          "description": "Indicates whether the adjustment is premium pay.",
+          "example": false,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "IsDeleted": {
+          "description": "Indicates whether the pay adjustment record is deleted.",
+          "example": false,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "Rate": {
+          "description": "Rate associated with the pay adjustment.",
+          "example": 25.50,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "PayDate": {
+          "description": "Pay date for the adjustment.",
+          "example": "2025-12-15T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ReferenceDate": {
+          "description": "Reference date for the adjustment.",
+          "example": "2025-12-10T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "EmployeeComment": {
+          "description": "Employee comment related to the pay adjustment.",
+          "example": "Worked overtime on project",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ManagerComment": {
+          "description": "Manager comment related to the pay adjustment.",
+          "example": "Approved for overtime",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ManagerAuthorized": {
+          "description": "Indicates whether the manager has authorized the adjustment.",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "EmployeeAuthorized": {
+          "description": "Indicates whether the employee has authorized the adjustment.",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "AdjustPeriodStartDate": {
+          "description": "Adjustment period start date.",
+          "example": "2025-12-01T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "AdjustPeriodEndDate": {
+          "description": "Adjustment period end date.",
+          "example": "2025-12-31T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "LaborMetrics": {
+          "description": "Array of Labor Metrics items attached to the pay adjustment.",
+          "example": "array with labor metric objects",
+          "readOnly": false,
+          "type": [
+            "array"
+          ]
+        }
+      },
+
+      "properties": {
+        "EmployeePayAdjustXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustXRefCode"
+        },
+        "OrgUnitXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/OrgUnitXRefCode"
+        },
+        "EmployeeXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeXRefCode"
+        },
+        "PayAdjustmentCodeXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentCodeXRefCode"
+        },
+        "PayAdjustmentDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentDate"
+        },
+        "Hours": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Hours"
+        },
+        "Amount": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Amount"
+        },
+        "JobXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/JobXRefCode"
+        },
+        "DepartmentXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/DepartmentXRefCode"
+        },
+        "PayCategoryXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayCategoryXRefCode"
+        },
+        "ProjectXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ProjectXRefCode"
+        },
+        "DocketXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/DocketXRefCode"
+        },
+        "PieceQuantity": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+        },
+        "IsPremium": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
+        },
+        "IsDeleted": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsDeleted"
+        },
+        "Rate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Rate"
+        },
+        "PayDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayDate"
+        },
+        "ReferenceDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ReferenceDate"
+        },
+        "EmployeeComment": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeComment"
+        },
+        "ManagerComment": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerComment"
+        },
+        "ManagerAuthorized": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerAuthorized"
+        },
+        "EmployeeAuthorized": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeAuthorized"
+        },
+        "AdjustPeriodStartDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodStartDate"
+        },
+        "AdjustPeriodEndDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
+        },
+        "LaborMetrics": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+        }
+      },
+
+      "links": [
+        {
+          "description": "List existing Employee Pay Adjustments",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "$ref": "#/definitions/EmployeePayAdjustments"
+            }
+          }
+        },
+        {
+          "description": "Get a specific Employee Pay Adjustment",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/EmployeePayAdjustments"
+          }
+        },
+        {
+          "description": "Create a new Employee Pay Adjustment",
+          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create",
+          "schema": {
+            "properties": {
+              "EmployeePayAdjustXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustXRefCode"
+              },
+              "OrgUnitXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/OrgUnitXRefCode"
+              },
+              "EmployeeXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeXRefCode"
+              },
+              "PayAdjustmentCodeXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentCodeXRefCode"
+              },
+              "PayAdjustmentDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentDate"
+              },
+              "Hours": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Hours"
+              },
+              "Amount": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Amount"
+              },
+              "JobXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/JobXRefCode"
+              },
+              "DepartmentXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/DepartmentXRefCode"
+              },
+              "PayCategoryXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayCategoryXRefCode"
+              },
+              "ProjectXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ProjectXRefCode"
+              },
+              "DocketXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/DocketXRefCode"
+              },
+              "PieceQuantity": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+              },
+              "IsPremium": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
+              },
+              "Rate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Rate"
+              },
+              "PayDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayDate"
+              },
+              "ReferenceDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ReferenceDate"
+              },
+              "EmployeeComment": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeComment"
+              },
+              "ManagerComment": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerComment"
+              },
+              "ManagerAuthorized": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerAuthorized"
+              },
+              "EmployeeAuthorized": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeAuthorized"
+              },
+              "AdjustPeriodStartDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodStartDate"
+              },
+              "AdjustPeriodEndDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
+              },
+              "LaborMetrics": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/EmployeePayAdjustments"
+          }
+        }
+      ]
+    },
+
+    "LaborMetrics": {
+      "description": "Labor Metrics item for a Pay Adjustment.",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "LaborMetrics",
+      "type": [
+        "object"
+      ],
+      "parentObject": {
+        "EmployeePayAdjustments": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+        }
+      },
+
+      "definitions": {
+        "LaborMetricsTypeXRefCode": {
+          "description": "External reference code for the Labor Metric type.",
+          "example": "JobCode",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "LaborMetricsCodeXRefCode": {
+          "description": "External reference code for the Labor Metric code.",
+          "example": "25-910",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        }
+      },
+
+      "properties": {
+        "LaborMetricsTypeXRefCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
+        },
+        "LaborMetricsCodeXRefCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
+        }
+      }
+    }
+  },
+
+  "properties": {
+    "EmployeePayAdjustments": {
+      "$ref": "#/definitions/EmployeePayAdjustments"
+    },
+    "LaborMetrics": {
+      "$ref": "#/definitions/LaborMetrics"
+    }
+  },
+
+  "links": [
+    {
+      "href": "https://canconfig252.dayforcehcm.com",
+      "rel": "self"
+    }
+  ]
+}
