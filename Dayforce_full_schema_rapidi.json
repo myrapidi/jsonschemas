@@ -307,7 +307,7 @@
       "links": [
         {
           "description": "List existing Employee Pay Adjustments",
-          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+          "href": "https://canpreext252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
           "method": "GET",
           "rel": "instances",
           "title": "List",
@@ -322,7 +322,7 @@
         },
         {
           "description": "Get a specific Employee Pay Adjustment",
-          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "href": "https://canpreext252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
           "method": "GET",
           "rel": "self",
           "title": "Info",
@@ -332,7 +332,7 @@
         },
         {
           "description": "Create a new Employee Pay Adjustment",
-          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
+          "href": "https://canpreext252.dayforcehcm.com/api/nmbconfig/v1/EmployeePayAdjustments",
           "method": "POST",
           "rel": "create",
           "title": "Create",
@@ -478,7 +478,7 @@
 
   "links": [
     {
-      "href": "https://canconfig252.dayforcehcm.com",
+      "href": "https://canpreext252.dayforcehcm.com",
       "rel": "self"
     }
   ]
