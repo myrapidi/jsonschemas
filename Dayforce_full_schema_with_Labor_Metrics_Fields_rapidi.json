@@ -414,7 +414,10 @@
         "OrgUnitXRefCodes": {
           "type": "string",
           "description": "List of organization unit reference codes linked to this labor metric code.",
-          "example": "ORG001"
+          "example": "ORG001",
+          "type": [
+            "array"
+          ]
         },
         "IsDeleted": {
           "type": "boolean",
