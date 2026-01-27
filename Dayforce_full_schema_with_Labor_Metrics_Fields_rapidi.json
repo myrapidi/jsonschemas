@@ -365,7 +365,7 @@
       "stability": "beta",
       "strictProperties": true,
       "title": "LaborMetrics",
-      "type": ["object"],
+      "type": ["object"]
       },
       "definitions": {
         "LaborMetricsTypeXRefCode": {
