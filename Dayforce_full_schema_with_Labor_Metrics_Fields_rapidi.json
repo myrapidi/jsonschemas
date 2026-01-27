@@ -417,13 +417,9 @@
           "example": "LGR001"
         },
         "OrgUnitXRefCodes": {
-          "type": "array",
+          "type": "string",
           "description": "List of organization unit reference codes linked to this labor metric code.",
-          "items": {
-            "type": "string",
-            "description": "Reference code for an organization unit.",
-            "example": "ORG001"
-          }
+          "example": "ORG001"
         },
         "IsDeleted": {
           "type": "boolean",
