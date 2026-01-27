@@ -366,6 +366,11 @@
       "strictProperties": true,
       "title": "LaborMetrics",
       "type": ["object"],
+      "parentObject": {
+        "EmployeePayAdjustments": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+        }
+      },
       "definitions": {
         "LaborMetricsTypeXRefCode": {
           "description": "External reference code for the Labor Metric type.",
