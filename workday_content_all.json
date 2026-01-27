@@ -204,7 +204,7 @@
         {
           "title": "Info",
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Position_Report?format=json",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -214,7 +214,7 @@
         {
           "title": "List",
           "description": "List existing positions.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Report?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Position_Report?format=json",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -381,7 +381,7 @@
         {
           "title": "Info",
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Employee?format=json",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -391,7 +391,7 @@
         {
           "title": "List",
           "description": "List employees.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Employee?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Employee?format=json",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -506,7 +506,7 @@
         {
           "title": "Info",
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -516,7 +516,7 @@
         {
           "title": "List",
           "description": "List position-worker assignments.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Position_Worker_Assignment?format=json",
           "method": "GET",
           "rel": "instances",
           "schema": {
@@ -680,7 +680,7 @@
         {
           "title": "Info",
           "description": "Fetch report metadata.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Position_Hierarchies?format=json",
           "method": "GET",
           "rel": "self",
           "targetSchema": {
@@ -690,7 +690,7 @@
         {
           "title": "List",
           "description": "List position hierarchies.",
-          "href": "/ccx/service/customreport2/standardbiotools_preview/ISU_mulesoft/D365_Position_Hierarchies?format=json",
+          "href": "/ccx/service/customreport2/standardbiotools/ISU_mulesoft/D365_Position_Hierarchies?format=json",
           "method": "GET",
           "rel": "instances",
           "schema": {
