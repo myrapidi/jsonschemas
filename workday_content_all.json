@@ -439,6 +439,18 @@
             "boolean"
           ]
         },
+        "Active":{
+          "title":"Active",
+          "type":[
+            "boolean"
+          ]
+        },
+        "Non_Active":{
+          "title":"Non_Active",
+          "type":[
+            "boolean"
+          ]
+        },
         "Current_Position_Filled_-_Effective_Date": {
           "title": "Current_Position_Filled_-_Effective_Date",
           "type": [
@@ -482,6 +494,12 @@
       "properties": {
         "Active_Status": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Active_Status"
+        },
+        "Active":{
+          "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Active"
+        },
+        "Non_Active":{
+          "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Non_Active"
         },
         "Current_Position_Filled_-_Effective_Date": {
           "$ref": "#/definitions/D365_Position_Worker_Assignment/definitions/Current_Position_Filled_-_Effective_Date"
