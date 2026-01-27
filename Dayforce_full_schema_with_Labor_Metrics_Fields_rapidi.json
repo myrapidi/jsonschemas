@@ -365,8 +365,7 @@
       "stability": "beta",
       "strictProperties": true,
       "title": "LaborMetrics",
-      "type": ["object"]
-      },
+      "type": ["object"],
       "definitions": {
         "LaborMetricsTypeXRefCode": {
           "description": "External reference code for the Labor Metric type.",
