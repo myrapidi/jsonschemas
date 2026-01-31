@@ -159,7 +159,7 @@
       "links": [
         {
           "description": "List existing Labor Metrics",
-          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/LaborMetrics",
           "method": "GET",
           "rel": "instances",
           "title": "List",
@@ -174,7 +174,7 @@
         },
         {
           "description": "Get a specific Labor Metric",
-          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
           "method": "GET",
           "rel": "self",
           "title": "Info",
@@ -184,7 +184,7 @@
         },
         {
           "description": "Create a new Labor Metric",
-          "href": "https://canconfig252.dayforcehcm.com/api/nmbconfig/v1/LaborMetrics",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/LaborMetrics",
           "method": "POST",
           "rel": "create",
           "title": "Create",
@@ -278,7 +278,7 @@
   },
   "links": [
     {
-      "href": "https://canconfig252.dayforcehcm.com",
+      "href": "https://canstage252.dayforcehcm.com",
       "rel": "self"
     }
   ]
