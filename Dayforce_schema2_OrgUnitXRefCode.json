@@ -237,12 +237,12 @@
         }
       ]
     },
-    "OrgUnitXRefCode": {
+    "OrgUnitXRefCodes": {
       "description": "Organization Unit reference code item for a Labor Metric.",
       "$schema": "http://json-schema.org/draft-06/hyper-schema#",
       "stability": "beta",
       "strictProperties": true,
-      "title": "OrgUnitXRefCode",
+      "title": "OrgUnitXRefCodes",
       "type": [
         "object"
       ],
@@ -252,7 +252,7 @@
         }
       },
       "definitions": {
-        "OrgUnitXRefCode": {
+        "OrgUnitXRefCodes": {
           "description": "Reference code for an organization unit.",
           "example": "ORG001",
           "readOnly": false,
@@ -262,8 +262,8 @@
         }
       },
       "properties": {
-        "OrgUnitXRefCode": {
-          "$ref": "#/definitions/OrgUnitXRefCode/definitions/OrgUnitXRefCode"
+        "OrgUnitXRefCodes": {
+          "$ref": "#/definitions/OrgUnitXRefCodes/definitions/OrgUnitXRefCodes"
         }
       }
     }
@@ -272,8 +272,8 @@
     "LaborMetrics": {
       "$ref": "#/definitions/LaborMetrics"
     },
-    "OrgUnitXRefCode": {
-      "$ref": "#/definitions/OrgUnitXRefCode"
+    "OrgUnitXRefCodes": {
+      "$ref": "#/definitions/OrgUnitXRefCodes"
     }
   },
   "links": [
