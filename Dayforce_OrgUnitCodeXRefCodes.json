@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_LaborMetrics_schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_LaborMetrics_schema2#",
   "title": "Dayforce LaborMetrics Schema",
   "description": "Schema for LaborMetrics object in Dayforce API",
   "type": [
