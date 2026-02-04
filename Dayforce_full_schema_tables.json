@@ -1,0 +1,1059 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_full_schema#",
+  "title": "Dayforce Content (Aligned to Endpoint Names)",
+  "description": "Content schema to read and write Dayforce API data. Each top-level definition matches its Dayforce endpoint name exactly.",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "Employees": {
+      "description": "Employee records in Dayforce.",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "Employees",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "EmployeeXRefCode": {
+          "description": "External reference code for the employee. This is the unique identifier.",
+          "example": "E0066",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "EmployeeNumber": {
+          "description": "Employment identification number assigned to an employee.",
+          "example": "12345",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "DisplayName": {
+          "description": "Employee display name.",
+          "example": "John Doe",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "FirstName": {
+          "description": "Employee first name.",
+          "example": "John",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "LastName": {
+          "description": "Employee last name.",
+          "example": "Doe",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "MiddleName": {
+          "description": "Employee middle name.",
+          "example": "Michael",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "SocialSecurityNumber": {
+          "description": "Social Security Number of the employee.",
+          "example": "123-45-6789",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "BirthDate": {
+          "description": "Employee date of birth.",
+          "example": "1985-06-15T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Gender": {
+          "description": "Employee gender.",
+          "example": "Male",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "HireDate": {
+          "description": "Most recent hire date of the employee.",
+          "example": "2020-01-15T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "OriginalHireDate": {
+          "description": "Original hire date of the employee.",
+          "example": "2018-03-01T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "TerminationDate": {
+          "description": "Termination date of the employee.",
+          "example": "2025-12-31T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "SeniorityDate": {
+          "description": "Seniority date of the employee.",
+          "example": "2018-03-01T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "EmploymentStatusXRefCode": {
+          "description": "Employment status xrefcode (e.g., Active, Terminated, Leave of Absence).",
+          "example": "ACTIVE",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "OrgUnitXRefCode": {
+          "description": "External reference code for the organizational unit.",
+          "example": "NORTHERN_MAT_AND_BRIDGE_EAST_LIMITED_PARTNERSHIP_TORONTO_OPERATIONS_UNION",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "DepartmentXRefCode": {
+          "description": "External reference code for the department.",
+          "example": "DEPT001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "JobXRefCode": {
+          "description": "External reference code for the job.",
+          "example": "JOB001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PositionXRefCode": {
+          "description": "External reference code for the position.",
+          "example": "POS001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayClassXRefCode": {
+          "description": "External reference code for the pay class.",
+          "example": "HOURLY",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayGroupXRefCode": {
+          "description": "External reference code for the pay group.",
+          "example": "BIWEEKLY",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayPolicyXRefCode": {
+          "description": "External reference code for the pay policy.",
+          "example": "STANDARD",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayTypeXRefCode": {
+          "description": "External reference code for the pay type.",
+          "example": "SALARY",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayrollPolicyXRefCode": {
+          "description": "External reference code for the payroll policy.",
+          "example": "US_PAYROLL",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "BaseSalary": {
+          "description": "Base salary amount for the employee.",
+          "example": 75000.00,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "BaseRate": {
+          "description": "Base hourly rate for the employee.",
+          "example": 25.50,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "Email": {
+          "description": "Employee email address.",
+          "example": "john.doe@company.com",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Phone": {
+          "description": "Employee phone number.",
+          "example": "+1-555-123-4567",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Address": {
+          "description": "Employee address information.",
+          "example": "123 Main Street, Toronto, ON M5H 2N2",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "City": {
+          "description": "Employee city.",
+          "example": "Toronto",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "State": {
+          "description": "Employee state/province.",
+          "example": "ON",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PostalCode": {
+          "description": "Employee postal/zip code.",
+          "example": "M5H 2N2",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Country": {
+          "description": "Employee country.",
+          "example": "Canada",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ManagerXRefCode": {
+          "description": "External reference code for the employee's manager.",
+          "example": "E0001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "IsActive": {
+          "description": "Indicates whether the employee is currently active.",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "LastUpdated": {
+          "description": "Date and time when the employee record was last updated.",
+          "example": "2025-12-10T14:30:00Z",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "EmployeeXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/EmployeeXRefCode"
+        },
+        "EmployeeNumber": {
+          "$ref": "#/definitions/Employees/definitions/EmployeeNumber"
+        },
+        "DisplayName": {
+          "$ref": "#/definitions/Employees/definitions/DisplayName"
+        },
+        "FirstName": {
+          "$ref": "#/definitions/Employees/definitions/FirstName"
+        },
+        "LastName": {
+          "$ref": "#/definitions/Employees/definitions/LastName"
+        },
+        "MiddleName": {
+          "$ref": "#/definitions/Employees/definitions/MiddleName"
+        },
+        "SocialSecurityNumber": {
+          "$ref": "#/definitions/Employees/definitions/SocialSecurityNumber"
+        },
+        "BirthDate": {
+          "$ref": "#/definitions/Employees/definitions/BirthDate"
+        },
+        "Gender": {
+          "$ref": "#/definitions/Employees/definitions/Gender"
+        },
+        "HireDate": {
+          "$ref": "#/definitions/Employees/definitions/HireDate"
+        },
+        "OriginalHireDate": {
+          "$ref": "#/definitions/Employees/definitions/OriginalHireDate"
+        },
+        "TerminationDate": {
+          "$ref": "#/definitions/Employees/definitions/TerminationDate"
+        },
+        "SeniorityDate": {
+          "$ref": "#/definitions/Employees/definitions/SeniorityDate"
+        },
+        "EmploymentStatusXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/EmploymentStatusXRefCode"
+        },
+        "OrgUnitXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/OrgUnitXRefCode"
+        },
+        "DepartmentXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/DepartmentXRefCode"
+        },
+        "JobXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/JobXRefCode"
+        },
+        "PositionXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/PositionXRefCode"
+        },
+        "PayClassXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/PayClassXRefCode"
+        },
+        "PayGroupXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/PayGroupXRefCode"
+        },
+        "PayPolicyXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/PayPolicyXRefCode"
+        },
+        "PayTypeXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/PayTypeXRefCode"
+        },
+        "PayrollPolicyXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/PayrollPolicyXRefCode"
+        },
+        "BaseSalary": {
+          "$ref": "#/definitions/Employees/definitions/BaseSalary"
+        },
+        "BaseRate": {
+          "$ref": "#/definitions/Employees/definitions/BaseRate"
+        },
+        "Email": {
+          "$ref": "#/definitions/Employees/definitions/Email"
+        },
+        "Phone": {
+          "$ref": "#/definitions/Employees/definitions/Phone"
+        },
+        "Address": {
+          "$ref": "#/definitions/Employees/definitions/Address"
+        },
+        "City": {
+          "$ref": "#/definitions/Employees/definitions/City"
+        },
+        "State": {
+          "$ref": "#/definitions/Employees/definitions/State"
+        },
+        "PostalCode": {
+          "$ref": "#/definitions/Employees/definitions/PostalCode"
+        },
+        "Country": {
+          "$ref": "#/definitions/Employees/definitions/Country"
+        },
+        "ManagerXRefCode": {
+          "$ref": "#/definitions/Employees/definitions/ManagerXRefCode"
+        },
+        "IsActive": {
+          "$ref": "#/definitions/Employees/definitions/IsActive"
+        },
+        "LastUpdated": {
+          "$ref": "#/definitions/Employees/definitions/LastUpdated"
+        }
+      },
+      "links": [
+        {
+          "description": "List existing Employees",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/Employees",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "$ref": "#/definitions/Employees"
+            }
+          }
+        },
+        {
+          "description": "Get a specific Employee",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/Employees/{EmployeeXRefCode}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/Employees"
+          }
+        },
+        {
+          "description": "Create a new Employee",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/Employees",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create",
+          "schema": {
+            "properties": {
+              "EmployeeXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/EmployeeXRefCode"
+              },
+              "EmployeeNumber": {
+                "$ref": "#/definitions/Employees/definitions/EmployeeNumber"
+              },
+              "DisplayName": {
+                "$ref": "#/definitions/Employees/definitions/DisplayName"
+              },
+              "FirstName": {
+                "$ref": "#/definitions/Employees/definitions/FirstName"
+              },
+              "LastName": {
+                "$ref": "#/definitions/Employees/definitions/LastName"
+              },
+              "MiddleName": {
+                "$ref": "#/definitions/Employees/definitions/MiddleName"
+              },
+              "SocialSecurityNumber": {
+                "$ref": "#/definitions/Employees/definitions/SocialSecurityNumber"
+              },
+              "BirthDate": {
+                "$ref": "#/definitions/Employees/definitions/BirthDate"
+              },
+              "Gender": {
+                "$ref": "#/definitions/Employees/definitions/Gender"
+              },
+              "HireDate": {
+                "$ref": "#/definitions/Employees/definitions/HireDate"
+              },
+              "OriginalHireDate": {
+                "$ref": "#/definitions/Employees/definitions/OriginalHireDate"
+              },
+              "EmploymentStatusXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/EmploymentStatusXRefCode"
+              },
+              "OrgUnitXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/OrgUnitXRefCode"
+              },
+              "DepartmentXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/DepartmentXRefCode"
+              },
+              "JobXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/JobXRefCode"
+              },
+              "PositionXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/PositionXRefCode"
+              },
+              "PayClassXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/PayClassXRefCode"
+              },
+              "PayGroupXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/PayGroupXRefCode"
+              },
+              "PayPolicyXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/PayPolicyXRefCode"
+              },
+              "PayTypeXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/PayTypeXRefCode"
+              },
+              "PayrollPolicyXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/PayrollPolicyXRefCode"
+              },
+              "BaseSalary": {
+                "$ref": "#/definitions/Employees/definitions/BaseSalary"
+              },
+              "BaseRate": {
+                "$ref": "#/definitions/Employees/definitions/BaseRate"
+              },
+              "Email": {
+                "$ref": "#/definitions/Employees/definitions/Email"
+              },
+              "Phone": {
+                "$ref": "#/definitions/Employees/definitions/Phone"
+              },
+              "Address": {
+                "$ref": "#/definitions/Employees/definitions/Address"
+              },
+              "City": {
+                "$ref": "#/definitions/Employees/definitions/City"
+              },
+              "State": {
+                "$ref": "#/definitions/Employees/definitions/State"
+              },
+              "PostalCode": {
+                "$ref": "#/definitions/Employees/definitions/PostalCode"
+              },
+              "Country": {
+                "$ref": "#/definitions/Employees/definitions/Country"
+              },
+              "ManagerXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/ManagerXRefCode"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/Employees"
+          }
+        },
+        {
+          "description": "Update an existing Employee",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/Employees/{EmployeeXRefCode}",
+          "method": "PATCH",
+          "rel": "update",
+          "title": "Update",
+          "schema": {
+            "properties": {
+              "DisplayName": {
+                "$ref": "#/definitions/Employees/definitions/DisplayName"
+              },
+              "Email": {
+                "$ref": "#/definitions/Employees/definitions/Email"
+              },
+              "Phone": {
+                "$ref": "#/definitions/Employees/definitions/Phone"
+              },
+              "Address": {
+                "$ref": "#/definitions/Employees/definitions/Address"
+              },
+              "DepartmentXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/DepartmentXRefCode"
+              },
+              "JobXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/JobXRefCode"
+              },
+              "ManagerXRefCode": {
+                "$ref": "#/definitions/Employees/definitions/ManagerXRefCode"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/Employees"
+          }
+        }
+      ]
+    },
+    "EmployeePayAdjustments": {
+      "description": "Employee Pay Adjustments records in Dayforce.",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "EmployeePayAdjustments",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "EmployeePayAdjustXRefCode": {
+          "description": "Unique identifier for the Employee Pay Adjustment record.",
+          "example": "EPA123456",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "OrgUnitXRefCode": {
+          "description": "External reference code for the organizational unit.",
+          "example": "NORTHERN_MAT_AND_BRIDGE_EAST_LIMITED_PARTNERSHIP_TORONTO_OPERATIONS_UNION",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "EmployeeXRefCode": {
+          "description": "External reference code for the employee.",
+          "example": "E0066",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayAdjustmentCodeXRefCode": {
+          "description": "External reference code for the pay adjustment code.",
+          "example": "REG_ICI",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayAdjustmentDate": {
+          "description": "Date of the pay adjustment.",
+          "example": "2025-12-10T03:30:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "Hours": {
+          "description": "Number of hours for the pay adjustment.",
+          "example": 9,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "Amount": {
+          "description": "Amount of the pay adjustment.",
+          "example": 150.5,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "JobXRefCode": {
+          "description": "External reference code for the job.",
+          "example": "JOB001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "DepartmentXRefCode": {
+          "description": "External reference code for the department.",
+          "example": "DEPT001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PayCategoryXRefCode": {
+          "description": "External reference code for the pay category.",
+          "example": "REGULAR",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ProjectXRefCode": {
+          "description": "External reference code for the project.",
+          "example": "PROJ001",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "DocketXRefCode": {
+          "description": "External reference code for the docket.",
+          "example": "NIGHT_SHIFT",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "PieceQuantity": {
+          "description": "Piecework quantity associated with the adjustment.",
+          "example": 10,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "IsPremium": {
+          "description": "Indicates whether the adjustment is premium pay.",
+          "example": false,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "IsDeleted": {
+          "description": "Indicates whether the pay adjustment record is deleted.",
+          "example": false,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "Rate": {
+          "description": "Rate associated with the pay adjustment.",
+          "example": 25.5,
+          "readOnly": false,
+          "type": [
+            "number"
+          ]
+        },
+        "PayDate": {
+          "description": "Pay date for the adjustment.",
+          "example": "2025-12-15T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ReferenceDate": {
+          "description": "Reference date for the adjustment.",
+          "example": "2025-12-10T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "EmployeeComment": {
+          "description": "Employee comment related to the pay adjustment.",
+          "example": "Worked overtime on project",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ManagerComment": {
+          "description": "Manager comment related to the pay adjustment.",
+          "example": "Approved for overtime",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "ManagerAuthorized": {
+          "description": "Indicates whether the manager has authorized the adjustment.",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "EmployeeAuthorized": {
+          "description": "Indicates whether the employee has authorized the adjustment.",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "AdjustPeriodStartDate": {
+          "description": "Adjustment period start date.",
+          "example": "2025-12-01T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "AdjustPeriodEndDate": {
+          "description": "Adjustment period end date.",
+          "example": "2025-12-31T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "LaborMetrics": {
+          "description": "Array of Labor Metrics items attached to the pay adjustment.",
+          "example": "array with labor metric objects",
+          "readOnly": false,
+          "type": [
+            "array"
+          ]
+        }
+      },
+      "properties": {
+        "EmployeePayAdjustXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustXRefCode"
+        },
+        "OrgUnitXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/OrgUnitXRefCode"
+        },
+        "EmployeeXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeXRefCode"
+        },
+        "PayAdjustmentCodeXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentCodeXRefCode"
+        },
+        "PayAdjustmentDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentDate"
+        },
+        "Hours": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Hours"
+        },
+        "Amount": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Amount"
+        },
+        "JobXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/JobXRefCode"
+        },
+        "DepartmentXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/DepartmentXRefCode"
+        },
+        "PayCategoryXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayCategoryXRefCode"
+        },
+        "ProjectXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ProjectXRefCode"
+        },
+        "DocketXRefCode": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/DocketXRefCode"
+        },
+        "PieceQuantity": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+        },
+        "IsPremium": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
+        },
+        "IsDeleted": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsDeleted"
+        },
+        "Rate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/Rate"
+        },
+        "PayDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayDate"
+        },
+        "ReferenceDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ReferenceDate"
+        },
+        "EmployeeComment": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeComment"
+        },
+        "ManagerComment": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerComment"
+        },
+        "ManagerAuthorized": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerAuthorized"
+        },
+        "EmployeeAuthorized": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeAuthorized"
+        },
+        "AdjustPeriodStartDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodStartDate"
+        },
+        "AdjustPeriodEndDate": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
+        },
+        "LaborMetrics": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+        }
+      },
+      "links": [
+        {
+          "description": "List existing Employee Pay Adjustments",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "$ref": "#/definitions/EmployeePayAdjustments"
+            }
+          }
+        },
+        {
+          "description": "Get a specific Employee Pay Adjustment",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/EmployeePayAdjustments"
+          }
+        },
+        {
+          "description": "Create a new Employee Pay Adjustment",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create",
+          "schema": {
+            "properties": {
+              "EmployeePayAdjustXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeePayAdjustXRefCode"
+              },
+              "OrgUnitXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/OrgUnitXRefCode"
+              },
+              "EmployeeXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeXRefCode"
+              },
+              "PayAdjustmentCodeXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentCodeXRefCode"
+              },
+              "PayAdjustmentDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentDate"
+              },
+              "Hours": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Hours"
+              },
+              "Amount": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Amount"
+              },
+              "JobXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/JobXRefCode"
+              },
+              "DepartmentXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/DepartmentXRefCode"
+              },
+              "PayCategoryXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayCategoryXRefCode"
+              },
+              "ProjectXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ProjectXRefCode"
+              },
+              "DocketXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/DocketXRefCode"
+              },
+              "PieceQuantity": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+              },
+              "IsPremium": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
+              },
+              "Rate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Rate"
+              },
+              "PayDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayDate"
+              },
+              "ReferenceDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ReferenceDate"
+              },
+              "EmployeeComment": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeComment"
+              },
+              "ManagerComment": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerComment"
+              },
+              "ManagerAuthorized": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerAuthorized"
+              },
+              "EmployeeAuthorized": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeAuthorized"
+              },
+              "AdjustPeriodStartDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodStartDate"
+              },
+              "AdjustPeriodEndDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
+              },
+              "LaborMetrics": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/EmployeePayAdjustments"
+          }
+        }
+      ]
+    },
+    "LaborMetrics": {
+      "description": "Labor Metrics item for a Pay Adjustment.",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "LaborMetrics",
+      "type": [
+        "object"
+      ],
+      "parentObject": {
+        "EmployeePayAdjustments": {
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+        }
+      },
+      "definitions": {
+        "LaborMetricsTypeXRefCode": {
+          "description": "External reference code for the Labor Metric type.",
+          "example": "JobCode",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "LaborMetricsCodeXRefCode": {
+          "description": "External reference code for the Labor Metric code.",
+          "example": "25-910",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "LaborMetricsTypeXRefCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
+        },
+        "LaborMetricsCodeXRefCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
+        }
+      }
+    }
+  },
+  "properties": {
+    "Employees": {
+      "$ref": "#/definitions/Employees"
+    },
+    "EmployeePayAdjustments": {
+      "$ref": "#/definitions/EmployeePayAdjustments"
+    },
+    "LaborMetrics": {
+      "$ref": "#/definitions/LaborMetrics"
+    }
+  },
+  "links": [
+    {
+      "href": "https://canstage252.dayforcehcm.com",
+      "rel": "self"
+    }
+  ]
+}
