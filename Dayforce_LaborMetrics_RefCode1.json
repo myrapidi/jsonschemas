@@ -1,0 +1,220 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/Dayforce_LaborMetrics_schema2#",
+  "title": "Dayforce LaborMetrics Schema",
+  "description": "Schema for LaborMetrics object in Dayforce API",
+  "type": ["object"],
+  "definitions": {
+    "LaborMetrics": {
+      "description": "Labor Metrics code records in Dayforce.",
+      "$schema": "http://json-schema.org/draft-06/hyper-schema#",
+      "stability": "beta",
+      "strictProperties": true,
+      "title": "LaborMetrics",
+      "type": ["object"],
+      "definitions": {
+        "OrgUnitXRefCodes": {
+          "description": "Array of Organization Unit reference codes attached to the labor metric.",
+          "example": "array with organization unit objects",
+          "readOnly": false,
+          "type": ["array"]
+        },
+        "LaborMetricsCodeXRefCode": {
+          "description": "Unique identifier for the labor metric code record.",
+          "example": "LM001",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "ShortName": {
+          "description": "Short display name of the labor metric code.",
+          "example": "OT",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "LongName": {
+          "description": "Full descriptive name of the labor metric code.",
+          "example": "Overtime Code",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "EffectiveFrom": {
+          "description": "Date and time when this labor metric code becomes effective.",
+          "example": "2025-01-01T00:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "EffectiveEnd": {
+          "description": "Date and time when this labor metric code expires (if applicable).",
+          "example": "2025-12-31T23:59:59Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "ClockTransferCode": {
+          "description": "Clock transfer code associated with this labor metric code (optional).",
+          "example": "CT01",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "LedgerCode": {
+          "description": "Ledger code associated with this labor metric code (optional).",
+          "example": "LGR001",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "LaborMetricsTypeXRefCode": {
+          "description": "Reference to the labor metric type this code belongs to.",
+          "example": "JobCode",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "IsDeleted": {
+          "description": "Indicates whether this labor metric code record is marked as deleted.",
+          "example": false,
+          "readOnly": false,
+          "type": ["boolean"]
+        },
+        "CreatedDateTime": {
+          "description": "Record creation timestamp.",
+          "example": "2025-11-05T08:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": ["string"]
+        },
+        "ModifiedDateTime": {
+          "description": "Record last modified timestamp.",
+          "example": "2025-11-05T12:00:00Z",
+          "format": "date-time",
+          "readOnly": false,
+          "type": ["string"]
+        }
+      },
+      "properties": {
+        "LaborMetricsCodeXRefCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
+        },
+        "ShortName": {
+          "$ref": "#/definitions/LaborMetrics/definitions/ShortName"
+        },
+        "LongName": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LongName"
+        },
+        "EffectiveFrom": {
+          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveFrom"
+        },
+        "EffectiveEnd": {
+          "$ref": "#/definitions/LaborMetrics/definitions/EffectiveEnd"
+        },
+        "ClockTransferCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/ClockTransferCode"
+        },
+        "LedgerCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LedgerCode"
+        },
+        "OrgUnitXRefCodes": {
+          "$ref": "#/definitions/LaborMetrics/definitions/OrgUnitXRefCodes"
+        },
+        "LaborMetricsTypeXRefCode": {
+          "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
+        },
+        "IsDeleted": {
+          "$ref": "#/definitions/LaborMetrics/definitions/IsDeleted"
+        },
+        "CreatedDateTime": {
+          "$ref": "#/definitions/LaborMetrics/definitions/CreatedDateTime"
+        },
+        "ModifiedDateTime": {
+          "$ref": "#/definitions/LaborMetrics/definitions/ModifiedDateTime"
+        }
+      },
+      "links": [
+        {
+          "description": "List existing Labor Metrics",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/LaborMetrics",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "type": ["array"],
+            "items": {
+              "$ref": "#/definitions/LaborMetrics"
+            }
+          }
+        },
+        {
+          "description": "Get a specific Labor Metric",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/LaborMetrics/{LaborMetricsCodeXRefCode}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/LaborMetrics"
+          }
+        },
+        {
+          "description": "Create a new Labor Metric",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/LaborMetrics",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create",
+          "schema": {
+            "properties": {
+              "LaborMetricsCodeXRefCode": {
+                "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsCodeXRefCode"
+              },
+              "ShortName": {
+                "$ref": "#/definitions/LaborMetrics/definitions/ShortName"
+              },
+              "LongName": {
+                "$ref": "#/definitions/LaborMetrics/definitions/LongName"
+              },
+              "EffectiveFrom": {
+                "$ref": "#/definitions/LaborMetrics/definitions/EffectiveFrom"
+              },
+              "EffectiveEnd": {
+                "$ref": "#/definitions/LaborMetrics/definitions/EffectiveEnd"
+              },
+              "ClockTransferCode": {
+                "$ref": "#/definitions/LaborMetrics/definitions/ClockTransferCode"
+              },
+              "LedgerCode": {
+                "$ref": "#/definitions/LaborMetrics/definitions/LedgerCode"
+              },
+              "OrgUnitXRefCodes": {
+                "$ref": "#/definitions/LaborMetrics/definitions/OrgUnitXRefCodes"
+              },
+              "LaborMetricsTypeXRefCode": {
+                "$ref": "#/definitions/LaborMetrics/definitions/LaborMetricsTypeXRefCode"
+              },
+              "IsDeleted": {
+                "$ref": "#/definitions/LaborMetrics/definitions/IsDeleted"
+              },
+              "CreatedDateTime": {
+                "$ref": "#/definitions/LaborMetrics/definitions/CreatedDateTime"
+              },
+              "ModifiedDateTime": {
+                "$ref": "#/definitions/LaborMetrics/definitions/ModifiedDateTime"
+              }
+            },
+            "type": ["object"]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/LaborMetrics"
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "LaborMetrics": {
+      "$ref": "#/definitions/LaborMetrics"
+    }
+  },
+  "links": [
+    {
+      "href": "https://canstage252.dayforcehcm.com",
+      "rel": "self"
+    }
+  ]
+}
