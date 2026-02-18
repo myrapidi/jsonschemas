@@ -994,6 +994,86 @@
           "targetSchema": {
             "$ref": "#/definitions/EmployeePayAdjustments"
           }
+        },
+        {
+          "description": "Update an existing Employee Pay Adjustment",
+          "href": "https://canstage252.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "method": "PATCH",
+          "rel": "update",
+          "title": "Update",
+          "schema": {
+            "properties": {
+              "PayAdjustmentCodeXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentCodeXRefCode"
+              },
+              "PayAdjustmentDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayAdjustmentDate"
+              },
+              "Hours": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Hours"
+              },
+              "Amount": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Amount"
+              },
+              "JobXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/JobXRefCode"
+              },
+              "DepartmentXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/DepartmentXRefCode"
+              },
+              "PayCategoryXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayCategoryXRefCode"
+              },
+              "ProjectXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ProjectXRefCode"
+              },
+              "DocketXRefCode": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/DocketXRefCode"
+              },
+              "PieceQuantity": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+              },
+              "IsPremium": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
+              },
+              "Rate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/Rate"
+              },
+              "PayDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/PayDate"
+              },
+              "ReferenceDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ReferenceDate"
+              },
+              "EmployeeComment": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeComment"
+              },
+              "ManagerComment": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerComment"
+              },
+              "ManagerAuthorized": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/ManagerAuthorized"
+              },
+              "EmployeeAuthorized": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/EmployeeAuthorized"
+              },
+              "AdjustPeriodStartDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodStartDate"
+              },
+              "AdjustPeriodEndDate": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/AdjustPeriodEndDate"
+              },
+              "LaborMetrics": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/LaborMetrics"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/EmployeePayAdjustments"
+          }
         }
       ]
     },
