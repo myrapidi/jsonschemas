@@ -449,6 +449,8 @@
         "AssumedTimeStart": { "description": "Assumed start time used when the actual punch-in is missing.", "example": "2026-02-26T08:00:00Z", "format": "date-time", "readOnly": true, "type": ["string"] },
         "AssumedTimeEnd": { "description": "Assumed end time used when the actual punch-out is missing.", "example": "2026-02-26T17:00:00Z", "format": "date-time", "readOnly": true, "type": ["string"] },
         "LastModifiedTimestampUtc": { "description": "UTC timestamp of when the punch record was last modified.", "example": "2026-02-26T15:27:57Z", "format": "date-time", "readOnly": true, "type": ["string"] },
+        "OrgUnitXRefCode": { "description": "External reference code for the organizational unit associated with the punch.", "example": "NORTHERN_MAT_AND_BRIDGE_EAST_LIMITED_PARTNERSHIP_TORONTO_OPERATIONS_UNION", "readOnly": false, "type": ["string"] },
+        "PayAdjustCodeXRefCode": { "description": "External reference code for the pay adjustment code associated with the punch.", "example": "REG_ICI", "readOnly": false, "type": ["string"] },
         "MealBreaks": { "description": "Array of Meal Break records associated with the punch.", "example": "array with meal break objects", "readOnly": false, "type": ["array"] },
         "Transfers": { "description": "Array of Transfer records associated with the punch representing mid-shift transfers.", "example": "array with transfer objects", "readOnly": false, "type": ["array"] },
         "LaborMetrics": { "description": "Array of Labor Metrics items attached to the punch.", "example": "array with labor metric objects", "readOnly": false, "type": ["array"] }
@@ -481,6 +483,8 @@
         "AssumedTimeStart": { "$ref": "#/definitions/EmployeePunches/definitions/AssumedTimeStart" },
         "AssumedTimeEnd": { "$ref": "#/definitions/EmployeePunches/definitions/AssumedTimeEnd" },
         "LastModifiedTimestampUtc": { "$ref": "#/definitions/EmployeePunches/definitions/LastModifiedTimestampUtc" },
+        "OrgUnitXRefCode": { "$ref": "#/definitions/EmployeePunches/definitions/OrgUnitXRefCode" },
+        "PayAdjustCodeXRefCode": { "$ref": "#/definitions/EmployeePunches/definitions/PayAdjustCodeXRefCode" },
         "MealBreaks": { "$ref": "#/definitions/EmployeePunches/definitions/MealBreaks" },
         "Transfers": { "$ref": "#/definitions/EmployeePunches/definitions/Transfers" },
         "LaborMetrics": { "$ref": "#/definitions/EmployeePunches/definitions/LaborMetrics" }
@@ -529,6 +533,8 @@
               "IsDeleted": { "$ref": "#/definitions/EmployeePunches/definitions/IsDeleted" },
               "IsOnCall": { "$ref": "#/definitions/EmployeePunches/definitions/IsOnCall" },
               "FuturePunch": { "$ref": "#/definitions/EmployeePunches/definitions/FuturePunch" },
+              "OrgUnitXRefCode": { "$ref": "#/definitions/EmployeePunches/definitions/OrgUnitXRefCode" },
+              "PayAdjustCodeXRefCode": { "$ref": "#/definitions/EmployeePunches/definitions/PayAdjustCodeXRefCode" },
               "MealBreaks": { "$ref": "#/definitions/EmployeePunches/definitions/MealBreaks" },
               "Transfers": { "$ref": "#/definitions/EmployeePunches/definitions/Transfers" },
               "LaborMetrics": { "$ref": "#/definitions/EmployeePunches/definitions/LaborMetrics" }
@@ -561,6 +567,8 @@
               "BusinessDate": { "$ref": "#/definitions/EmployeePunches/definitions/BusinessDate" },
               "IsDeleted": { "$ref": "#/definitions/EmployeePunches/definitions/IsDeleted" },
               "IsOnCall": { "$ref": "#/definitions/EmployeePunches/definitions/IsOnCall" },
+              "OrgUnitXRefCode": { "$ref": "#/definitions/EmployeePunches/definitions/OrgUnitXRefCode" },
+              "PayAdjustCodeXRefCode": { "$ref": "#/definitions/EmployeePunches/definitions/PayAdjustCodeXRefCode" },
               "MealBreaks": { "$ref": "#/definitions/EmployeePunches/definitions/MealBreaks" },
               "Transfers": { "$ref": "#/definitions/EmployeePunches/definitions/Transfers" },
               "LaborMetrics": { "$ref": "#/definitions/EmployeePunches/definitions/LaborMetrics" }
