@@ -718,7 +718,7 @@
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
         },
         "isValidateOnly": {
-          $ref": "#/definitions/EmployeePayAdjustments/definitions/isValidateOnly"
+          "$ref": "#/definitions/EmployeePayAdjustments/definitions/isValidateOnly"
         },
         "IsPremium": {
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
