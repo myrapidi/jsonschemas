@@ -594,6 +594,12 @@
           "readOnly": false,
           "type": ["number"]
         },
+        "isValidateOnly": {
+          "description": "Indicates whether the adjustment is Validated.",
+          "example": false,
+          "readOnly": false,
+          "type": ["boolean"]
+        },
         "IsPremium": {
           "description": "Indicates whether the adjustment is premium pay.",
           "example": false,
@@ -711,6 +717,9 @@
         "PieceQuantity": {
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
         },
+        "isValidateOnly": {
+          $ref": "#/definitions/EmployeePayAdjustments/definitions/isValidateOnly"
+        },
         "IsPremium": {
           "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
         },
@@ -819,6 +828,9 @@
               "PieceQuantity": {
                 "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
               },
+              "isValidateOnly": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/isValidateOnly"
+              },
               "IsPremium": {
                 "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
               },
@@ -896,6 +908,9 @@
               },
               "PieceQuantity": {
                 "$ref": "#/definitions/EmployeePayAdjustments/definitions/PieceQuantity"
+              },
+              "isValidateOnly": {
+                "$ref": "#/definitions/EmployeePayAdjustments/definitions/isValidateOnly"
               },
               "IsPremium": {
                 "$ref": "#/definitions/EmployeePayAdjustments/definitions/IsPremium"
