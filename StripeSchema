@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/stripe_payment_intents#",
+  "title": "Stripe Payment Intents Content",
+  "description": "Content schema to read Stripe Payment Intents via REST API. Note: List endpoint is read-only (GET). Only succeeded payments should be synced to BC Payment Journals.",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "context": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Connection Context",
+      "description": "Connection variables for Stripe REST API.",
+      "stability": "stable",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "base_url": {
+          "description": "Stripe API base URL.",
+          "example": "https://api.stripe.com",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "api_version": {
+          "description": "Stripe API version.",
+          "example": "v1",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "base_url": {
+          "$ref": "#/definitions/context/definitions/base_url"
+        },
+        "api_version": {
+          "$ref": "#/definitions/context/definitions/api_version"
+        }
+      }
+    },
+    "payment_intent": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Payment Intent",
+      "description": "A single Stripe Payment Intent object.",
+      "stability": "stable",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "Unique identifier for the Payment Intent (pi_...).",
+          "example": "pi_3Tlsu0HR2udh1uZx0U7oUS3b",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "amount": {
+          "description": "Amount intended to be collected, in the smallest currency unit (e.g. cents). Divide by 100 for BC.",
+          "example": 99,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "amount_received": {
+          "description": "Amount that was collected, in the smallest currency unit.",
+          "example": 99,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "currency": {
+          "description": "Three-letter ISO currency code, lowercase. Convert to uppercase for BC.",
+          "example": "eur",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "Payment Intent status. Only sync records where status = succeeded.",
+          "example": "succeeded",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "created": {
+          "description": "Unix timestamp of when the Payment Intent was created. Convert to date for BC Posting Date.",
+          "example": 1782315588,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "customer": {
+          "description": "Stripe Customer ID (cus_...). Used to look up BC Customer No.",
+          "example": "cus_UlJBMMGCVNDQxk",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "Description of the payment. Maps to BC Payment Journal Description.",
+          "example": "Consultancy hours",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest_charge": {
+          "description": "ID of the most recent charge (ch_...). Can be used as BC Document No.",
+          "example": "ch_3Tlsu0HR2udh1uZx0ZbNUCLS",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statement_descriptor": {
+          "description": "Statement descriptor shown on customer's bank statement.",
+          "example": "Consultancy hours",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receipt_email": {
+          "description": "Email address that the receipt was sent to.",
+          "example": "customer@example.com",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "livemode": {
+          "description": "Whether the Payment Intent was created in live mode or test mode.",
+          "example": false,
+          "readOnly": true,
+          "type": [
+            "boolean"
+          ]
+        },
+        "capture_method": {
+          "description": "Capture method used: automatic or manual.",
+          "example": "automatic",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "payment_method": {
+          "description": "ID of the payment method used (pm_...).",
+          "example": "pm_1TlstzHR2udh1uZx5adUS2sv",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metadata": {
+          "description": "Set of key-value pairs attached to the object. May contain HubSpot or BC customer references.",
+          "example": {},
+          "readOnly": true,
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "properties": {
+        "id": { "$ref": "#/definitions/payment_intent/definitions/id" },
+        "amount": { "$ref": "#/definitions/payment_intent/definitions/amount" },
+        "amount_received": { "$ref": "#/definitions/payment_intent/definitions/amount_received" },
+        "currency": { "$ref": "#/definitions/payment_intent/definitions/currency" },
+        "status": { "$ref": "#/definitions/payment_intent/definitions/status" },
+        "created": { "$ref": "#/definitions/payment_intent/definitions/created" },
+        "customer": { "$ref": "#/definitions/payment_intent/definitions/customer" },
+        "description": { "$ref": "#/definitions/payment_intent/definitions/description" },
+        "latest_charge": { "$ref": "#/definitions/payment_intent/definitions/latest_charge" },
+        "statement_descriptor": { "$ref": "#/definitions/payment_intent/definitions/statement_descriptor" },
+        "receipt_email": { "$ref": "#/definitions/payment_intent/definitions/receipt_email" },
+        "livemode": { "$ref": "#/definitions/payment_intent/definitions/livemode" },
+        "capture_method": { "$ref": "#/definitions/payment_intent/definitions/capture_method" },
+        "payment_method": { "$ref": "#/definitions/payment_intent/definitions/payment_method" },
+        "metadata": { "$ref": "#/definitions/payment_intent/definitions/metadata" }
+      },
+      "links": [
+        {
+          "title": "List",
+          "description": "List all Payment Intents. Filter by status=succeeded for BC sync.",
+          "href": "/v1/payment_intents",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "limit": {
+                "description": "Maximum number of records to return (1-100).",
+                "example": 100,
+                "type": ["integer"]
+              },
+              "starting_after": {
+                "description": "Cursor for pagination — last Payment Intent ID from previous page.",
+                "example": "pi_3Tlsu0HR2udh1uZx0U7oUS3b",
+                "type": ["string"]
+              },
+              "created[gte]": {
+                "description": "Filter: only return Payment Intents created after this Unix timestamp.",
+                "example": 1782315588,
+                "type": ["integer"]
+              },
+              "customer": {
+                "description": "Filter: only return Payment Intents for this customer ID.",
+                "example": "cus_UlJBMMGCVNDQxk",
+                "type": ["string"]
+              }
+            }
+          },
+          "targetSchema": {
+            "type": ["array"],
+            "items": {
+              "$ref": "#/definitions/payment_intent"
+            }
+          }
+        },
+        {
+          "title": "Info",
+          "description": "Retrieve a single Payment Intent by ID.",
+          "href": "/v1/payment_intents/{id}",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": {
+            "$ref": "#/definitions/payment_intent"
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "payment_intent": {
+      "$ref": "#/definitions/payment_intent"
+    }
+  }
+}
