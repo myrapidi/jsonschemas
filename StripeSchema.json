@@ -244,26 +244,6 @@
           "targetSchema": {
             "$ref": "#/definitions/payment_intent"
           }
-        },
-        {
-          "title": "Update Metadata",
-          "description": "Write back the BC Payment Journal reference to the Stripe PaymentIntent metadata, once the journal line has been created. Used to mark a payment as processed and link it back to BC for reconciliation/audit.",
-          "href": "/v1/payment_intents/{id}",
-          "method": "POST",
-          "rel": "update",
-          "schema": {
-            "type": ["object"],
-            "properties": {
-              "metadata[bc_document_no]": {
-                "description": "BC Payment Journal Document No. / reference created for this payment.",
-                "example": "PMT-2026-00123",
-                "type": ["string"]
-              }
-            }
-          },
-          "targetSchema": {
-            "$ref": "#/definitions/payment_intent"
-          }
         }
       ]
     }
