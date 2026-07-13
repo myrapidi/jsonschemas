@@ -1,0 +1,508 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://myrapidi.github.io/jsonschemas/stripe_payment_intents#",
+  "title": "Stripe Payment Intents (Events gather + backfill)",
+  "description": "Read succeeded Stripe Payment Intents. GATHER model: the 'event' table is the HEADER read from GET /v1/events (type=payment_intent.succeeded); the PaymentIntent is its CHILD table 'data', gathered from event.data.object via the existing parentObject mechanism (no data.object-unwrap code needed). Source control is the event 'created' (Unix epoch integer -> fits the bigint RTI) and is expressed as a single field-tied URL prefix (x-rapidi-sourceControl). Use the 'payment_intent' table (List endpoint /v1/payment_intents) as a SEPARATE flat table for the one-time >30-day backfill, since events are retained only 30 days.",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "context": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Connection Context",
+      "description": "Connection variables for Stripe REST API.",
+      "stability": "stable",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "base_url": {
+          "description": "Stripe API base URL.",
+          "example": "https://api.stripe.com",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "api_version": {
+          "description": "Stripe API version.",
+          "example": "v1",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "base_url": {
+          "$ref": "#/definitions/context/definitions/base_url"
+        },
+        "api_version": {
+          "$ref": "#/definitions/context/definitions/api_version"
+        }
+      }
+    },
+
+    "event": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Payment Intent Event (gather header)",
+      "description": "HEADER table for the gather. One row per payment_intent.succeeded event from GET /v1/events. Carries only the event envelope: id (evt_...), created (the source-control watermark), and type. The PaymentIntent itself is the child table 'data' (event.data.object), gathered via parentObject - so the header 'created' and the PaymentIntent 'created' never collide (they live on different records).",
+      "stability": "stable",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+
+      "definitions": {
+        "id": {
+          "description": "Event ID (evt_...). Reference / dedup key for the header row.",
+          "example": "evt_3Tlsu0HR2udh1uZx1a2b3c4d",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "created": {
+          "description": "Event creation Unix timestamp. THIS is the source-control watermark (integer, fits the bigint RTI). x-rapidi-sourceControl holds the exact URL fragment emitted before the stored watermark value, tied to this field: the connector sends 'created[gte]=<watermark>' on /v1/events. NOTE: this is the EVENT created, not the PaymentIntent created (which lives on the 'data' child) - watermark on the event clock.",
+          "example": 1782315588,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ],
+          "x-rapidi-sourceControl": "created[gte]="
+        },
+        "type": {
+          "description": "Event type. Always payment_intent.succeeded here - configured as the query filter type=payment_intent.succeeded (a real /v1/events param, so the existing raw filter passthrough works).",
+          "example": "payment_intent.succeeded",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "data": {
+          "description": "Holder for the gathered PaymentIntent child. In the /v1/events response each event has data.object = the PaymentIntent; the connector reads it as the child table 'data' (name matches this field). Not a scalar - do not map directly.",
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "properties": {
+        "id": { "$ref": "#/definitions/event/definitions/id" },
+        "created": { "$ref": "#/definitions/event/definitions/created" },
+        "type": { "$ref": "#/definitions/event/definitions/type" },
+        "data": { "$ref": "#/definitions/event/definitions/data" }
+      },
+      "links": [
+        {
+          "title": "List",
+          "description": "Read succeeded Payment Intent events incrementally. Single service URL for this table (rel=instances). The connector gathers each event's data.object into the child table 'data'.",
+          "href": "/v1/events",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "type": {
+                "description": "STATUS FILTER. Configure a filter type=payment_intent.succeeded. 'type' is a real /v1/events parameter, rendered by the existing raw filter passthrough.",
+                "example": "payment_intent.succeeded",
+                "type": ["string"]
+              },
+              "created[gte]": {
+                "description": "SOURCE CONTROL. Only return events created at/after the stored watermark. The operator+param are produced from the 'created' field's x-rapidi-sourceControl string; shown here for documentation.",
+                "example": 1782315588,
+                "type": ["integer"]
+              },
+              "limit": {
+                "description": "Maximum number of events to return (1-100).",
+                "example": 100,
+                "type": ["integer"]
+              },
+              "starting_after": {
+                "description": "Cursor for paging within one run - last event ID from previous page.",
+                "example": "evt_3Tlsu0HR2udh1uZx1a2b3c4d",
+                "type": ["string"]
+              }
+            }
+          },
+          "targetSchema": {
+            "type": ["array"],
+            "items": {
+              "$ref": "#/definitions/event"
+            }
+          }
+        }
+      ]
+    },
+
+    "data": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Payment Intent (gathered child)",
+      "description": "CHILD table gathered from the 'event' header. The definition name is 'data' ON PURPOSE: it must match the event's nested 'data' field so the connector's gather (getChildRecords) locates it. Each event yields exactly one PaymentIntent (1:1). The connector flattens event.data.object.* onto this record automatically - no data.object-unwrap code needed. NOTE: for update-type events event.data can also carry previous_attributes; this schema targets payment_intent.succeeded only, where data holds just object.",
+      "stability": "stable",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "parentObject": {
+        "event": {
+          "$ref": "#/definitions/event/definitions/data"
+        }
+      },
+
+      "definitions": {
+        "id": {
+          "description": "Unique identifier for the Payment Intent (pi_...). From data.object.id.",
+          "example": "pi_3Tlsu0HR2udh1uZx0U7oUS3b",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "amount": {
+          "description": "Amount intended to be collected, in the smallest currency unit (e.g. cents). Divide by 100 for BC.",
+          "example": 99,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "amount_received": {
+          "description": "Amount that was collected, in the smallest currency unit.",
+          "example": 99,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "currency": {
+          "description": "Three-letter ISO currency code, lowercase. Convert to uppercase for BC.",
+          "example": "eur",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "Payment Intent status. Always 'succeeded' here (guaranteed by the event type filter).",
+          "example": "succeeded",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "created": {
+          "description": "Unix timestamp of when the Payment Intent was created (data.object.created). Convert to date for BC Posting Date. This is the PaymentIntent clock, NOT the source-control field (that is the event 'created' on the header).",
+          "example": 1782315500,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "customer": {
+          "description": "Stripe Customer ID (cus_...). Used to look up BC Customer No.",
+          "example": "cus_UlJBMMGCVNDQxk",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "Description of the payment. Maps to BC Payment Journal Description.",
+          "example": "Consultancy hours",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest_charge": {
+          "description": "ID of the most recent charge (ch_...). Can be used as BC Document No.",
+          "example": "ch_3Tlsu0HR2udh1uZx0ZbNUCLS",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statement_descriptor": {
+          "description": "Statement descriptor shown on customer's bank statement.",
+          "example": "Consultancy hours",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receipt_email": {
+          "description": "Email address that the receipt was sent to.",
+          "example": "customer@example.com",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "livemode": {
+          "description": "Whether the Payment Intent was created in live mode or test mode.",
+          "example": false,
+          "readOnly": true,
+          "type": [
+            "boolean"
+          ]
+        },
+        "capture_method": {
+          "description": "Capture method used: automatic or manual.",
+          "example": "automatic",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "payment_method": {
+          "description": "ID of the payment method used (pm_...).",
+          "example": "pm_1TlstzHR2udh1uZx5adUS2sv",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metadata": {
+          "description": "Set of key-value pairs attached to the object. May contain HubSpot or BC customer references.",
+          "example": {},
+          "readOnly": true,
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "properties": {
+        "id": { "$ref": "#/definitions/data/definitions/id" },
+        "amount": { "$ref": "#/definitions/data/definitions/amount" },
+        "amount_received": { "$ref": "#/definitions/data/definitions/amount_received" },
+        "currency": { "$ref": "#/definitions/data/definitions/currency" },
+        "status": { "$ref": "#/definitions/data/definitions/status" },
+        "created": { "$ref": "#/definitions/data/definitions/created" },
+        "customer": { "$ref": "#/definitions/data/definitions/customer" },
+        "description": { "$ref": "#/definitions/data/definitions/description" },
+        "latest_charge": { "$ref": "#/definitions/data/definitions/latest_charge" },
+        "statement_descriptor": { "$ref": "#/definitions/data/definitions/statement_descriptor" },
+        "receipt_email": { "$ref": "#/definitions/data/definitions/receipt_email" },
+        "livemode": { "$ref": "#/definitions/data/definitions/livemode" },
+        "capture_method": { "$ref": "#/definitions/data/definitions/capture_method" },
+        "payment_method": { "$ref": "#/definitions/data/definitions/payment_method" },
+        "metadata": { "$ref": "#/definitions/data/definitions/metadata" }
+      }
+    },
+
+    "payment_intent": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Payment Intent (backfill / history load)",
+      "description": "ONE-TIME historical load via the List endpoint (GET /v1/payment_intents). Flat table (records sit directly in the top-level 'data' array - no gather). Use only to seed data older than the 30-day Events retention window; steady-state incremental sync uses the 'event' + 'data' gather. The List endpoint has NO status parameter - filter status=succeeded client/mapping side.",
+      "stability": "stable",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+
+      "definitions": {
+        "id": {
+          "description": "Unique identifier for the Payment Intent (pi_...).",
+          "example": "pi_3Tlsu0HR2udh1uZx0U7oUS3b",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "amount": {
+          "description": "Amount intended to be collected, in the smallest currency unit (e.g. cents). Divide by 100 for BC.",
+          "example": 99,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "amount_received": {
+          "description": "Amount that was collected, in the smallest currency unit.",
+          "example": 99,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ]
+        },
+        "currency": {
+          "description": "Three-letter ISO currency code, lowercase. Convert to uppercase for BC.",
+          "example": "eur",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "Payment Intent status. Filter status = succeeded (client/mapping side - not a List query parameter).",
+          "example": "succeeded",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "created": {
+          "description": "Unix timestamp of when the Payment Intent was created. Source-control watermark AND BC Posting Date for the backfill table. x-rapidi-sourceControl sends 'created[gte]=<watermark>' on /v1/payment_intents.",
+          "example": 1782315588,
+          "readOnly": true,
+          "type": [
+            "integer"
+          ],
+          "x-rapidi-sourceControl": "created[gte]="
+        },
+        "customer": {
+          "description": "Stripe Customer ID (cus_...). Used to look up BC Customer No.",
+          "example": "cus_UlJBMMGCVNDQxk",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "Description of the payment. Maps to BC Payment Journal Description.",
+          "example": "Consultancy hours",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest_charge": {
+          "description": "ID of the most recent charge (ch_...). Can be used as BC Document No.",
+          "example": "ch_3Tlsu0HR2udh1uZx0ZbNUCLS",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statement_descriptor": {
+          "description": "Statement descriptor shown on customer's bank statement.",
+          "example": "Consultancy hours",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receipt_email": {
+          "description": "Email address that the receipt was sent to.",
+          "example": "customer@example.com",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "livemode": {
+          "description": "Whether the Payment Intent was created in live mode or test mode.",
+          "example": false,
+          "readOnly": true,
+          "type": [
+            "boolean"
+          ]
+        },
+        "capture_method": {
+          "description": "Capture method used: automatic or manual.",
+          "example": "automatic",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "payment_method": {
+          "description": "ID of the payment method used (pm_...).",
+          "example": "pm_1TlstzHR2udh1uZx5adUS2sv",
+          "readOnly": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metadata": {
+          "description": "Set of key-value pairs attached to the object. May contain HubSpot or BC customer references.",
+          "example": {},
+          "readOnly": true,
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "properties": {
+        "id": { "$ref": "#/definitions/payment_intent/definitions/id" },
+        "amount": { "$ref": "#/definitions/payment_intent/definitions/amount" },
+        "amount_received": { "$ref": "#/definitions/payment_intent/definitions/amount_received" },
+        "currency": { "$ref": "#/definitions/payment_intent/definitions/currency" },
+        "status": { "$ref": "#/definitions/payment_intent/definitions/status" },
+        "created": { "$ref": "#/definitions/payment_intent/definitions/created" },
+        "customer": { "$ref": "#/definitions/payment_intent/definitions/customer" },
+        "description": { "$ref": "#/definitions/payment_intent/definitions/description" },
+        "latest_charge": { "$ref": "#/definitions/payment_intent/definitions/latest_charge" },
+        "statement_descriptor": { "$ref": "#/definitions/payment_intent/definitions/statement_descriptor" },
+        "receipt_email": { "$ref": "#/definitions/payment_intent/definitions/receipt_email" },
+        "livemode": { "$ref": "#/definitions/payment_intent/definitions/livemode" },
+        "capture_method": { "$ref": "#/definitions/payment_intent/definitions/capture_method" },
+        "payment_method": { "$ref": "#/definitions/payment_intent/definitions/payment_method" },
+        "metadata": { "$ref": "#/definitions/payment_intent/definitions/metadata" }
+      },
+      "links": [
+        {
+          "title": "List",
+          "description": "List Payment Intents for the one-time backfill. Single service URL (rel=instances).",
+          "href": "/v1/payment_intents",
+          "method": "GET",
+          "rel": "instances",
+          "schema": {
+            "type": ["object"],
+            "properties": {
+              "created[gte]": {
+                "description": "SOURCE CONTROL. Only return Payment Intents created at/after the stored watermark. Produced from the 'created' field's x-rapidi-sourceControl string.",
+                "example": 1782315588,
+                "type": ["integer"]
+              },
+              "customer": {
+                "description": "Optional filter: only Payment Intents for this customer ID.",
+                "example": "cus_UlJBMMGCVNDQxk",
+                "type": ["string"]
+              },
+              "limit": {
+                "description": "Maximum number of records to return (1-100).",
+                "example": 100,
+                "type": ["integer"]
+              },
+              "starting_after": {
+                "description": "Cursor for pagination - last Payment Intent ID from previous page.",
+                "example": "pi_3Tlsu0HR2udh1uZx0U7oUS3b",
+                "type": ["string"]
+              }
+            }
+          },
+          "targetSchema": {
+            "type": ["array"],
+            "items": {
+              "$ref": "#/definitions/payment_intent"
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "properties": {
+    "event": {
+      "$ref": "#/definitions/event"
+    },
+    "data": {
+      "$ref": "#/definitions/data"
+    },
+    "payment_intent": {
+      "$ref": "#/definitions/payment_intent"
+    }
+  }
+}
