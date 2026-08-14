@@ -186,6 +186,15 @@
             "null"
           ]
         },
+        "hubspot_contact_id": {
+          "description": "Flattened from metadata['hubspot_contact_id']. HubSpot Contact ID stored on this Stripe Customer for two-way reference. NOT a native Stripe field - it lives inside the metadata map. WRITABLE: set this when creating/updating the Stripe customer so the link back to HubSpot exists from day one. Also usable in the Search link's query string, e.g. metadata['hubspot_contact_id']:'12345'.",
+          "example": "12345678901",
+          "readOnly": false,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "tax_exempt": {
           "description": "Customer's tax exemption status: none, exempt, or reverse.",
           "example": "none",
@@ -226,6 +235,7 @@
         "default_source": { "$ref": "#/definitions/customer/definitions/default_source" },
         "invoice_settings_default_payment_method": { "$ref": "#/definitions/customer/definitions/invoice_settings_default_payment_method" },
         "discount": { "$ref": "#/definitions/customer/definitions/discount" },
+        "hubspot_contact_id": { "$ref": "#/definitions/customer/definitions/hubspot_contact_id" },
         "tax_exempt": { "$ref": "#/definitions/customer/definitions/tax_exempt" },
         "livemode": { "$ref": "#/definitions/customer/definitions/livemode" },
         "metadata": { "$ref": "#/definitions/customer/definitions/metadata" }
