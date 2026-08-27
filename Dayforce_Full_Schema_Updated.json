@@ -414,7 +414,7 @@
       "links": [
         {
           "description": "List existing Employees",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/Employees",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/Employees",
           "method": "GET",
           "rel": "instances",
           "title": "List",
@@ -429,7 +429,7 @@
         },
         {
           "description": "Get a specific Employee",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/Employees/{EmployeeXRefCode}",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/Employees/{EmployeeXRefCode}",
           "method": "GET",
           "rel": "self",
           "title": "Info",
@@ -439,7 +439,7 @@
         },
         {
           "description": "Create a new Employee",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/Employees",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/Employees",
           "method": "POST",
           "rel": "create",
           "title": "Create",
@@ -549,7 +549,7 @@
         },
         {
           "description": "Update an existing Employee",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/Employees/{EmployeeXRefCode}",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/Employees/{EmployeeXRefCode}",
           "method": "PATCH",
           "rel": "update",
           "title": "Update",
