@@ -883,7 +883,7 @@
       "links": [
         {
           "description": "List existing Employee Pay Adjustments",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePayAdjustments",
           "method": "GET",
           "rel": "instances",
           "title": "List",
@@ -898,7 +898,7 @@
         },
         {
           "description": "Get a specific Employee Pay Adjustment",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
           "method": "GET",
           "rel": "self",
           "title": "Info",
@@ -908,7 +908,7 @@
         },
         {
           "description": "Create a new Employee Pay Adjustment",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePayAdjustments",
           "method": "POST",
           "rel": "create",
           "title": "Create",
@@ -997,7 +997,7 @@
         },
         {
           "description": "Update an existing Employee Pay Adjustment",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePayAdjustments/{EmployeePayAdjustXRefCode}",
           "method": "PATCH",
           "rel": "update",
           "title": "Update",
@@ -1612,7 +1612,7 @@
       "links": [
         {
           "description": "List existing Employee Punches",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePunches",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePunches",
           "method": "GET",
           "rel": "instances",
           "title": "List",
@@ -1627,7 +1627,7 @@
         },
         {
           "description": "Get a specific Employee Punch",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePunches/{PunchXRefCode}",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePunches/{PunchXRefCode}",
           "method": "GET",
           "rel": "self",
           "title": "Info",
@@ -1637,7 +1637,7 @@
         },
         {
           "description": "Create a new Employee Punch",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePunches",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePunches",
           "method": "POST",
           "rel": "create",
           "title": "Create",
@@ -1699,7 +1699,7 @@
         },
         {
           "description": "Update an existing Employee Punch",
-          "href": "https://cantest262.dayforcehcm.com/api/nmbstage/v1/EmployeePunches/{PunchXRefCode}",
+          "href": "https://cantest262.dayforcehcm.com/Api/nmb/V1/EmployeePunches/{PunchXRefCode}",
           "method": "PATCH",
           "rel": "update",
           "title": "Update",
