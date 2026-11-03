@@ -47,37 +47,13 @@
             ]
           }
         },
-        "custom_fields.cu_number": {
-          "description": "CU number (NAV Customer No_). Unique.",
-          "example": "CU013413",
+        "custom_fields": {
+          "description": "Company custom fields (sub-object, filled by a scatter transfer).",
           "readOnly": false,
           "type": [
-            "string"
-          ]
-        },
-        "custom_fields.key_account": {
-          "description": "Key account flag.",
-          "example": true,
-          "readOnly": false,
-          "type": [
-            "boolean"
-          ]
-        },
-        "custom_fields.account_manager_code": {
-          "description": "NAV salesperson code.",
-          "example": "AM01",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "custom_fields.territory_code": {
-          "description": "NAV territory code.",
-          "example": "SOUTH",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
+            "object"
+          ],
+          "$ref": "#/definitions/custom_fields"
         }
       },
       "properties": {
@@ -90,17 +66,8 @@
         "domains": {
           "$ref": "#/definitions/companies/definitions/domains"
         },
-        "custom_fields.cu_number": {
-          "$ref": "#/definitions/companies/definitions/custom_fields.cu_number"
-        },
-        "custom_fields.key_account": {
-          "$ref": "#/definitions/companies/definitions/custom_fields.key_account"
-        },
-        "custom_fields.account_manager_code": {
-          "$ref": "#/definitions/companies/definitions/custom_fields.account_manager_code"
-        },
-        "custom_fields.territory_code": {
-          "$ref": "#/definitions/companies/definitions/custom_fields.territory_code"
+        "custom_fields": {
+          "$ref": "#/definitions/custom_fields"
         }
       },
       "required": [
@@ -142,17 +109,8 @@
               "domains": {
                 "$ref": "#/definitions/companies/definitions/domains"
               },
-              "custom_fields.cu_number": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.cu_number"
-              },
-              "custom_fields.key_account": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.key_account"
-              },
-              "custom_fields.account_manager_code": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.account_manager_code"
-              },
-              "custom_fields.territory_code": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.territory_code"
+              "custom_fields": {
+                "$ref": "#/definitions/custom_fields"
               }
             }
           },
@@ -177,17 +135,8 @@
               "domains": {
                 "$ref": "#/definitions/companies/definitions/domains"
               },
-              "custom_fields.cu_number": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.cu_number"
-              },
-              "custom_fields.key_account": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.key_account"
-              },
-              "custom_fields.account_manager_code": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.account_manager_code"
-              },
-              "custom_fields.territory_code": {
-                "$ref": "#/definitions/companies/definitions/custom_fields.territory_code"
+              "custom_fields": {
+                "$ref": "#/definitions/custom_fields"
               }
             }
           },
@@ -398,6 +347,64 @@
           }
         }
       ]
+    },
+    "custom_fields": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Custom Fields",
+      "description": "Freshdesk company custom_fields object (child of companies)",
+      "stability": "production",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "cu_number": {
+          "description": "CU number (NAV Customer No_). Unique.",
+          "example": "CU013413",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "key_account": {
+          "description": "Key account flag.",
+          "example": true,
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "account_manager_code": {
+          "description": "NAV salesperson code.",
+          "example": "AM01",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "territory_code": {
+          "description": "NAV territory code.",
+          "example": "SOUTH",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "properties": {
+        "cu_number": {
+          "$ref": "#/definitions/custom_fields/definitions/cu_number"
+        },
+        "key_account": {
+          "$ref": "#/definitions/custom_fields/definitions/key_account"
+        },
+        "account_manager_code": {
+          "$ref": "#/definitions/custom_fields/definitions/account_manager_code"
+        },
+        "territory_code": {
+          "$ref": "#/definitions/custom_fields/definitions/territory_code"
+        }
+      }
     }
   },
   "properties": {
@@ -406,6 +413,9 @@
     },
     "contacts": {
       "$ref": "#/definitions/contacts"
+    },
+    "custom_fields": {
+      "$ref": "#/definitions/custom_fields"
     }
   },
   "links": [
