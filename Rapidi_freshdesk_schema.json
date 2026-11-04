@@ -20,13 +20,14 @@
           "readOnly": false,
           "type": ["array"],
           "items": {"type": ["string"]}
-        }
+        },
+        "custom_fields": {"description": "Freshdesk company custom fields (JSON object built by formula).", "readOnly": false, "type": ["object"]}
       },
       "properties": {
         "id": {"$ref": "#/definitions/companies/definitions/id"},
         "name": {"$ref": "#/definitions/companies/definitions/name"},
         "domains": {"$ref": "#/definitions/companies/definitions/domains"},
-        "custom_fields": {"$ref": "#/definitions/custom_fields"}
+        "custom_fields": {"$ref": "#/definitions/companies/definitions/custom_fields"}
       },
       "required": ["name"],
       "links": [
@@ -50,7 +51,7 @@
             "properties": {
               "name": {"$ref": "#/definitions/companies/definitions/name"},
               "domains": {"$ref": "#/definitions/companies/definitions/domains"},
-              "custom_fields": {"$ref": "#/definitions/custom_fields"}
+              "custom_fields": {"$ref": "#/definitions/companies/definitions/custom_fields"}
             }
           },
           "targetSchema": {"$ref": "#/definitions/companies"}
@@ -66,7 +67,7 @@
             "properties": {
               "name": {"$ref": "#/definitions/companies/definitions/name"},
               "domains": {"$ref": "#/definitions/companies/definitions/domains"},
-              "custom_fields": {"$ref": "#/definitions/custom_fields"}
+              "custom_fields": {"$ref": "#/definitions/companies/definitions/custom_fields"}
             }
           },
           "targetSchema": {"$ref": "#/definitions/companies"}
@@ -152,28 +153,8 @@
           "targetSchema": {"$ref": "#/definitions/contacts"}
         }
       ]
-    },
-    "custom_fields": {
-      "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "Custom Fields",
-      "description": "Freshdesk company custom_fields object (child of companies)",
-      "stability": "production",
-      "strictProperties": true,
-      "type": ["object"],
-      "definitions": {
-        "cu_number": {"description": "CU number (NAV Customer No_). Unique.", "example": "CU013413", "readOnly": false, "type": ["string"]},
-        "key_account": {"description": "Key account flag.", "example": true, "readOnly": false, "type": ["boolean"]},
-        "account_manager_code": {"description": "NAV salesperson code.", "example": "AM01", "readOnly": false, "type": ["string"]},
-        "territory_code": {"description": "NAV territory code.", "example": "SOUTH", "readOnly": false, "type": ["string"]}
-      },
-      "properties": {
-        "cu_number": {"$ref": "#/definitions/custom_fields/definitions/cu_number"},
-        "key_account": {"$ref": "#/definitions/custom_fields/definitions/key_account"},
-        "account_manager_code": {"$ref": "#/definitions/custom_fields/definitions/account_manager_code"},
-        "territory_code": {"$ref": "#/definitions/custom_fields/definitions/territory_code"}
-      }
     }
   },
-  "properties": {"companies": {"$ref": "#/definitions/companies"}, "contacts": {"$ref": "#/definitions/contacts"}, "custom_fields": {"$ref": "#/definitions/custom_fields"}},
+  "properties": {"companies": {"$ref": "#/definitions/companies"}, "contacts": {"$ref": "#/definitions/contacts"}},
   "links": [{"href": "https://churchesfire.freshdesk.com/api/v2", "rel": "self"}]
 }
