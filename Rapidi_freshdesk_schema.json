@@ -420,7 +420,7 @@
   },
   "links": [
     {
-      "href": "https://churchesfiresandbox.freshdesk.com/api/v2",
+      "href": "https://churchesfire.freshdesk.com/api/v2",
       "rel": "self"
     }
   ]
