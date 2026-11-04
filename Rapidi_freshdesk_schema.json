@@ -1,8 +1,6 @@
 {
   "$schema": "http://interagent.github.io/interagent-hyper-schema",
-  "type": [
-    "object"
-  ],
+  "type": ["object"],
   "title": "Freshdesk API",
   "description": "Freshdesk API v2 schema for the Rapidi REST WebService connection (Churches Fire)",
   "definitions": {
@@ -12,137 +10,66 @@
       "description": "Freshdesk companies",
       "stability": "production",
       "strictProperties": true,
-      "type": [
-        "object"
-      ],
+      "type": ["object"],
       "definitions": {
-        "id": {
-          "description": "Freshdesk company ID.",
-          "example": 51000123456,
-          "readOnly": true,
-          "type": [
-            "integer"
-          ]
-        },
-        "name": {
-          "description": "Company name (NAV Customer Name). Required, unique.",
-          "example": "Whitbread PLC",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
+        "id": {"description": "Freshdesk company ID.", "example": 51000123456, "readOnly": true, "type": ["integer"]},
+        "name": {"description": "Company name (NAV Customer Name). Required, unique.", "example": "Whitbread PLC", "readOnly": false, "type": ["string"]},
         "domains": {
           "description": "Company domains. Sending this replaces the whole list.",
-          "example": [
-            "whitbread.com"
-          ],
+          "example": ["whitbread.com"],
           "readOnly": false,
-          "type": [
-            "array"
-          ],
-          "items": {
-            "type": [
-              "string"
-            ]
-          }
-        },
-        "custom_fields": {
-          "description": "Company custom fields (sub-object, filled by a scatter transfer).",
-          "readOnly": false,
-          "type": [
-            "object"
-          ],
-          "$ref": "#/definitions/custom_fields"
+          "type": ["array"],
+          "items": {"type": ["string"]}
         }
       },
       "properties": {
-        "id": {
-          "$ref": "#/definitions/companies/definitions/id"
-        },
-        "name": {
-          "$ref": "#/definitions/companies/definitions/name"
-        },
-        "domains": {
-          "$ref": "#/definitions/companies/definitions/domains"
-        },
-        "custom_fields": {
-          "$ref": "#/definitions/custom_fields"
-        }
+        "id": {"$ref": "#/definitions/companies/definitions/id"},
+        "name": {"$ref": "#/definitions/companies/definitions/name"},
+        "domains": {"$ref": "#/definitions/companies/definitions/domains"},
+        "custom_fields": {"$ref": "#/definitions/custom_fields"}
       },
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "links": [
         {
           "title": "List",
           "description": "List companies.",
-          "href": "/companies",
+          "href": "/api/v2/companies",
           "method": "GET",
           "rel": "instances",
-          "targetSchema": {
-            "type": [
-              "array"
-            ],
-            "items": {
-              "$ref": "#/definitions/companies"
-            }
-          }
+          "targetSchema": {"type": ["array"], "items": {"$ref": "#/definitions/companies"}}
         },
         {
           "title": "Create",
           "description": "Create a record in companies.",
-          "href": "/companies",
+          "href": "/api/v2/companies",
           "method": "POST",
           "rel": "create",
           "schema": {
-            "type": [
-              "object"
-            ],
-            "required": [
-              "name"
-            ],
+            "type": ["object"],
+            "required": ["name"],
             "properties": {
-              "name": {
-                "$ref": "#/definitions/companies/definitions/name"
-              },
-              "domains": {
-                "$ref": "#/definitions/companies/definitions/domains"
-              },
-              "custom_fields": {
-                "$ref": "#/definitions/custom_fields"
-              }
+              "name": {"$ref": "#/definitions/companies/definitions/name"},
+              "domains": {"$ref": "#/definitions/companies/definitions/domains"},
+              "custom_fields": {"$ref": "#/definitions/custom_fields"}
             }
           },
-          "targetSchema": {
-            "$ref": "#/definitions/companies"
-          }
+          "targetSchema": {"$ref": "#/definitions/companies"}
         },
         {
           "title": "Update",
           "description": "Update a record in companies.",
-          "href": "/companies/{(%23%2Fdefinitions%2Fcompanies%2Fdefinitions%2Fid)}",
+          "href": "/api/v2/companies/{(%23%2Fdefinitions%2Fcompanies%2Fdefinitions%2Fid)}",
           "method": "PUT",
           "rel": "update",
           "schema": {
-            "type": [
-              "object"
-            ],
+            "type": ["object"],
             "properties": {
-              "name": {
-                "$ref": "#/definitions/companies/definitions/name"
-              },
-              "domains": {
-                "$ref": "#/definitions/companies/definitions/domains"
-              },
-              "custom_fields": {
-                "$ref": "#/definitions/custom_fields"
-              }
+              "name": {"$ref": "#/definitions/companies/definitions/name"},
+              "domains": {"$ref": "#/definitions/companies/definitions/domains"},
+              "custom_fields": {"$ref": "#/definitions/custom_fields"}
             }
           },
-          "targetSchema": {
-            "$ref": "#/definitions/companies"
-          }
+          "targetSchema": {"$ref": "#/definitions/companies"}
         }
       ]
     },
@@ -152,199 +79,77 @@
       "description": "Freshdesk contacts",
       "stability": "production",
       "strictProperties": true,
-      "type": [
-        "object"
-      ],
+      "type": ["object"],
       "definitions": {
-        "id": {
-          "description": "Freshdesk contact ID.",
-          "example": 51000654321,
-          "readOnly": true,
-          "type": [
-            "integer"
-          ]
-        },
-        "name": {
-          "description": "Contact name. Required.",
-          "example": "John Smith",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "email": {
-          "description": "Email, unique across all contacts.",
-          "example": "john.smith@whitbread.com",
-          "readOnly": false,
-          "type": [
-            "string"
-          ],
-          "format": "email"
-        },
-        "unique_external_id": {
-          "description": "NAV contact number (CT no.).",
-          "example": "CT0123456",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "phone": {
-          "description": "Phone number.",
-          "example": "02380 000000",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "mobile": {
-          "description": "Mobile number.",
-          "example": "07700 900000",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "job_title": {
-          "description": "Job title.",
-          "example": "Facilities Manager",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "company_id": {
-          "description": "Freshdesk company ID (number, not the CU number).",
-          "example": 51000123456,
-          "readOnly": false,
-          "type": [
-            "integer"
-          ]
-        }
+        "id": {"description": "Freshdesk contact ID.", "example": 51000654321, "readOnly": true, "type": ["integer"]},
+        "name": {"description": "Contact name. Required.", "example": "John Smith", "readOnly": false, "type": ["string"]},
+        "email": {"description": "Email, unique across all contacts.", "example": "john.smith@whitbread.com", "readOnly": false, "type": ["string"], "format": "email"},
+        "unique_external_id": {"description": "NAV contact number (CT no.).", "example": "CT0123456", "readOnly": false, "type": ["string"]},
+        "phone": {"description": "Phone number.", "example": "02380 000000", "readOnly": false, "type": ["string"]},
+        "mobile": {"description": "Mobile number.", "example": "07700 900000", "readOnly": false, "type": ["string"]},
+        "job_title": {"description": "Job title.", "example": "Facilities Manager", "readOnly": false, "type": ["string"]},
+        "company_id": {"description": "Freshdesk company ID (number, not the CU number).", "example": 51000123456, "readOnly": false, "type": ["integer"]}
       },
       "properties": {
-        "id": {
-          "$ref": "#/definitions/contacts/definitions/id"
-        },
-        "name": {
-          "$ref": "#/definitions/contacts/definitions/name"
-        },
-        "email": {
-          "$ref": "#/definitions/contacts/definitions/email"
-        },
-        "unique_external_id": {
-          "$ref": "#/definitions/contacts/definitions/unique_external_id"
-        },
-        "phone": {
-          "$ref": "#/definitions/contacts/definitions/phone"
-        },
-        "mobile": {
-          "$ref": "#/definitions/contacts/definitions/mobile"
-        },
-        "job_title": {
-          "$ref": "#/definitions/contacts/definitions/job_title"
-        },
-        "company_id": {
-          "$ref": "#/definitions/contacts/definitions/company_id"
-        }
+        "id": {"$ref": "#/definitions/contacts/definitions/id"},
+        "name": {"$ref": "#/definitions/contacts/definitions/name"},
+        "email": {"$ref": "#/definitions/contacts/definitions/email"},
+        "unique_external_id": {"$ref": "#/definitions/contacts/definitions/unique_external_id"},
+        "phone": {"$ref": "#/definitions/contacts/definitions/phone"},
+        "mobile": {"$ref": "#/definitions/contacts/definitions/mobile"},
+        "job_title": {"$ref": "#/definitions/contacts/definitions/job_title"},
+        "company_id": {"$ref": "#/definitions/contacts/definitions/company_id"}
       },
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "links": [
         {
           "title": "List",
           "description": "List contacts.",
-          "href": "/contacts",
+          "href": "/api/v2/contacts",
           "method": "GET",
           "rel": "instances",
-          "targetSchema": {
-            "type": [
-              "array"
-            ],
-            "items": {
-              "$ref": "#/definitions/contacts"
-            }
-          }
+          "targetSchema": {"type": ["array"], "items": {"$ref": "#/definitions/contacts"}}
         },
         {
           "title": "Create",
           "description": "Create a record in contacts.",
-          "href": "/contacts",
+          "href": "/api/v2/contacts",
           "method": "POST",
           "rel": "create",
           "schema": {
-            "type": [
-              "object"
-            ],
-            "required": [
-              "name"
-            ],
+            "type": ["object"],
+            "required": ["name"],
             "properties": {
-              "name": {
-                "$ref": "#/definitions/contacts/definitions/name"
-              },
-              "email": {
-                "$ref": "#/definitions/contacts/definitions/email"
-              },
-              "unique_external_id": {
-                "$ref": "#/definitions/contacts/definitions/unique_external_id"
-              },
-              "phone": {
-                "$ref": "#/definitions/contacts/definitions/phone"
-              },
-              "mobile": {
-                "$ref": "#/definitions/contacts/definitions/mobile"
-              },
-              "job_title": {
-                "$ref": "#/definitions/contacts/definitions/job_title"
-              },
-              "company_id": {
-                "$ref": "#/definitions/contacts/definitions/company_id"
-              }
+              "name": {"$ref": "#/definitions/contacts/definitions/name"},
+              "email": {"$ref": "#/definitions/contacts/definitions/email"},
+              "unique_external_id": {"$ref": "#/definitions/contacts/definitions/unique_external_id"},
+              "phone": {"$ref": "#/definitions/contacts/definitions/phone"},
+              "mobile": {"$ref": "#/definitions/contacts/definitions/mobile"},
+              "job_title": {"$ref": "#/definitions/contacts/definitions/job_title"},
+              "company_id": {"$ref": "#/definitions/contacts/definitions/company_id"}
             }
           },
-          "targetSchema": {
-            "$ref": "#/definitions/contacts"
-          }
+          "targetSchema": {"$ref": "#/definitions/contacts"}
         },
         {
           "title": "Update",
           "description": "Update a record in contacts.",
-          "href": "/contacts/{(%23%2Fdefinitions%2Fcontacts%2Fdefinitions%2Fid)}",
+          "href": "/api/v2/contacts/{(%23%2Fdefinitions%2Fcontacts%2Fdefinitions%2Fid)}",
           "method": "PUT",
           "rel": "update",
           "schema": {
-            "type": [
-              "object"
-            ],
+            "type": ["object"],
             "properties": {
-              "name": {
-                "$ref": "#/definitions/contacts/definitions/name"
-              },
-              "email": {
-                "$ref": "#/definitions/contacts/definitions/email"
-              },
-              "unique_external_id": {
-                "$ref": "#/definitions/contacts/definitions/unique_external_id"
-              },
-              "phone": {
-                "$ref": "#/definitions/contacts/definitions/phone"
-              },
-              "mobile": {
-                "$ref": "#/definitions/contacts/definitions/mobile"
-              },
-              "job_title": {
-                "$ref": "#/definitions/contacts/definitions/job_title"
-              },
-              "company_id": {
-                "$ref": "#/definitions/contacts/definitions/company_id"
-              }
+              "name": {"$ref": "#/definitions/contacts/definitions/name"},
+              "email": {"$ref": "#/definitions/contacts/definitions/email"},
+              "unique_external_id": {"$ref": "#/definitions/contacts/definitions/unique_external_id"},
+              "phone": {"$ref": "#/definitions/contacts/definitions/phone"},
+              "mobile": {"$ref": "#/definitions/contacts/definitions/mobile"},
+              "job_title": {"$ref": "#/definitions/contacts/definitions/job_title"},
+              "company_id": {"$ref": "#/definitions/contacts/definitions/company_id"}
             }
           },
-          "targetSchema": {
-            "$ref": "#/definitions/contacts"
-          }
+          "targetSchema": {"$ref": "#/definitions/contacts"}
         }
       ]
     },
@@ -354,74 +159,21 @@
       "description": "Freshdesk company custom_fields object (child of companies)",
       "stability": "production",
       "strictProperties": true,
-      "type": [
-        "object"
-      ],
+      "type": ["object"],
       "definitions": {
-        "cu_number": {
-          "description": "CU number (NAV Customer No_). Unique.",
-          "example": "CU013413",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "key_account": {
-          "description": "Key account flag.",
-          "example": true,
-          "readOnly": false,
-          "type": [
-            "boolean"
-          ]
-        },
-        "account_manager_code": {
-          "description": "NAV salesperson code.",
-          "example": "AM01",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        },
-        "territory_code": {
-          "description": "NAV territory code.",
-          "example": "SOUTH",
-          "readOnly": false,
-          "type": [
-            "string"
-          ]
-        }
+        "cu_number": {"description": "CU number (NAV Customer No_). Unique.", "example": "CU013413", "readOnly": false, "type": ["string"]},
+        "key_account": {"description": "Key account flag.", "example": true, "readOnly": false, "type": ["boolean"]},
+        "account_manager_code": {"description": "NAV salesperson code.", "example": "AM01", "readOnly": false, "type": ["string"]},
+        "territory_code": {"description": "NAV territory code.", "example": "SOUTH", "readOnly": false, "type": ["string"]}
       },
       "properties": {
-        "cu_number": {
-          "$ref": "#/definitions/custom_fields/definitions/cu_number"
-        },
-        "key_account": {
-          "$ref": "#/definitions/custom_fields/definitions/key_account"
-        },
-        "account_manager_code": {
-          "$ref": "#/definitions/custom_fields/definitions/account_manager_code"
-        },
-        "territory_code": {
-          "$ref": "#/definitions/custom_fields/definitions/territory_code"
-        }
+        "cu_number": {"$ref": "#/definitions/custom_fields/definitions/cu_number"},
+        "key_account": {"$ref": "#/definitions/custom_fields/definitions/key_account"},
+        "account_manager_code": {"$ref": "#/definitions/custom_fields/definitions/account_manager_code"},
+        "territory_code": {"$ref": "#/definitions/custom_fields/definitions/territory_code"}
       }
     }
   },
-  "properties": {
-    "companies": {
-      "$ref": "#/definitions/companies"
-    },
-    "contacts": {
-      "$ref": "#/definitions/contacts"
-    },
-    "custom_fields": {
-      "$ref": "#/definitions/custom_fields"
-    }
-  },
-  "links": [
-    {
-      "href": "https://churchesfire.freshdesk.com/api/v2",
-      "rel": "self"
-    }
-  ]
+  "properties": {"companies": {"$ref": "#/definitions/companies"}, "contacts": {"$ref": "#/definitions/contacts"}, "custom_fields": {"$ref": "#/definitions/custom_fields"}},
+  "links": [{"href": "https://churchesfire.freshdesk.com/api/v2", "rel": "self"}]
 }
