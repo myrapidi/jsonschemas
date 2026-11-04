@@ -21,7 +21,7 @@
           "type": ["array"],
           "items": {"type": ["string"]}
         },
-        "custom_fields": {"description": "Freshdesk company custom fields (JSON object built by formula).", "readOnly": false, "type": ["object"]}
+        "custom_fields": {"description": "Freshdesk company custom fields (JSON object built by formula).", "readOnly": false, "type": ["string"]}
       },
       "properties": {
         "id": {"$ref": "#/definitions/companies/definitions/id"},
